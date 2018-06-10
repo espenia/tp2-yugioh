@@ -1,6 +1,6 @@
 package src;
 
-public interface Monster {
+public interface Monster extends Cards{
 
 
 }
