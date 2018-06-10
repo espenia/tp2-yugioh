@@ -9,7 +9,7 @@ public class Mazo {
     private int cantidadDeCartas;
 
 
-    public Deck (){
+    public Mazo (){
         cantidadDeCartas = 30;
         cartasEnMazo = new ArrayList<>();
     }

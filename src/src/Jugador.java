@@ -11,7 +11,7 @@ public class Jugador {
     private Mazo mazo;
     private List<Carta> cementerio;
 
-    public Player () { //Multiton 2
+    public Jugador () { //Multiton 2
         lifePoints = 8000;
         cantidadDeCartasMano = 7; // No me acuerdo con cuantas empezas
         cantidadDeCartasMazo = 30;
