@@ -1,8 +1,8 @@
 package src;
 
-public class Field {
-    private Player playerOne;
-    private Player playerTwo;
+public class Campo {
+    private Jugador jugadorUno;
+    private Jugador jugadorDos;
 
 
 }

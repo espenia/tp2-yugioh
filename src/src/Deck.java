@@ -3,9 +3,9 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Deck {
+public class Mazo {
 
-    private List<Cards> cartasEnMazo;
+    private List<Carta> cartasEnMazo;
     private int cantidadDeCartas;
 
 
