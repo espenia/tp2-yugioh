@@ -1,6 +1,6 @@
 package src;
 
-public class Monstruo implements Carta{ //hasta ahora no utiliza nada de la interfaz carta
+public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la interfaz carta
 
     private String nombre;
     private int defensa;
@@ -8,7 +8,7 @@ public class Monstruo implements Carta{ //hasta ahora no utiliza nada de la inte
     //private Efecto efecto;
 
     //public Monstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, Efecto efecto){
-    public Monstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo ){
+    public CartaMonstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo ){
         this.nombre = nombreDelMonstruo;
         this.defensa = defensaDelMonstruo;
         this.ataque = ataqueDelMonstruo;
@@ -26,16 +26,16 @@ public class Monstruo implements Carta{ //hasta ahora no utiliza nada de la inte
     	this.ataque = nuevoAtaque;
     }
 
-    public int compararAtaqueDeMonstruo(Monstruo monstruo){
-        return monstruo.compararAtaque(this.ataque);
+    public int compararAtaqueDeMonstruo(CartaMonstruo cartaMonstruo){
+        return cartaMonstruo.compararAtaque(this.ataque);
     }
 
     private int compararAtaque(int unAtaque){
         return unAtaque - this.ataque;
     }
 
-    public int compararDefensaDeMonstruo(Monstruo monstruo){
-        return monstruo.compararDefensaConAtaque(this.ataque);
+    public int compararDefensaDeMonstruo(CartaMonstruo cartaMonstruo){
+        return cartaMonstruo.compararDefensaConAtaque(this.ataque);
     }
     private int compararDefensaConAtaque(int unAtaque){
         return unAtaque - this.defensa;
