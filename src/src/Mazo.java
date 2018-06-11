@@ -12,34 +12,34 @@ public class Mazo {
 
 
     public Mazo (){
-        cantidadDeCartas = 0;
-        cartasEnMazo = new Stack<>();
+    	this.cantidadDeCartas = 0;
+        this.cartasEnMazo = new Stack<>();
     }
 
     public void agregarCarta(Carta carta){
-        cartasEnMazo.add(carta);
-        cantidadDeCartas+=1;
+    	this.cartasEnMazo.add(carta);
+        this.cantidadDeCartas+=1;
 
     }
 
     public Stack<Carta> extraer(int cantidad){
         Stack<Carta> cartas = new Stack<>();
         for (int i = 0 ; i < cantidad ; i++){
-            cartas.add(cartasEnMazo.pop());
-            cantidadDeCartas-=1;
+            cartas.add(this.cartasEnMazo.pop());
+            this.cantidadDeCartas-=1;
         }
         return cartas;
     }
 
     public int cantidadDeCartas(){
-        return cantidadDeCartas;
+        return this.cantidadDeCartas;
     }
 
     public void armarMazo(Stack<Carta> cartas){
         for (Carta i : cartas)
             cartas.add(cartas.pop());
         
-        Collections.shuffle(cartasEnMazo);
+        Collections.shuffle(this.cartasEnMazo);
     }
 
 }

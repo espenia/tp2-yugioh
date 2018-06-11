@@ -12,11 +12,11 @@ public class Jugador {
     private List<Carta> cementerio;
 
     public Jugador () { //Multiton 2
-        lifePoints = 8000;
-        cantidadDeCartasMano = 7; // No me acuerdo con cuantas empezas
-        cantidadDeCartasMazo = 30;
-        cantidadDeCartasCementerio = 0;
-        mazo = new Mazo();
+    	this.lifePoints = 8000;
+    	this.cantidadDeCartasMano = 7; // No me acuerdo con cuantas empezas
+    	this.cantidadDeCartasMazo = 30;
+    	this.cantidadDeCartasCementerio = 0;
+    	this.mazo = new Mazo();
         //Mazo.armarMazo(); // supongo que vamos a tener 2 mazos estandar para testear
         //Mazo.draw(7);
     }
