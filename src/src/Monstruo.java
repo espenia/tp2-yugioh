@@ -1,6 +1,6 @@
 package src;
 
-public class Monstruo implements Carta{
+public class Monstruo implements Carta{ //hasta ahora no utiliza nada de la interfaz carta
 
     private String nombre;
     private int defensa;

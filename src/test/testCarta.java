@@ -9,7 +9,7 @@ public class testCarta {
 
 
     @Test
-    public void compararAtaqueDeMonstruos(){
+    public void testCompararAtaqueDeMonstruos(){
 
         Monstruo carta2 = new Monstruo("Dragon blanco de Ojos Azules",2500, 3000);
         Monstruo carta1 = new Monstruo("Dragon negro de Ojos Rojos",2400,2700);
@@ -19,7 +19,7 @@ public class testCarta {
     }
 
     @Test
-    public void compararDefensaConAtaqueDeMonstruos(){
+    public void testCompararAtaqueConDefensaDeMonstruos(){
         Monstruo carta2 = new Monstruo("Dragon blanco de Ojos Azules",2500, 3000);
         Monstruo carta1 = new Monstruo("Dragon negro de Ojos Rojos",2400,2700);
         assertEquals(200,carta1.compararDefensaDeMonstruo(carta2));
