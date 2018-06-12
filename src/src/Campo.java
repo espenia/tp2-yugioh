@@ -5,7 +5,7 @@ public class Campo {
     private Jugador jugadorDos;
     
     
-    public void jugarMonstruoJugadorUno(CartaMonstruo unMonstruo,String modeDeLaCarta,String posicionDeLaCarta){
+    public void jugarMonstruoJugadorUno(Monstruo unMonstruo,String modeDeLaCarta,String posicionDeLaCarta){
 
     }
 

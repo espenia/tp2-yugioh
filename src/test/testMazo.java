@@ -14,8 +14,8 @@ public class testMazo {
     public void testExtraerCartasDelMazo(){
 
         Mazo mazo = new Mazo();
-        CartaMonstruo carta2 = new CartaMonstruo("Dragon blanco de Ojos Azules",2500, 3000);
-        CartaMonstruo carta1 = new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700);
+        Monstruo carta2 = new Monstruo("Dragon blanco de Ojos Azules",2500, 3000);
+        Monstruo carta1 = new Monstruo("Dragon negro de Ojos Rojos",2400,2700);
         mazo.agregarCarta(carta1);
         mazo.agregarCarta(carta2);
         mazo.extraer(2);
@@ -26,8 +26,8 @@ public class testMazo {
     @Test
     public void testExtraerCartasDelMazoDevuelveLasCartasComoUnaPila(){
         Mazo mazo = new Mazo();
-        CartaMonstruo carta2 = new CartaMonstruo("Dragon blanco de Ojos Azules",2500, 3000);
-        CartaMonstruo carta1 = new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700);
+        Monstruo carta2 = new Monstruo("Dragon blanco de Ojos Azules",2500, 3000);
+        Monstruo carta1 = new Monstruo("Dragon negro de Ojos Rojos",2400,2700);
         mazo.agregarCarta(carta1);
         mazo.agregarCarta(carta2);
         Stack<Carta> cartas = mazo.extraer(2);
@@ -39,10 +39,10 @@ public class testMazo {
     public void testArmarMazo(){
         Mazo mazo = new Mazo();
         Stack<Carta> cartas = new Stack<>();
-        cartas.add(new CartaMonstruo("Dragon blanco de Ojos Azules",2500, 3000));
-        cartas.add(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
-        cartas.add(new CartaMonstruo("Dragon blanco de Ojos Azules",2500, 3000));
-        cartas.add(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
+        cartas.add(new Monstruo("Dragon blanco de Ojos Azules",2500, 3000));
+        cartas.add(new Monstruo("Dragon negro de Ojos Rojos",2400,2700));
+        cartas.add(new Monstruo("Dragon blanco de Ojos Azules",2500, 3000));
+        cartas.add(new Monstruo("Dragon negro de Ojos Rojos",2400,2700));
         mazo.armarMazo(cartas);
         assertEquals(4,mazo.cantidadDeCartas());
 
