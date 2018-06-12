@@ -5,6 +5,7 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
     private String nombre;
     private int defensa;
     private int ataque;
+    private Estado estado;
     //private Efecto efecto;
 
     //public Monstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, Efecto efecto){
@@ -12,6 +13,7 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
         this.nombre = nombreDelMonstruo;
         this.defensa = defensaDelMonstruo;
         this.ataque = ataqueDelMonstruo;
+        estado = new SinPosicion(new SinEstado());
         //this.efecto = efecto;
         //efecto.setEfecto(this);
 
@@ -40,4 +42,21 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
     private int compararDefensaConAtaque(int unAtaque){
         return unAtaque - this.defensa;
     }
+
+    public void colocarEn(DecoradorDeEstado unEstado){
+        estado = unEstado;
+
+    }
+
+    public boolean verificarSiEstaBocaArriba(){
+        return estado.bocaArriba();
+    }
+
+    public boolean verificarSiEstaBocaAbajo(){
+        return estado.bocaAbajo();
+    }
+
+	public void atacarA(Jugador jugador) {
+		jugador.recibeDanio(this.ataque);
+	}
 }
