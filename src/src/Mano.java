@@ -2,26 +2,20 @@ package src;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
 public class Mano {
 
-    private Campo campo;
-    private Mazo mazo;
     private Map<String,Carta> manoDeCartas;
 
 
 
-    public Mano(Mazo unMazo, Campo unCampo){
-        mazo  = unMazo;
-        campo = unCampo;
+    public Mano(){
         manoDeCartas = new HashMap<>();
+
 
     }
 
-    public void extraerCarta(){
-        Stack<Carta> cartas = mazo.extraer(1);
-        Carta carta = cartas.pop();
+    public void agregarCarta(Carta carta){
         manoDeCartas.put(carta.getNombre(),carta);
 
     }
@@ -35,7 +29,7 @@ public class Mano {
 
     public void jugarMonstruo(String nombreDelaCarta, String modoDeCarta, String posicionDeCarta) {
     	// excepcio carta no existe, excepcion carta no es monstruo, excepcion string no validos, o un supuesto
-        campo.jugarMonstruoJugadorUno((CartaMonstruo) manoDeCartas.get(nombreDelaCarta),modoDeCarta,posicionDeCarta);
+        //campo.jugarMonstruoJugadorUno((CartaMonstruo) manoDeCartas.get(nombreDelaCarta),modoDeCarta,posicionDeCarta);
 
     }
 }

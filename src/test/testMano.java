@@ -8,11 +8,9 @@ public class testMano {
 
     @Test
     public void testAgregarCartaAMano(){
-        Mazo mazo = new Mazo();
         CartaMonstruo carta1 = new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700);
-        mazo.agregarCarta(carta1);
-        Mano mano = new Mano(mazo,new Campo());
-        mano.extraerCarta();
+        Mano mano = new Mano();
+        mano.agregarCarta(carta1);
         assertEquals(carta1,mano.devolverCarta("Dragon negro de Ojos Rojos"));
 
 

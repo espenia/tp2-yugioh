@@ -3,40 +3,37 @@ package src;
 import java.util.List;
 
 public class Jugador {
-    public int lifePoints;
-    private int cantidadDeCartasMano;
-    private int cantidadDeCartasMazo;
-    private int cantidadDeCartasCementerio;
+    public int puntosDeVida;
     public Mano mano;
-    private Mazo mazo;
     private List<Carta> cementerio;
-	private Lado lado;
+	private Campo campo;
     
 
     public Jugador () { //Multiton 2
-    	this.lifePoints = 8000;
-    	this.cantidadDeCartasMano = 5; // No me acuerdo con cuantas empezas
-    	this.cantidadDeCartasMazo = 30;
-    	this.cantidadDeCartasCementerio = 0;
-    	this.mazo = new Mazo();
+    	this.puntosDeVida = 8000;
         //Mazo.armarMazo(); // supongo que vamos a tener 2 mazos estandar para testear
         //Mazo.draw(5);
     }
 
-	public void posicionarCartaEnLado(Monstruo monstruo) {
-		this.lado.agregarCarta(monstruo);
+	public void posicionarCartaEnLado(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta ) {
+		this.campo.jugarCartaMonstruo(monstruo,posicionDeLaCarta,modoDeLaCarta);
+
 	}
 
-	public Monstruo seleccionarCartaDeLaMano(String nombreCarta) {
-		return this.mano.devolverCarta(nombreCarta);
+	public CartaMonstruo seleccionarCartaDeLaMano(String nombreCarta) {
+		//return this.mano.devolverCarta(nombreCarta);
+		return null;
 	}
 
-	public Monstruo seleccionarCartaDelCampo(String nombreCarta) {
-		return this.lado.seleccionarCarta(nombreCarta);
+
+	public CartaMonstruo seleccionarCartaDelCampo(String nombreCarta) {
+		//return this.campo.seleccionarCarta(nombreCarta);
+		return null;
 	}
 
 	public void recibeDanio(int ataque) {
-		this.lifePoints = this.lifePoints - ataque;
+		this.puntosDeVida = this.puntosDeVida - ataque;
+
 	}
 
 }
