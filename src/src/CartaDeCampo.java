@@ -1,6 +1,6 @@
 package src;
 
-public class CartaDeCampo extends CartaDeUtilidad{
+public class CartaDeCampo implements Carta{
 
     private String nombre;
     private Efecto efecto;

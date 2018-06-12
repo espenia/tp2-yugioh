@@ -15,7 +15,7 @@ public class testGenerales {
 
     @Test
     public void test01ColocarMonstruoEnModoAtaque(){//hardcodeado its a strart
-        Juego juego = new Juego();
+        //Juego juego = new Juego();
 
         /*
         ArrayList<Cards> cartas =(juego.jugadorUno).mostrarCartas();
