@@ -40,4 +40,8 @@ public class Monstruo implements Carta{ //hasta ahora no utiliza nada de la inte
     private int compararDefensaConAtaque(int unAtaque){
         return unAtaque - this.defensa;
     }
+
+	public void atacarA(Jugador jugador) {
+		jugador.recibeDanio(this.ataque);
+	}
 }
