@@ -47,4 +47,12 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
         estado = unEstado;
 
     }
+
+    public boolean verificarSiEstaBocaArriba(){
+        return estado.bocaArriba();
+    }
+
+    public boolean verificarSiEstaBocaAbajo(){
+        return estado.bocaAbajo();
+    }
 }
