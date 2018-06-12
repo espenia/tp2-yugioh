@@ -12,7 +12,7 @@ public class testCampo {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Campo campoPrueba = new Campo(jugador1, jugador2);
-		jugador1.mano.add(new Monstruo("Dragon negro de Ojos Rojos",2400,2700));
+		jugador1.mano.add(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
 		jugador1.posicionarCartaEnLado(jugador1.seleccionarCartaDeLaMano());
 		jugador1.seleccionarCartaDelCampo().atacarA(jugador2);
 		long vidaEsperada = 5300;
