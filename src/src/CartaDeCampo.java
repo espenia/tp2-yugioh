@@ -1,12 +1,12 @@
 package src;
 
-public class CartaDeTrampa implements CartaDeUtilidad{
+public class CartaDeCampo extends CartaDeUtilidad{
 
     private String nombre;
     private Efecto efecto;
     private Campo campo;
 
-    public CartaDeTrampa(String nombreDeCarta, Efecto efectoDeCarta){
+    public CartaDeCampo(String nombreDeCarta, Efecto efectoDeCarta){
         this.nombre = nombreDeCarta;
         this.efecto = efectoDeCarta;
         
@@ -21,4 +21,8 @@ public class CartaDeTrampa implements CartaDeUtilidad{
     	this.campo = campo;
     }
 
+    @Override
+    public String getNombre() {
+        return null;
+    }
 }

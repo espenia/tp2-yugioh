@@ -17,6 +17,10 @@ public class Monstruo implements Carta{ //hasta ahora no utiliza nada de la inte
 
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+
     public void actualizarDatos(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
     	this.defensa = nuevaDefensa;
     	this.ataque = nuevoAtaque;

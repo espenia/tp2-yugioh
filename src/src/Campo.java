@@ -5,8 +5,8 @@ public class Campo {
     private Jugador jugadorDos;
     
     
-    public void destruirMonstruos() {
-    	//destruye los monstruos del campo
+    public void jugarMonstruoJugadorUno(Monstruo unMonstruo,String modeDeLaCarta,String posicionDeLaCarta){
+
     }
 
 }
