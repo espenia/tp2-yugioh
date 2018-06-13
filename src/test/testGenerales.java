@@ -30,7 +30,7 @@ public class testGenerales {
     @Test (expected = NoPuedeAtacarEnModoDefensaExcepcion.class)
     public void test02ColocarMontruoEnModoDefensa() {
     	Jugador juan = new Jugador();
-    	String estadoDeCarta = "Ataque";
+    	String estadoDeCarta = "Defensa";
     	Jugador carlos= new Jugador();
     	Juego juego = new Juego(juan, carlos);
     	juan.darCarta("Dragon negro de Ojos Rojos");
@@ -86,5 +86,23 @@ public class testGenerales {
     	juan.atacar(cartaSeleccionada, carlos);
     	long vidaEsperada = 5300;
     	assertEquals(vidaEsperada, juan.puntosDeVida, DELTA);
+    }
+    
+    @Test
+    public void test06AtacarMonstruoQueTengaMenorAtaque(){
+    	Jugador juan = new Jugador();
+    	String estadoDeCarta = "Ataque";
+    	Jugador carlos= new Jugador();
+    	Juego juego = new Juego(juan, carlos);
+    	juan.darCarta("Dragon negro de Ojos Rojos");
+    	carlos.darCarta("Dragon blanco de Ojos Azules");
+    	juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Dragon negro de Ojos Rojos"), "Boca Arriba", estadoDeCarta);
+    	carlos.posicionarCartaEnLado(carlos.seleccionarCartaDeLaMano("Dragon blanco de Ojos Azules"), "Boca Arriba", estadoDeCarta);
+    	CartaMonstruo cartaSeleccionada = juan.seleccionarCartaDelCampo("Dragon negro de Ojos Rojos");
+    	CartaMonstruo cartaEnemiga = carlos.seleccionarCartaDelCampo("Dragon blanco de Ojos Azules");
+    	juan.atacar(cartaSeleccionada, cartaEnemiga);
+    	assertEquals(1, carlos.cantidadEnCementerio, DELTA);
+    	long vidaEsperada = 5300;//HAY QUE CALCULAR LOS DANIOS DEPENDIENDO CUANTO TENGANM LOS MONSTRUOS
+    	assertEquals(vidaEsperada, carlos.puntosDeVida, DELTA);
     }
 }
