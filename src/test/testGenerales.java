@@ -26,20 +26,20 @@ public class testGenerales {
         int vidaEsperada = 5300;
         assertEquals(vidaEsperada, jugador2.puntosDeVida, DELTA);
     }
-/*
-    @Test (expected = NoPuedeAtacarEnModoDefensaExcepcion.class)
-    public void test02ColocarMontruoEnModoDefensa() {
-        Jugador juan = new Jugador();
-        String estadoDeCarta = "Defensa";
-        Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
-        CartaMonstruo cartaPrueba = new CartaMonstruo("Dragon negro de Ojos Rojos", 2400, 2700);
-        juan.darCarta(cartaPrueba);
-        juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Dragon negro de Ojos Rojos"), "Boca Arriba", estadoDeCarta);
-        CartaMonstruo cartaSeleccionada = juan.seleccionarCartaDelCampo("Dragon negro de Ojos Rojos");
-        juan.atacar(cartaSeleccionada, carlos);
-    }
 
+    @Test // TODO (expected = NoPuedeAtacarEnModoDefensaExcepcion.class) 
+    public void test02ColocarMontruoEnModoDefensa() {
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        Juego juego = new Juego(jugador1, jugador2);
+        CartaMonstruo cartaPrueba = new CartaMonstruo("Dragon negro de Ojos Rojos", 2400, 2700);
+        jugador1.darCarta(cartaPrueba);
+        jugador1.posicionarCartaEnLado(jugador1.seleccionarCartaDeLaMano("Dragon negro de Ojos Rojos"),
+        "Boca Arriba", "Defensa");
+        CartaMonstruo cartaSeleccionada = jugador1.seleccionarCartaDelCampo("Dragon negro de Ojos Rojos");
+        assertEquals(cartaPrueba, cartaSeleccionada);
+    }
+/*
     @Test
     public void test03ColocarCartaMagicaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS MAGICAS
         Jugador juan = new Jugador();
