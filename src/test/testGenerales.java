@@ -12,7 +12,7 @@ public class testGenerales {
     private static final double DELTA = 1e-2;
 /* IMPORTANTE, LAS CARTAS MONSTRUO DEPENDIENDO LAS ESTRELLAS QUE TENGAN REQUIEREN QUE SE SACRIGIQUEN OTRAS CARTAS MONSTRUO ANTES PARA PODER SER INVOCADAS*/
 
-    /*@Test
+    @Test
     public void test01ColocarMonstruoEnModoAtaque(){
         Jugador juan = new Jugador();
         String estadoDeCarta = "Ataque";
@@ -26,7 +26,7 @@ public class testGenerales {
         int vidaEsperada = 5300;
         assertEquals(vidaEsperada, carlos.puntosDeVida, DELTA);
     }
-
+/*
     @Test (expected = NoPuedeAtacarEnModoDefensaExcepcion.class)
     public void test02ColocarMontruoEnModoDefensa() {
         Jugador juan = new Jugador();

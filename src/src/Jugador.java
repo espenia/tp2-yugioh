@@ -11,6 +11,7 @@ public class Jugador {
 
 	public Jugador() { //Multiton 2
 		this.puntosDeVida = 8000;
+		mano = new Mano();
 		//Mazo.armarMazo(); // supongo que vamos a tener 2 mazos estandar para testear
 		//Mazo.draw(5);
 	}
@@ -43,4 +44,7 @@ public class Jugador {
 		cartaSeleccionada.atacarA(jugador);
 	}
 
+	public void darCarta(Carta carta) {
+	    mano.agregarCarta(carta);
+	}
 }
