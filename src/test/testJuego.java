@@ -19,15 +19,13 @@ public class testJuego {
     @Test
     public void testColocarUnaCartaEnPosicionAtaque() {
     	Jugador juan = new Jugador();
-    	String estadoDeCarta = "Ataque";
     	Jugador carlos= new Jugador();
     	Juego juego = new Juego(juan, carlos);
     	juego.nuevoJuegoSoloMonstruos();
-    	juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Dragon negro de Ojos Rojos"), "Boca Arriba", estadoDeCarta);
-    	CartaMonstruo cartaSeleccionada = juan.seleccionarCartaDelCampo("Dragon negro de Ojos Rojos");
-    	juan.atacar(cartaSeleccionada, carlos);
+    	//juan.jugarCarta("Dragon negro de Ojos Rojos", this.ataque);
+    	//juan.seleccionarCartaDelCampo("Dragon negro de Ojos Rojos").atacarA(carlos);
     	long vidaEsperada = 5300;
-    	assertEquals(vidaEsperada, carlos.puntosDeVida, DELTA);
+    	//assertEquals(vidaEsperada, carlos.lifePoints, DELTA);
     }
 
 

@@ -12,19 +12,10 @@ public class Lado {
 	private Map<String,CartaMonstruo> cartasMonstruo;
 	private Mazo mazo;
 	private Cementerio cementerio;
-	private Campo campo;
 
 
 
-	public Lado(Mazo unMazo, Campo unCampo){
-		cartasMonstruo = new HashMap<>();
-		cartasTrampaOMagicas = new HashMap<>();
-		cementerio = new Cementerio();
-		mazo = unMazo;
-		campo = unCampo;
-	}
-
-	public Lado(Mazo unMazo) {
+	public Lado(Mazo unMazo){
 		cartasMonstruo = new HashMap<>();
 		cartasTrampaOMagicas = new HashMap<>();
 		cementerio = new Cementerio();
@@ -57,5 +48,6 @@ public class Lado {
 
 	public CartaMonstruo seleccionarCartaMonstruo(String nombreDeLaCarta){
 		return cartasMonstruo.get(nombreDeLaCarta);
+
 	}
 }

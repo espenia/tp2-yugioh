@@ -55,8 +55,4 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
     public boolean verificarSiEstaBocaAbajo(){
         return estado.bocaAbajo();
     }
-
-	public void atacarA(Jugador jugador) {
-		jugador.recibeDanio(this.ataque);
-	}
 }

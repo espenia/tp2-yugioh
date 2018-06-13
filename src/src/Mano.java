@@ -20,17 +20,16 @@ public class Mano {
 
     }
 
-    public Carta devolverCarta(String nombreDeLaCarta){ //agregar excepcion carta no existe
+    public Carta devolverCarta(String nombreDeLaCarta){
+    	//agregar excepcion carta no existe
         return manoDeCartas.get(nombreDeLaCarta);
 
     }
 
 
-/*    public void jugarMonstruo(String nombreDelaCarta, String modoDeCarta, String posicionDeCarta) { // excepcio carta no existe, excepcion carta no es monstruo, excepcion string no validos, o un supuesto
-        campo.jugarMonstruoJugadorUno((Monstruo) manoDeCartas.get(nombreDelaCarta),modoDeCarta,posicionDeCarta);
     public void jugarMonstruo(String nombreDelaCarta, String modoDeCarta, String posicionDeCarta) {
     	// excepcio carta no existe, excepcion carta no es monstruo, excepcion string no validos, o un supuesto
         //campo.jugarMonstruoJugadorUno((CartaMonstruo) manoDeCartas.get(nombreDelaCarta),modoDeCarta,posicionDeCarta);
 
-    }*/
+    }
 }
