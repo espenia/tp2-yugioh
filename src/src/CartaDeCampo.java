@@ -14,7 +14,7 @@ public class CartaDeCampo implements Carta{
     
     public void activarEfecto(){
     	//Aplica un efecto sobre el campo
-    	this.efecto.activarEfecto(this.campo);
+    	//this.efecto.activarEfecto(this.campo);
     }
     
     public void setCampo(Campo campo){

@@ -51,11 +51,42 @@ public class Lado {
 				carta.colocarEn(new PosicionDefensa(new BocaArriba()));
 		}
 
-		cartasMonstruo.put(carta.getNombre(),(CartaMonstruo)carta);
+		cartasMonstruo.put(carta.getNombre(),carta);
 
 	}
 
+	public void jugarCartaMagica(CartaDeUtilidad carta, String posicionDeLaCarta){
+		if(posicionDeLaCarta == "Boca Abajo"){
+			carta.colocarEn(new BocaAbajo());
+			carta.setLado(this);
+			carta.activarEfecto();
+		}
+		if (posicionDeLaCarta == "Boca Arrbia"){
+			carta.colocarEn(new BocaAbajo());
+			carta.setLado(this);
+			carta.activarEfecto();
+
+		}
+
+	cartasTrampaOMagicas.put(carta.getNombre(),carta);
+	}
+
+	public void jugarCartaTrampa(CartaDeUtilidad carta){
+
+		carta.colocarEn(new BocaAbajo());
+		carta.setLado(this);
+		carta.activarEfecto();
+		cartasTrampaOMagicas.put(carta.getNombre(),carta);
+
+	}
+
+	public CartaDeUtilidad seleccionarCartaDeUtilidad(String nombreDeLaCarta){
+
+		return cartasTrampaOMagicas.get(nombreDeLaCarta);
+	}
+
 	public CartaMonstruo seleccionarCartaMonstruo(String nombreDeLaCarta){
+
 		return cartasMonstruo.get(nombreDeLaCarta);
 	}
 }

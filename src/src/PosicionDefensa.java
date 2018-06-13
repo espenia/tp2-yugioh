@@ -9,6 +9,7 @@ public class PosicionDefensa extends DecoradorDeEstado {
 
     @Override
     public boolean bocaArriba(){
+        setPosicionDefensa(estado);
         return estado.bocaArriba();
 
     }

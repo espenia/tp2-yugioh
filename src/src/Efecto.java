@@ -2,6 +2,6 @@ package src;
 
 public abstract class Efecto {
 
-    public abstract void activarEfecto(Campo campo);
+    public abstract void activarEfecto(Lado lado);
     
 }

@@ -28,7 +28,7 @@ public class Jugador {
 
 	public CartaMonstruo seleccionarCartaDelCampo(String nombreCarta) {
 		return this.lado.seleccionarCartaMonstruo(nombreCarta);
-		//return null;
+
 	}
 
 	public void recibeDanio(int ataque) {
@@ -37,7 +37,9 @@ public class Jugador {
 	}
 
 	public void asignarLado(Lado ladoJugador) {
+
 		lado = ladoJugador;
+
 	}
 
 	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {

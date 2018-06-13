@@ -29,6 +29,7 @@ public class Campo {
 
     public Stack<Carta> extraerDelMazo(int cantidad) {
         return null;
+
     }
 
     public void agregarCarta(Carta devolverCarta, String estadoDeCarta) {
