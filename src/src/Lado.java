@@ -24,6 +24,13 @@ public class Lado {
 		campo = unCampo;
 	}
 
+	public Lado(Mazo unMazo) {
+		cartasMonstruo = new HashMap<>();
+		cartasTrampaOMagicas = new HashMap<>();
+		cementerio = new Cementerio();
+		mazo = unMazo;
+	}
+
 	public Stack<Carta> extraerDelMazo(int cantidad){
 		return mazo.extraer(cantidad);
 
