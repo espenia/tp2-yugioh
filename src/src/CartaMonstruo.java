@@ -24,8 +24,8 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
     }
 
     public void actualizarDatos(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
-    	this.defensa = nuevaDefensa;
-    	this.ataque = nuevoAtaque;
+        this.defensa = nuevaDefensa;
+        this.ataque = nuevoAtaque;
     }
 
     public int compararAtaqueDeMonstruo(CartaMonstruo cartaMonstruo){
@@ -54,5 +54,9 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
 
     public boolean verificarSiEstaBocaAbajo(){
         return estado.bocaAbajo();
+    }
+
+    public void atacarA(Jugador jugador) {
+        jugador.recibeDanio(this.ataque);
     }
 }
