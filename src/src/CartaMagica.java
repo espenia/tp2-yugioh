@@ -6,9 +6,11 @@ public abstract class CartaMagica extends CartaDeUtilidad{
 		super(nombreDeCarta);
 	}
     
-    public abstract void activarEfecto(Jugador jugador);
+    public void activarEfecto(Jugador jugador) {};
 
 	public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta) {
 		lado.jugarCartaMagica(this, posicionDeLaCarta);
 	}
+
+	public void activarTrampa(Jugador jugador, CartaMonstruo carta) {};
 }

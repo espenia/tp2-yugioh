@@ -72,6 +72,10 @@ public class Jugador {
 	}
 
 
+	public void aplicarDanioDirecto(int ataque) {
+	    ladoEnemigo.notificarDanio(ataque);
+	}
+
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
         CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
 	    miCarta.atacarA(jugador);

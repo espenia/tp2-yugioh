@@ -7,5 +7,4 @@ public abstract class CartaTrampa extends CartaDeUtilidad{
 	}
     
     public abstract void activarEfecto(Jugador jugador);
-
 }

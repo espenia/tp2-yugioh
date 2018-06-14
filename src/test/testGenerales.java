@@ -64,8 +64,9 @@ public class testGenerales {
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
+        CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico("Cilindro magico");
         juan.darCarta(cartaPrueba);
-        carlos.darCarta("Cilindro magico");
+        carlos.darCarta(cilindroMagico);
         juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Abismo Reluciente"), "Boca Arriba", estadoDeCarta);
         carlos.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Cilindro magico"), "Boca Abajo", estadoDeCarta);
         juan.atacar("Abismo Reluciente",carlos);

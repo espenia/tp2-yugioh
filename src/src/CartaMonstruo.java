@@ -26,6 +26,10 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
         return nombre;
     }
 
+    public int getAtaque() {
+        return ataque;
+    }
+
     public void actualizarDatos(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
         this.defensa = nuevaDefensa;
         this.ataque = nuevoAtaque;

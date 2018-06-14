@@ -10,6 +10,7 @@ public abstract class CartaDeUtilidad implements Carta {
     }
     
     public abstract void activarEfecto(Jugador jugador);
+    public abstract void activarTrampa(Jugador jugador, CartaMonstruo carta);
 
     @Override
     public String getNombre(){

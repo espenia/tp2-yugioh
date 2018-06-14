@@ -60,7 +60,6 @@ public class Lado {
 	public void jugarCartaMagica(CartaDeUtilidad carta, String posicionDeLaCarta){
 		if(posicionDeLaCarta == "Boca Abajo"){
 			carta.colocarEn(new BocaAbajo());
-			carta.activarEfecto(this.jugador);
 		}
 		if (posicionDeLaCarta == "Boca Arriba"){
 			carta.colocarEn(new BocaAbajo());
