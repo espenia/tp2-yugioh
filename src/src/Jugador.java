@@ -8,14 +8,17 @@ public class Jugador {
 	private Lado lado;
 
 
-	public Jugador(Lado lado,Lado ladoEnemigo) { //Multiton 2
+	public Jugador() { //Multiton 2
 		this.puntosDeVida = 8000;
 		mano = new Mano();
-		this.lado = lado;
-		this.ladoEnemigo = ladoEnemigo;
 		//Mazo.armarMazo(); // supongo que vamos a tener 2 mazos estandar para testear
 		//Mazo.draw(5);
 	}
+
+	public void asignarLados(Lado lado, Lado ladoEnemigo){
+        this.lado = lado;
+        this.ladoEnemigo = ladoEnemigo;
+    }
 
 	public void posicionarCartaEnLado(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta ) {// Excepciones incorrecta cantidad de sacrificios.
 		this.lado.jugarCartaMonstruo(monstruo, posicionDeLaCarta,modoDeLaCarta);
@@ -64,11 +67,6 @@ public class Jugador {
 
 	}
 
-	public void asignarLado(Lado ladoJugador) {
-		lado = ladoJugador;
-
-
-	}
 
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
         CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);

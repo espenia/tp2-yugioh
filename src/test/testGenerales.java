@@ -39,7 +39,7 @@ public class testGenerales {
         CartaMonstruo cartaSeleccionada = jugador1.seleccionarCartaDelCampo("Dragon negro de Ojos Rojos");
         assertEquals(cartaPrueba, cartaSeleccionada);
     }
-/*
+
     @Test
     public void test03ColocarCartaMagicaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS MAGICAS
         Jugador juan = new Jugador();
@@ -247,5 +247,5 @@ public class testGenerales {
         juan.sacrificarCarta(juan.seleccionarCartaDeLaMano("Dragon blanco de Ojos Azules"));
         juan.posicionarCartaEnLado(carlos.seleccionarCartaDeLaMano("Dragon dorado de Ojos Carmesi"), "Boca Arriba", estadoDeCarta1);
         assertEquals(2, juan.cantidadEnCementerio, DELTA);
-    }*/
+    }
 }

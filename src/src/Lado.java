@@ -16,14 +16,17 @@ public class Lado {
 
 
 
-	public Lado(Mazo unMazo, Jugador unJugador){
+	public Lado(Mazo unMazo){
 		cartasMonstruo = new HashMap<>();
 		cartasTrampaOMagicas = new HashMap<>();
 		cementerio = new HashMap<>();
 		mazo = unMazo;
-		jugador = unJugador;
 	}
 
+
+	public void asignarJugador(Jugador unJugador){
+		jugador = unJugador;
+	}
 
 
 	public Stack<Carta> extraerDelMazo(int cantidad){
