@@ -73,4 +73,8 @@ public class Jugador {
 	public void darCarta(Carta carta) {
 	    mano.agregarCarta(carta);
 	}
+
+	public double getPuntosDeVida() {
+		return this.puntosDeVida;
+	}
 }

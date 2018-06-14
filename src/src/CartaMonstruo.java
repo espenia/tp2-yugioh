@@ -10,11 +10,12 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
     //private Efecto efecto;
 
     //public Monstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, Efecto efecto){
-    public CartaMonstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo){
+    public CartaMonstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, int estrellasDelMonstruo){
         //estrellas = numeroDeEstrellas;
         this.nombre = nombreDelMonstruo;
         this.defensa = defensaDelMonstruo;
         this.ataque = ataqueDelMonstruo;
+        this.estrellas = estrellasDelMonstruo;
         estado = new SinPosicion(new SinEstado());
         //this.efecto = efecto;
         //efecto.setEfecto(this);
