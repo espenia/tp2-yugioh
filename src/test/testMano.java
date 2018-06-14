@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class testMano {
-
+/*
     @Test
     public void testAgregarCartaAMano(){
         CartaMonstruo carta1 = new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700);
@@ -16,6 +16,6 @@ public class testMano {
 
     }
 
-
+*/
 
 }

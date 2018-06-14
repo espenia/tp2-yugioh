@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class testCarta {
 
-
+/*
     @Test
     public void testCompararAtaqueDeMonstruos(){
 
@@ -25,5 +25,5 @@ public class testCarta {
         assertEquals(200,carta1.compararDefensaDeMonstruo(carta2));
 
     }
-
+*/
 }
