@@ -39,7 +39,7 @@ public class testGenerales {
         CartaMonstruo cartaSeleccionada = jugador1.seleccionarCartaDelCampo("Abismo Reluciente");
         assertEquals(cartaPrueba, cartaSeleccionada);
     }
-/*
+
     @Test
     public void test03ColocarCartaMagicaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS MAGICAS
         Jugador juan = new Jugador();
@@ -247,5 +247,5 @@ public class testGenerales {
         juan.sacrificarCarta(juan.seleccionarCartaDeLaMano("Abismo Reluciente"));
         juan.posicionarCartaEnLado(carlos.seleccionarCartaDeLaMano("Conedragon"), "Boca Arriba", estadoDeCarta1);
         assertEquals(2, juan.cantidadEnCementerio, DELTA);
-    }*/
+    }
 }

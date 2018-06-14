@@ -4,7 +4,6 @@ public class CartaDeCampo implements Carta{
 
     private String nombre;
     private Efecto efecto;
-    private Campo campo;
 
     public CartaDeCampo(String nombreDeCarta, Efecto efectoDeCarta){
         this.nombre = nombreDeCarta;
@@ -17,9 +16,9 @@ public class CartaDeCampo implements Carta{
     	//this.efecto.activarEfecto(this.campo);
     }
     
-    public void setCampo(Campo campo){
-    	this.campo = campo;
-    }
+    //public void setCampo(Campo campo){
+    //	this.campo = campo;
+    //}
 
     @Override
     public String getNombre() {
