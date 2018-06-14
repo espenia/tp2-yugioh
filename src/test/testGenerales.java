@@ -68,9 +68,9 @@ public class testGenerales {
         juan.darCarta(cartaPrueba);
         carlos.darCarta(cilindroMagico);
         juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Abismo Reluciente"), "Boca Arriba", estadoDeCarta);
-        carlos.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Cilindro magico"), "Boca Abajo", estadoDeCarta);
+        carlos.posicionarCartaEnLado(carlos.seleccionarCartaDeLaMano("Cilindro magico"), "Boca Abajo", estadoDeCarta);
         juan.atacar("Abismo Reluciente",carlos);
-        int vidaEsperada = 5300;
+        int vidaEsperada = 6200;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
     }
 
