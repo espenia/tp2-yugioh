@@ -8,8 +8,7 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
 
     @Override
     public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta) {
-        // TODO Auto-generated method stub
-
+        lado.jugarCartaTrampa(this);
     }
 
     public void activarEfecto(Jugador jugador) {};
