@@ -12,17 +12,15 @@ public class Lado {
 	private Map<String,CartaMonstruo> cartasMonstruo;
 	private Mazo mazo;
 	private Map<String, Carta> cementerio;
-	private Campo campo;
 	private Jugador jugador;
 
 
 
-	public Lado(Mazo unMazo, Campo unCampo, Jugador unJugador){
+	public Lado(Mazo unMazo, Jugador unJugador){
 		cartasMonstruo = new HashMap<>();
 		cartasTrampaOMagicas = new HashMap<>();
 		cementerio = new HashMap<>();
 		mazo = unMazo;
-		campo = unCampo;
 		jugador = unJugador;
 	}
 
@@ -87,28 +85,8 @@ public class Lado {
 		return cartasMonstruo.get(nombreDeLaCarta);
 	}
 
-	public void resolverConflicto( int resultadoDelConflicto, CartaMonstruo cartaAtacante, CartaMonstruo cartaDefendiente){
-	    if(resultadoDelConflicto < 0){
-            mandarCartaMonstruoAlCementerio(cartaAtacante.getNombre());
-            jugador.recibeDanio(-resultadoDelConflicto);
-        }
-
-	    if(resultadoDelConflicto > 0)
-            campo.notificarMandarCartaMonstruoAlCementerioAlOtroLado(resultadoDelConflicto,cartaDefendiente,this);
-
-
-
-	    if (resultadoDelConflicto == 0) {
-            mandarCartaMonstruoAlCementerio(cartaAtacante.getNombre());
-            campo.notificarMandarCartaMonstruoAlCementerioAlOtroLado(resultadoDelConflicto,cartaDefendiente,this);
-        }
-
-
-    }
-
-    public void notificarConflicto(int resultadoDelConflicto, CartaMonstruo cartaAfectada){
+    public void notificarDaño(int resultadoDelConflicto){
 	    jugador.recibeDanio(resultadoDelConflicto);
-	    mandarCartaMonstruoAlCementerio(cartaAfectada.getNombre());
 
     }
 

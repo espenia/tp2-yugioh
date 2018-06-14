@@ -1,15 +1,12 @@
 package src;
 
 public class Juego {  //Fachada del juego
-    private Campo campo;
 
     public Juego (Jugador jugador1, Jugador jugador2){
+        Lado ladoJugador1 = new Lado(new Mazo(),jugador1);
+        Lado ladoJugador2 = new Lado(new Mazo(),jugador2);
 
-        this.campo = new Campo(jugador1, jugador2);
     }
-
-	public void nuevoJuegoSoloMonstruos() {		
-	}
 
     //supongo que se manejara la parte grafica
 }

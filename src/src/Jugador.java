@@ -8,9 +8,11 @@ public class Jugador {
 	private Lado lado;
 
 
-	public Jugador() { //Multiton 2
+	public Jugador(Lado lado,Lado ladoEnemigo) { //Multiton 2
 		this.puntosDeVida = 8000;
 		mano = new Mano();
+		this.lado = lado;
+		this.ladoEnemigo = ladoEnemigo;
 		//Mazo.armarMazo(); // supongo que vamos a tener 2 mazos estandar para testear
 		//Mazo.draw(5);
 	}
@@ -45,10 +47,17 @@ public class Jugador {
 	}
 
 
-	public CartaMonstruo seleccionarCartaDelCampo(String nombreCarta) {
+	public CartaMonstruo seleccionarCartaDeMiLado(String nombreCarta) {
 		return this.lado.seleccionarCartaMonstruo(nombreCarta);
 
 	}
+
+	public CartaMonstruo seleccionarCartaDelOtroLado(String nombreCarta){
+	    return ladoEnemigo.seleccionarCartaMonstruo(nombreCarta);
+
+    }
+
+
 
 	public void recibeDanio(int ataque) {
 		this.puntosDeVida = this.puntosDeVida - ataque;
@@ -58,17 +67,41 @@ public class Jugador {
 	public void asignarLado(Lado ladoJugador) {
 		lado = ladoJugador;
 
-	}
-
-	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {
-		cartaSeleccionada.atacarA(jugador);
-	}
-
-	public void atacarAMonstruo(CartaMonstruo cartaSeleccionada, CartaMonstruo cartaEnemiga){
-		int resultado = cartaSeleccionada.compararAtaqueDeMonstruo(cartaEnemiga);
-		lado.resolverConflicto(resultado, cartaSeleccionada, cartaEnemiga);
 
 	}
+
+	public void atacar(String cartaSeleccionada, Jugador jugador) {
+        CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
+	    miCarta.atacarA(jugador);
+	}
+
+	public void atacarAMonstruo(String cartaSeleccionada, String cartaEnemiga){
+	    CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
+	    CartaMonstruo cartaDelEnemigo = seleccionarCartaDelOtroLado(cartaEnemiga);
+		int resultado = miCarta.compararAtaqueDeMonstruo(cartaDelEnemigo);
+		resolverConflicto(resultado, cartaSeleccionada, cartaEnemiga);
+		ladoEnemigo.notificarDaño(-resultado);
+
+	}
+
+
+	public void resolverConflicto(int resultadoDelConflicto,String cartaAtacante,String cartaDefendiente){
+        if(resultadoDelConflicto < 0){
+            lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
+            recibeDanio(-resultadoDelConflicto);
+        }
+
+        if(resultadoDelConflicto > 0)
+            ladoEnemigo.mandarCartaMonstruoAlCementerio(cartaDefendiente);
+
+
+
+        if (resultadoDelConflicto == 0) {
+            lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
+            ladoEnemigo.mandarCartaMonstruoAlCementerio(cartaDefendiente);
+        }
+    }
+
 
 	public void darCarta(Carta carta) {
 	    mano.agregarCarta(carta);
