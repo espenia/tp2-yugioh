@@ -4,6 +4,7 @@ package src;
 public class Jugador {
 	public int puntosDeVida;
 	public Mano mano;
+	private Lado ladoEnemigo;
 	private Lado lado;
 
 
@@ -14,10 +15,30 @@ public class Jugador {
 		//Mazo.draw(5);
 	}
 
-	public void posicionarCartaEnLado(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta ) {
+	public void posicionarCartaEnLado(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta ) {// Excepciones incorrecta cantidad de sacrificios.
 		this.lado.jugarCartaMonstruo(monstruo, posicionDeLaCarta,modoDeLaCarta);
 
 	}
+
+	public void posicionarCartaEnLadoConUnSacrificio(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta,String nombreDelSacrificio){
+		lado.mandarCartaMonstruoAlCementerio(nombreDelSacrificio);
+		this.lado.jugarCartaMonstruo(monstruo, posicionDeLaCarta,modoDeLaCarta);
+	}
+
+	public void posicionarCartaEnLadoConDosSacrificio(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta,String nombreDelSegundoSacrificio,String nombreDelPrimerSacrificio){
+		lado.mandarCartaMonstruoAlCementerio(nombreDelPrimerSacrificio);
+		lado.mandarCartaMonstruoAlCementerio(nombreDelSegundoSacrificio);
+		this.lado.jugarCartaMonstruo(monstruo, posicionDeLaCarta,modoDeLaCarta);
+	}
+
+	public void posicionarCartaEnLadoConTresSacrificio(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta,String nombreDelPrimerSacrificio,String nombreDelSegundoSacrificio,String nombreDelTercerSacrificio){
+		lado.mandarCartaMonstruoAlCementerio(nombreDelPrimerSacrificio);
+		lado.mandarCartaMonstruoAlCementerio(nombreDelSegundoSacrificio);
+		lado.mandarCartaMonstruoAlCementerio(nombreDelTercerSacrificio);
+		this.lado.jugarCartaMonstruo(monstruo, posicionDeLaCarta,modoDeLaCarta);
+	}
+
+
 
 	public CartaMonstruo seleccionarCartaDeLaMano(String nombreCarta) {
 		return (CartaMonstruo) this.mano.devolverCarta(nombreCarta);
@@ -35,7 +56,6 @@ public class Jugador {
 	}
 
 	public void asignarLado(Lado ladoJugador) {
-
 		lado = ladoJugador;
 
 	}

@@ -12,8 +12,10 @@ public class testLado {
     @Test
     public void testJugarMonstruo(){
         Mazo mazo = new Mazo();
+        Jugador jugador = new Jugador();
+        Campo campo = new Campo(jugador,new Jugador());
         mazo.agregarCarta(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
-        Lado lado = new Lado(mazo);
+        Lado lado = new Lado(mazo,campo,jugador);
         Stack<Carta> cartas = lado.extraerDelMazo(1);
         Carta carta = cartas.pop();
         lado.jugarCartaMonstruo((CartaMonstruo)carta,"Boca Arriba","Ataque");
