@@ -1,6 +1,5 @@
 package src;
 
-import java.util.Stack;
 
 public class Campo {
     private Jugador jugadorUno;
@@ -13,27 +12,17 @@ public class Campo {
         jugadorUno = elJugadorUno;
         Mazo mazo1 = new Mazo();
         Mazo mazo2 = new Mazo();
-        ladoJugadorUno = new Lado(mazo1, this);
-        ladoJugadorDos = new Lado(mazo2, this);
+        ladoJugadorUno = new Lado(mazo1, this, jugadorUno);
+        ladoJugadorDos = new Lado(mazo2, this, jugadorDos);
         jugadorUno.asignarLado(ladoJugadorUno);
         jugadorDos.asignarLado(ladoJugadorDos);
     }
 
-    public void jugarCartaUtilidad(CartaDeUtilidad unaCarta,String posicionDeLaCarta){
-
+    public void notificarMandarCartaMonstruoAlCementerioAlOtroLado(int cantidadDeDaño,CartaMonstruo cartaAfectada, Lado noEsEsteLado){
+        if(noEsEsteLado == ladoJugadorDos)
+            ladoJugadorUno.notificarConflicto(cantidadDeDaño,cartaAfectada);
+        else ladoJugadorDos.notificarConflicto(cantidadDeDaño,cartaAfectada);
     }
 
-    public void jugarCartaMonstruo(CartaMonstruo unaCarta,String posicionDeLaCarta,String modeDeLaCarta){
 
-    }
-
-    public Stack<Carta> extraerDelMazo(int cantidad) {
-        return null;
-
-    }
-
-    public void agregarCarta(Carta devolverCarta, String estadoDeCarta) {
-
-
-    }
 }

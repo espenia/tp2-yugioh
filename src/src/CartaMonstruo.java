@@ -59,4 +59,5 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
     public void atacarA(Jugador jugador) {
         jugador.recibeDanio(this.ataque);
     }
+
 }

@@ -11,25 +11,22 @@ public class Lado {
 	private Map<String,CartaDeUtilidad> cartasTrampaOMagicas;
 	private Map<String,CartaMonstruo> cartasMonstruo;
 	private Mazo mazo;
-	private Cementerio cementerio;
+	private Map<String, Carta> cementerio;
 	private Campo campo;
+	private Jugador jugador;
 
 
 
-	public Lado(Mazo unMazo, Campo unCampo){
+	public Lado(Mazo unMazo, Campo unCampo, Jugador unJugador){
 		cartasMonstruo = new HashMap<>();
 		cartasTrampaOMagicas = new HashMap<>();
-		cementerio = new Cementerio();
+		cementerio = new HashMap<>();
 		mazo = unMazo;
 		campo = unCampo;
+		jugador = unJugador;
 	}
 
-	public Lado(Mazo unMazo) {
-		cartasMonstruo = new HashMap<>();
-		cartasTrampaOMagicas = new HashMap<>();
-		cementerio = new Cementerio();
-		mazo = unMazo;
-	}
+
 
 	public Stack<Carta> extraerDelMazo(int cantidad){
 		return mazo.extraer(cantidad);
@@ -89,4 +86,46 @@ public class Lado {
 
 		return cartasMonstruo.get(nombreDeLaCarta);
 	}
+
+	public void resolverConflicto( int resultadoDelConflicto, CartaMonstruo cartaAtacante, CartaMonstruo cartaDefendiente){
+	    if(resultadoDelConflicto < 0){
+            mandarCartaMonstruoAlCementerio(cartaAtacante.getNombre());
+            jugador.recibeDanio(-resultadoDelConflicto);
+        }
+
+	    if(resultadoDelConflicto > 0)
+            campo.notificarMandarCartaMonstruoAlCementerioAlOtroLado(resultadoDelConflicto,cartaDefendiente,this);
+
+
+
+	    if (resultadoDelConflicto == 0) {
+            mandarCartaMonstruoAlCementerio(cartaAtacante.getNombre());
+            campo.notificarMandarCartaMonstruoAlCementerioAlOtroLado(resultadoDelConflicto,cartaDefendiente,this);
+        }
+
+
+    }
+
+    public void notificarConflicto(int resultadoDelConflicto, CartaMonstruo cartaAfectada){
+	    jugador.recibeDanio(resultadoDelConflicto);
+	    mandarCartaMonstruoAlCementerio(cartaAfectada.getNombre());
+
+    }
+
+	public void mandarCartaMonstruoAlCementerio(String nombreDeLaCarta){
+	    CartaMonstruo carta = cartasMonstruo.remove(nombreDeLaCarta);
+	    cementerio.put(nombreDeLaCarta,carta);
+
+    }
+
+    public void mandarCartaDeUtilidadAlCementerio(String nombreDeLaCarta){
+        CartaDeUtilidad carta = cartasTrampaOMagicas.remove(nombreDeLaCarta);
+        cementerio.put(nombreDeLaCarta,carta);
+
+    }
+
+    public Carta seleccionarCartaEnCementerio(String nombreDeLaCarta){
+	    return cementerio.get(nombreDeLaCarta);
+
+    }
 }

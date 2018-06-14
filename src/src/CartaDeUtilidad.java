@@ -26,4 +26,14 @@ public abstract class CartaDeUtilidad implements Carta {
 
     }
 
+    public boolean verificarSiEstaBocaArriba(){
+        return estado.bocaArriba();
+
+    }
+
+    public boolean verificarSiEstaBocaAbajo(){
+        return estado.bocaAbajo();
+
+    }
+
 }

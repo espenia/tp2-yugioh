@@ -1,11 +1,9 @@
 package src;
 
-import java.util.List;
 
 public class Jugador {
 	public int puntosDeVida;
 	public Mano mano;
-	private List<Carta> cementerio;
 	private Lado lado;
 
 
@@ -44,6 +42,12 @@ public class Jugador {
 
 	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {
 		cartaSeleccionada.atacarA(jugador);
+	}
+
+	public void atacarAMonstruo(CartaMonstruo cartaSeleccionada, CartaMonstruo cartaEnemiga){
+		int resultado = cartaSeleccionada.compararAtaqueDeMonstruo(cartaEnemiga);
+		lado.resolverConflicto(resultado, cartaSeleccionada, cartaEnemiga);
+
 	}
 
 	public void darCarta(Carta carta) {
