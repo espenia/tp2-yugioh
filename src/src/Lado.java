@@ -122,5 +122,17 @@ public class Lado {
 	public int cantidadEnCementerio() {
 		return this.cementerio.size();
 	}
+
+
+	public boolean activarTrampa(CartaMonstruo miCarta) {
+		if(cartasTrampaOMagicas.isEmpty()) {
+			return false;
+		}
+		for (Map.Entry<String, CartaDeUtilidad> entry : cartasTrampaOMagicas.entrySet())
+    	{
+    		entry.getValue().activarTrampa(this.jugador, miCarta);
+    	}
+		return true;
+	}
     
 }

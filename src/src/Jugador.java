@@ -78,6 +78,9 @@ public class Jugador {
 
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
         CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
+        if(ladoEnemigo.activarTrampa(miCarta) == true) {
+        	return;
+        }
 	    miCarta.atacarA(jugador);
 	}
 

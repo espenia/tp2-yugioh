@@ -14,6 +14,6 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
     public void activarEfecto(Jugador jugador) {};
 
     public void activarTrampa(Jugador jugador, CartaMonstruo carta) {
-        jugador.recibeDanio(carta.getAtaque());
+        jugador.aplicarDanioDirecto(carta.getAtaque());
     }
 }
