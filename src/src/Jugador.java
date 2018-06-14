@@ -2,8 +2,8 @@ package src;
 
 
 public class Jugador {
-	public int puntosDeVida;
-	public Mano mano;
+	private int puntosDeVida;
+	private Mano mano;
 	private Lado ladoEnemigo;
 	private Lado lado;
 
@@ -52,6 +52,11 @@ public class Jugador {
 
 	public CartaMonstruo seleccionarCartaDeMiLado(String nombreCarta) {
 		return this.lado.seleccionarCartaMonstruo(nombreCarta);
+
+	}
+
+	public Carta seleccionarCartaEnCementerio(String nombreCarta){
+		return this.lado.seleccionarCartaEnCementerio(nombreCarta);
 
 	}
 

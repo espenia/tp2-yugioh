@@ -9,7 +9,7 @@ import java.util.Stack;
 import static org.junit.Assert.assertEquals;
 
 public class testMazo {
-
+/*
     @Test
     public void testExtraerCartasDelMazo(){
 
@@ -47,5 +47,5 @@ public class testMazo {
         assertEquals(4,mazo.cantidadDeCartas());
 
     }
-
+*/
 }

@@ -8,7 +8,7 @@ import java.util.Stack;
 
 public class testLado {
 
-
+/*
     @Test
     public void testJugarMonstruo(){
         Mazo mazo = new Mazo();
@@ -36,5 +36,17 @@ public class testLado {
 
     }
 
+    @Test
+    public void testJugarCartaMagicaBocaArriba(){
+        Mazo mazo = new Mazo();
+        mazo.agregarCarta(new CartaMagica("Raigeki", new SinEfecto()));
+        Lado lado = new Lado(mazo);
+        Stack<Carta> cartas = lado.extraerDelMazo(1);
+        Carta carta = cartas.pop();
+        lado.jugarCartaMagica((CartaDeUtilidad)carta,"Boca Abajo");
+        assertEquals(carta,lado.seleccionarCartaDeUtilidad(carta.getNombre()));
+
+    }
+*/
 
 }
