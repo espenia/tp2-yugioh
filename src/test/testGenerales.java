@@ -233,7 +233,7 @@ public class testGenerales {
         juan.posicionarCartaEnLado(cartaPrueba1, "Boca Arriba","Ataque");
         juan.posicionarCartaEnLado(cartaPrueba2, "Boca Arriba","Ataque");
         juan.posicionarCartaEnLadoConDosSacrificio(cartaPrueba3, "Boca Arriba","Ataque","Acechador Del Craneo","Abismo Reluciente");
-        assertEquals(cartaPrueba1,juan.seleccionarCartaEnCementerio("Abismo Reluciente"));
+        assertEquals(cartaPrueba2,juan.seleccionarCartaEnCementerio("Abismo Reluciente"));
         assertEquals(cartaPrueba1,juan.seleccionarCartaEnCementerio("Acechador Del Craneo"));
     }
 }
