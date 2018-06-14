@@ -56,13 +56,11 @@ public class Lado {
 	public void jugarCartaMagica(CartaDeUtilidad carta, String posicionDeLaCarta){
 		if(posicionDeLaCarta == "Boca Abajo"){
 			carta.colocarEn(new BocaAbajo());
-			carta.setLado(this);
-			carta.activarEfecto();
+			carta.activarEfecto(this.jugador);
 		}
 		if (posicionDeLaCarta == "Boca Arrbia"){
 			carta.colocarEn(new BocaAbajo());
-			carta.setLado(this);
-			carta.activarEfecto();
+			carta.activarEfecto(this.jugador);
 
 		}
 
@@ -72,8 +70,7 @@ public class Lado {
 	public void jugarCartaTrampa(CartaDeUtilidad carta){
 
 		carta.colocarEn(new BocaAbajo());
-		carta.setLado(this);
-		carta.activarEfecto();
+		carta.activarEfecto(this.jugador);
 		cartasTrampaOMagicas.put(carta.getNombre(),carta);
 
 	}
@@ -88,7 +85,7 @@ public class Lado {
 		return cartasMonstruo.get(nombreDeLaCarta);
 	}
 
-    public void notificarDaño(int resultadoDelConflicto){
+    public void notificarDanio(int resultadoDelConflicto){
 	    jugador.recibeDanio(resultadoDelConflicto);
 
     }
@@ -109,4 +106,14 @@ public class Lado {
 	    return cementerio.get(nombreDeLaCarta);
 
     }
+    
+    public void mandarCastasMonstruosAlCementerio() {
+    	
+    	for (Map.Entry<String, CartaMonstruo> entry : cartasMonstruo.entrySet())
+    	{
+    		this.mandarCartaMonstruoAlCementerio(entry.getKey());
+    	}
+	
+    }
+    
 }

@@ -2,19 +2,14 @@ package src;
 
 public abstract class CartaDeUtilidad implements Carta {
 
-
     private String nombre;
     private Estado estado;
-    private Lado lado;
 
-
-    public abstract void activarEfecto();
-
-
-    public  void setLado(Lado unLado){
-        lado = unLado;
-
+    public CartaDeUtilidad(String nombreDeCarta) {
+    	this.nombre = nombreDeCarta;
     }
+    
+    public abstract void activarEfecto(Jugador jugador);
 
     @Override
     public String getNombre(){
@@ -23,17 +18,14 @@ public abstract class CartaDeUtilidad implements Carta {
 
     public void colocarEn(Estado unEstado){
         estado = unEstado;
-
     }
 
     public boolean verificarSiEstaBocaArriba(){
         return estado.bocaArriba();
-
     }
 
     public boolean verificarSiEstaBocaAbajo(){
         return estado.bocaAbajo();
-
     }
 
 }
