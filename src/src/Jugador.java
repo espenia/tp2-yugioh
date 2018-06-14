@@ -83,7 +83,7 @@ public class Jugador {
 	    CartaMonstruo cartaDelEnemigo = seleccionarCartaDelOtroLado(cartaEnemiga);
 		int resultado = miCarta.compararAtaqueDeMonstruo(cartaDelEnemigo);
 		resolverConflicto(resultado, cartaSeleccionada, cartaEnemiga);
-		ladoEnemigo.notificarDaño(-resultado);
+		ladoEnemigo.notificarDanio(-resultado);
 
 	}
 
