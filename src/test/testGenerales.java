@@ -216,7 +216,7 @@ public class testGenerales {
         juan.darCarta(cartaPrueba2);
         juan.posicionarCartaEnLado(cartaPrueba1, "Boca Arriba", "Ataque");
         juan.posicionarCartaEnLadoConUnSacrificio(cartaPrueba2,"Boca Arriba","Ataque","Acechador Del Craneo");
-        assertEquals(1, juan.seleccionarCartaEnCementerio("Acechador Del Craneo"));
+        assertEquals(cartaPrueba1, juan.seleccionarCartaEnCementerio("Acechador Del Craneo"));
     }
     
     @Test
