@@ -58,7 +58,7 @@ public class Lado {
 			carta.colocarEn(new BocaAbajo());
 			carta.activarEfecto(this.jugador);
 		}
-		if (posicionDeLaCarta == "Boca Arrbia"){
+		if (posicionDeLaCarta == "Boca Arriba"){
 			carta.colocarEn(new BocaAbajo());
 			carta.activarEfecto(this.jugador);
 
