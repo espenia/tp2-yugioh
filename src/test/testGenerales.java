@@ -181,7 +181,7 @@ public class testGenerales {
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }*/
     
-    /*@Test
+    @Test
     public void test11AgujeroNegroDestruyeMonstruos(){
         Jugador juan = new Jugador();
         String estadoDeCarta1 = "Ataque";
@@ -190,18 +190,19 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
-        juan.darCarta("Agujero Oscuro");
+        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro("agujeroOscuro");
+        juan.darCarta(agujeroOscuro);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
         juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Acechador Del Craneo"), "Boca Arriba", estadoDeCarta1);
         carlos.posicionarCartaEnLado(carlos.seleccionarCartaDeLaMano("Abismo Reluciente"), "Boca Arriba", estadoDeCarta2);
         juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Agujero Oscuro"), "Boca Arriba", estadoDeCarta1);
-        assertEquals(1, juan.cantidadEnCementerio, DELTA);
-        assertEquals(1, carlos.cantidadEnCementerio, DELTA);
+        assertEquals(1, juan.cantidadEnCementerio());
+        assertEquals(1, carlos.cantidadEnCementerio());
         int vidaEsperada = 8000;
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
-    }*/
+    }
     
     @Test
     public void test12MonstruoRequiereUnSacrificio() {

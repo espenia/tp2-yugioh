@@ -116,4 +116,8 @@ public class Lado {
 	
     }
     
+	public int cantidadEnCementerio() {
+		return this.cementerio.size();
+	}
+    
 }
