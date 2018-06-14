@@ -190,7 +190,7 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
-        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro("agujeroOscuro");
+        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro("Agujero Oscuro");
         juan.darCarta(agujeroOscuro);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
