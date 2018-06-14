@@ -38,7 +38,7 @@ public class testGenerales {
         CartaMonstruo cartaSeleccionada = jugador1.seleccionarCartaDeMiLado("Abismo Reluciente");
         assertEquals(cartaPrueba, cartaSeleccionada);
     }
-/*
+
     @Test
     public void test03ColocarCartaMagicaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS MAGICAS
         Jugador juan = new Jugador();
@@ -46,16 +46,17 @@ public class testGenerales {
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
+        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro("Agujero Oscuro");
         juan.darCarta(cartaPrueba);
-        juan.darCarta("Agujero Oscuro");
+        juan.darCarta(agujeroOscuro);
         juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Abismo Reluciente"), "Boca Arriba", estadoDeCarta);
         juan.posicionarCartaEnLado(juan.seleccionarCartaDeLaMano("Agujero Oscuro"), "Boca Abajo", estadoDeCarta);
         juan.atacar("Abismo Reluciente",carlos);
-        int vidaEsperada = 5300;
+        int vidaEsperada = 6200;
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }
-*/
-/*
+
+
     @Test
     public void test04ColocarCartaTrampaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS TRAMPA
         Jugador juan = new Jugador();
@@ -71,7 +72,7 @@ public class testGenerales {
         int vidaEsperada = 5300;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
     }
-*/
+
     @Test
     public void test05MandarCartaAlCementerio() {
         Jugador juan = new Jugador();
