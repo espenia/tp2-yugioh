@@ -63,4 +63,8 @@ public class CartaMonstruo implements Carta{ //hasta ahora no utiliza nada de la
         jugador.recibeDanio(this.ataque);
     }
 
+	@Override
+	public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta) {
+		lado.jugarCartaMonstruo(this, posicionDeLaCarta, modoDeLaCarta);
+	}
 }

@@ -20,8 +20,8 @@ public class Jugador {
         this.ladoEnemigo = ladoEnemigo;
     }
 
-	public void posicionarCartaEnLado(CartaMonstruo monstruo,String posicionDeLaCarta,String modoDeLaCarta ) {// Excepciones incorrecta cantidad de sacrificios.
-		this.lado.jugarCartaMonstruo(monstruo, posicionDeLaCarta,modoDeLaCarta);
+	public void posicionarCartaEnLado(Carta carta,String posicionDeLaCarta,String modoDeLaCarta ) {// Excepciones incorrecta cantidad de sacrificios.
+		this.lado.jugarCarta(carta, posicionDeLaCarta,modoDeLaCarta);
 
 	}
 
@@ -45,10 +45,9 @@ public class Jugador {
 
 
 
-	public CartaMonstruo seleccionarCartaDeLaMano(String nombreCarta) {
-		return (CartaMonstruo) this.mano.devolverCarta(nombreCarta);
+	public Carta seleccionarCartaDeLaMano(String nombreCarta) {
+		return this.mano.devolverCarta(nombreCarta);
 	}
-
 
 	public CartaMonstruo seleccionarCartaDeMiLado(String nombreCarta) {
 		return this.lado.seleccionarCartaMonstruo(nombreCarta);

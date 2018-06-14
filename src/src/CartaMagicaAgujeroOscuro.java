@@ -14,4 +14,9 @@ public class CartaMagicaAgujeroOscuro extends CartaMagica{
 		ladoEnemigo.mandarCastasMonstruosAlCementerio();
 	}
 
+	@Override
+	public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta) {
+		lado.jugarCartaMagica(this, posicionDeLaCarta);
+	}
+
 }

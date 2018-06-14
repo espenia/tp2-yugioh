@@ -33,7 +33,11 @@ public class Lado {
 		return mazo.extraer(cantidad);
 
 	}
-
+	
+	public void jugarCarta(Carta carta, String posicionDeLaCarta, String modoDeLaCarta){
+		carta.jugar(this,posicionDeLaCarta,modoDeLaCarta);
+	}
+	
 	public void jugarCartaMonstruo(CartaMonstruo carta, String posicionDeLaCarta, String modoDeLaCarta) {//quiza se puede hacer de otra forma
 		if(posicionDeLaCarta == "Boca Abajo"){
 			if(modoDeLaCarta == "Ataque")
