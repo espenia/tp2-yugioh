@@ -1,27 +1,20 @@
-/*
-public class CartaDeCampo implements Carta{
+package modelo;
+
+public abstract class CartaDeCampo implements Carta{
 
     private String nombre;
-    private Efecto efecto;
 
-    public CartaDeCampo(String nombreDeCarta, Efecto efectoDeCarta){
+    public CartaDeCampo(String nombreDeCarta){
         this.nombre = nombreDeCarta;
-        this.efecto = efectoDeCarta;
         
     }
-    
-    public void activarEfecto(){
-    	//Aplica un efecto sobre el campo
-    	//this.efecto.activarEfecto(this.campo);
-    }
-    
-    //public void setCampo(Campo campo){
-    //	this.campo = campo;
-    //}
 
-    @Override
-    public String getNombre() {
-        return null;
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void activarEfecto(){
+
     }
 }
-*/
+

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Stack;
+
 public class Jugador {
 	private int puntosDeVida;
 	private Mano mano;
@@ -53,8 +55,12 @@ public class Jugador {
 		this.lado.jugarCartaMonstruo(monstruo);
 	}
 
+
+
+
 	public void colocarEnEstadoBocaArriba(Carta unaCarta){
 		unaCarta.colocarEn(new EstadoBocaArriba());
+		unaCarta.activarEfecto();
 
 	}
 
@@ -125,7 +131,8 @@ public class Jugador {
 
 	public void resolverConflicto(int resultadoDelConflicto,String cartaAtacante,String cartaDefendiente) {
         if (resultadoDelConflicto < 0) {
-            lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
+        	if (!(ladoEnemigo.seleccionarCartaMonstruo(cartaDefendiente)).posicionDeDefensa())
+            	lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
             recibeDanio(-resultadoDelConflicto);
         }
 
@@ -139,8 +146,10 @@ public class Jugador {
 
 
         if (resultadoDelConflicto == 0) {
-            lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
-            ladoEnemigo.mandarCartaMonstruoAlCementerio(cartaDefendiente);
+        	if (!(ladoEnemigo.seleccionarCartaMonstruo(cartaDefendiente)).posicionDeDefensa()){
+            	lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
+           		ladoEnemigo.mandarCartaMonstruoAlCementerio(cartaDefendiente);
+           	}
         }
     }
 
@@ -152,7 +161,7 @@ public class Jugador {
 	public double getPuntosDeVida() {
 		return this.puntosDeVida;
 	}
-	public Lado getLado() {
+	/*public Lado getLado() {
 		return this.lado;
 	}
 	public Lado getLadoEnemigo() {
@@ -160,5 +169,17 @@ public class Jugador {
 	}
 	public int cantidadEnCementerio() {
 		return this.lado.cantidadEnCementerio();
+	}*/
+
+	
+
+
+	public Stack<Carta> extraerCartasDelMazo(int cantidad){
+		return lado.extraerDelMazo(cantidad);
+
+
+
 	}
+
+
 }

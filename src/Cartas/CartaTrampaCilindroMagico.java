@@ -11,7 +11,8 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
         super(nombreDeCarta);
     }
 
-    public void activarEfecto(Jugador jugador) {};
+    @Override
+    public void activarEfecto() {};
 
     public void activarTrampa(Jugador jugador, CartaMonstruo carta) {
         jugador.aplicarDanioDirecto(carta.getAtaque());

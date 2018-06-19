@@ -40,6 +40,7 @@ public class Lado {
 
 
 	public void jugarCartaMagica(CartaDeUtilidad carta) {
+		
 		cartasTrampaOMagicas.put(carta.getNombre(),carta);
 
 	}
@@ -48,7 +49,7 @@ public class Lado {
 	public void jugarCartaTrampa(CartaDeUtilidad carta){
 
 		carta.colocarEn(new EstadoBocaAbajo());
-		carta.activarEfecto(this.jugador);
+		carta.activarEfecto();
 		cartasTrampaOMagicas.put(carta.getNombre(),carta);
 
 	}

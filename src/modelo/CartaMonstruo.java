@@ -26,6 +26,10 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     }
 
+    public void activarEfecto(){
+
+    }
+
     public String getNombre(){
         return nombre;
 

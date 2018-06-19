@@ -9,7 +9,7 @@ public abstract class CartaDeUtilidad implements Carta {
     	this.nombre = nombreDeCarta;
     }
     
-    public abstract void activarEfecto(Jugador jugador);
+    //public abstract void activarEfecto(Jugador jugador);
     public abstract void activarTrampa(Jugador jugador, CartaMonstruo carta);
 
     @Override

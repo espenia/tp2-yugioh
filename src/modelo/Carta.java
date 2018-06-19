@@ -3,7 +3,8 @@ package modelo;
 public interface Carta {
 
 
-    public void colocarEn(EstadoDeCarta unEstado);
+    void colocarEn(EstadoDeCarta unEstado);
+    void activarEfecto();
     String getNombre();
     //public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta);
 }
