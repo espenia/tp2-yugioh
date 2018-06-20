@@ -1,14 +1,17 @@
 package modelo;
 
+import modelo.Cartas.*;
 import java.util.Collections;
 import java.util.Stack;
 
 public class Mazo {
 
-    private Stack<Carta> cartasEnMazo;
+    protected Stack<Carta> cartasEnMazo;
 
     public Mazo () {
         this.cartasEnMazo = new Stack<>();
+        cartasEnMazo.add(new AligatorCibertech());
+        cartasEnMazo.add(new Conedragon());
     }
 
     public void agregarCarta(Carta carta) {

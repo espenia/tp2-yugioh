@@ -25,4 +25,15 @@ public class Mano {
 
     }
 
+    public boolean contieneExodia() {
+        if (manoDeCartas.containsKey("Brazo Izquierdo De Exodia") && manoDeCartas.containsKey("Brazo Derecho De Exodia") && manoDeCartas.containsKey("Pie Izquierdo De Exodia") && manoDeCartas.containsKey("Pie Derecho De Exodia") && manoDeCartas.containsKey("Exodia"))
+            return true;
+        return false;
+
+
+    }
+
+    public int cantidadDeCartasEnMano() {
+        return manoDeCartas.size();
+    }
 }

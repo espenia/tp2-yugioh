@@ -1,12 +1,11 @@
-package Cartas;
+package modelo.Cartas;
 
 import modelo.CartaMagica;
 import modelo.Lado;
 
-public class OllaDeLaCodicia extends CartaMagica {
+public class Fisura extends CartaMagica {
 
-
-    public OllaDeLaCodicia(String nombreDeCarta) {
+    public Fisura(String nombreDeCarta) {
         super(nombreDeCarta);
     }
 

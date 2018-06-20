@@ -12,8 +12,6 @@ public class Jugador {
 	public Jugador() { //Multiton 2
 		this.puntosDeVida = 8000;
 		mano = new Mano();
-		//Mazo.armarMazo(); // supongo que vamos a tener 2 mazos estandar para testear
-		//Mazo.draw(5);
 	}
 
 	public void asignarLados(Lado lado, Lado ladoEnemigo){
@@ -90,6 +88,10 @@ public class Jugador {
 
 	}
 
+	public CartaDeUtilidad seleccionarCartaDeUtilidadDeMiLado(String nombreCarta) {
+		return lado.seleccionarCartaDeUtilidad(nombreCarta);
+	}
+
 	public Carta seleccionarCartaEnCementerio(String nombreCarta){
 		return this.lado.seleccionarCartaEnCementerio(nombreCarta);
 
@@ -99,6 +101,11 @@ public class Jugador {
 	    return ladoEnemigo.seleccionarCartaMonstruo(nombreCarta);
 
     }
+
+	public CartaDeUtilidad seleccionarCartaDeUtilidadDelOtroLado(String nombreCarta){
+		return ladoEnemigo.seleccionarCartaDeUtilidad(nombreCarta);
+
+	}
 
 
 
@@ -162,23 +169,12 @@ public class Jugador {
 	public double getPuntosDeVida() {
 		return this.puntosDeVida;
 	}
-	/*public Lado getLado() {
-		return this.lado;
-	}
-	public Lado getLadoEnemigo() {
-		return this.ladoEnemigo;
-	}
-	public int cantidadEnCementerio() {
-		return this.lado.cantidadEnCementerio();
-	}*/
-
-	
 
 
-	public Stack<Carta> extraerCartasDelMazo(int cantidad){
-		return lado.extraerDelMazo(cantidad);
-
-
+	public void extraerCartasDelMazo(int cantidad){
+		Stack<Carta> cartas = lado.extraerDelMazo(cantidad);
+		for (int i = 0; i < cantidad ; i++)
+			mano.agregarCarta(cartas.pop());
 
 	}
 
@@ -190,5 +186,19 @@ public class Jugador {
 	}
 
 	public void darMazo(Mazo mazo) {
+		lado.darMazo(mazo);
+
+	}
+
+	public boolean tieneExodiaEnMano() {
+		return mano.contieneExodia();
+
+	}
+
+
+
+	public int cantidadDeCartasEnMazo() {
+		return lado.cantidadDeCartasEnMazo();
+
 	}
 }

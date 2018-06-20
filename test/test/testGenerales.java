@@ -1,15 +1,17 @@
+package test;
 
 import static org.junit.Assert.assertEquals;
 
-import Cartas.*;
+import modelo.Cartas.*;
 import org.junit.Test;
 import modelo.*;
+
+import java.util.Stack;
 
 
 public class testGenerales {
 
     private static final double DELTA = 1e-2;
-/* IMPORTANTE, LAS CARTAS MONSTRUO DEPENDIENDO LAS ESTRELLAS QUE TENGAN REQUIEREN QUE SE SACRIGIQUEN OTRAS CARTAS MONSTRUO ANTES PARA PODER SER INVOCADAS*/
 
     @Test
     public void test01ColocarMonstruoEnModoAtaque(){
@@ -21,7 +23,7 @@ public class testGenerales {
         jugador1.colocarEnPosicionAtaque(cartaPrueba);
         jugador1.colocarEnEstadoBocaArriba(cartaPrueba);
         jugador1.posicionarCartaMonstruoEnLado((CartaMonstruo)jugador1.seleccionarCartaDeLaMano("Abismo Reluciente"));
-        jugador1.atacar("Abismo Reluciente", jugador2);
+        jugador1.atacar("Abismo Reluciente",jugador2);
         int vidaEsperada = 6200;
         assertEquals(vidaEsperada, jugador2.getPuntosDeVida(), DELTA);
     }
@@ -74,9 +76,7 @@ public class testGenerales {
         juan.posicionarCartaMonstruoEnLado((CartaMonstruo)juan.seleccionarCartaDeLaMano("Abismo Reluciente"));
         carlos.posicionarCartaTrampaEnLado((CartaTrampa)carlos.seleccionarCartaDeLaMano("Cilindro magico"));
         carlos.colocarEnEstadoBocaAbajo(cilindroMagico);
-        juan.atacar("Abismo Reluciente", carlos);
-        int vidaEsperada = 6200;
-        assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
+        assertEquals(cilindroMagico,carlos.seleccionarCartaDeUtilidadDeMiLado("Cilindro magico"));
     }
 
     @Test
@@ -423,12 +423,12 @@ public class testGenerales {
 
 
     }*/
-/*
+
     @Test
-    public void test20Tener0CartasEnElMazoCausaPerderElJuegoAlFinalDeTuTurno(){//puede generar conflicto en todas las pruebas, porque la mayoria no tenes cartas en el mazo
+    public void test20Tener0CartasEnElMazoCausaPerderElJuegoAlFinalDeTuTurno(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);//hay que codear las fases de los turnos
+        Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         Mazo mazo = new Mazo();
         Mazo mazo2 = new Mazo();
@@ -436,39 +436,46 @@ public class testGenerales {
         mazo2.agregarCarta(cartaPrueba1);
         juan.darMazo(mazo);
         carlos.darMazo(mazo2);
-        jaun.terminarTurno();
-        assertEquals(carlos,juego.ganador());
+        juego.siguienteTurno();
+        juego.siguienteTurno();
+        juego.siguienteTurno();
+        juego.siguienteTurno();
+        juego.siguienteTurno();
+        juego.siguienteTurno();
+        assertEquals(carlos,juego.getPerdedor());
 
 
     }
 
     @Test
     public void test21TenerLas5cartasDeExodiaEnLaManoGanaElJuego(){
-        Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Jugador juan = new Jugador();
+        Juego juego = new Juego(carlos,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo exodiaPieIzq = new PieIzquierdoDeExodia();
         CartaMonstruo exodiaPieDer = new PieDerechoDeExodia();
-        CartaMonstruo exodiaManoIzq = new ManoIzquierdoDeExodia();
-        CartaMonstruo exodiaManoDer = new ManoDerechaDeExodia();
-        CartaMonstruo exodiaCabeza = new CabezaDeExodia();
+        CartaMonstruo exodiaManoIzq = new BrazoIzquierdoDeExodia();
+        CartaMonstruo exodiaManoDer = new BrazoDerechoDeExodia();
+        CartaMonstruo exodiaCabeza = new Exodia();
         Mazo mazo = new Mazo();
         Mazo mazo2 = new Mazo();
         mazo.agregarCarta(cartaPrueba1);
-        mazo2.agregarCarta(exodiaCabeza);
-        mazo2.agregarCarta(exodiaManoDer);
-        mazo2.agregarCarta(exodiaManoIzq);
-        mazo2.agregarCarta(exodiaPieDer);
-        mazo2.agregarCarta(exodiaPieDer);
+        Stack<Carta> cartas = new Stack<>();
+        cartas.add(exodiaCabeza);
+        cartas.add(exodiaManoDer);
+        cartas.add(exodiaManoIzq);
+        cartas.add(exodiaPieDer);
+        cartas.add(exodiaPieIzq);
+        mazo2.armarMazo(cartas);
         juan.darMazo(mazo);
         carlos.darMazo(mazo2);
-        carlos.extraerCartasDelMazo(5);
-        carlos.terminarTurno();//exodia tiene mayor prioridad que quedarse sin cartas
-        assertEquals(carlos,juego.ganador());
+        carlos.extraerCartasDelMazo(7);
+        juego.siguienteTurno();
+        assertEquals(carlos,juego.getGanador());
 
 
 
-    }*/
+    }
 
 }

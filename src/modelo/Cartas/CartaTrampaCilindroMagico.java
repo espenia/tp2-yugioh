@@ -1,4 +1,4 @@
-package Cartas;
+package modelo.Cartas;
 
 import modelo.CartaMonstruo;
 import modelo.CartaTrampa;

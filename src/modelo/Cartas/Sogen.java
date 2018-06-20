@@ -1,4 +1,4 @@
-package Cartas;
+package modelo.Cartas;
 
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
@@ -28,29 +28,12 @@ public class Sogen extends CartaDeCampo {
 
     }
 
-    @Override
-    public void asignarLado(Lado unLado){
-        if(aux == 1) {
-            lado = unLado;
-            aux+=1;
-        }
-        else ladoEnemigo = unLado;
-    }
-
-    @Override
-    public void aplicarBuff(CartaMonstruo carta,Lado unLado) {
-        if(lado == unLado)
-            aplicarBuffPrincipal(carta);
-        else aplicarBuffDelLadoEnemigo(carta);
-
-    }
-
-    private void aplicarBuffPrincipal(CartaMonstruo carta){
+    public void aplicarBuffPrincipal(CartaMonstruo carta){
         carta.aplicarBuff(buffDeDefensa,0);
 
     }
 
-    private void aplicarBuffDelLadoEnemigo(CartaMonstruo carta){
+    public void aplicarBuffDelLadoEnemigo(CartaMonstruo carta){
         carta.aplicarBuff(0, buffDeAtaque);
 
     }

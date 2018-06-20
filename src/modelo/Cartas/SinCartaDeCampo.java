@@ -1,4 +1,4 @@
-package Cartas;
+package modelo.Cartas;
 
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
@@ -13,6 +13,16 @@ public class SinCartaDeCampo extends CartaDeCampo {
 
     @Override
     public void aplicarBuff(CartaMonstruo carta, Lado unLado) {
+
+    }
+
+    @Override
+    public void aplicarBuffPrincipal(CartaMonstruo carta) {
+
+    }
+
+    @Override
+    public void aplicarBuffDelLadoEnemigo(CartaMonstruo carta) {
 
     }
 

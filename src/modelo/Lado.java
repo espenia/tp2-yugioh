@@ -1,7 +1,6 @@
 package modelo;
 
-import Cartas.SinCartaDeCampo;
-
+import modelo.Cartas.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -126,4 +125,12 @@ public class Lado {
 		return jugador;
 	}
 
+	public void darMazo(Mazo unMazo) {
+		this.mazo = unMazo;
+	}
+
+	public int cantidadDeCartasEnMazo() {
+		return mazo.cantidadDeCartas();
+
+	}
 }
