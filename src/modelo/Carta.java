@@ -4,7 +4,6 @@ public interface Carta {
 
 
     void colocarEn(EstadoDeCarta unEstado);
-    void activarEfecto();
+    void activarEfecto(Lado lado,Lado ladoEnemigo);
     String getNombre();
-    //public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta);
 }

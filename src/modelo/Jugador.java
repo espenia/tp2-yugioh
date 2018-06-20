@@ -32,7 +32,7 @@ public class Jugador {
 	}
 
 	public void posicionarCartaTrampaEnLado(CartaTrampa carta) {
-		this.lado.jugarCartaTrampa(carta);
+		this.lado.jugarCartaTrampa(carta,lado,ladoEnemigo);
 
 	}
 
@@ -60,12 +60,13 @@ public class Jugador {
 
 	public void colocarEnEstadoBocaArriba(Carta unaCarta){
 		unaCarta.colocarEn(new EstadoBocaArriba());
-		unaCarta.activarEfecto();
+		unaCarta.activarEfecto(lado,ladoEnemigo);
 
 	}
 
 	public void colocarEnEstadoBocaAbajo(Carta unaCarta){
 		unaCarta.colocarEn(new EstadoBocaAbajo());
+
 	}
 
 	public void colocarEnPosicionAtaque(CartaMonstruo carta){
@@ -114,10 +115,9 @@ public class Jugador {
 
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
         CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
-        if(ladoEnemigo.activarTrampa(miCarta) == true) {
-        	return;
-        }
+        //ladoEnemigo.activarTrampa(miCarta);
 	    miCarta.atacarA(jugador);
+
 	}
 
 	public void atacarAMonstruo(String cartaSeleccionada, String cartaEnemiga){
@@ -182,4 +182,12 @@ public class Jugador {
 	}
 
 
+	public void colocarCartaDeCampo(CartaDeCampo cartaCampo) {
+		lado.jugarCartaDeCampo(cartaCampo);
+		ladoEnemigo.jugarCartaDeCampo(cartaCampo);
+
+	}
+
+	public void darMazo(Mazo mazo) {
+	}
 }

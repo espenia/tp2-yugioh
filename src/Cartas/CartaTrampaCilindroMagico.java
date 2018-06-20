@@ -9,12 +9,20 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
 
     public CartaTrampaCilindroMagico(String nombreDeCarta) {
         super(nombreDeCarta);
+
     }
 
     @Override
-    public void activarEfecto() {};
-
     public void activarTrampa(Jugador jugador, CartaMonstruo carta) {
-        jugador.aplicarDanioDirecto(carta.getAtaque());
+        carta.atacarA(jugador);
+
+    }
+
+
+    @Override
+    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
+
+
+
     }
 }

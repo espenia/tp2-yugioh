@@ -26,9 +26,6 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     }
 
-    public void activarEfecto(){
-
-    }
 
     public String getNombre(){
         return nombre;
@@ -40,9 +37,13 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     }
 
-    public void actualizarDatos(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
-        this.defensa = nuevaDefensa;
-        this.ataque = nuevoAtaque;
+    public int getDefensa(){
+        return defensa;
+    }
+
+    public void aplicarBuff(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
+        this.defensa += nuevaDefensa;
+        this.ataque += nuevoAtaque;
     }
 
     public int compararAtaqueDeMonstruo(CartaMonstruo cartaMonstruo){
@@ -52,6 +53,7 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
     }
 
     private int compararAtaque(int unAtaque){
+        estado = new EstadoBocaArriba();
         return posicion.recibirAtaque(ataque, defensa, unAtaque);
 
     }
@@ -60,6 +62,11 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
     @Override
     public void colocarEn(EstadoDeCarta unEstado){
         estado = unEstado;
+
+    }
+
+    @Override
+    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
 
     }
 

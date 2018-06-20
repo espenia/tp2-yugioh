@@ -1,5 +1,7 @@
 package modelo;
 
+import Cartas.SinCartaDeCampo;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -11,6 +13,7 @@ public class Lado {
 	private Mazo mazo;
 	private Map<String, Carta> cementerio;
 	private Jugador jugador;
+	private CartaDeCampo cartaDeCampo;
 
 
 
@@ -19,6 +22,7 @@ public class Lado {
 		cartasTrampaOMagicas = new HashMap<>();
 		cementerio = new HashMap<>();
 		mazo = unMazo;
+		cartaDeCampo = new SinCartaDeCampo("sincarta");
 	}
 
 
@@ -34,9 +38,23 @@ public class Lado {
 	}
 
 	public void jugarCartaMonstruo(CartaMonstruo carta) {
+		cartaDeCampo.aplicarBuff(carta,this);
 		cartasMonstruo.put(carta.getNombre(),carta);
 
 	}
+
+	public void jugarCartaDeCampo(CartaDeCampo carta){
+		cartaDeCampo = carta;
+		CartaMonstruo cartaMonstruo;
+		cartaDeCampo.asignarLado(this);
+		for (Map.Entry<String,CartaMonstruo> entry : cartasMonstruo.entrySet()){
+			cartaMonstruo = entry.getValue();
+			cartaDeCampo.aplicarBuff(cartaMonstruo,this);
+		}
+
+
+	}
+
 
 
 	public void jugarCartaMagica(CartaDeUtilidad carta) {
@@ -46,10 +64,8 @@ public class Lado {
 	}
 
 
-	public void jugarCartaTrampa(CartaDeUtilidad carta){
-
-		carta.colocarEn(new EstadoBocaAbajo());
-		carta.activarEfecto();
+	public void jugarCartaTrampa(CartaDeUtilidad carta,Lado esteLado,Lado ladoEnemigo){
+		carta.activarEfecto(esteLado,ladoEnemigo);
 		cartasTrampaOMagicas.put(carta.getNombre(),carta);
 
 	}
@@ -89,26 +105,21 @@ public class Lado {
     public void mandarCastasMonstruosAlCementerio() {
     	
     	for (Map.Entry<String, CartaMonstruo> entry : cartasMonstruo.entrySet())
-    	{
     		this.mandarCartaMonstruoAlCementerio(entry.getKey());
-    	}
+
 	
     }
-    
-	public int cantidadEnCementerio() {
-		return this.cementerio.size();
-	}
 
 
-	public boolean activarTrampa(CartaMonstruo miCarta) {
-		if(cartasTrampaOMagicas.isEmpty()) {
-			return false;
+	public void activarTrampa(CartaMonstruo miCarta) {
+
+		for (Map.Entry<String, CartaDeUtilidad> entry : cartasTrampaOMagicas.entrySet()){
+			mandarCartaDeUtilidadAlCementerio(entry.getValue().getNombre());
+			entry.getValue().activarTrampa(this.jugador, miCarta);
+
 		}
-		for (Map.Entry<String, CartaDeUtilidad> entry : cartasTrampaOMagicas.entrySet())
-    	{
-    		entry.getValue().activarTrampa(this.jugador, miCarta);
-    	}
-		return true;
+
+
 	}
 
 }

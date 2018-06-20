@@ -11,10 +11,18 @@ public abstract class CartaDeCampo implements Carta{
 
     public String getNombre(){
         return nombre;
-    }
-
-    public void activarEfecto(){
 
     }
+
+    @Override
+    public void activarEfecto(Lado miLado,Lado ladoEnemigo){
+
+
+    }
+
+    public abstract void aplicarBuff(CartaMonstruo carta,Lado unLado);
+
+    public abstract void asignarLado(Lado unLado);
+
 }
 

@@ -12,11 +12,10 @@ public class CartaMagicaAgujeroOscuro extends CartaMagica {
 
 
 	@Override
-	public void activarEfecto() {
-		/*Lado lado = jugador.getLado();
-		Lado ladoEnemigo = jugador.getLadoEnemigo(); 
+	public void activarEfecto(Lado lado, Lado ladoEnemigo) {
 		lado.mandarCastasMonstruosAlCementerio();
-		ladoEnemigo.mandarCastasMonstruosAlCementerio();*/
+		ladoEnemigo.mandarCastasMonstruosAlCementerio();
+
 	}
 
 }
