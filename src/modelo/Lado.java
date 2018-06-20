@@ -56,7 +56,6 @@ public class Lado {
 	}
 
 
-
 	public void jugarCartaMagica(CartaDeUtilidad carta) {
 		
 		cartasTrampaOMagicas.put(carta.getNombre(),carta);
@@ -111,15 +110,20 @@ public class Lado {
     }
 
 
-	public void activarTrampa(CartaMonstruo miCarta) {
-
+	public boolean activarTrampaConAtaque(CartaMonstruo miCarta) {
+		boolean pasador = false;
 		for (Map.Entry<String, CartaDeUtilidad> entry : cartasTrampaOMagicas.entrySet()){
 			mandarCartaDeUtilidadAlCementerio(entry.getValue().getNombre());
-			entry.getValue().activarTrampa(this.jugador, miCarta);
-
+			pasador = entry.getValue().activarTrampaDeAtaque(this.jugador, miCarta);
 		}
+		return pasador;
 
 
+	}
+
+
+	public Jugador obtenerJugador() {
+		return jugador;
 	}
 
 }

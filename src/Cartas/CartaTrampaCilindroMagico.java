@@ -13,9 +13,9 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
     }
 
     @Override
-    public void activarTrampa(Jugador jugador, CartaMonstruo carta) {
-        carta.atacarA(jugador);
-
+    public boolean activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
+        carta.atacarA(jugador.ladoEnemigo.obtenerJugador());
+        return true;
     }
 
 
@@ -25,4 +25,8 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
 
 
     }
+
+	@Override
+	public void activarTrampa(Jugador jugador, CartaMonstruo carta) {
+	}
 }

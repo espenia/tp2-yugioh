@@ -5,7 +5,7 @@ import java.util.Stack;
 public class Jugador {
 	private int puntosDeVida;
 	private Mano mano;
-	private Lado ladoEnemigo;
+	public Lado ladoEnemigo;
 	private Lado lado;
 
 
@@ -104,7 +104,6 @@ public class Jugador {
 
 	public void recibeDanio(int ataque) {
 		this.puntosDeVida = this.puntosDeVida - ataque;
-
 	}
 
 
@@ -115,7 +114,9 @@ public class Jugador {
 
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
         CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
-        //ladoEnemigo.activarTrampa(miCarta);
+        if(ladoEnemigo.activarTrampaConAtaque(miCarta) == true) {
+        	return;
+        }
 	    miCarta.atacarA(jugador);
 
 	}

@@ -21,7 +21,7 @@ public class testGenerales {
         jugador1.colocarEnPosicionAtaque(cartaPrueba);
         jugador1.colocarEnEstadoBocaArriba(cartaPrueba);
         jugador1.posicionarCartaMonstruoEnLado((CartaMonstruo)jugador1.seleccionarCartaDeLaMano("Abismo Reluciente"));
-        jugador1.atacar("Abismo Reluciente",jugador2);
+        jugador1.atacar("Abismo Reluciente", jugador2);
         int vidaEsperada = 6200;
         assertEquals(vidaEsperada, jugador2.getPuntosDeVida(), DELTA);
     }
@@ -59,7 +59,7 @@ public class testGenerales {
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }
 
-/*
+
     @Test
     public void test04ColocarCartaTrampaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS TRAMPA
         Jugador juan = new Jugador();
@@ -74,10 +74,10 @@ public class testGenerales {
         juan.posicionarCartaMonstruoEnLado((CartaMonstruo)juan.seleccionarCartaDeLaMano("Abismo Reluciente"));
         carlos.posicionarCartaTrampaEnLado((CartaTrampa)carlos.seleccionarCartaDeLaMano("Cilindro magico"));
         carlos.colocarEnEstadoBocaAbajo(cilindroMagico);
-        juan.atacar("Abismo Reluciente",carlos);
+        juan.atacar("Abismo Reluciente", carlos);
         int vidaEsperada = 6200;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
-    }*/
+    }
 
     @Test
     public void test05MandarCartaAlCementerio() {
