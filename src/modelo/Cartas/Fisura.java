@@ -11,6 +11,6 @@ public class Fisura extends CartaMagica {
 
     @Override
     public void activarEfecto(Lado lado, Lado ladoEnemigo) {
-
+    	ladoEnemigo.matarMenorAtaque();
     }
 }

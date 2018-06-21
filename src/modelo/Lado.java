@@ -133,4 +133,19 @@ public class Lado {
 		return mazo.cantidadDeCartas();
 
 	}
+
+
+	public void matarMenorAtaque() {
+		CartaMonstruo nula = new CartaNula();
+		CartaMonstruo cartaMenorAtaque = nula;
+		for (Map.Entry<String, CartaMonstruo> entry : cartasMonstruo.entrySet()){
+			if(cartaMenorAtaque.getAtaque() >= entry.getValue().getAtaque()) {
+				cartaMenorAtaque = entry.getValue();
+			}
+		}
+		if(cartaMenorAtaque == nula) {
+			return;
+		}
+		this.mandarCartaMonstruoAlCementerio(cartaMenorAtaque.getNombre());
+	}
 }

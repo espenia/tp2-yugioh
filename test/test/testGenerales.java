@@ -28,7 +28,7 @@ public class testGenerales {
         assertEquals(vidaEsperada, jugador2.getPuntosDeVida(), DELTA);
     }
 
-    @Test // TODO (expected = NoPuedeAtacarEnModoDefensaExcepcion.class) 
+    @Test 
     public void test02ColocarMontruoEnModoDefensa() {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
@@ -43,7 +43,7 @@ public class testGenerales {
     }
 
     @Test
-    public void test03ColocarCartaMagicaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS MAGICAS
+    public void test03ColocarCartaMagicaBocaAbajo() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
@@ -63,7 +63,7 @@ public class testGenerales {
 
 
     @Test
-    public void test04ColocarCartaTrampaBocaAbajo() {//SE DEBEN IMPLEMENTAR LAS CARTAS TRAMPA
+    public void test04ColocarCartaTrampaBocaAbajo() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
@@ -360,7 +360,7 @@ public class testGenerales {
 
     }
 
-    /*@Test
+    @Test
     public void test17FisuraMataMonstruoEnemigoDeMenorAtaque(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
@@ -379,7 +379,7 @@ public class testGenerales {
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
         juan.posicionarCartaMagicaEnLado(fisura);
         juan.colocarEnEstadoBocaArriba(fisura);
-        assertEquals(cartaPrueba2,carlos.seleccionarCartaEnCementerio("Acechador Del Craneo"));
+        assertEquals(cartaPrueba1, carlos.seleccionarCartaEnCementerio("Acechador Del Craneo"));
 
     }
 
@@ -398,7 +398,7 @@ public class testGenerales {
         carlos.posicionarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        int vidaEsperada = 7000;
+        int vidaEsperada = 7500;
         carlos.atacar("Jinzo #7",juan);
         assertEquals(vidaEsperada,juan.getPuntosDeVida(),DELTA);
 
@@ -439,12 +439,8 @@ public class testGenerales {
         juego.siguienteTurno();
         juego.siguienteTurno();
         juego.siguienteTurno();
-        juego.siguienteTurno();
-        juego.siguienteTurno();
-        juego.siguienteTurno();
+        assertEquals(false, juego.getPartidaEnCurso());
         assertEquals(carlos,juego.getPerdedor());
-
-
     }
 
     @Test
@@ -453,6 +449,12 @@ public class testGenerales {
         Jugador juan = new Jugador();
         Juego juego = new Juego(carlos,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba3 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba4 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba5 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba6 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba7 = new AcechadorDelCraneo();
         CartaMonstruo exodiaPieIzq = new PieIzquierdoDeExodia();
         CartaMonstruo exodiaPieDer = new PieDerechoDeExodia();
         CartaMonstruo exodiaManoIzq = new BrazoIzquierdoDeExodia();
@@ -461,6 +463,12 @@ public class testGenerales {
         Mazo mazo = new Mazo();
         Mazo mazo2 = new Mazo();
         mazo.agregarCarta(cartaPrueba1);
+        mazo.agregarCarta(cartaPrueba2);
+        mazo.agregarCarta(cartaPrueba3);
+        mazo.agregarCarta(cartaPrueba4);
+        mazo.agregarCarta(cartaPrueba5);
+        mazo.agregarCarta(cartaPrueba6);
+        mazo.agregarCarta(cartaPrueba7);
         Stack<Carta> cartas = new Stack<>();
         cartas.add(exodiaCabeza);
         cartas.add(exodiaManoDer);
@@ -470,12 +478,13 @@ public class testGenerales {
         mazo2.armarMazo(cartas);
         juan.darMazo(mazo);
         carlos.darMazo(mazo2);
-        carlos.extraerCartasDelMazo(7);
-        juego.siguienteTurno();
+        while(juego.getPartidaEnCurso() == true)
+        	juego.siguienteTurno();
+        assertEquals(false, juego.getPartidaEnCurso());
         assertEquals(carlos,juego.getGanador());
 
 
 
-    }*/
+    }
 
 }

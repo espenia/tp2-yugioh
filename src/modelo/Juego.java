@@ -11,6 +11,7 @@ public class Juego {//esto quiza deberia ir en la parte grafica despues
     private Jugador ganador;
     private Jugador perdedor;
     private Turno turno;
+    private boolean partidaEnJuego;
 
     public Juego (Jugador jugador1, Jugador jugador2){
 
@@ -20,9 +21,11 @@ public class Juego {//esto quiza deberia ir en la parte grafica despues
         ladoJugador2.asignarJugador(jugador2);
         jugador1.asignarLados(ladoJugador1,ladoJugador2);
         jugador2.asignarLados(ladoJugador2,ladoJugador1);
-        //primeroYSegundo(jugador1,jugador2); //TODO comentar para tests
+        primeroYSegundo(jugador1,jugador2); //TODO comentar para tests
         primero = jugador1; //TODO solo tests
         segundo = jugador2;
+        partidaEnJuego = true;
+        turno = new Turno(primero, this);
         //primerTurno(); // NO APLICABLE PARTA LOS TESTS
 
     }
@@ -52,9 +55,8 @@ public class Juego {//esto quiza deberia ir en la parte grafica despues
     }
 
     public void siguienteTurno(){
+    	
         turno.terminarTurno(primero,segundo);
-
-
     }
 
     public void gano(Jugador jugador) {
@@ -82,6 +84,14 @@ public class Juego {//esto quiza deberia ir en la parte grafica despues
         return perdedor;
 
     }
+
+	public boolean getPartidaEnCurso() {
+		return partidaEnJuego;
+	}
+
+	public void terminarJuego() {
+		partidaEnJuego = false;
+	}
 
     //supongo que se manejara la parte grafica
 }

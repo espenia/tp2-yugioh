@@ -16,11 +16,17 @@ public class Turno {
 
 
     public void faseIncial(){
-        jugador.extraerCartasDelMazo(1);
+        if(jugador.extraerCartasDelMazo(1) == false){
+        	juego.gano(jugador.ladoEnemigo.obtenerJugador());
+        	juego.perdio(jugador);
+        	juego.terminarJuego();
+        }
+        if(jugador.tieneExodiaEnMano()) {
+            juego.gano(jugador);
+        	juego.perdio(jugador.ladoEnemigo.obtenerJugador());
+        	juego.terminarJuego();
+        }
         fasePrincipal();
-
-
-
     }
 
     public void fasePrincipal(){//excepcion trata de atacar cuando esta aca
@@ -30,7 +36,6 @@ public class Turno {
 
     public void skipFaseBatalla() { //excepciones trata de hacer algo que no es atacar
         skipBattle = true;
-
     }
 
     public void faseBatalla() {
@@ -46,14 +51,10 @@ public class Turno {
     }
 
     public void terminarTurno(Jugador jugador1, Jugador jugador2){
-
-        if(jugador.tieneExodiaEnMano())
-            juego.gano(jugador);
-
         if(jugador1.getPuntosDeVida() == 0 && jugador2.getPuntosDeVida() == 0)
             juego.empate();
 
-        if(jugador.getPuntosDeVida() == 0 || jugador.cantidadDeCartasEnMazo() == 0)
+        if(jugador.getPuntosDeVida() == 0)
             juego.perdio(jugador);
 
         if(jugador == jugador1){

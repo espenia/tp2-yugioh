@@ -171,11 +171,14 @@ public class Jugador {
 	}
 
 
-	public void extraerCartasDelMazo(int cantidad){
+	public boolean extraerCartasDelMazo(int cantidad){
 		Stack<Carta> cartas = lado.extraerDelMazo(cantidad);
+		if(cartas.empty()) {
+			return false;
+		}
 		for (int i = 0; i < cantidad ; i++)
 			mano.agregarCarta(cartas.pop());
-
+		return true;
 	}
 
 
@@ -192,7 +195,6 @@ public class Jugador {
 
 	public boolean tieneExodiaEnMano() {
 		return mano.contieneExodia();
-
 	}
 
 

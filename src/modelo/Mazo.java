@@ -20,7 +20,9 @@ public class Mazo {
     public Stack<Carta> extraer(int cantidad) {
         Stack<Carta> cartas = new Stack<>();
         for (int i = 0 ; i < cantidad ; i++) {
-            cartas.add(this.cartasEnMazo.pop());
+            if(this.cartasEnMazo.empty())
+            	break;
+        	cartas.add(this.cartasEnMazo.pop());
         }
         return cartas;
     }
