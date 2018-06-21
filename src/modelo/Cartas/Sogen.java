@@ -9,9 +9,6 @@ public class Sogen extends CartaDeCampo {
 
     private int buffDeDefensa = 500;
     private int buffDeAtaque = 200;
-    private Lado lado;
-    private Lado ladoEnemigo;
-    private int aux = 1;
 
     public Sogen(String nombreDeCarta) {
         super(nombreDeCarta);

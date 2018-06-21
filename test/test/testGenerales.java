@@ -483,8 +483,89 @@ public class testGenerales {
         assertEquals(false, juego.getPartidaEnCurso());
         assertEquals(carlos,juego.getGanador());
 
+    }
+
+    @Test
+    public void test22InvocarTresDragonesBlancosDeOjosAzulesYLuegoSacrificarlosInvocaAlDragonBlancoDefinitivoDeOjosAzules(){
+        Jugador juan = new Jugador();
+        Jugador carlos= new Jugador();
+        Juego juego = new Juego(juan, carlos);
+        CartaMonstruo cartaPrueba1 = new DragonBlancoDeOjosAzules();
+        CartaMonstruo cartaPrueba2 = new DragonBlancoDeOjosAzules();
+        CartaMonstruo cartaPrueba3 = new DragonBlancoDeOjosAzules();
+        CartaMonstruo cartaMonstruo = new DragonBlancoDefinitivoDeOjosAzules();
+        juan.darCarta(cartaPrueba1);
+        juan.darCarta(cartaPrueba2);
+        juan.darCarta(cartaPrueba3);
+        Mazo mazo = new Mazo();
+        mazo.agregarCarta(cartaMonstruo);
+        juan.darMazoDeFusiones(mazo);
+        juan.posicionarCartaMonstruoEnLado(cartaPrueba1);
+        juan.colocarEnEstadoBocaArriba(cartaPrueba1);
+        juan.colocarEnPosicionAtaque(cartaPrueba1);
+        juan.posicionarCartaMonstruoEnLado(cartaPrueba2);
+        juan.colocarEnEstadoBocaArriba(cartaPrueba2);
+        juan.colocarEnPosicionAtaque(cartaPrueba2);
+        juan.posicionarCartaMonstruoEnLado(cartaPrueba3);
+        juan.colocarEnEstadoBocaArriba(cartaPrueba3);
+        juan.colocarEnPosicionAtaque(cartaPrueba3);
+        CartaMagica polimerizacion = new Polimerizacion("Polimerizacion");
+        juan.darCarta(polimerizacion);
+        juan.posicionarCartaMagicaEnLado(polimerizacion);
+        juan.colocarEnEstadoBocaArriba(polimerizacion);
+        juan.fusionDeTresMonstruos("Dragon Blanco De Ojos Azules","Dragon Blanco De Ojos Azules","Dragon Blanco De Ojos Azules");
+        assertEquals(cartaPrueba1,juan.seleccionarCartaDeMiLado("Dragon Blanco De Ojos Azules"));
+        assertEquals(cartaPrueba2,juan.seleccionarCartaDeMiLado("Dragon Blanco De Ojos Azules"));
+        assertEquals(cartaPrueba3,juan.seleccionarCartaDeMiLado("Dragon Blanco De Ojos Azules"));
+
+    }
+
+    @Test
+    public void test23InsectoComeHombreDestruyeUnMonstruoQueLoAtacaCuandoEstaBocaAbajo(){
+        Jugador juan = new Jugador();
+        Jugador carlos= new Jugador();
+        Juego juego = new Juego(juan, carlos);
+        CartaMonstruo cartaMonstruo = new InsectoComeHombre();
+        CartaMonstruo cartaMonstruo2 = new AcechadorDelCraneo();
+        juan.darCarta(cartaMonstruo);
+        carlos.darCarta(cartaMonstruo2);
+        juan.posicionarCartaMonstruoEnLado(cartaMonstruo);
+        juan.colocarEnEstadoBocaAbajo(cartaMonstruo);
+        juan.colocarEnPosicionAtaque(cartaMonstruo);
+        carlos.posicionarCartaMonstruoEnLado(cartaMonstruo2);
+        carlos.colocarEnEstadoBocaArriba(cartaMonstruo2);
+        carlos.colocarEnPosicionAtaque(cartaMonstruo2);
+        carlos.atacarAMonstruo("Acechador Del Craneo","Insecto Come-Hombre");
+        assertEquals(cartaMonstruo2,carlos.seleccionarCartaEnCementerio("Acechador Del Craneo"));
+        assertEquals(8000,juan.getPuntosDeVida(),DELTA);
 
 
     }
+
+    @Test
+    public void test24AlAtacarUnMonstruoReinforcementsDa400PuntosMasDeAtaqueAlMonstruoAtacado(){
+        Jugador juan = new Jugador();
+        Jugador carlos= new Jugador();
+        Juego juego = new Juego(juan, carlos);
+        CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
+        CartaMonstruo cartaMonstruo2 = new AcechadorDelCraneo();
+        CartaTrampa reinforcements = new Reinforcements("Reinforcements");
+        juan.darCarta(reinforcements);
+        juan.darCarta(cartaMonstruo);
+        carlos.darCarta(cartaMonstruo2);
+        juan.posicionarCartaMonstruoEnLado(cartaMonstruo);
+        juan.colocarEnEstadoBocaAbajo(cartaMonstruo);
+        juan.colocarEnPosicionAtaque(cartaMonstruo);
+        carlos.posicionarCartaMonstruoEnLado(cartaMonstruo2);
+        carlos.colocarEnEstadoBocaArriba(cartaMonstruo2);
+        carlos.colocarEnPosicionAtaque(cartaMonstruo2);
+        juan.posicionarCartaTrampaEnLado(reinforcements);
+        carlos.atacarAMonstruo("Acechador Del Craneo","Acechador Del Craneo");
+        assertEquals(cartaMonstruo2,carlos.seleccionarCartaEnCementerio("Acechador Del Craneo"));
+        assertEquals(7600,carlos.getPuntosDeVida(),DELTA);
+
+
+    }
+
 
 }

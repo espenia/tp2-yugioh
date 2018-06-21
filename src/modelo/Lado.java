@@ -10,9 +10,11 @@ public class Lado {
 	private Map<String, CartaDeUtilidad> cartasTrampaOMagicas;
 	private Map<String, CartaMonstruo> cartasMonstruo;
 	private Mazo mazo;
+	private Mazo mazoDeFusiones;
 	private Map<String, Carta> cementerio;
 	private Jugador jugador;
 	private CartaDeCampo cartaDeCampo;
+	private boolean fusion;
 
 
 
@@ -22,6 +24,8 @@ public class Lado {
 		cementerio = new HashMap<>();
 		mazo = unMazo;
 		cartaDeCampo = new SinCartaDeCampo("sincarta");
+		fusion = false;
+		mazoDeFusiones = new Mazo();
 	}
 
 
@@ -147,5 +151,27 @@ public class Lado {
 			return;
 		}
 		this.mandarCartaMonstruoAlCementerio(cartaMenorAtaque.getNombre());
+	}
+
+	public void habilitarFusion() {
+		fusion = true;
+	}
+
+	public void fusionDeTresMonstruos(String primerSacrificio, String segundoSacrificio, String tercerSacrificio){
+		if (fusion){
+			CartaMonstruo sacrificioUno = seleccionarCartaMonstruo(primerSacrificio);
+			CartaMonstruo sacrificioDos = seleccionarCartaMonstruo(segundoSacrificio);
+			CartaMonstruo sacrificioTres = seleccionarCartaMonstruo(tercerSacrificio);
+			CartaDeFusion cartaDeFusion = new CartaDeFusion(mazoDeFusiones);
+			cartaDeFusion.agregarSacrificio(sacrificioUno);
+			cartaDeFusion.agregarSacrificio(sacrificioDos);
+			cartaDeFusion.agregarSacrificio(sacrificioTres);
+			cartaDeFusion.realizarFusion();
+		}
+
+	}
+
+	public void darMazoDeFusiones(Mazo mazo) {
+		mazoDeFusiones = mazo;
 	}
 }

@@ -203,4 +203,15 @@ public class Jugador {
 		return lado.cantidadDeCartasEnMazo();
 
 	}
+
+
+	public void fusionDeTresMonstruos(String primerSacrificio, String segundoSacrificio, String tercerSacrificio) {
+		lado.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio);
+
+
+	}
+
+	public void darMazoDeFusiones(Mazo mazo) {
+		lado.darMazoDeFusiones(mazo);
+	}
 }
