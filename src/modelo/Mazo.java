@@ -10,8 +10,6 @@ public class Mazo {
 
     public Mazo () {
         this.cartasEnMazo = new Stack<>();
-        cartasEnMazo.add(new AligatorCibertech());
-        cartasEnMazo.add(new Conedragon());
     }
 
     public void agregarCarta(Carta carta) {
@@ -21,9 +19,9 @@ public class Mazo {
 
     public Stack<Carta> extraer(int cantidad) {
         Stack<Carta> cartas = new Stack<>();
-        for (int i = 0 ; i < cantidad ; i++)
+        for (int i = 0 ; i < cantidad ; i++) {
             cartas.add(this.cartasEnMazo.pop());
-
+        }
         return cartas;
     }
 

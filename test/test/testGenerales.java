@@ -336,7 +336,7 @@ public class testGenerales {
         assertEquals(3150,carlos.seleccionarCartaDeMiLado("ConeDragon").getAtaque());
 
     }
-/*
+
     @Test
     public void test16OllaDeLaCodiciaExtraeDosCartas(){
         Jugador juan = new Jugador();
@@ -355,12 +355,12 @@ public class testGenerales {
         juan.posicionarCartaMagicaEnLado(olla);
         juan.colocarEnEstadoBocaArriba(olla);
         assertEquals(cartaPrueba2,juan.seleccionarCartaDeLaMano("Abismo Reluciente"));
-        assertEquals(cartaPrueba1,juan.seleccionarCartaDeLaMano("Acechador Del Craneo"));
-        assertEquals(1,mazo.cantidadDeCartas());
+        assertEquals(cartaPrueba3,juan.seleccionarCartaDeLaMano("ConeDragon"));
+        assertEquals(1, juan.cantidadDeCartasEnMazo());
 
     }
 
-    @Test
+    /*@Test
     public void test17FisuraMataMonstruoEnemigoDeMenorAtaque(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
@@ -422,7 +422,7 @@ public class testGenerales {
         assertEquals(vidaEsperada,juan.getPuntosDeVida(),DELTA);
 
 
-    }*/
+    }
 
     @Test
     public void test20Tener0CartasEnElMazoCausaPerderElJuegoAlFinalDeTuTurno(){
@@ -476,6 +476,6 @@ public class testGenerales {
 
 
 
-    }
+    }*/
 
 }

@@ -23,7 +23,7 @@ public class Juego {//esto quiza deberia ir en la parte grafica despues
         //primeroYSegundo(jugador1,jugador2); //TODO comentar para tests
         primero = jugador1; //TODO solo tests
         segundo = jugador2;
-        primerTurno();
+        //primerTurno(); // NO APLICABLE PARTA LOS TESTS
 
     }
 
