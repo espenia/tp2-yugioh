@@ -1,6 +1,5 @@
 package modelo;
 
-import modelo.Cartas.*;
 import java.util.Collections;
 import java.util.Stack;
 
@@ -14,17 +13,12 @@ public class Mazo {
 
     public void agregarCarta(Carta carta) {
     	this.cartasEnMazo.add(carta);
-
     }
 
-    public Stack<Carta> extraer(int cantidad) {
-        Stack<Carta> cartas = new Stack<>();
-        for (int i = 0 ; i < cantidad ; i++) {
-            if(this.cartasEnMazo.empty())
-            	break;
-        	cartas.add(this.cartasEnMazo.pop());
-        }
-        return cartas;
+    public Carta extraerCarta(){
+        if(cartasEnMazo.empty())
+        	throw new ElMazoEstaVacioException();
+        return cartasEnMazo.pop();
     }
 
     public int cantidadDeCartas(){

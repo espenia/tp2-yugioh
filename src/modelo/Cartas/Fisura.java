@@ -5,7 +5,9 @@ import modelo.Lado;
 
 public class Fisura extends CartaMagica {
 
-    public Fisura(String nombreDeCarta) {
+	public static String nombreDeCarta = "Fisura";
+	
+    public Fisura() {
         super(nombreDeCarta);
     }
 
