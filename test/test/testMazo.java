@@ -23,6 +23,11 @@ public class testMazo {
         assertEquals(0, mazo.cantidadDeCartas());
     }
 
+    @Test (expected = ElMazoEstaVacioException.class)
+    public void test02IntentarExtraerCartasDeUnMazoVacio(){
+        Mazo mazo = new Mazo();
+        mazo.extraerCarta();
+    }
 /*
     @Test
     public void testArmarMazo(){
