@@ -2,14 +2,24 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Stack;
+
 import org.junit.Test;
 import modelo.*;
 import modelo.Cartas.*;
 
 public class testMazo {
 
+	@Test
+    public void test01MazoRecienCreadoContieneCeroCartas(){
+
+        Mazo mazo = new Mazo();
+        int cantidadEsperada = 0;
+        assertEquals(cantidadEsperada, mazo.cantidadDeCartas());
+    }
+	
     @Test
-    public void test01AgregarYExtraerCartasDelMazoLuegoComprobarQueElMazoEstaVacio(){
+    public void test02AgregarYExtraerCartasDelMazoLuegoComprobarQueElMazoEstaVacio(){
 
         Mazo mazo = new Mazo();
         Carta carta2 = new Fisura();
@@ -20,26 +30,41 @@ public class testMazo {
         Carta cartaPrueba1 = mazo.extraerCarta();
         assertEquals(cartaPrueba2, carta2);
         assertEquals(cartaPrueba1, carta1);
-        assertEquals(0, mazo.cantidadDeCartas());
+        int cantidadEsperada = 0;
+        assertEquals(cantidadEsperada, mazo.cantidadDeCartas());
     }
 
     @Test (expected = ElMazoEstaVacioException.class)
-    public void test02IntentarExtraerCartasDeUnMazoVacio(){
+    public void test03IntentarExtraerCartasDeUnMazoVacio(){
+    	
         Mazo mazo = new Mazo();
         mazo.extraerCarta();
     }
-/*
+
     @Test
-    public void testArmarMazo(){
+    public void test04ArmarMazoYComprobar(){
+    	
         Mazo mazo = new Mazo();
         Stack<Carta> cartas = new Stack<>();
-        cartas.add(new CartaMonstruo("Dragon blanco de Ojos Azules",2500, 3000));
-        cartas.add(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
-        cartas.add(new CartaMonstruo("Dragon blanco de Ojos Azules",2500, 3000));
-        cartas.add(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
+        cartas.add(new Fisura());
         mazo.armarMazo(cartas);
-        assertEquals(4,mazo.cantidadDeCartas());
+        int cantidadEsperada = 4;
+        assertEquals(cantidadEsperada,mazo.cantidadDeCartas());
 
     }
-*/
+    
+    @Test
+    public void test05AgregarCartasEnVolumen(){
+
+        Mazo mazo = new Mazo();
+        for(int i = 0; i < 80; i++) {
+        	mazo.agregarCarta(new Conedragon());
+        }
+        int cantidadEsperada = 80;
+        assertEquals(cantidadEsperada, mazo.cantidadDeCartas());
+    }
+
 }
