@@ -24,8 +24,8 @@ public class testGenerales {
         jugador1.darCarta(cartaPrueba);
         jugador1.colocarEnPosicionAtaque(cartaPrueba);
         jugador1.colocarEnEstadoBocaArriba(cartaPrueba);
-        jugador1.jugarCartaMonstruoEnLado("Abismo Reluciente");
-        jugador1.atacar("Abismo Reluciente",jugador2);
+        jugador1.jugarCartaMonstruoEnLado(cartaPrueba);
+        jugador1.atacar(cartaPrueba,jugador2);
         int vidaEsperada = 6200;
         assertEquals(vidaEsperada, jugador2.getPuntosDeVida(), DELTA);
     }
@@ -39,9 +39,8 @@ public class testGenerales {
         jugador1.darCarta(cartaPrueba);
         jugador1.colocarEnPosicionAtaque(cartaPrueba);
         jugador1.colocarEnEstadoBocaArriba(cartaPrueba);
-        jugador1.jugarCartaMonstruoEnLado("Abismo Reluciente");
-        CartaMonstruo cartaSeleccionada = jugador1.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente");
-        assertEquals(cartaPrueba, cartaSeleccionada);
+        jugador1.jugarCartaMonstruoEnLado(cartaPrueba);
+        assertEquals(true, jugador1.verificarSiCartaMonstruoEstaEnLado(cartaPrueba));
     }
 
     @Test
@@ -56,9 +55,9 @@ public class testGenerales {
         juan.colocarEnEstadoBocaArriba(cartaPrueba);
         juan.darCarta(agujeroOscuro);
         juan.colocarEnEstadoBocaArriba(agujeroOscuro);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
-        juan.jugarCartaMagicaEnLado("Agujero Oscuro");
-        juan.atacar("Abismo Reluciente",carlos);
+        juan.jugarCartaMonstruoEnLado(cartaPrueba);
+        juan.jugarCartaMagicaEnLado(agujeroOscuro);
+        juan.atacar(cartaPrueba,carlos);
         int vidaEsperada = 6200;
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }
@@ -75,10 +74,10 @@ public class testGenerales {
         juan.colocarEnPosicionAtaque(cartaPrueba);
         juan.colocarEnEstadoBocaArriba(cartaPrueba);
         carlos.darCarta(cilindroMagico);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
-        carlos.jugarCartaTrampaEnLado("Cilindro magico");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba);
+        carlos.jugarCartaTrampaEnLado(cilindroMagico);
         carlos.colocarEnEstadoBocaAbajo(cilindroMagico);
-        assertEquals(cilindroMagico,carlos.seleccionarCartaDeUtilidadDeMiLado("Cilindro magico"));
+        assertEquals(true,carlos.verificarSiCartaDeUtilidadEstaEnLado(cilindroMagico));
     }
 
     @Test
@@ -90,14 +89,14 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba);
         juan.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba);
         juan.colocarEnPosicionAtaque(cartaPrueba);
         juan.colocarEnEstadoBocaArriba(cartaPrueba);
-        juan.jugarCartaEnLadoConUnSacrificio("Acechador Del Craneo","Abismo Reluciente");
+        juan.jugarCartaEnLadoConUnSacrificio(cartaPrueba2,cartaPrueba);
         juan.colocarEnPosicionAtaque(cartaPrueba2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").estadoMuerto());
-        assertEquals(cartaPrueba2,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo"));
+        assertEquals(true,cartaPrueba.estadoMuerto());
+        assertEquals(true,juan.verificarSiCartaMonstruoEstaEnLado(cartaPrueba2));
     }
 
     @Test
@@ -109,14 +108,14 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionAtaque(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.atacarAMonstruo("Abismo Reluciente", "Acechador Del Craneo");
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        juan.atacarAMonstruo(cartaPrueba1, cartaPrueba2);
+        assertEquals(true,cartaPrueba2.estadoMuerto());
         int vidaEsperada = 7100;
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }
@@ -130,14 +129,14 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionAtaque(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.atacarAMonstruo("Acechador Del Craneo", "Abismo Reluciente");
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        juan.atacarAMonstruo(cartaPrueba1, cartaPrueba2);
+        assertEquals(true,cartaPrueba1.estadoMuerto());
         int vidaEsperada = 7100;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
     }
@@ -151,15 +150,15 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionAtaque(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.atacarAMonstruo("Abismo Reluciente", "Abismo Reluciente");
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").estadoMuerto());
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").estadoMuerto());
+        juan.atacarAMonstruo(cartaPrueba1, cartaPrueba2);
+        assertEquals(true,cartaPrueba1.estadoMuerto());
+        assertEquals(true,cartaPrueba2.estadoMuerto());
         int vidaEsperada = 8000;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
@@ -174,14 +173,14 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.atacarAMonstruo("Abismo Reluciente", "Acechador Del Craneo");
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        juan.atacarAMonstruo(cartaPrueba1, cartaPrueba2);
+        assertEquals(true,cartaPrueba2.estadoMuerto());
         int vidaEsperada = 8000;
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }
@@ -195,15 +194,15 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.atacarAMonstruo("Acechador Del Craneo", "Abismo Reluciente");
-        assertEquals(cartaPrueba2, carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente"));
-        assertEquals(cartaPrueba1, juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo"));
+        juan.atacarAMonstruo(cartaPrueba1, cartaPrueba2);
+        assertEquals(true, carlos.verificarSiCartaMonstruoEstaEnLado(cartaPrueba2));
+        assertEquals(true, juan.verificarSiCartaMonstruoEstaEnLado(cartaPrueba1));
         int vidaEsperada = 7300;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
     }
@@ -219,16 +218,16 @@ public class testGenerales {
         juan.darCarta(agujeroOscuro);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionAtaque(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.jugarCartaMagicaEnLado("Agujero Oscuro");
+        juan.jugarCartaMagicaEnLado(agujeroOscuro);
         juan.colocarEnEstadoBocaArriba(agujeroOscuro);
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").estadoMuerto());
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        assertEquals(true,cartaPrueba1.estadoMuerto());
+        assertEquals(true,cartaPrueba2.estadoMuerto());
 
     }
     
@@ -241,11 +240,11 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new AligatorCibertech();
         juan.darCarta(cartaPrueba1);
         juan.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juan.jugarCartaEnLadoConUnSacrificio("Aligator Cibertech","Acechador Del Craneo");
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        juan.jugarCartaEnLadoConUnSacrificio(cartaPrueba2,cartaPrueba1);
+        assertEquals(true,cartaPrueba1.estadoMuerto());
     }
     
     @Test
@@ -259,17 +258,17 @@ public class testGenerales {
         juan.darCarta(cartaPrueba1);
         juan.darCarta(cartaPrueba2);
         juan.darCarta(cartaPrueba3);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juan.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba2);
         juan.colocarEnPosicionAtaque(cartaPrueba2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.jugarCartaEnLadoConDosSacrificio("ConeDragon", "Acechador Del Craneo","Abismo Reluciente");
+        juan.jugarCartaEnLadoConDosSacrificio(cartaPrueba3, cartaPrueba1,cartaPrueba2);
         juan.colocarEnPosicionAtaque(cartaPrueba3);
         juan.colocarEnEstadoBocaArriba(cartaPrueba3);
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").estadoMuerto());
-        assertEquals(true,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        assertEquals(true,cartaPrueba1.estadoMuerto());
+        assertEquals(true,cartaPrueba2.estadoMuerto());
     }
 
     //segunda entrega
@@ -285,24 +284,24 @@ public class testGenerales {
         juan.darCarta(cartaCampo);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
         juan.colocarCartaDeCampo(cartaCampo); 
-        assertEquals(1100,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").getAtaque());
-        assertEquals(800,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").getDefensa());
-        assertEquals(1900,carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").getDefensa());
-        assertEquals(1800,carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").getAtaque());
+        assertEquals(1100,cartaPrueba1.getAtaque());
+        assertEquals(800,cartaPrueba1.getDefensa());
+        assertEquals(1900,cartaPrueba2.getDefensa());
+        assertEquals(1800,cartaPrueba2.getAtaque());
         CartaMonstruo cartaPrueba3 = new Conedragon();
         carlos.darCarta(cartaPrueba3);
-        carlos.jugarCartaMonstruoEnLado("ConeDragon");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba3);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba3);
         carlos.colocarEnPosicionDefensa(cartaPrueba3);
-        assertEquals(3200,carlos.seleccionarCartaMonstruoDeMiLado("ConeDragon").getDefensa());
-        assertEquals(2950,carlos.seleccionarCartaMonstruoDeMiLado("ConeDragon").getAtaque());
+        assertEquals(3200,cartaPrueba3.getDefensa());
+        assertEquals(2950,cartaPrueba3.getAtaque());
 
     }
 
@@ -317,24 +316,24 @@ public class testGenerales {
         juan.darCarta(cartaCampo);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
         juan.colocarCartaDeCampo(cartaCampo); 
-        assertEquals(900,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").getAtaque());
-        assertEquals(1300,juan.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").getDefensa());
-        assertEquals(1600,carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").getDefensa());
-        assertEquals(2000,carlos.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente").getAtaque());
+        assertEquals(900,cartaPrueba1.getAtaque());
+        assertEquals(1300,cartaPrueba1.getDefensa());
+        assertEquals(1600,cartaPrueba2.getDefensa());
+        assertEquals(2000,cartaPrueba2.getAtaque());
         CartaMonstruo cartaPrueba3 = new Conedragon();
         carlos.darCarta(cartaPrueba3);
-        carlos.jugarCartaMonstruoEnLado("ConeDragon");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba3);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba3);
         carlos.colocarEnPosicionDefensa(cartaPrueba3);
-        assertEquals(2900,carlos.seleccionarCartaMonstruoDeMiLado("ConeDragon").getDefensa());
-        assertEquals(3150,carlos.seleccionarCartaMonstruoDeMiLado("ConeDragon").getAtaque());
+        assertEquals(2900,cartaPrueba3.getDefensa());
+        assertEquals(3150,cartaPrueba3.getAtaque());
 
     }
 
@@ -353,10 +352,10 @@ public class testGenerales {
         mazo.agregarCarta(cartaPrueba2);
         mazo.agregarCarta(cartaPrueba3);
         juan.darMazo(mazo);
-        juan.jugarCartaMagicaEnLado("Olla De La Codicia");
+        juan.jugarCartaMagicaEnLado(olla);
         juan.colocarEnEstadoBocaArriba(olla);
-        assertEquals(cartaPrueba2,juan.seleccionarCartaDeLaMano("Abismo Reluciente"));
-        assertEquals(cartaPrueba3,juan.seleccionarCartaDeLaMano("ConeDragon"));
+        assertEquals(true,juan.verificarSiCartaEstaEnMano(cartaPrueba2));
+        assertEquals(true,juan.verificarSiCartaEstaEnMano(cartaPrueba3));
         assertEquals(1, juan.cantidadDeCartasEnMazo());
 
     }
@@ -372,15 +371,15 @@ public class testGenerales {
         juan.darCarta(fisura);
         carlos.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        carlos.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba1);
         carlos.colocarEnPosicionAtaque(cartaPrueba1);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Abismo Reluciente");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
-        juan.jugarCartaMagicaEnLado("Fisura");
+        juan.jugarCartaMagicaEnLado(fisura);
         juan.colocarEnEstadoBocaArriba(fisura);
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        assertEquals(true,cartaPrueba1.estadoMuerto());
 
     }
 
@@ -393,14 +392,14 @@ public class testGenerales {
         CartaMonstruo cartaPrueba2 = new Jinzo7();
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        carlos.jugarCartaMonstruoEnLado("Jinzo #7");
+        carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
         int vidaEsperada = 7500;
-        carlos.atacar("Jinzo #7",juan);
+        carlos.atacar(cartaPrueba2,juan);
         assertEquals(vidaEsperada,juan.getPuntosDeVida(),DELTA);
 
     }
@@ -412,13 +411,13 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba1);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico("Cilindro magico");
         carlos.darCarta(cilindroMagico);
-        carlos.jugarCartaTrampaEnLado("Cilindro magico");
-        juan.atacar("Acechador Del Craneo",carlos);
+        carlos.jugarCartaTrampaEnLado(cilindroMagico);
+        juan.atacar(cartaPrueba1,carlos);
         int vidaEsperada = 7100;
         assertEquals(vidaEsperada,juan.getPuntosDeVida(),DELTA);
 
@@ -501,21 +500,21 @@ public class testGenerales {
         Map<String ,CartaMonstruo> mazo = new HashMap<>();
         mazo.put(cartaMonstruo.getNombre(),cartaMonstruo);
         juan.darMazoDeFusiones(mazo);
-        juan.jugarCartaMonstruoEnLado("Dragon Blanco De Ojos Azules");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
-        juan.jugarCartaMonstruoEnLado("Dragon Blanco De Ojos Azules");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
         juan.colocarEnPosicionAtaque(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado("Dragon Blanco De Ojos Azules");
+        juan.jugarCartaMonstruoEnLado(cartaPrueba3);
         juan.colocarEnEstadoBocaArriba(cartaPrueba3);
         juan.colocarEnPosicionAtaque(cartaPrueba3);
         CartaMagica polimerizacion = new Polimerizacion("Polimerizacion");
         juan.darCarta(polimerizacion);
-        juan.jugarCartaMagicaEnLado("Polimerizacion");
+        juan.jugarCartaMagicaEnLado(polimerizacion);
         juan.colocarEnEstadoBocaArriba(polimerizacion);
         juan.fusionDeTresMonstruos(cartaPrueba1,cartaPrueba2,cartaPrueba3);
-        assertEquals(cartaMonstruo,juan.seleccionarCartaMonstruoDeMiLado("Dragon Blanco Definitivo De Ojos Azules"));
+        assertEquals(true,juan.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo));
 
 
 
@@ -530,14 +529,14 @@ public class testGenerales {
         CartaMonstruo cartaMonstruo2 = new AcechadorDelCraneo();
         juan.darCarta(cartaMonstruo);
         carlos.darCarta(cartaMonstruo2);
-        juan.jugarCartaMonstruoEnLado("Insecto Come-Hombre");
+        juan.jugarCartaMonstruoEnLado(cartaMonstruo);
         juan.colocarEnEstadoBocaAbajo(cartaMonstruo);
         juan.colocarEnPosicionAtaque(cartaMonstruo);
-        carlos.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        carlos.jugarCartaMonstruoEnLado(cartaMonstruo2);
         carlos.colocarEnEstadoBocaArriba(cartaMonstruo2);
         carlos.colocarEnPosicionAtaque(cartaMonstruo2);
-        carlos.atacarAMonstruo("Acechador Del Craneo","Insecto Come-Hombre");
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        carlos.atacarAMonstruo(cartaMonstruo,cartaMonstruo2);
+        assertEquals(true,cartaMonstruo2.estadoMuerto());
 
 
     }
@@ -553,15 +552,15 @@ public class testGenerales {
         juan.darCarta(reinforcements);
         juan.darCarta(cartaMonstruo);
         carlos.darCarta(cartaMonstruo2);
-        juan.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        juan.jugarCartaMonstruoEnLado(cartaMonstruo);
         juan.colocarEnEstadoBocaAbajo(cartaMonstruo);
         juan.colocarEnPosicionAtaque(cartaMonstruo);
-        carlos.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        carlos.jugarCartaMonstruoEnLado(cartaMonstruo2);
         carlos.colocarEnEstadoBocaArriba(cartaMonstruo2);
         carlos.colocarEnPosicionAtaque(cartaMonstruo2);
-        juan.jugarCartaTrampaEnLado("Reinforcements");
-        carlos.atacarAMonstruo("Acechador Del Craneo","Acechador Del Craneo");
-        assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        juan.jugarCartaTrampaEnLado(reinforcements);
+        carlos.atacarAMonstruo(cartaMonstruo2,cartaMonstruo);
+        assertEquals(true,cartaMonstruo2.estadoMuerto());
         assertEquals(8000,juan.getPuntosDeVida(),DELTA);
         assertEquals(7600,carlos.getPuntosDeVida(),DELTA);
 

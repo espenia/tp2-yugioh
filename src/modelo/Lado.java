@@ -6,8 +6,8 @@ import java.util.*;
 
 public class Lado {
 
-	private Map<String, CartaDeUtilidad> cartasTrampaOMagicas;
-	private Map<String, List<CartaMonstruo>> cartasMonstruo;
+	private List<CartaMonstruo> cartasMonstruo;
+	private List<CartaDeUtilidad> cartasTrampaOMagicas;
 	private Mazo mazo;
 	private Map<String, CartaMonstruo> mazoDeFusiones;
 	private Jugador jugador;
@@ -17,8 +17,8 @@ public class Lado {
 
 
 	public Lado(Mazo unMazo){
-		cartasMonstruo = new HashMap<>();
-		cartasTrampaOMagicas = new HashMap<>();
+		cartasMonstruo = new ArrayList<>();
+		cartasTrampaOMagicas = new ArrayList<>();
 		mazo = unMazo;
 		cartaDeCampo = new SinCartaDeCampo("sincarta");
 		fusion = false;
@@ -39,64 +39,57 @@ public class Lado {
 
 	public void jugarCartaMonstruo(CartaMonstruo carta) {
 		cartaDeCampo.aplicarBuff(carta,this);
-		List<CartaMonstruo> lista = new ArrayList<>();
-		if (cartasMonstruo.containsKey(carta.getNombre())){
-			List <CartaMonstruo> cartas = cartasMonstruo.get(carta.getNombre());
-			for (int i = 0; i < cartas.size(); i++)
-				lista.add(cartas.get(i));
-		}
-		lista.add(carta);
-		cartasMonstruo.put(carta.getNombre(),lista);
+		cartasMonstruo.add(carta);
 
 	}
 
 	public void jugarCartaDeCampo(CartaDeCampo carta){
 		cartaDeCampo = carta;
-		CartaMonstruo cartaMonstruo;
 		cartaDeCampo.asignarLado(this);
-		for(Map.Entry<String,List<CartaMonstruo>> entry : cartasMonstruo.entrySet() ){
-			for (int i = 0; i < entry.getValue().size() ; i++){
-				cartaMonstruo = entry.getValue().get(i);
-				cartaDeCampo.aplicarBuff(cartaMonstruo,this);
-			}
-		}
-
+		for(CartaMonstruo i : cartasMonstruo )
+			cartaDeCampo.aplicarBuff(i,this);
 
 	}
 
 
 	public void jugarCartaMagica(CartaDeUtilidad carta) {
-		
-		cartasTrampaOMagicas.put(carta.getNombre(),carta);
+		cartasTrampaOMagicas.add(carta);
 
 	}
 
 
 	public void jugarCartaTrampa(CartaDeUtilidad carta,Lado esteLado,Lado ladoEnemigo){
 		carta.activarEfecto(esteLado,ladoEnemigo);
-		cartasTrampaOMagicas.put(carta.getNombre(),carta);
+		cartasTrampaOMagicas.add(carta);
 
 	}
 
-	public CartaDeUtilidad seleccionarCartaDeUtilidad(String nombreDeLaCarta){
+	public boolean verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad){
+		return cartasTrampaOMagicas.contains(cartaDeUtilidad);
 
-		return cartasTrampaOMagicas.get(nombreDeLaCarta);
 	}
 
-	public CartaMonstruo seleccionarCartaMonstruo(String nombreDeLaCarta){
+	public boolean verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo){
+		return cartasMonstruo.contains(cartaMonstruo);
 
-		List<CartaMonstruo> cartas = cartasMonstruo.get(nombreDeLaCarta);
-		if (cartas.isEmpty())
-			cartasMonstruo.remove(nombreDeLaCarta);
-		return cartas.get(0);
+	}
+
+
+	public void removerCartaMonstruo(CartaMonstruo cartaMonstruo)throws LadoNoContieneCartaException{
+		if (!cartasMonstruo.remove(cartaMonstruo))
+			throw new LadoNoContieneCartaException();
+
+	}
+
+	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
+		if (!cartasMonstruo.remove(cartaDeUtilidad))
+			throw new LadoNoContieneCartaException();
+
 	}
 
 	public void mandarCastasMonstruosAlCementerio() {
-
-		for(Map.Entry<String,List<CartaMonstruo>> entry : cartasMonstruo.entrySet() ){
-			for (int i = 0; i < entry.getValue().size() ; i++)
-				entry.getValue().get(i).estaMuerta();
-		}
+		for (CartaMonstruo i: cartasMonstruo)
+			i.estaMuerta();
 
 
 	}
@@ -109,9 +102,9 @@ public class Lado {
 
 	public boolean activarTrampaConAtaque(CartaMonstruo miCarta) {
 		boolean pasador = false;
-		for (Map.Entry<String, CartaDeUtilidad> entry : cartasTrampaOMagicas.entrySet()){
-			cartasTrampaOMagicas.remove(entry);
-			pasador = entry.getValue().activarTrampaDeAtaque(this.jugador, miCarta);
+		for (CartaDeUtilidad i: cartasTrampaOMagicas){
+			if (i instanceof CartaTrampa)
+				pasador = i.activarTrampaDeAtaque(this.jugador, miCarta);
 		}
 		return pasador;
 
@@ -133,14 +126,9 @@ public class Lado {
 	public void matarMenorAtaque() {
 		CartaMonstruo nula = new CartaNula();
 		CartaMonstruo cartaMenorAtaque = nula;
-		for(Map.Entry<String,List<CartaMonstruo>> entry : cartasMonstruo.entrySet() ){
-			for (int i = 0; i < entry.getValue().size() ; i++)
-				if(cartaMenorAtaque.getAtaque() >= entry.getValue().get(i).getAtaque()) {
-					cartaMenorAtaque = entry.getValue().get(i);
-				}
-		}
-		if(cartaMenorAtaque == nula) {
-			return;
+		for (CartaMonstruo i : cartasMonstruo) {
+			if(cartaMenorAtaque.getAtaque() >= i.getAtaque())
+				cartaMenorAtaque = i;
 		}
 		cartaMenorAtaque.estaMuerta();
 	}
@@ -153,6 +141,9 @@ public class Lado {
 	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
 		if (fusion){
 			CartaDeFusion cartaDeFusion = new CartaDeFusion(mazoDeFusiones);
+			removerCartaMonstruo(primerSacrificio);
+			removerCartaMonstruo(segundoSacrificio);
+			removerCartaMonstruo(tercerSacrificio);
 			cartaDeFusion.agregarSacrificio(primerSacrificio);
 			cartaDeFusion.agregarSacrificio(segundoSacrificio);
 			cartaDeFusion.agregarSacrificio(tercerSacrificio);
@@ -170,5 +161,6 @@ public class Lado {
 		return jugador;
 
 	}
+
 
 }

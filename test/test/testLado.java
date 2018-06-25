@@ -15,7 +15,7 @@ public class testLado {
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaMonstruo(carta);
         carta.enPosicion(new PosicionAtaque());
-        assertEquals(carta,lado.seleccionarCartaMonstruo(carta.getNombre()));
+        assertEquals(carta,lado.verificarSiCartaMonstruoEstaEnLado(carta));
 
 
     }
@@ -27,7 +27,7 @@ public class testLado {
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaMagica(cartaMagica);
         cartaMagica.colocarEn(new EstadoBocaAbajo());
-        assertEquals(cartaMagica,lado.seleccionarCartaDeUtilidad("olla de la codicia"));
+        assertEquals(cartaMagica,lado.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica));
 
 
     }
@@ -37,7 +37,7 @@ public class testLado {
         CartaTrampa cartaTrampa = new CartaTrampaCilindroMagico("cilindro");
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaTrampa(cartaTrampa,lado,new Lado(new Mazo()));
-        assertEquals(cartaTrampa,lado.seleccionarCartaDeUtilidad("cilindro"));
+        assertEquals(cartaTrampa,lado.verificarSiCartaDeUtilidadEstaEnLado(cartaTrampa));
 
 
     }
@@ -53,8 +53,8 @@ public class testLado {
         CartaMonstruo carta = new AcechadorDelCraneo();
         lado.jugarCartaMonstruo(carta);
         carta.enPosicion(new PosicionAtaque());
-        assertEquals(3200,lado.seleccionarCartaMonstruo("Dragon Blanco De Ojos Azules").getAtaque());
-        assertEquals(1100,lado.seleccionarCartaMonstruo("Acechador Del Craneo").getAtaque());
+        assertEquals(3200,carta2.getAtaque());
+        assertEquals(1100,carta.getAtaque());
 
 
     }

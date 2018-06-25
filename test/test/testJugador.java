@@ -18,8 +18,8 @@ public class testJugador {
         jugador.asignarLados(lado,ladoEnemigo);
         CartaMonstruo cartaMonstruo1 = new AbismoReluciente();
         jugador.darCarta(cartaMonstruo1);
-        jugador.jugarCartaMonstruoEnLado("Abismo Reluciente");
-        assertEquals(cartaMonstruo1,jugador.seleccionarCartaMonstruoDeMiLado("Abismo Reluciente"));
+        jugador.jugarCartaMonstruoEnLado(cartaMonstruo1);
+        assertEquals(true,jugador.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo1));
 
     }
 
@@ -31,9 +31,9 @@ public class testJugador {
         jugador.asignarLados(lado,ladoEnemigo);
         CartaMagica cartaMagica = new OllaDeLaCodicia("olla");
         jugador.darCarta(cartaMagica);
-        jugador.jugarCartaMagicaEnLado("olla");
+        jugador.jugarCartaMagicaEnLado(cartaMagica);
         jugador.colocarEnEstadoBocaAbajo(cartaMagica);
-        assertEquals(cartaMagica,jugador.seleccionarCartaDeUtilidadDeMiLado("olla"));
+        assertEquals(cartaMagica,jugador.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica));
 
     }
 
@@ -50,10 +50,10 @@ public class testJugador {
         jugador.darCarta(cartaMonstruo);
         jugador.darCarta(cartaMonstruo1);
         jugador.darCarta(cartaMonstruo3);
-        jugador.jugarCartaMonstruoEnLado("Acechador Del Craneo");
-        jugador.jugarCartaMonstruoEnLado("Abismo Reluciente");
-        jugador.jugarCartaEnLadoConDosSacrificio("Dragon Blanco De Ojos Azules","Acechador Del Craneo", "Abismo Reluciente");
-        assertEquals(cartaMonstruo3,jugador.seleccionarCartaMonstruoDeMiLado("Dragon Blanco De Ojos Azules"));
+        jugador.jugarCartaMonstruoEnLado(cartaMonstruo);
+        jugador.jugarCartaMonstruoEnLado(cartaMonstruo1);
+        jugador.jugarCartaEnLadoConDosSacrificio(cartaMonstruo3,cartaMonstruo1, cartaMonstruo);
+        assertEquals(true,jugador.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo3));
 
     }
 
@@ -66,11 +66,11 @@ public class testJugador {
         CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
         CartaMonstruo cartaMonstruo1 = new AbismoReluciente();
         jugador.darCarta(cartaMonstruo);
-        jugador.jugarCartaMonstruoEnLado("Acechador Del Craneo");
+        jugador.jugarCartaMonstruoEnLado(cartaMonstruo1);
         cartaMonstruo1.enPosicion(new PosicionAtaque());
         ladoEnemigo.jugarCartaMonstruo(cartaMonstruo1);
         cartaMonstruo.enPosicion(new PosicionAtaque());
-        jugador.atacarAMonstruo("Acechador Del Craneo","Abismo Reluciente");
+        jugador.atacarAMonstruo(cartaMonstruo,cartaMonstruo1);
         int vidaEsperada = 7100;
         assertEquals(vidaEsperada, jugador.getPuntosDeVida(),DELTA);
 
