@@ -19,38 +19,44 @@ public class Jugador {
         this.ladoEnemigo = ladoEnemigo;
     }
 
-	public void posicionarCartaMonstruoEnLado(CartaMonstruo carta ) {// Excepciones incorrecta cantidad de sacrificios.
-		this.lado.jugarCartaMonstruo(carta);
+	public void jugarCartaMonstruoEnLado(String carta ) {// Excepciones incorrecta cantidad de sacrificios.
+		CartaMonstruo unaCarta = (CartaMonstruo) seleccionarCartaDeLaMano(carta);
+		this.lado.jugarCartaMonstruo(unaCarta);
 
 	}
 
-	public void posicionarCartaMagicaEnLado(CartaMagica carta) {
-		this.lado.jugarCartaMagica(carta);
+	public void jugarCartaMagicaEnLado(String carta) {
+		CartaMagica unaCarta = (CartaMagica) seleccionarCartaDeLaMano(carta);
+		this.lado.jugarCartaMagica(unaCarta);
 
 	}
 
-	public void posicionarCartaTrampaEnLado(CartaTrampa carta) {
-		this.lado.jugarCartaTrampa(carta,lado,ladoEnemigo);
+	public void jugarCartaTrampaEnLado(String carta) {
+		CartaTrampa unaCarta = (CartaTrampa) seleccionarCartaDeLaMano(carta);
+		this.lado.jugarCartaTrampa(unaCarta,lado,ladoEnemigo);
 
 	}
 
 
-	public void posicionarCartaEnLadoConUnSacrificio(CartaMonstruo monstruo, String nombreDelSacrificio){
-		lado.mandarCartaMonstruoAlCementerio(nombreDelSacrificio);
-		this.lado.jugarCartaMonstruo(monstruo);
+	public void jugarCartaEnLadoConUnSacrificio(String monstruo, String sacrificio){
+		CartaMonstruo unaCarta = (CartaMonstruo) seleccionarCartaDeLaMano(monstruo);
+		seleccionarCartaMonstruoDeMiLado(sacrificio).estaMuerta();
+		this.lado.jugarCartaMonstruo(unaCarta);
 	}
 
-	public void posicionarCartaEnLadoConDosSacrificio(CartaMonstruo monstruo, String nombreDelSegundoSacrificio, String nombreDelPrimerSacrificio){
-		lado.mandarCartaMonstruoAlCementerio(nombreDelPrimerSacrificio);
-		lado.mandarCartaMonstruoAlCementerio(nombreDelSegundoSacrificio);
-		this.lado.jugarCartaMonstruo(monstruo);
+	public void jugarCartaEnLadoConDosSacrificio(String monstruo, String segundoSacrificio, String primerSacrificio){
+		CartaMonstruo unaCarta = (CartaMonstruo) seleccionarCartaDeLaMano(monstruo);
+		seleccionarCartaMonstruoDeMiLado(primerSacrificio).estaMuerta();
+		seleccionarCartaMonstruoDeMiLado(segundoSacrificio).estaMuerta();
+		this.lado.jugarCartaMonstruo(unaCarta);
 	}
 
-	public void posicionarCartaEnLadoConTresSacrificio(CartaMonstruo monstruo, String nombreDelPrimerSacrificio, String nombreDelSegundoSacrificio, String nombreDelTercerSacrificio){
-		lado.mandarCartaMonstruoAlCementerio(nombreDelPrimerSacrificio);
-		lado.mandarCartaMonstruoAlCementerio(nombreDelSegundoSacrificio);
-		lado.mandarCartaMonstruoAlCementerio(nombreDelTercerSacrificio);
-		this.lado.jugarCartaMonstruo(monstruo);
+	public void jugarCartaEnLadoConTresSacrificio(String monstruo, String primerSacrificio, String segundoSacrificio, String tercerSacrificio){
+		CartaMonstruo unaCarta = (CartaMonstruo) seleccionarCartaDeLaMano(monstruo);
+		seleccionarCartaMonstruoDeMiLado(primerSacrificio).estaMuerta();
+		seleccionarCartaMonstruoDeMiLado(segundoSacrificio).estaMuerta();
+		seleccionarCartaMonstruoDeMiLado(tercerSacrificio).estaMuerta();
+		this.lado.jugarCartaMonstruo(unaCarta);
 	}
 
 
@@ -81,10 +87,6 @@ public class Jugador {
 
 	public Carta seleccionarCartaDeLaMano(String nombreCarta) {
 		return this.mano.devolverCarta(nombreCarta);
-	}
-
-	public CartaMonstruo seleccionarCartaDeMiLado(String nombreCarta) {
-		return this.lado.seleccionarCartaMonstruo(nombreCarta);
 
 	}
 
@@ -92,9 +94,9 @@ public class Jugador {
 		return lado.seleccionarCartaDeUtilidad(nombreCarta);
 	}
 
-	public Carta seleccionarCartaEnCementerio(String nombreCarta){
-		return this.lado.seleccionarCartaEnCementerio(nombreCarta);
 
+	public CartaMonstruo seleccionarCartaMonstruoDeMiLado(String nombreCarta){
+		return lado.seleccionarCartaMonstruo(nombreCarta);
 	}
 
 	public CartaMonstruo seleccionarCartaDelOtroLado(String nombreCarta){
@@ -102,83 +104,60 @@ public class Jugador {
 
     }
 
-	public CartaDeUtilidad seleccionarCartaDeUtilidadDelOtroLado(String nombreCarta){
-		return ladoEnemigo.seleccionarCartaDeUtilidad(nombreCarta);
+	public void darCarta(Carta carta) {
+		mano.agregarCarta(carta);
 
 	}
-
 
 
 	public void recibeDanio(int ataque) {
 		this.puntosDeVida = this.puntosDeVida - ataque;
-	}
-
-
-	public void aplicarDanioDirecto(int ataque) {
-	    ladoEnemigo.notificarDanio(ataque);
 
 	}
+
+
 
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
-        CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
-        if(ladoEnemigo.activarTrampaConAtaque(miCarta) == true) {
+		CartaMonstruo cartaMonstruo = seleccionarCartaMonstruoDeMiLado(cartaSeleccionada);
+        if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruo) == true) {
         	return;
         }
-	    miCarta.atacarA(jugador);
+		cartaMonstruo.atacarA(jugador);
 
 	}
 
 	public void atacarAMonstruo(String cartaSeleccionada, String cartaEnemiga){
-	    CartaMonstruo miCarta = seleccionarCartaDeMiLado(cartaSeleccionada);
-	    CartaMonstruo cartaDelEnemigo = seleccionarCartaDelOtroLado(cartaEnemiga);
-		int resultado = miCarta.compararAtaqueDeMonstruo(cartaDelEnemigo);
-		resolverConflicto(resultado, cartaSeleccionada, cartaEnemiga);
+		CartaMonstruo cartaMonstruo = seleccionarCartaMonstruoDeMiLado(cartaSeleccionada);
+		int resultado = cartaMonstruo.atacarAMonstruo(seleccionarCartaDelOtroLado(cartaEnemiga));
+		resolverConflicto(resultado, seleccionarCartaDelOtroLado(cartaEnemiga));
 
 	}
 
 
-	public void resolverConflicto(int resultadoDelConflicto,String cartaAtacante,String cartaDefendiente) {
+	private void resolverConflicto(int resultadoDelConflicto,CartaMonstruo cartaDefendiente) {
         if (resultadoDelConflicto < 0) {
-        	if (!(ladoEnemigo.seleccionarCartaMonstruo(cartaDefendiente)).posicionDeDefensa())
-            	lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
             recibeDanio(-resultadoDelConflicto);
         }
 
         if (resultadoDelConflicto > 0) {
-            if (!(ladoEnemigo.seleccionarCartaMonstruo(cartaDefendiente)).posicionDeDefensa())
+            if (!cartaDefendiente.posicionDeDefensa())
                 ladoEnemigo.notificarDanio(resultadoDelConflicto);
 
-        ladoEnemigo.mandarCartaMonstruoAlCementerio(cartaDefendiente);
         }
 
-
-
-        if (resultadoDelConflicto == 0) {
-        	if (!(ladoEnemigo.seleccionarCartaMonstruo(cartaDefendiente)).posicionDeDefensa()){
-            	lado.mandarCartaMonstruoAlCementerio(cartaAtacante);
-           		ladoEnemigo.mandarCartaMonstruoAlCementerio(cartaDefendiente);
-           	}
-        }
     }
 
 
-	public void darCarta(Carta carta) {
-	    mano.agregarCarta(carta);
-	}
 
 	public double getPuntosDeVida() {
 		return this.puntosDeVida;
+
 	}
 
 
-	public boolean extraerCartasDelMazo(int cantidad){
-		Stack<Carta> cartas = lado.extraerDelMazo(cantidad);
-		if(cartas.empty()) {
-			return false;
-		}
-		for (int i = 0; i < cantidad ; i++)
-			mano.agregarCarta(cartas.pop());
-		return true;
+	public void extraerCartasDelMazo(){
+		Carta carta = lado.extraerDelMazo();
+		mano.agregarCarta(carta);
 	}
 
 

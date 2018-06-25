@@ -3,22 +3,17 @@ package modelo;
 public class SinPosicion implements PosicionDeCarta {
 
     @Override
-    public int recibirAtaque(int ataqueDelDefendiente,int defensaDelDefendiente, int ataqueDelAtacante){
+    public int recibirAtaque(int ataqueDelDefendiente,int defensaDelDefendiente, int ataqueDelAtacante, CartaMonstruo cartaDefendiente, CartaMonstruo cartaAtacante) throws CartaSinPosicionNoPuedeAtacar {
 
-        return 0;//excepcion carta no posicionada
+        throw new CartaSinPosicionNoPuedeAtacar();
 
 
-    }
-    @Override
-    public boolean estaDefendiendo(){
-        return false;//excepcion carta no posicionada
     }
 
     @Override
-    public boolean estaAtacando(){
-        return false;//excepcion carta no posicionada
+    public boolean posicionDeDefensa() {
+        return false;
     }
-
 
 
 }

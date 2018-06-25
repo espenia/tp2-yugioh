@@ -1,46 +1,61 @@
 package test;
 
+import modelo.*;
+import modelo.Cartas.*;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+
 public class testLado {
 
-/*
+
     @Test
     public void testJugarMonstruo(){
-        Mazo mazo = new Mazo();
-        Lado lado = new Lado(mazo);
-        mazo.agregarCarta(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
-        Stack<Carta> cartas = lado.extraerDelMazo(1);
-        Carta carta = cartas.pop();
-        lado.jugarCartaMonstruo((CartaMonstruo)carta,"Boca Arriba","Ataque");
-        assertEquals(carta,lado.seleccionarCartaMonstruo("Dragon negro de Ojos Rojos"));
+        CartaMonstruo carta = new DragonBlancoDeOjosAzules();
+        Lado lado = new Lado(new Mazo());
+        lado.jugarCartaMonstruo(carta);
+        carta.enPosicion(new PosicionAtaque());
+        assertEquals(carta,lado.seleccionarCartaMonstruo(carta.getNombre()));
+
+
+    }
+
+
+    @Test
+    public void testJugarCartaMagicaBocaAbajo(){
+        CartaMagica cartaMagica = new OllaDeLaCodicia("olla de la codicia");
+        Lado lado = new Lado(new Mazo());
+        lado.jugarCartaMagica(cartaMagica);
+        cartaMagica.colocarEn(new EstadoBocaAbajo());
+        assertEquals(cartaMagica,lado.seleccionarCartaDeUtilidad("olla de la codicia"));
 
 
     }
 
     @Test
-    public void testJugarMonstruoEnModoAtaqueBocaArriba(){
-        Mazo mazo = new Mazo();
-        mazo.agregarCarta(new CartaMonstruo("Dragon negro de Ojos Rojos",2400,2700));
-        Lado lado = new Lado(mazo);
-        Stack<Carta> cartas = lado.extraerDelMazo(1);
-        Carta carta = cartas.pop();
-        lado.jugarCartaMonstruo((CartaMonstruo)carta,"Boca Arriba","Ataque");
-        assertEquals(false,lado.seleccionarCartaMonstruo("Dragon negro de Ojos Rojos").verificarSiEstaBocaAbajo());
-        assertEquals(true,lado.seleccionarCartaMonstruo("Dragon negro de Ojos Rojos").verificarSiEstaBocaArriba());
+    public void testJugarCartaTrampa(){
+        CartaTrampa cartaTrampa = new CartaTrampaCilindroMagico("cilindro");
+        Lado lado = new Lado(new Mazo());
+        lado.jugarCartaTrampa(cartaTrampa,lado,new Lado(new Mazo()));
+        assertEquals(cartaTrampa,lado.seleccionarCartaDeUtilidad("cilindro"));
 
 
     }
 
     @Test
-    public void testJugarCartaMagicaBocaArriba(){
-        Mazo mazo = new Mazo();
-        mazo.agregarCarta(new CartaMagica("Raigeki", new SinEfecto()));
-        Lado lado = new Lado(mazo);
-        Stack<Carta> cartas = lado.extraerDelMazo(1);
-        Carta carta = cartas.pop();
-        lado.jugarCartaMagica((CartaDeUtilidad)carta,"Boca Abajo");
-        assertEquals(carta,lado.seleccionarCartaDeUtilidad(carta.getNombre()));
+    public void testJugarCartaDeCampo(){
+        CartaDeCampo cartaDeCampo = new Wasteland("wasteland");
+        Lado lado = new Lado(new Mazo());
+        CartaMonstruo carta2 = new DragonBlancoDeOjosAzules();
+        lado.jugarCartaMonstruo(carta2);
+        carta2.enPosicion(new PosicionAtaque());
+        lado.jugarCartaDeCampo(cartaDeCampo);
+        CartaMonstruo carta = new AcechadorDelCraneo();
+        lado.jugarCartaMonstruo(carta);
+        carta.enPosicion(new PosicionAtaque());
+        assertEquals(3200,lado.seleccionarCartaMonstruo("Dragon Blanco De Ojos Azules").getAtaque());
+        assertEquals(1100,lado.seleccionarCartaMonstruo("Acechador Del Craneo").getAtaque());
+
 
     }
-*/
-
 }

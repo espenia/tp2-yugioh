@@ -3,22 +3,20 @@ package modelo;
 public class PosicionDefensa implements PosicionDeCarta {
 
     @Override
-    public int recibirAtaque(int ataqueDelDefendiente,int defensaDelDefendiente, int ataqueDelAtacante){
+    public int recibirAtaque(int ataqueDelDefendiente,int defensaDelDefendiente, int ataqueDelAtacante, CartaMonstruo cartaDefendiente, CartaMonstruo cartaAtacante){
 
-        return ataqueDelAtacante - defensaDelDefendiente;
+        int resultado = ataqueDelAtacante - defensaDelDefendiente;
+        if (resultado > 0)
+            cartaDefendiente.estaMuerta();
+
+        return resultado;
 
     }
 
     @Override
-    public boolean estaDefendiendo(){
+    public boolean posicionDeDefensa() {
         return true;
     }
-
-    @Override
-    public boolean estaAtacando(){
-        return false;
-    }
-
 
 
 }

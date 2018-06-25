@@ -11,7 +11,6 @@ public class Lado {
 	private Map<String, CartaMonstruo> cartasMonstruo;
 	private Mazo mazo;
 	private Mazo mazoDeFusiones;
-	private Map<String, Carta> cementerio;
 	private Jugador jugador;
 	private CartaDeCampo cartaDeCampo;
 	private boolean fusion;
@@ -21,7 +20,6 @@ public class Lado {
 	public Lado(Mazo unMazo){
 		cartasMonstruo = new HashMap<>();
 		cartasTrampaOMagicas = new HashMap<>();
-		cementerio = new HashMap<>();
 		mazo = unMazo;
 		cartaDeCampo = new SinCartaDeCampo("sincarta");
 		fusion = false;
@@ -35,8 +33,8 @@ public class Lado {
 	}
 
 
-	public Stack<Carta> extraerDelMazo(int cantidad){
-		return mazo.extraer(cantidad);
+	public Carta extraerDelMazo(){
+		return mazo.extraerCarta();
 
 	}
 
@@ -82,41 +80,26 @@ public class Lado {
 		return cartasMonstruo.get(nombreDeLaCarta);
 	}
 
+	public void mandarCastasMonstruosAlCementerio() {
+
+		for(Map.Entry<String,CartaMonstruo> entry : cartasMonstruo.entrySet() ){
+			entry.getValue().estaMuerta();
+
+		}
+
+
+	}
+
     public void notificarDanio(int resultadoDelConflicto){
 	    jugador.recibeDanio(resultadoDelConflicto);
 
-    }
-
-	public void mandarCartaMonstruoAlCementerio(String nombreDeLaCarta){
-	    CartaMonstruo carta = cartasMonstruo.remove(nombreDeLaCarta);
-	    cementerio.put(nombreDeLaCarta,carta);
-
-    }
-
-    public void mandarCartaDeUtilidadAlCementerio(String nombreDeLaCarta){
-        CartaDeUtilidad carta = cartasTrampaOMagicas.remove(nombreDeLaCarta);
-        cementerio.put(nombreDeLaCarta,carta);
-
-    }
-
-    public Carta seleccionarCartaEnCementerio(String nombreDeLaCarta){
-	    return cementerio.get(nombreDeLaCarta);
-
-    }
-    
-    public void mandarCastasMonstruosAlCementerio() {
-    	
-    	for (Map.Entry<String, CartaMonstruo> entry : cartasMonstruo.entrySet())
-    		this.mandarCartaMonstruoAlCementerio(entry.getKey());
-
-	
     }
 
 
 	public boolean activarTrampaConAtaque(CartaMonstruo miCarta) {
 		boolean pasador = false;
 		for (Map.Entry<String, CartaDeUtilidad> entry : cartasTrampaOMagicas.entrySet()){
-			mandarCartaDeUtilidadAlCementerio(entry.getValue().getNombre());
+			cartasTrampaOMagicas.remove(entry);
 			pasador = entry.getValue().activarTrampaDeAtaque(this.jugador, miCarta);
 		}
 		return pasador;
@@ -125,12 +108,9 @@ public class Lado {
 	}
 
 
-	public Jugador obtenerJugador() {
-		return jugador;
-	}
-
 	public void darMazo(Mazo unMazo) {
 		this.mazo = unMazo;
+
 	}
 
 	public int cantidadDeCartasEnMazo() {
@@ -150,11 +130,12 @@ public class Lado {
 		if(cartaMenorAtaque == nula) {
 			return;
 		}
-		this.mandarCartaMonstruoAlCementerio(cartaMenorAtaque.getNombre());
+		cartaMenorAtaque.estaMuerta();
 	}
 
 	public void habilitarFusion() {
 		fusion = true;
+
 	}
 
 	public void fusionDeTresMonstruos(String primerSacrificio, String segundoSacrificio, String tercerSacrificio){
@@ -174,4 +155,10 @@ public class Lado {
 	public void darMazoDeFusiones(Mazo mazo) {
 		mazoDeFusiones = mazo;
 	}
+
+	public Jugador obtenerJugador() {
+		return jugador;
+
+	}
+
 }

@@ -15,8 +15,9 @@ public class OllaDeLaCodicia extends CartaMagica {
 
     @Override
     public void activarEfecto(Lado lado, Lado ladoEnemigo) {
-    	Stack <Carta> auxiliar = lado.extraerDelMazo(2);
-    	for(int i = 0; i < 2; i++)
-    		lado.obtenerJugador().darCarta(auxiliar.pop());
+    	for ( int i = 0 ; i < 2; i++){
+            Carta auxiliar = lado.extraerDelMazo();
+            lado.obtenerJugador().darCarta(auxiliar);
+        }
     }
 }

@@ -16,11 +16,13 @@ public class Turno {
 
 
     public void faseIncial(){
-        if(jugador.extraerCartasDelMazo(1) == false){
+        if(jugador.cantidadDeCartasEnMazo() == 0){
         	juego.gano(jugador.ladoEnemigo.obtenerJugador());
         	juego.perdio(jugador);
         	juego.terminarJuego();
         }
+        else jugador.extraerCartasDelMazo();
+
         if(jugador.tieneExodiaEnMano()) {
             juego.gano(jugador);
         	juego.perdio(jugador.ladoEnemigo.obtenerJugador());

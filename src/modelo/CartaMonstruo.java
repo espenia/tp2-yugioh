@@ -8,10 +8,10 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
     private int ataque;
     private EstadoDeCarta estado;
     private PosicionDeCarta posicion;
+    private VidaDeCarta conVida;
     private int estrellas;
-    //private Efecto efecto;
 
-    //public Monstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, Efecto efecto){
+
     public CartaMonstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, int estrellasDelMonstruo){
         //estrellas = numeroDeEstrellas;
         this.nombre = nombreDelMonstruo;
@@ -20,9 +20,7 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
         this.estrellas = estrellasDelMonstruo;
         estado = new SinEstado();
         posicion = new SinPosicion();
-
-        //this.efecto = efecto;
-        //efecto.setEfecto(this);
+        conVida = new Vivo();
 
     }
 
@@ -32,29 +30,25 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     }
 
-    public int getAtaque() {
-        return ataque;
-
-    }
-
-    public int getDefensa(){
-        return defensa;
-    }
 
     public void aplicarBuff(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
         this.defensa += nuevaDefensa;
         this.ataque += nuevoAtaque;
+
     }
 
-    public int compararAtaqueDeMonstruo(CartaMonstruo cartaMonstruo){
+    public int atacarAMonstruo(CartaMonstruo cartaMonstruo) throws CartaMuertaNoPuedeAtacarException {
         estado = new EstadoBocaArriba();
         posicion = new PosicionAtaque();
-        return cartaMonstruo.compararAtaque(this.ataque);
+        if (cartaMonstruo.estadoMuerto())
+            throw new CartaMuertaNoPuedeAtacarException();
+        return cartaMonstruo.recibeAtaque(this.ataque,this);
     }
 
-    private int compararAtaque(int unAtaque){
+    private int recibeAtaque(int unAtaque, CartaMonstruo carta){
         estado = new EstadoBocaArriba();
-        return posicion.recibirAtaque(ataque, defensa, unAtaque);
+        int resultado = posicion.recibirAtaque(ataque, defensa, unAtaque, this, carta);
+        return resultado;
 
     }
 
@@ -83,15 +77,27 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
     }
 
 
-    public boolean posicionDeDefensa(){
-        return posicion.estaDefendiendo();
-
-
+    public void estaMuerta() {
+        conVida = new Muerto();
     }
 
-    /*
-	@Override
-	public void jugar(Lado lado, String posicionDeLaCarta, String modoDeLaCarta) {
-		lado.jugarCartaMonstruo(this, posicionDeLaCarta, modoDeLaCarta);
-	}*/
+
+    public boolean posicionDeDefensa() {
+        return posicion.posicionDeDefensa();
+    }
+
+
+    public boolean estadoMuerto() {
+        return conVida.estadoMuerto();
+    }
+
+
+    public int getAtaque() {
+        return ataque;
+    }
+
+    public int getDefensa() {
+        return defensa;
+    }
+
 }
