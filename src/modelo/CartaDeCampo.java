@@ -4,7 +4,7 @@ public abstract class CartaDeCampo implements Carta{
 
     private Lado lado;
     private Lado ladoEnemigo;
-    private int aux = 1;
+    private boolean aux = false;
     private String nombre;
 
     public CartaDeCampo(String nombreDeCarta){
@@ -30,9 +30,9 @@ public abstract class CartaDeCampo implements Carta{
     }
 
     public void asignarLado(Lado unLado){
-        if(aux == 1) {
+        if(aux == false) {
             lado = unLado;
-            aux+=1;
+            aux = true;
         }
         else ladoEnemigo = unLado;
     }

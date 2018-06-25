@@ -21,13 +21,6 @@ public abstract class CartaDeUtilidad implements Carta {
         estado = unEstado;
     }
 
-    public boolean verificarSiEstaBocaArriba(){
-        return estado.bocaArriba();
-    }
-
-    public boolean verificarSiEstaBocaAbajo(){
-        return estado.bocaAbajo();
-    }
 
 	public boolean activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
 		return false;

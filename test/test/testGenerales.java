@@ -483,7 +483,7 @@ public class testGenerales {
         assertEquals(carlos,juego.getGanador());
 
     }
-/*
+
     @Test
     public void test22InvocarTresDragonesBlancosDeOjosAzulesYLuegoSacrificarlosInvocaAlDragonBlancoDefinitivoDeOjosAzules(){
         Jugador juan = new Jugador();
@@ -518,7 +518,7 @@ public class testGenerales {
         assertEquals(cartaPrueba3,juan.seleccionarCartaMonstruoDeMiLado("Dragon Blanco De Ojos Azules"));
 
     }
-
+/*
     @Test
     public void test23InsectoComeHombreDestruyeUnMonstruoQueLoAtacaCuandoEstaBocaAbajo(){
         Jugador juan = new Jugador();

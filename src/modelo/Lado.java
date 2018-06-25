@@ -1,14 +1,13 @@
 package modelo;
 
 import modelo.Cartas.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+
+import java.util.*;
 
 public class Lado {
 
 	private Map<String, CartaDeUtilidad> cartasTrampaOMagicas;
-	private Map<String, CartaMonstruo> cartasMonstruo;
+	private Map<String, List<CartaMonstruo>> cartasMonstruo;
 	private Mazo mazo;
 	private Mazo mazoDeFusiones;
 	private Jugador jugador;
@@ -40,7 +39,14 @@ public class Lado {
 
 	public void jugarCartaMonstruo(CartaMonstruo carta) {
 		cartaDeCampo.aplicarBuff(carta,this);
-		cartasMonstruo.put(carta.getNombre(),carta);
+		List<CartaMonstruo> lista = new ArrayList<>();
+		if (cartasMonstruo.containsKey(carta.getNombre())){
+			List <CartaMonstruo> cartas = cartasMonstruo.get(carta.getNombre());
+			for (int i = 0; i < cartas.size(); i++)
+				lista.add(cartas.get(i));
+		}
+		lista.add(carta);
+		cartasMonstruo.put(carta.getNombre(),lista);
 
 	}
 
@@ -48,9 +54,11 @@ public class Lado {
 		cartaDeCampo = carta;
 		CartaMonstruo cartaMonstruo;
 		cartaDeCampo.asignarLado(this);
-		for (Map.Entry<String,CartaMonstruo> entry : cartasMonstruo.entrySet()){
-			cartaMonstruo = entry.getValue();
-			cartaDeCampo.aplicarBuff(cartaMonstruo,this);
+		for(Map.Entry<String,List<CartaMonstruo>> entry : cartasMonstruo.entrySet() ){
+			for (int i = 0; i < entry.getValue().size() ; i++){
+				cartaMonstruo = entry.getValue().get(i);
+				cartaDeCampo.aplicarBuff(cartaMonstruo,this);
+			}
 		}
 
 
@@ -77,14 +85,17 @@ public class Lado {
 
 	public CartaMonstruo seleccionarCartaMonstruo(String nombreDeLaCarta){
 
-		return cartasMonstruo.get(nombreDeLaCarta);
+		List<CartaMonstruo> cartas = cartasMonstruo.get(nombreDeLaCarta);
+		if (cartas.isEmpty())
+			cartasMonstruo.remove(nombreDeLaCarta);
+		return cartas.get(0);
 	}
 
 	public void mandarCastasMonstruosAlCementerio() {
 
-		for(Map.Entry<String,CartaMonstruo> entry : cartasMonstruo.entrySet() ){
-			entry.getValue().estaMuerta();
-
+		for(Map.Entry<String,List<CartaMonstruo>> entry : cartasMonstruo.entrySet() ){
+			for (int i = 0; i < entry.getValue().size() ; i++)
+				entry.getValue().get(i).estaMuerta();
 		}
 
 
@@ -122,10 +133,11 @@ public class Lado {
 	public void matarMenorAtaque() {
 		CartaMonstruo nula = new CartaNula();
 		CartaMonstruo cartaMenorAtaque = nula;
-		for (Map.Entry<String, CartaMonstruo> entry : cartasMonstruo.entrySet()){
-			if(cartaMenorAtaque.getAtaque() >= entry.getValue().getAtaque()) {
-				cartaMenorAtaque = entry.getValue();
-			}
+		for(Map.Entry<String,List<CartaMonstruo>> entry : cartasMonstruo.entrySet() ){
+			for (int i = 0; i < entry.getValue().size() ; i++)
+				if(cartaMenorAtaque.getAtaque() >= entry.getValue().get(i).getAtaque()) {
+					cartaMenorAtaque = entry.getValue().get(i);
+				}
 		}
 		if(cartaMenorAtaque == nula) {
 			return;

@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.Stack;
 
+
 public class Jugador {
 	private int puntosDeVida;
 	private Mano mano;
@@ -9,7 +10,7 @@ public class Jugador {
 	private Lado lado;
 
 
-	public Jugador() { //Multiton 2
+	public Jugador() {
 		this.puntosDeVida = 8000;
 		mano = new Mano();
 	}

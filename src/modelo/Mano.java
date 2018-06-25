@@ -33,7 +33,4 @@ public class Mano {
 
     }
 
-    public int cantidadDeCartasEnMano() {
-        return manoDeCartas.size();
-    }
 }

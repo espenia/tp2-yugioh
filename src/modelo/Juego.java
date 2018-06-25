@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import modelo.Cartas.*;
 
-public class Juego {//esto quiza deberia ir en la parte grafica despues
+public class Juego {
 
     private Jugador primero;
     private Jugador segundo;
