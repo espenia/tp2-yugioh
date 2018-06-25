@@ -14,8 +14,13 @@ public class DragonBlancoDefinitivoDeOjosAzules extends CartaMonstruo {
         super(nombre, defensa, ataque, estrellas);
 
     }
-
+    @Override
     public boolean esFusionDe(List<CartaMonstruo> cartas){
+        for (CartaMonstruo i: cartas){
+            if (i.getNombre() != "Dragon Blanco De Ojos Azules")
+                return false;
+
+        }
         return true;
 
     }

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.util.Map;
 import java.util.Stack;
 
 
@@ -120,16 +121,22 @@ public class Jugador {
 
 	public void atacar(String cartaSeleccionada, Jugador jugador) {
 		CartaMonstruo cartaMonstruo = seleccionarCartaMonstruoDeMiLado(cartaSeleccionada);
-        if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruo) == true) {
-        	return;
-        }
+		activarTrampas(cartaMonstruo);
 		cartaMonstruo.atacarA(jugador);
 
 	}
 
+	private void activarTrampas(CartaMonstruo cartaMonstruo) {
+		if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruo) == true)
+			return;
+	}
+
 	public void atacarAMonstruo(String cartaSeleccionada, String cartaEnemiga){
 		CartaMonstruo cartaMonstruo = seleccionarCartaMonstruoDeMiLado(cartaSeleccionada);
-		int resultado = cartaMonstruo.atacarAMonstruo(seleccionarCartaDelOtroLado(cartaEnemiga));
+		CartaMonstruo cartaMonstruoEnemiga = seleccionarCartaDelOtroLado(cartaEnemiga);
+		if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruoEnemiga) == true)
+			return;
+		int resultado = cartaMonstruo.atacarAMonstruo(cartaMonstruoEnemiga);
 		resolverConflicto(resultado, seleccionarCartaDelOtroLado(cartaEnemiga));
 
 	}
@@ -185,13 +192,13 @@ public class Jugador {
 	}
 
 
-	public void fusionDeTresMonstruos(String primerSacrificio, String segundoSacrificio, String tercerSacrificio) {
+	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio) {
 		lado.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio);
 
 
 	}
 
-	public void darMazoDeFusiones(Mazo mazo) {
+	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
 		lado.darMazoDeFusiones(mazo);
 	}
 }

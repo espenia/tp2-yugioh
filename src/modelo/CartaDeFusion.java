@@ -2,15 +2,16 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 public class CartaDeFusion {
 
 
-    private Mazo mazoDeFusiones;
+    private Map<String,CartaMonstruo> mazoDeFusiones;
     private List<CartaMonstruo> sacrificios;
 
-    public CartaDeFusion(Mazo mazo){
+    public CartaDeFusion(Map<String,CartaMonstruo> mazo){
         mazoDeFusiones = mazo;
         sacrificios = new ArrayList<>();
     }
@@ -20,15 +21,15 @@ public class CartaDeFusion {
 
     }
 
-    public void realizarFusion() {
-       /* Stack<Carta> cartaMonstruos =mazoDeFusiones.extraer(mazoDeFusiones.cantidadDeCartas());
-        int i = cartaMonstruos.size();
-        for (int j = 0; j < i ; j++){
-            CartaMonstruo carta = (CartaMonstruo)cartaMonstruos.pop();
-            for (int k = 0; k < sacrificios.size(); k++){
-                //recorre k y verifica si cumple la condicion de fusion de j
+    public CartaMonstruo realizarFusion()  throws NoAdmiteFusion {
 
-            }*/
+        for (Map.Entry<String, CartaMonstruo> entry : mazoDeFusiones.entrySet()){
+            if (entry.getValue().esFusionDe(sacrificios))
+                return entry.getValue();
+
+        }
+
+        throw new NoAdmiteFusion();
 
     }
 }

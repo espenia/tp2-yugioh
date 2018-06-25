@@ -6,6 +6,8 @@ import modelo.Cartas.*;
 import org.junit.Test;
 import modelo.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 
@@ -496,8 +498,8 @@ public class testGenerales {
         juan.darCarta(cartaPrueba1);
         juan.darCarta(cartaPrueba2);
         juan.darCarta(cartaPrueba3);
-        Mazo mazo = new Mazo();
-        mazo.agregarCarta(cartaMonstruo);
+        Map<String ,CartaMonstruo> mazo = new HashMap<>();
+        mazo.put(cartaMonstruo.getNombre(),cartaMonstruo);
         juan.darMazoDeFusiones(mazo);
         juan.jugarCartaMonstruoEnLado("Dragon Blanco De Ojos Azules");
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
@@ -512,13 +514,13 @@ public class testGenerales {
         juan.darCarta(polimerizacion);
         juan.jugarCartaMagicaEnLado("Polimerizacion");
         juan.colocarEnEstadoBocaArriba(polimerizacion);
-        juan.fusionDeTresMonstruos("Dragon Blanco De Ojos Azules","Dragon Blanco De Ojos Azules","Dragon Blanco De Ojos Azules");
-        assertEquals(cartaPrueba1,juan.seleccionarCartaMonstruoDeMiLado("Dragon Blanco De Ojos Azules"));
-        assertEquals(cartaPrueba2,juan.seleccionarCartaMonstruoDeMiLado("Dragon Blanco De Ojos Azules"));
-        assertEquals(cartaPrueba3,juan.seleccionarCartaMonstruoDeMiLado("Dragon Blanco De Ojos Azules"));
+        juan.fusionDeTresMonstruos(cartaPrueba1,cartaPrueba2,cartaPrueba3);
+        assertEquals(cartaMonstruo,juan.seleccionarCartaMonstruoDeMiLado("Dragon Blanco Definitivo De Ojos Azules"));
+
+
 
     }
-/*
+
     @Test
     public void test23InsectoComeHombreDestruyeUnMonstruoQueLoAtacaCuandoEstaBocaAbajo(){
         Jugador juan = new Jugador();
@@ -536,7 +538,6 @@ public class testGenerales {
         carlos.colocarEnPosicionAtaque(cartaMonstruo2);
         carlos.atacarAMonstruo("Acechador Del Craneo","Insecto Come-Hombre");
         assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
-        assertEquals(8000,juan.getPuntosDeVida(),DELTA);
 
 
     }
@@ -561,10 +562,12 @@ public class testGenerales {
         juan.jugarCartaTrampaEnLado("Reinforcements");
         carlos.atacarAMonstruo("Acechador Del Craneo","Acechador Del Craneo");
         assertEquals(true,carlos.seleccionarCartaMonstruoDeMiLado("Acechador Del Craneo").estadoMuerto());
+        assertEquals(8000,juan.getPuntosDeVida(),DELTA);
         assertEquals(7600,carlos.getPuntosDeVida(),DELTA);
 
 
-    }*/
+
+    }
 
 
 }

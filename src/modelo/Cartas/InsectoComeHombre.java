@@ -17,7 +17,8 @@ public class InsectoComeHombre extends CartaMonstruo {
     }
 
     @Override
-    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
+    public void activarEfectoAlRecibirAtaque(CartaMonstruo cartaMonstruo){
+        cartaMonstruo.estaMuerta();
 
     }
 }

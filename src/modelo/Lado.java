@@ -9,7 +9,7 @@ public class Lado {
 	private Map<String, CartaDeUtilidad> cartasTrampaOMagicas;
 	private Map<String, List<CartaMonstruo>> cartasMonstruo;
 	private Mazo mazo;
-	private Mazo mazoDeFusiones;
+	private Map<String, CartaMonstruo> mazoDeFusiones;
 	private Jugador jugador;
 	private CartaDeCampo cartaDeCampo;
 	private boolean fusion;
@@ -22,7 +22,7 @@ public class Lado {
 		mazo = unMazo;
 		cartaDeCampo = new SinCartaDeCampo("sincarta");
 		fusion = false;
-		mazoDeFusiones = new Mazo();
+		mazoDeFusiones = new HashMap<>();
 	}
 
 
@@ -150,21 +150,19 @@ public class Lado {
 
 	}
 
-	public void fusionDeTresMonstruos(String primerSacrificio, String segundoSacrificio, String tercerSacrificio){
+	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
 		if (fusion){
-			CartaMonstruo sacrificioUno = seleccionarCartaMonstruo(primerSacrificio);
-			CartaMonstruo sacrificioDos = seleccionarCartaMonstruo(segundoSacrificio);
-			CartaMonstruo sacrificioTres = seleccionarCartaMonstruo(tercerSacrificio);
 			CartaDeFusion cartaDeFusion = new CartaDeFusion(mazoDeFusiones);
-			cartaDeFusion.agregarSacrificio(sacrificioUno);
-			cartaDeFusion.agregarSacrificio(sacrificioDos);
-			cartaDeFusion.agregarSacrificio(sacrificioTres);
-			cartaDeFusion.realizarFusion();
+			cartaDeFusion.agregarSacrificio(primerSacrificio);
+			cartaDeFusion.agregarSacrificio(segundoSacrificio);
+			cartaDeFusion.agregarSacrificio(tercerSacrificio);
+			CartaMonstruo monstruo = cartaDeFusion.realizarFusion();
+			jugarCartaMonstruo(monstruo);
 		}
 
 	}
 
-	public void darMazoDeFusiones(Mazo mazo) {
+	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
 		mazoDeFusiones = mazo;
 	}
 

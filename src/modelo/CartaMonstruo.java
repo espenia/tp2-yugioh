@@ -1,6 +1,8 @@
 package modelo;
 
 
+import java.util.List;
+
 public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de la interfaz carta
 
     private String nombre;
@@ -47,9 +49,13 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     private int recibeAtaque(int unAtaque, CartaMonstruo carta){
         estado = new EstadoBocaArriba();
+        activarEfectoAlRecibirAtaque(carta);
         int resultado = posicion.recibirAtaque(ataque, defensa, unAtaque, this, carta);
         return resultado;
 
+    }
+
+    public void activarEfectoAlRecibirAtaque(CartaMonstruo carta) {
     }
 
 
@@ -76,6 +82,9 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     }
 
+    public  boolean esFusionDe(List<CartaMonstruo> cartas){
+        return false;
+    }
 
     public void estaMuerta() {
         conVida = new Muerto();
