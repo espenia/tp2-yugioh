@@ -65,11 +65,6 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
     }
 
-    @Override
-    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
-
-    }
-
     public void atacarA(Jugador jugador) {
         estado = new EstadoBocaArriba();
         posicion = new PosicionAtaque();
@@ -108,5 +103,8 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
     public int getDefensa() {
         return defensa;
     }
+
+	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
+	}
 
 }

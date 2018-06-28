@@ -9,8 +9,7 @@ public abstract class CartaDeUtilidad implements Carta {
     	this.nombre = nombreDeCarta;
     }
     
-    //public abstract void activarEfecto(Jugador jugador);
-    public abstract void activarTrampa(Jugador jugador, CartaMonstruo carta);
+    public abstract void activarTrampa(Lado lado, Lado ladoEnemigo);
 
     @Override
     public String getNombre(){

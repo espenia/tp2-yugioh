@@ -1,9 +1,12 @@
 package modelo.Cartas;
 
+import java.util.List;
+
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
 import modelo.EstadoDeCarta;
-import modelo.Lado;
+import modelo.Jugador;
+import modelo.Mazo;
 
 public class Wasteland extends CartaDeCampo {
 
@@ -21,7 +24,7 @@ public class Wasteland extends CartaDeCampo {
     }
 
     @Override
-    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
 
 
     }

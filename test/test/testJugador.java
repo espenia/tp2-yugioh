@@ -33,7 +33,7 @@ public class testJugador {
         jugador.darCarta(cartaMagica);
         jugador.jugarCartaMagicaEnLado(cartaMagica);
         jugador.colocarEnEstadoBocaAbajo(cartaMagica);
-        assertEquals(cartaMagica,jugador.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica));
+        assertEquals(true ,jugador.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica));
 
     }
 
@@ -66,7 +66,7 @@ public class testJugador {
         CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
         CartaMonstruo cartaMonstruo1 = new AbismoReluciente();
         jugador.darCarta(cartaMonstruo);
-        jugador.jugarCartaMonstruoEnLado(cartaMonstruo1);
+        jugador.jugarCartaMonstruoEnLado(cartaMonstruo);
         cartaMonstruo1.enPosicion(new PosicionAtaque());
         ladoEnemigo.jugarCartaMonstruo(cartaMonstruo1);
         cartaMonstruo.enPosicion(new PosicionAtaque());

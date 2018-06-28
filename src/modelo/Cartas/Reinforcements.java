@@ -1,9 +1,12 @@
 package modelo.Cartas;
 
+import java.util.List;
+
 import modelo.CartaMonstruo;
 import modelo.CartaTrampa;
 import modelo.Jugador;
 import modelo.Lado;
+import modelo.Mazo;
 
 public class Reinforcements extends CartaTrampa {
 
@@ -12,18 +15,17 @@ public class Reinforcements extends CartaTrampa {
     }
 
     @Override
-    public void activarTrampa(Jugador jugador, CartaMonstruo carta) {
-
+    public void activarTrampa(Lado lado, Lado ladoEnemigo) {
     }
 
     @Override
     public boolean activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
-        carta.aplicarBuff(0,400);
-        return false;
+    	carta.aplicarBuff(0,400);
+    	return false;
     }
 
     @Override
-    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
 
     }
 }

@@ -57,11 +57,9 @@ public class Lado {
 
 	}
 
-
 	public void jugarCartaTrampa(CartaDeUtilidad carta,Lado esteLado,Lado ladoEnemigo){
-		carta.activarEfecto(esteLado,ladoEnemigo);
+		carta.activarTrampa(esteLado,ladoEnemigo);
 		cartasTrampaOMagicas.add(carta);
-
 	}
 
 	public boolean verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad){
@@ -84,13 +82,6 @@ public class Lado {
 	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
 		if (!cartasMonstruo.remove(cartaDeUtilidad))
 			throw new LadoNoContieneCartaException();
-
-	}
-
-	public void mandarCastasMonstruosAlCementerio() {
-		for (CartaMonstruo i: cartasMonstruo)
-			i.estaMuerta();
-
 
 	}
 
@@ -123,21 +114,6 @@ public class Lado {
 	}
 
 
-	public void matarMenorAtaque() {
-		CartaMonstruo nula = new CartaNula();
-		CartaMonstruo cartaMenorAtaque = nula;
-		for (CartaMonstruo i : cartasMonstruo) {
-			if(cartaMenorAtaque.getAtaque() >= i.getAtaque())
-				cartaMenorAtaque = i;
-		}
-		cartaMenorAtaque.estaMuerta();
-	}
-
-	public void habilitarFusion() {
-		fusion = true;
-
-	}
-
 	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
 		if (fusion){
 			CartaDeFusion cartaDeFusion = new CartaDeFusion(mazoDeFusiones);
@@ -160,6 +136,16 @@ public class Lado {
 	public Jugador obtenerJugador() {
 		return jugador;
 
+	}
+
+    //DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
+	public void activarEfecto(Carta unaCarta, Jugador jugador) {
+		jugador.activarEfecto(unaCarta, this.cartasMonstruo, this.mazo, jugador, this.fusion);
+	}
+
+
+	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, boolean fusion) {
+		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, fusion);
 	}
 
 

@@ -1,9 +1,11 @@
 package modelo;
 
+import java.util.List;
+
 public abstract class CartaDeCampo implements Carta{
 
     private Lado lado;
-    private Lado ladoEnemigo;
+    private Lado ladoEnemigo; 
     private boolean aux = false;
     private String nombre;
 
@@ -24,7 +26,7 @@ public abstract class CartaDeCampo implements Carta{
     }
 
     @Override
-    public void activarEfecto(Lado lado, Lado ladoEnemigo) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
 
 
     }
