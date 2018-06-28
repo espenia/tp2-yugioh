@@ -13,7 +13,7 @@ public class Fusion {
     	this.habilitado = true;
     }
 	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio, Map<String,CartaMonstruo> mazoDeFusiones, Lado lado){
-			
+			if(this.habilitado) {
 			CartaDeFusion cartaDeFusion = new CartaDeFusion(mazoDeFusiones);
 			lado.removerCartaMonstruo(primerSacrificio);
 			lado.removerCartaMonstruo(segundoSacrificio);
@@ -24,6 +24,7 @@ public class Fusion {
 			CartaMonstruo monstruo = cartaDeFusion.realizarFusion();
 			lado.jugarCartaMonstruo(monstruo);
 			this.habilitado = false;
+			}
 
 	}
 }
