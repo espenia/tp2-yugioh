@@ -137,6 +137,10 @@ public class Lado {
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion) {
 		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, this.fusion);
 	}
+	
+	public void habilitarFusion(Fusion fusion) {
+		this.fusion = fusion;
+	}
 
 
 }

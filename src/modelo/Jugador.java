@@ -202,5 +202,9 @@ public class Jugador {
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, List<CartaMonstruo> cartasMonstruoEnemigas, Mazo mazo, Jugador jugador, Fusion fusion){
 		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, fusion);
 	}
+	
+	public void habilitarFusion(Fusion fusion) {
+		lado.habilitarFusion(fusion);
+	}
 
 }
