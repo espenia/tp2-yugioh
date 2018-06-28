@@ -12,7 +12,7 @@ public class Lado {
 	private Map<String, CartaMonstruo> mazoDeFusiones;
 	private Jugador jugador;
 	private CartaDeCampo cartaDeCampo;
-	private boolean fusion;
+	private Fusion fusion;
 
 
 
@@ -20,8 +20,8 @@ public class Lado {
 		cartasMonstruo = new ArrayList<>();
 		cartasTrampaOMagicas = new ArrayList<>();
 		mazo = unMazo;
-		cartaDeCampo = new SinCartaDeCampo("sincarta");
-		fusion = false;
+		cartaDeCampo = new SinCartaDeCampo();
+		fusion = new Fusion();
 		mazoDeFusiones = new HashMap<>();
 	}
 
@@ -115,17 +115,7 @@ public class Lado {
 
 
 	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
-		if (fusion){
-			CartaDeFusion cartaDeFusion = new CartaDeFusion(mazoDeFusiones);
-			removerCartaMonstruo(primerSacrificio);
-			removerCartaMonstruo(segundoSacrificio);
-			removerCartaMonstruo(tercerSacrificio);
-			cartaDeFusion.agregarSacrificio(primerSacrificio);
-			cartaDeFusion.agregarSacrificio(segundoSacrificio);
-			cartaDeFusion.agregarSacrificio(tercerSacrificio);
-			CartaMonstruo monstruo = cartaDeFusion.realizarFusion();
-			jugarCartaMonstruo(monstruo);
-		}
+		this.fusion.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio,this.mazoDeFusiones,this);
 
 	}
 
@@ -144,8 +134,8 @@ public class Lado {
 	}
 
 
-	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, boolean fusion) {
-		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, fusion);
+	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion) {
+		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, this.fusion);
 	}
 
 

@@ -104,7 +104,7 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
         return defensa;
     }
 
-	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
+	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
 	}
 
 }

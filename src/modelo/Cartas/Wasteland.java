@@ -5,6 +5,7 @@ import java.util.List;
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
 import modelo.EstadoDeCarta;
+import modelo.Fusion;
 import modelo.Jugador;
 import modelo.Mazo;
 
@@ -13,8 +14,8 @@ public class Wasteland extends CartaDeCampo {
     private int buffDeDefensa = 300;
     private int buffDeAtaque = 200;
 
-    public Wasteland(String nombreDeCarta) {
-        super(nombreDeCarta);
+    public Wasteland() {
+        super("Wasteland");
 
     }
 
@@ -24,7 +25,7 @@ public class Wasteland extends CartaDeCampo {
     }
 
     @Override
-    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
 
 
     }

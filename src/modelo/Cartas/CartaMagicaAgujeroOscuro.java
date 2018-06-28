@@ -4,19 +4,20 @@ import java.util.List;
 
 import modelo.CartaMagica;
 import modelo.CartaMonstruo;
+import modelo.Fusion;
 import modelo.Jugador;
 import modelo.Lado;
 import modelo.Mazo;
 
 public class CartaMagicaAgujeroOscuro extends CartaMagica {
 
-	public CartaMagicaAgujeroOscuro(String nombreDeCarta) {
-		super(nombreDeCarta);
+	public CartaMagicaAgujeroOscuro() {
+		super("AgujeroOscuro");
 	}
 
 
 	@Override
-	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
+	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
 		for(CartaMonstruo actual: monstruosAliados) {
 			actual.estaMuerta();
 		}

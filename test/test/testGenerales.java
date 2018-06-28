@@ -49,7 +49,7 @@ public class testGenerales {
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
-        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro("Agujero Oscuro");
+        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro();
         juan.darCarta(cartaPrueba);
         juan.colocarEnPosicionAtaque(cartaPrueba);
         juan.colocarEnEstadoBocaArriba(cartaPrueba);
@@ -69,7 +69,7 @@ public class testGenerales {
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
-        CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico("Cilindro magico");
+        CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico();
         juan.darCarta(cartaPrueba);
         juan.colocarEnPosicionAtaque(cartaPrueba);
         juan.colocarEnEstadoBocaArriba(cartaPrueba);
@@ -214,7 +214,7 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
-        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro("Agujero Oscuro");
+        CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro();
         juan.darCarta(agujeroOscuro);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
@@ -280,7 +280,7 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
-        CartaDeCampo cartaCampo = new Wasteland("Weasteland");
+        CartaDeCampo cartaCampo = new Wasteland();
         juan.darCarta(cartaCampo);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
@@ -312,7 +312,7 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
-        CartaDeCampo cartaCampo = new Sogen("Sogen");
+        CartaDeCampo cartaCampo = new Sogen();
         juan.darCarta(cartaCampo);
         juan.darCarta(cartaPrueba1);
         carlos.darCarta(cartaPrueba2);
@@ -345,7 +345,7 @@ public class testGenerales {
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaMonstruo cartaPrueba3 = new Conedragon();
-        CartaMagica olla = new OllaDeLaCodicia("Olla De La Codicia");
+        CartaMagica olla = new OllaDeLaCodicia();
         juan.darCarta(olla);
         Mazo mazo = new Mazo();
         mazo.agregarCarta(cartaPrueba1);
@@ -414,7 +414,7 @@ public class testGenerales {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico("Cilindro magico");
+        CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico();
         carlos.darCarta(cilindroMagico);
         carlos.jugarCartaTrampaEnLado(cilindroMagico);
         juan.atacar(cartaPrueba1,carlos);
@@ -509,14 +509,12 @@ public class testGenerales {
         juan.jugarCartaMonstruoEnLado(cartaPrueba3);
         juan.colocarEnEstadoBocaArriba(cartaPrueba3);
         juan.colocarEnPosicionAtaque(cartaPrueba3);
-        CartaMagica polimerizacion = new Polimerizacion("Polimerizacion");
+        CartaMagica polimerizacion = new Polimerizacion();
         juan.darCarta(polimerizacion);
         juan.jugarCartaMagicaEnLado(polimerizacion);
         juan.colocarEnEstadoBocaArriba(polimerizacion);
         juan.fusionDeTresMonstruos(cartaPrueba1,cartaPrueba2,cartaPrueba3);
         assertEquals(true,juan.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo));
-
-
 
     }
 
@@ -548,7 +546,7 @@ public class testGenerales {
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
         CartaMonstruo cartaMonstruo2 = new AcechadorDelCraneo();
-        CartaTrampa reinforcements = new Reinforcements("Reinforcements");
+        CartaTrampa reinforcements = new Reinforcements();
         juan.darCarta(reinforcements);
         juan.darCarta(cartaMonstruo);
         carlos.darCarta(cartaMonstruo2);

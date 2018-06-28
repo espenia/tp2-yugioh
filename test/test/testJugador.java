@@ -29,7 +29,7 @@ public class testJugador {
         Lado lado = new Lado(new Mazo());
         Lado ladoEnemigo = new Lado(new Mazo());
         jugador.asignarLados(lado,ladoEnemigo);
-        CartaMagica cartaMagica = new OllaDeLaCodicia("olla");
+        CartaMagica cartaMagica = new OllaDeLaCodicia();
         jugador.darCarta(cartaMagica);
         jugador.jugarCartaMagicaEnLado(cartaMagica);
         jugador.colocarEnEstadoBocaAbajo(cartaMagica);

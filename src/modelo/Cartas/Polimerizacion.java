@@ -4,6 +4,7 @@ import java.util.List;
 
 import modelo.CartaMagica;
 import modelo.CartaMonstruo;
+import modelo.Fusion;
 import modelo.Jugador;
 import modelo.Lado;
 import modelo.Mazo;
@@ -11,13 +12,13 @@ import modelo.Mazo;
 public class Polimerizacion extends CartaMagica {
 
 
-    public Polimerizacion(String nombreDeCarta) {
-        super(nombreDeCarta);
+    public Polimerizacion() {
+        super("Polimerizacion");
     }
 
     @Override
-    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
-        fusion = true;
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
+    	fusion.habilitarFusion();
 
     }
 

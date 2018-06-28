@@ -7,8 +7,8 @@ import modelo.Lado;
 
 public class SinCartaDeCampo extends CartaDeCampo {
 
-    public SinCartaDeCampo(String nombreDeCarta) {
-        super(nombreDeCarta);
+    public SinCartaDeCampo() {
+        super("SinCartaDeCampo");
     }
 
     @Override

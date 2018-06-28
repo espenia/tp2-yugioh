@@ -6,6 +6,6 @@ public interface Carta {
 
 
     void colocarEn(EstadoDeCarta unEstado);
-    void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion);
+    void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion);
     String getNombre();
 }

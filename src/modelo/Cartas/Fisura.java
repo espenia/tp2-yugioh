@@ -4,6 +4,7 @@ import java.util.List;
 
 import modelo.CartaMagica;
 import modelo.CartaMonstruo;
+import modelo.Fusion;
 import modelo.Jugador;
 import modelo.Lado;
 import modelo.LadoNoContieneCartaException;
@@ -11,14 +12,13 @@ import modelo.Mazo;
 
 public class Fisura extends CartaMagica {
 
-	public static String nombreDeCarta = "Fisura";
 	
     public Fisura() {
-        super(nombreDeCarta);
+        super("Fisura");
     }
 
     @Override
-    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, boolean fusion) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
     	if(monstruosEnemigos.isEmpty()) {
     		throw new LadoNoContieneCartaException();
     	}

@@ -23,7 +23,7 @@ public class testLado {
 
     @Test
     public void testJugarCartaMagicaBocaAbajo(){
-        CartaMagica cartaMagica = new OllaDeLaCodicia("olla de la codicia");
+        CartaMagica cartaMagica = new OllaDeLaCodicia();
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaMagica(cartaMagica);
         cartaMagica.colocarEn(new EstadoBocaAbajo());
@@ -34,7 +34,7 @@ public class testLado {
 
     @Test
     public void testJugarCartaTrampa(){
-        CartaTrampa cartaTrampa = new CartaTrampaCilindroMagico("cilindro");
+        CartaTrampa cartaTrampa = new CartaTrampaCilindroMagico();
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaTrampa(cartaTrampa,lado,new Lado(new Mazo()));
         assertEquals(cartaTrampa,lado.verificarSiCartaDeUtilidadEstaEnLado(cartaTrampa));
@@ -44,7 +44,7 @@ public class testLado {
 
     @Test
     public void testJugarCartaDeCampo(){
-        CartaDeCampo cartaDeCampo = new Wasteland("wasteland");
+        CartaDeCampo cartaDeCampo = new Wasteland();
         Lado lado = new Lado(new Mazo());
         CartaMonstruo carta2 = new DragonBlancoDeOjosAzules();
         lado.jugarCartaMonstruo(carta2);
