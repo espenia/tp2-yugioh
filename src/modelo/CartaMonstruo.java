@@ -3,14 +3,14 @@ package modelo;
 
 import java.util.List;
 
-public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de la interfaz carta
+public class CartaMonstruo implements Carta {
 
     private String nombre;
     private int defensa;
     private int ataque;
     private EstadoDeCarta estado;
     private PosicionDeCarta posicion;
-    private VidaDeCarta conVida;
+    private boolean muerto;
     private int estrellas;
 
 
@@ -22,7 +22,7 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
         this.estrellas = estrellasDelMonstruo;
         estado = new SinEstado();
         posicion = new SinPosicion();
-        conVida = new Vivo();
+        muerto = false;
 
     }
 
@@ -82,7 +82,7 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
     }
 
     public void estaMuerta() {
-        conVida = new Muerto();
+        muerto = true;
     }
 
 
@@ -92,7 +92,7 @@ public class CartaMonstruo implements Carta { //hasta ahora no utiliza nada de l
 
 
     public boolean estadoMuerto() {
-        return conVida.estadoMuerto();
+        return muerto;
     }
 
 

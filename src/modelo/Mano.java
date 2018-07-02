@@ -36,7 +36,7 @@ public class Mano {
 
     }
 
-    public boolean contieneExodia() { //esto hay que cambiarlo es feo
+    public boolean contieneExodia() {
         boolean brazoDerecho = false;
         boolean brazoIzquierdo = false;
         boolean piernaDerecho = false;
@@ -44,39 +44,18 @@ public class Mano {
         boolean exodia = false;
 
         for (Carta i : manoDeCartas){
-            if (i instanceof BrazoDerechoDeExodia){
+            if (i instanceof BrazoDerechoDeExodia)
                 brazoDerecho = true;
-                break;
-            }
-        }
-
-        for (Carta i : manoDeCartas){
-            if (i instanceof BrazoDerechoDeExodia){
+            if (i instanceof BrazoDerechoDeExodia)
                 brazoIzquierdo = true;
-                break;
-            }
-        }
-
-        for (Carta i : manoDeCartas){
-            if (i instanceof BrazoDerechoDeExodia){
+            if (i instanceof BrazoDerechoDeExodia)
                 piernaDerecho = true;
-                break;
-            }
-        }
-
-        for (Carta i : manoDeCartas){
-            if (i instanceof BrazoDerechoDeExodia){
+            if (i instanceof BrazoDerechoDeExodia)
                 piernaIzquierda = true;
-                break;
-            }
+            if (i instanceof BrazoDerechoDeExodia)
+                exodia = true;
         }
 
-        for (Carta i : manoDeCartas){
-            if (i instanceof BrazoDerechoDeExodia){
-                exodia = true;
-                break;
-            }
-        }
         if (exodia && piernaDerecho && piernaIzquierda && brazoDerecho && brazoIzquierdo)
             return true;
         return false;

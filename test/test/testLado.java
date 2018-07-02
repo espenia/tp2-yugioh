@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class testLado {
 
+    //tests sin assert buscan que no hayan excepciones
 
     @Test
     public void testJugarMonstruo(){
@@ -15,7 +16,7 @@ public class testLado {
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaMonstruo(carta);
         carta.enPosicion(new PosicionAtaque());
-        assertEquals(carta,lado.verificarSiCartaMonstruoEstaEnLado(carta));
+        lado.verificarSiCartaMonstruoEstaEnLado(carta);
 
 
     }
@@ -27,7 +28,7 @@ public class testLado {
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaMagica(cartaMagica);
         cartaMagica.colocarEn(new EstadoBocaAbajo());
-        assertEquals(cartaMagica,lado.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica));
+        lado.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica);
 
 
     }
@@ -37,7 +38,7 @@ public class testLado {
         CartaTrampa cartaTrampa = new CartaTrampaCilindroMagico();
         Lado lado = new Lado(new Mazo());
         lado.jugarCartaTrampa(cartaTrampa,lado,new Lado(new Mazo()));
-        assertEquals(cartaTrampa,lado.verificarSiCartaDeUtilidadEstaEnLado(cartaTrampa));
+        lado.verificarSiCartaDeUtilidadEstaEnLado(cartaTrampa);
 
 
     }

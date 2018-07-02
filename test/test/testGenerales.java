@@ -19,7 +19,10 @@ public class testGenerales {
     public void test01ColocarMonstruosEnModoAtaqueYRealizarUnAtaque(){
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
-        Juego juego = new Juego(jugador1, jugador2);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
+        jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
         jugador1.darCarta(cartaPrueba);
         jugador1.colocarEnPosicionAtaque(cartaPrueba);
@@ -30,24 +33,33 @@ public class testGenerales {
         assertEquals(vidaEsperada, jugador2.getPuntosDeVida(), DELTA);
     }
 
-    @Test 
+
+    @Test
     public void test02ColocarMontruoEnModoDefensa() {
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
-        Juego juego = new Juego(jugador1, jugador2);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
+        jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
         jugador1.darCarta(cartaPrueba);
-        jugador1.colocarEnPosicionAtaque(cartaPrueba);
+        jugador1.colocarEnPosicionDefensa(cartaPrueba);
         jugador1.colocarEnEstadoBocaArriba(cartaPrueba);
         jugador1.jugarCartaMonstruoEnLado(cartaPrueba);
-        assertEquals(true, jugador1.verificarSiCartaMonstruoEstaEnLado(cartaPrueba));
+        assertEquals(true, cartaPrueba.posicionDeDefensa());
+
     }
+
 
     @Test
     public void test03ColocarCartaMagicaBocaAbajo() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
         CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro();
         juan.darCarta(cartaPrueba);
@@ -62,29 +74,30 @@ public class testGenerales {
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
     }
 
-
+    //no debe producir una excepcion
     @Test
     public void test04ColocarCartaTrampaBocaAbajo() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
-        CartaMonstruo cartaPrueba = new AbismoReluciente();
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaTrampa cilindroMagico = new CartaTrampaCilindroMagico();
-        juan.darCarta(cartaPrueba);
-        juan.colocarEnPosicionAtaque(cartaPrueba);
-        juan.colocarEnEstadoBocaArriba(cartaPrueba);
         carlos.darCarta(cilindroMagico);
-        juan.jugarCartaMonstruoEnLado(cartaPrueba);
         carlos.jugarCartaTrampaEnLado(cilindroMagico);
         carlos.colocarEnEstadoBocaAbajo(cilindroMagico);
-        assertEquals(true,carlos.verificarSiCartaDeUtilidadEstaEnLado(cilindroMagico));
+        carlos.verificarSiCartaDeUtilidadEstaEnLado(cilindroMagico);
     }
 
     @Test
     public void test05AtacarUnMonstruoConMenorAtaqueMataAlOtroMonstruo() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
         CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba);
@@ -96,14 +109,17 @@ public class testGenerales {
         juan.colocarEnPosicionAtaque(cartaPrueba2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
         assertEquals(true,cartaPrueba.estadoMuerto());
-        assertEquals(true,juan.verificarSiCartaMonstruoEstaEnLado(cartaPrueba2));
+        assertEquals(false,cartaPrueba2.estadoMuerto());
     }
 
     @Test
     public void test06AtacarMonstruoQueTengaMenorAtaque(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AbismoReluciente();
         CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba1);
@@ -124,7 +140,10 @@ public class testGenerales {
     public void test07AtacarMonstruoQueTengaMayorAtaque(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         juan.darCarta(cartaPrueba1);
@@ -145,7 +164,10 @@ public class testGenerales {
     public void test08AtacarMonstruoQueTengaIgualAtaque(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AbismoReluciente();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         juan.darCarta(cartaPrueba1);
@@ -168,7 +190,10 @@ public class testGenerales {
     public void test09AtacarMonstruoConMenorDefensa(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AbismoReluciente();
         CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba1);
@@ -189,7 +214,10 @@ public class testGenerales {
     public void test10AtacarMonstruoConMayorDefensa(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         juan.darCarta(cartaPrueba1);
@@ -201,8 +229,6 @@ public class testGenerales {
         carlos.colocarEnPosicionDefensa(cartaPrueba2);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
         juan.atacarAMonstruo(cartaPrueba1, cartaPrueba2);
-        assertEquals(true, carlos.verificarSiCartaMonstruoEstaEnLado(cartaPrueba2));
-        assertEquals(true, juan.verificarSiCartaMonstruoEstaEnLado(cartaPrueba1));
         int vidaEsperada = 7300;
         assertEquals(vidaEsperada, juan.getPuntosDeVida(), DELTA);
     }
@@ -211,7 +237,10 @@ public class testGenerales {
     public void test11AgujeroNegroDestruyeMonstruos(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaMagicaAgujeroOscuro agujeroOscuro = new CartaMagicaAgujeroOscuro();
@@ -235,7 +264,10 @@ public class testGenerales {
     public void test12MonstruoRequiereUnSacrificio() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AligatorCibertech();
         juan.darCarta(cartaPrueba1);
@@ -251,7 +283,10 @@ public class testGenerales {
     public void test13MonstruoRequiereDosSacrificios() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaMonstruo cartaPrueba3 = new Conedragon();
@@ -277,7 +312,10 @@ public class testGenerales {
     public void test14ActivarCartaDeCampoWasteland(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaDeCampo cartaCampo = new Wasteland();
@@ -309,7 +347,10 @@ public class testGenerales {
     public void test15ActivarCartaDeCampoSogen(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaDeCampo cartaCampo = new Sogen();
@@ -341,7 +382,10 @@ public class testGenerales {
     public void test16OllaDeLaCodiciaExtraeDosCartas(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaMonstruo cartaPrueba3 = new Conedragon();
@@ -354,8 +398,6 @@ public class testGenerales {
         juan.darMazo(mazo);
         juan.jugarCartaMagicaEnLado(olla);
         juan.colocarEnEstadoBocaArriba(olla);
-        assertEquals(true,juan.verificarSiCartaEstaEnMano(cartaPrueba2));
-        assertEquals(true,juan.verificarSiCartaEstaEnMano(cartaPrueba3));
         assertEquals(1, juan.cantidadDeCartasEnMazo());
 
     }
@@ -364,7 +406,10 @@ public class testGenerales {
     public void test17FisuraMataMonstruoEnemigoDeMenorAtaque(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new AbismoReluciente();
         CartaMagica fisura = new Fisura();
@@ -387,7 +432,10 @@ public class testGenerales {
     public void test18CartaJinzoPuedeAtacarDirectoAunqueHayaMonstruosDelLadoEnemigo(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba2 = new Jinzo7();
         juan.darCarta(cartaPrueba1);
@@ -408,7 +456,10 @@ public class testGenerales {
     public void test19CilindroMagicoHaceEnemigoAtacarseASiMismo(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
         juan.darCarta(cartaPrueba1);
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
@@ -478,7 +529,7 @@ public class testGenerales {
         mazo2.armarMazo(cartas);
         juan.darMazo(mazo);
         carlos.darMazo(mazo2);
-        while(juego.getPartidaEnCurso() == true)
+        while(juego.getPartidaEnCurso())
         	juego.siguienteTurno();
         assertEquals(false, juego.getPartidaEnCurso());
         assertEquals(carlos,juego.getGanador());
@@ -489,7 +540,10 @@ public class testGenerales {
     public void test22InvocarTresDragonesBlancosDeOjosAzulesYLuegoSacrificarlosInvocaAlDragonBlancoDefinitivoDeOjosAzules(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba1 = new DragonBlancoDeOjosAzules();
         CartaMonstruo cartaPrueba2 = new DragonBlancoDeOjosAzules();
         CartaMonstruo cartaPrueba3 = new DragonBlancoDeOjosAzules();
@@ -514,7 +568,9 @@ public class testGenerales {
         juan.jugarCartaMagicaEnLado(polimerizacion);
         juan.colocarEnEstadoBocaArriba(polimerizacion);
         juan.fusionDeTresMonstruos(cartaPrueba1,cartaPrueba2,cartaPrueba3);
-        assertEquals(true,juan.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo));
+        juan.atacar(cartaMonstruo,carlos);
+        double vidaEsperada = 3500;
+        assertEquals(vidaEsperada,carlos.getPuntosDeVida(),DELTA);
 
     }
 
@@ -522,7 +578,10 @@ public class testGenerales {
     public void test23InsectoComeHombreDestruyeUnMonstruoQueLoAtacaCuandoEstaBocaAbajo(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaMonstruo = new InsectoComeHombre();
         CartaMonstruo cartaMonstruo2 = new AcechadorDelCraneo();
         juan.darCarta(cartaMonstruo);
@@ -533,7 +592,7 @@ public class testGenerales {
         carlos.jugarCartaMonstruoEnLado(cartaMonstruo2);
         carlos.colocarEnEstadoBocaArriba(cartaMonstruo2);
         carlos.colocarEnPosicionAtaque(cartaMonstruo2);
-        carlos.atacarAMonstruo(cartaMonstruo,cartaMonstruo2);
+        carlos.atacarAMonstruo(cartaMonstruo2,cartaMonstruo);
         assertEquals(true,cartaMonstruo2.estadoMuerto());
 
 
@@ -543,7 +602,10 @@ public class testGenerales {
     public void test24AlAtacarUnMonstruoReinforcementsDa400PuntosMasDeAtaqueAlMonstruoAtacado(){
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
-        Juego juego = new Juego(juan, carlos);
+        Lado ladoJugador1 = new Lado(new Mazo());
+        Lado ladoJugador2 = new Lado(new Mazo());
+        juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
+        carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
         CartaMonstruo cartaMonstruo2 = new AcechadorDelCraneo();
         CartaTrampa reinforcements = new Reinforcements();

@@ -17,7 +17,6 @@ public class Turno {
 
     public void faseIncial(){
         if(jugador.cantidadDeCartasEnMazo() == 0){
-        	juego.gano(jugador.ladoEnemigo.obtenerJugador());
         	juego.perdio(jugador);
         	juego.terminarJuego();
         }
@@ -25,7 +24,6 @@ public class Turno {
 
         if(jugador.tieneExodiaEnMano()) {
             juego.gano(jugador);
-        	juego.perdio(jugador.ladoEnemigo.obtenerJugador());
         	juego.terminarJuego();
         }
         fasePrincipal();

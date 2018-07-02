@@ -10,13 +10,13 @@ public class Lado {
 	private List<CartaDeUtilidad> cartasTrampaOMagicas;
 	private Mazo mazo;
 	private Map<String, CartaMonstruo> mazoDeFusiones;
-	private Jugador jugador;
 	private CartaDeCampo cartaDeCampo;
 	private Fusion fusion;
 
 
 
 	public Lado(Mazo unMazo){
+
 		cartasMonstruo = new ArrayList<>();
 		cartasTrampaOMagicas = new ArrayList<>();
 		mazo = unMazo;
@@ -26,10 +26,6 @@ public class Lado {
 	}
 
 
-	public void asignarJugador(Jugador unJugador){
-		jugador = unJugador;
-
-	}
 
 
 	public Carta extraerDelMazo(){
@@ -62,40 +58,37 @@ public class Lado {
 		cartasTrampaOMagicas.add(carta);
 	}
 
-	public boolean verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad){
-		return cartasTrampaOMagicas.contains(cartaDeUtilidad);
-
-	}
-
-	public boolean verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo){
-		return cartasMonstruo.contains(cartaMonstruo);
-
-	}
-
-
-	public void removerCartaMonstruo(CartaMonstruo cartaMonstruo)throws LadoNoContieneCartaException{
-		if (!cartasMonstruo.remove(cartaMonstruo))
+	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
+		if (!cartasTrampaOMagicas.contains(cartaDeUtilidad))
 			throw new LadoNoContieneCartaException();
 
 	}
 
-	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
-		if (!cartasMonstruo.remove(cartaDeUtilidad))
+	public void verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo)throws LadoNoContieneCartaException{
+		if (!cartasMonstruo.contains(cartaMonstruo))
 			throw new LadoNoContieneCartaException();
 
 	}
 
-    public void notificarDanio(int resultadoDelConflicto){
-	    jugador.recibeDanio(resultadoDelConflicto);
 
-    }
+	public void removerCartaMonstruo(CartaMonstruo cartaMonstruo){
+		verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
+		cartasMonstruo.remove(cartaMonstruo);
+
+	}
+
+	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad){
+		verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
+		cartasTrampaOMagicas.remove(cartaDeUtilidad);
+
+	}
 
 
-	public boolean activarTrampaConAtaque(CartaMonstruo miCarta) {
+	public boolean activarTrampaConAtaque(CartaMonstruo miCarta,Jugador jugador) {
 		boolean pasador = false;
 		for (CartaDeUtilidad i: cartasTrampaOMagicas){
 			if (i instanceof CartaTrampa)
-				pasador = i.activarTrampaDeAtaque(this.jugador, miCarta);
+				pasador = i.activarTrampaDeAtaque(jugador, miCarta);
 		}
 		return pasador;
 
@@ -123,10 +116,6 @@ public class Lado {
 		mazoDeFusiones = mazo;
 	}
 
-	public Jugador obtenerJugador() {
-		return jugador;
-
-	}
 
     //DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
 	public void activarEfecto(Carta unaCarta, Jugador jugador) {

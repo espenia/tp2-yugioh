@@ -10,16 +10,18 @@ public class testJugador {
 
     private static final double DELTA = 1e-2;
 
+    //tests sin assert buscan que no hayan excepciones
+
     @Test
     public void testJugarMonstruo(){
         Jugador jugador = new Jugador();
         Lado lado = new Lado(new Mazo());
         Lado ladoEnemigo = new Lado(new Mazo());
-        jugador.asignarLados(lado,ladoEnemigo);
+        jugador.asignarLadosYJugadores(lado,ladoEnemigo,new Jugador());
         CartaMonstruo cartaMonstruo1 = new AbismoReluciente();
         jugador.darCarta(cartaMonstruo1);
         jugador.jugarCartaMonstruoEnLado(cartaMonstruo1);
-        assertEquals(true,jugador.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo1));
+        jugador.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo1);
 
     }
 
@@ -28,12 +30,12 @@ public class testJugador {
         Jugador jugador = new Jugador();
         Lado lado = new Lado(new Mazo());
         Lado ladoEnemigo = new Lado(new Mazo());
-        jugador.asignarLados(lado,ladoEnemigo);
+        jugador.asignarLadosYJugadores(lado,ladoEnemigo,new Jugador());
         CartaMagica cartaMagica = new OllaDeLaCodicia();
         jugador.darCarta(cartaMagica);
         jugador.jugarCartaMagicaEnLado(cartaMagica);
         jugador.colocarEnEstadoBocaAbajo(cartaMagica);
-        assertEquals(true ,jugador.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica));
+        jugador.verificarSiCartaDeUtilidadEstaEnLado(cartaMagica);
 
     }
 
@@ -43,7 +45,7 @@ public class testJugador {
         Jugador jugador = new Jugador();
         Lado lado = new Lado(new Mazo());
         Lado ladoEnemigo = new Lado(new Mazo());
-        jugador.asignarLados(lado,ladoEnemigo);
+        jugador.asignarLadosYJugadores(lado,ladoEnemigo,new Jugador());
         CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
         CartaMonstruo cartaMonstruo1 = new AbismoReluciente();
         CartaMonstruo cartaMonstruo3 = new DragonBlancoDeOjosAzules();
@@ -53,7 +55,7 @@ public class testJugador {
         jugador.jugarCartaMonstruoEnLado(cartaMonstruo);
         jugador.jugarCartaMonstruoEnLado(cartaMonstruo1);
         jugador.jugarCartaEnLadoConDosSacrificio(cartaMonstruo3,cartaMonstruo1, cartaMonstruo);
-        assertEquals(true,jugador.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo3));
+        jugador.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo3);
 
     }
 
@@ -62,7 +64,7 @@ public class testJugador {
         Jugador jugador = new Jugador();
         Lado lado = new Lado(new Mazo());
         Lado ladoEnemigo = new Lado(new Mazo());
-        jugador.asignarLados(lado,ladoEnemigo);
+        jugador.asignarLadosYJugadores(lado,ladoEnemigo,new Jugador());
         CartaMonstruo cartaMonstruo = new AcechadorDelCraneo();
         CartaMonstruo cartaMonstruo1 = new AbismoReluciente();
         jugador.darCarta(cartaMonstruo);
@@ -76,10 +78,6 @@ public class testJugador {
 
 
     }
-
-
-
-
 
 
 

@@ -8,7 +8,8 @@ import java.util.Stack;
 public class Jugador {
 	private int puntosDeVida;
 	private Mano mano;
-	public Lado ladoEnemigo;
+	private Lado ladoEnemigo;
+	private Jugador enemigo;
 	private Lado lado;
 
 
@@ -17,7 +18,8 @@ public class Jugador {
 		mano = new Mano();
 	}
 
-	public void asignarLados(Lado lado, Lado ladoEnemigo){
+	public void asignarLadosYJugadores(Lado lado, Lado ladoEnemigo, Jugador jugadorEnemigo){
+		this.enemigo = jugadorEnemigo;
         this.lado = lado;
         this.ladoEnemigo = ladoEnemigo;
     }
@@ -85,26 +87,23 @@ public class Jugador {
 
 	}
 
-    public boolean verificarSiCartaEstaEnMano(Carta unaCarta){
-	    return mano.verificarSiCartaEstaEnMano(unaCarta);
-    }
 
 	public void seleccionarCartaDeLaMano(Carta unaCarta) {
 		mano.removerCarta(unaCarta);
 
 	}
 
-	public boolean verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad) {
-		return lado.verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
+	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad) {
+		lado.verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
 	}
 
 
-	public boolean verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo){
-		return lado.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
+	public void verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo){
+		lado.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
 	}
 
-	public boolean verificarSiCartaMonstruoEstaEnElOtroLado(CartaMonstruo cartaMonstruo){
-	    return ladoEnemigo.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
+	public void verificarSiCartaMonstruoEstaEnElOtroLado(CartaMonstruo cartaMonstruo){
+	    ladoEnemigo.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
 
     }
 
@@ -126,7 +125,7 @@ public class Jugador {
 	}
 
 	private void activarTrampas(CartaMonstruo cartaMonstruo) {
-		if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruo) == true)
+		if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruo,enemigo))
 			return;
 	}
 
@@ -146,10 +145,15 @@ public class Jugador {
 
         if (resultadoDelConflicto > 0) {
             if (!cartaDefendiente.posicionDeDefensa())
-                ladoEnemigo.notificarDanio(resultadoDelConflicto);
+				notificarDanioAlEnemigo(resultadoDelConflicto);
         }
 
     }
+
+    public void notificarDanioAlEnemigo(int danio){
+		enemigo.recibeDanio(danio);
+
+	}
 
 	public double getPuntosDeVida() {
 		return this.puntosDeVida;

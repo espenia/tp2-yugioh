@@ -17,10 +17,8 @@ public class Juego {
 
         Lado ladoJugador1 = new Lado(new Mazo());
         Lado ladoJugador2 = new Lado(new Mazo());
-        ladoJugador1.asignarJugador(jugador1);
-        ladoJugador2.asignarJugador(jugador2);
-        jugador1.asignarLados(ladoJugador1,ladoJugador2);
-        jugador2.asignarLados(ladoJugador2,ladoJugador1);
+        jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
+        jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
         primeroYSegundo(jugador1,jugador2);
         primero = jugador1; //TODO solo tests
         segundo = jugador2;
