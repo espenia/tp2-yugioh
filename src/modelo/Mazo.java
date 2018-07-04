@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Cartas.DragonBlancoDeOjosAzules;
+
 import java.util.Collections;
 import java.util.Stack;
 
@@ -9,6 +11,9 @@ public class Mazo {
 
     public Mazo () {
         this.cartasEnMazo = new Stack<>();
+        agregarCarta(new DragonBlancoDeOjosAzules());//TODO solo tests
+        agregarCarta(new DragonBlancoDeOjosAzules());
+        agregarCarta(new DragonBlancoDeOjosAzules());
     }
 
     public void agregarCarta(Carta carta) {

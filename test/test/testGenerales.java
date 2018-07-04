@@ -486,9 +486,8 @@ public class testGenerales {
         mazo2.agregarCarta(cartaPrueba1);
         juan.darMazo(mazo);
         carlos.darMazo(mazo2);
-        juego.siguienteTurno();
-        juego.siguienteTurno();
-        juego.siguienteTurno();
+        while(juego.getPartidaEnCurso())
+            juego.siguienteTurno();
         assertEquals(false, juego.getPartidaEnCurso());
         assertEquals(carlos,juego.getPerdedor());
     }

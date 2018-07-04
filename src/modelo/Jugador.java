@@ -11,11 +11,13 @@ public class Jugador {
 	private Lado ladoEnemigo;
 	private Jugador enemigo;
 	private Lado lado;
+	private Fase fase;
 
 
 	public Jugador() {
 		this.puntosDeVida = 8000;
 		mano = new Mano();
+		fase = new SinFase();
 	}
 
 	public void asignarLadosYJugadores(Lado lado, Lado ladoEnemigo, Jugador jugadorEnemigo){
@@ -25,6 +27,7 @@ public class Jugador {
     }
 
 	public void jugarCartaMonstruoEnLado(CartaMonstruo carta ) {
+		fase.jugarCartaMonstruo();
 		carta.verificarCantidadDeSacrificios(0);
 		lado.verificarEspacioDeCartasMonstruos();
 		mano.removerCarta(carta);
@@ -33,6 +36,7 @@ public class Jugador {
 	}
 
 	public void jugarCartaMagicaEnLado(CartaMagica carta) {
+		fase.jugarCartaDeUtilidad();
 		lado.verificarEspacioDeCartasDeUtilidad();
 		mano.removerCarta(carta);
 		this.lado.jugarCartaMagica(carta);
@@ -40,6 +44,7 @@ public class Jugador {
 	}
 
 	public void jugarCartaTrampaEnLado(CartaTrampa carta) {
+		fase.jugarCartaDeUtilidad();
 		lado.verificarEspacioDeCartasDeUtilidad();
 		mano.removerCarta(carta);
 		this.lado.jugarCartaTrampa(carta,lado,ladoEnemigo);
@@ -48,6 +53,7 @@ public class Jugador {
 
 
 	public void jugarCartaEnLadoConUnSacrificio(CartaMonstruo monstruo, CartaMonstruo sacrificio){
+		fase.jugarCartaMonstruo();
 		monstruo.verificarCantidadDeSacrificios(1);
 		mano.removerCarta(monstruo);
 		sacrificio.estaMuerta();
@@ -57,6 +63,7 @@ public class Jugador {
 	}
 
 	public void jugarCartaEnLadoConDosSacrificio(CartaMonstruo monstruo, CartaMonstruo segundoSacrificio, CartaMonstruo primerSacrificio){
+		fase.jugarCartaMonstruo();
 		monstruo.verificarCantidadDeSacrificios(2);
 		mano.removerCarta(monstruo);
 		segundoSacrificio.estaMuerta();
@@ -69,6 +76,7 @@ public class Jugador {
 	}
 
 	public void jugarCartaEnLadoConTresSacrificio(CartaMonstruo monstruo, CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
+		fase.jugarCartaMonstruo();
 		monstruo.verificarCantidadDeSacrificios(3);
 		mano.removerCarta(monstruo);
 		primerSacrificio.estaMuerta();
@@ -130,6 +138,7 @@ public class Jugador {
 
 
 	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {
+		fase.atacar();
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
 		ladoEnemigo.verificarSiHayCartasMonstruos();
 		ladoEnemigo.activarTrampaConAtaque(cartaSeleccionada, enemigo);
@@ -139,6 +148,7 @@ public class Jugador {
 
 
 	public void atacarAMonstruo(CartaMonstruo cartaSeleccionada, CartaMonstruo cartaEnemiga){
+		fase.atacar();
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
 		verificarSiCartaMonstruoEstaEnElOtroLado(cartaEnemiga);
 		ladoEnemigo.activarTrampaConAtaque(cartaEnemiga, enemigo);
@@ -180,6 +190,7 @@ public class Jugador {
 	}
 
 	public void colocarCartaDeCampo(CartaDeCampo cartaCampo) {
+		fase.jugarCartaDeCampo();
 		lado.jugarCartaDeCampo(cartaCampo);
 		ladoEnemigo.jugarCartaDeCampo(cartaCampo);
 
@@ -216,7 +227,10 @@ public class Jugador {
 		lado.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio);
 	}
 
+	public void asignarFase(Fase unaFase) {
+		fase = unaFase;
 
+	}
 
 
 

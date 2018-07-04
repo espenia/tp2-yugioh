@@ -8,9 +8,10 @@ public class Juego {
 
     private Jugador primero;
     private Jugador segundo;
+    private Jugador actual;
     private Jugador ganador;
     private Jugador perdedor;
-    private Turno turno;
+    private Fase fase;
     private boolean partidaEnJuego;
 
     public Juego (Jugador jugador1, Jugador jugador2){
@@ -23,7 +24,9 @@ public class Juego {
         primero = jugador1; //TODO solo tests
         segundo = jugador2;
         partidaEnJuego = true;
-        turno = new Turno(primero, this);
+        actual = primero;
+        fase = new FaseIncial(primero,this);
+        actual.asignarFase(fase);
         //primerTurno(); // NO APLICABLE PARTA LOS TESTS
 
     }
@@ -38,23 +41,34 @@ public class Juego {
 
     }
 
-    private void primerTurno(){
-        turno = new Turno(primero,this);
-        turno.skipFaseBatalla();
-        turno.faseIncial();
-
-
-    }
-
-    public void faseBatalla(){//excepcion si ya hizo la fase batalla
-        turno.faseBatalla();
+    public void siguenteFase(){
+        try {
+            fase = fase.cambiarFase();
+        }
+        catch (NoHayMasFasesException ex){
+            siguienteTurno();
+        }
 
 
     }
 
     public void siguienteTurno(){
-    	
-        turno.terminarTurno(primero,segundo);
+        primero.refrescarAtaques();
+        segundo.refrescarAtaques();
+
+        if(primero.getPuntosDeVida() == 0 && segundo.getPuntosDeVida() == 0)
+            empate();
+
+        if(actual.getPuntosDeVida() == 0)
+            perdio(actual);
+
+        if(actual == primero)
+            actual = segundo;
+        else
+            actual = primero;
+        fase = new FaseIncial(actual,this);
+        actual.asignarFase(fase);
+
     }
 
     public void gano(Jugador jugador) {

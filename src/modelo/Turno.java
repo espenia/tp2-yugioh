@@ -39,7 +39,7 @@ public class Turno {
     }
 
     public void faseBatalla() {
-        if (skipBattle == true) {
+        if (skipBattle) {
             skipBattle = false;
             juego.siguienteTurno();
         }
