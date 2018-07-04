@@ -444,10 +444,9 @@ public class testGenerales {
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
-        carlos.colocarEnPosicionDefensa(cartaPrueba2);
-        carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
+        carlos.colocarEnPosicionAtaque(cartaPrueba2);
+        carlos.colocarEnEstadoBocaArriba(cartaPrueba2);//se ataca a si mismo en vez del enemigo fixear
         int vidaEsperada = 7500;
-        carlos.atacar(cartaPrueba2,juan);
         assertEquals(vidaEsperada,juan.getPuntosDeVida(),DELTA);
 
     }

@@ -1,6 +1,11 @@
 package modelo.Cartas;
 
 import modelo.CartaMonstruo;
+import modelo.Fusion;
+import modelo.Jugador;
+import modelo.Mazo;
+
+import java.util.List;
 
 public class Jinzo7 extends CartaMonstruo {
     private static String nombre = "Jinzo #7";
@@ -12,4 +17,9 @@ public class Jinzo7 extends CartaMonstruo {
         super(nombre, defensa, ataque, estrellas);
     }
 
+    @Override
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
+        atacarA(jugador);
+
+    }
 }

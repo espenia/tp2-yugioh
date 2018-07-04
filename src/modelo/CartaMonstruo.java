@@ -10,7 +10,8 @@ public class CartaMonstruo implements Carta {
     private int ataque;
     private EstadoDeCarta estado;
     private PosicionDeCarta posicion;
-    private boolean muerto;
+    private VidaDeCarta vidaDeCarta;
+    private boolean yaAtacoEsteTurno;
     private int estrellas;
 
 
@@ -20,44 +21,39 @@ public class CartaMonstruo implements Carta {
         this.defensa = defensaDelMonstruo;
         this.ataque = ataqueDelMonstruo;
         this.estrellas = estrellasDelMonstruo;
+        yaAtacoEsteTurno = false;
         estado = new SinEstado();
         posicion = new SinPosicion();
-        muerto = false;
-
+        vidaDeCarta = new Vivo();
     }
 
 
-    public String getNombre(){
-        return nombre;
-
-    }
 
 
-    public void aplicarBuff(int nuevaDefensa, int nuevoAtaque){ //para buff y debuffs
+    public void aplicarBuff(int nuevaDefensa, int nuevoAtaque){
         this.defensa += nuevaDefensa;
         this.ataque += nuevoAtaque;
 
     }
 
-    public int atacarAMonstruo(CartaMonstruo cartaMonstruo) throws CartaMuertaNoPuedeAtacarException {
+    public int atacarAMonstruo(CartaMonstruo cartaMonstruo) throws CartaMuertaNoPuedeAtacarException, MonstruoNoPuedeAtacarDosVecesEnUnTurnoException {
         estado = new EstadoBocaArriba();
         posicion = new PosicionAtaque();
-        if (cartaMonstruo.estadoMuerto())
-            throw new CartaMuertaNoPuedeAtacarException();
+        if (yaAtacoEsteTurno)
+            throw new MonstruoNoPuedeAtacarDosVecesEnUnTurnoException();
+        yaAtacoEsteTurno = true;
+        vidaDeCarta.atacar();
         return cartaMonstruo.recibeAtaque(this.ataque,this);
     }
 
     private int recibeAtaque(int unAtaque, CartaMonstruo carta){
+        vidaDeCarta.atacar();
         estado = new EstadoBocaArriba();
         activarEfectoAlRecibirAtaque(carta);
         int resultado = posicion.recibirAtaque(ataque, defensa, unAtaque, this, carta);
         return resultado;
 
     }
-
-    public void activarEfectoAlRecibirAtaque(CartaMonstruo carta) {
-    }
-
 
     @Override
     public void colocarEn(EstadoDeCarta unEstado){
@@ -72,18 +68,21 @@ public class CartaMonstruo implements Carta {
 
     }
 
+    public void refrescarAtaque() {
+        yaAtacoEsteTurno = false;
+
+    }
+
     public void enPosicion(PosicionDeCarta unaPosicion) {
         posicion = unaPosicion;
 
     }
 
-    public  boolean esFusionDe(List<CartaMonstruo> cartas){
-        return false;
+    public void estaMuerta() {
+        vidaDeCarta = new Muerto();
+
     }
 
-    public void estaMuerta() {
-        muerto = true;
-    }
 
 
     public boolean posicionDeDefensa() {
@@ -92,7 +91,7 @@ public class CartaMonstruo implements Carta {
 
 
     public boolean estadoMuerto() {
-        return muerto;
+        return vidaDeCarta.estaMuerta();
     }
 
 
@@ -104,7 +103,25 @@ public class CartaMonstruo implements Carta {
         return defensa;
     }
 
-	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
+    @Override
+    public String getNombre(){
+        return nombre;
+
+    }
+
+
+
+    @Override
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
 	}
+
+    public void activarEfectoAlRecibirAtaque(CartaMonstruo carta) {
+    }
+
+
+    public  boolean esFusionDe(List<CartaMonstruo> cartas){
+        return false;
+    }
+
 
 }

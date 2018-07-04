@@ -25,18 +25,21 @@ public class Jugador {
     }
 
 	public void jugarCartaMonstruoEnLado(CartaMonstruo carta ) {// Excepciones incorrecta cantidad de sacrificios.
+		lado.verificarEspacioDeCartasMonstruos();
 		mano.removerCarta(carta);
 		this.lado.jugarCartaMonstruo(carta);
 
 	}
 
 	public void jugarCartaMagicaEnLado(CartaMagica carta) {
+		lado.verificarEspacioDeCartasDeUtilidad();
 		mano.removerCarta(carta);
 		this.lado.jugarCartaMagica(carta);
 
 	}
 
 	public void jugarCartaTrampaEnLado(CartaTrampa carta) {
+		lado.verificarEspacioDeCartasDeUtilidad();
 		mano.removerCarta(carta);
 		this.lado.jugarCartaTrampa(carta,lado,ladoEnemigo);
 
@@ -77,6 +80,11 @@ public class Jugador {
 
 	}
 
+	public void colocarEnEstadoBocaArriba(Carta unaCarta){
+		unaCarta.colocarEn(new EstadoBocaArriba());
+		lado.activarEfecto(unaCarta, this);
+	}
+
 	public void colocarEnPosicionAtaque(CartaMonstruo carta){
 		carta.enPosicion(new PosicionAtaque());
 
@@ -107,22 +115,21 @@ public class Jugador {
 
     }
 
+
 	public void darCarta(Carta carta) {
 		mano.agregarCarta(carta);
 
 	}
 
-	public void recibeDanio(int ataque) {
-		this.puntosDeVida = this.puntosDeVida - ataque;
-
-	}
 
 	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
+		ladoEnemigo.verificarSiHayCartasMonstruos();
 		ladoEnemigo.activarTrampaConAtaque(cartaSeleccionada, enemigo);
 		cartaSeleccionada.atacarA(jugador);
 
 	}
+
 
 	public void atacarAMonstruo(CartaMonstruo cartaSeleccionada, CartaMonstruo cartaEnemiga){
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
@@ -150,6 +157,11 @@ public class Jugador {
 
 	}
 
+	public void recibeDanio(int ataque) {
+		this.puntosDeVida = this.puntosDeVida - ataque;
+
+	}
+
 	public double getPuntosDeVida() {
 		return this.puntosDeVida;
 
@@ -171,6 +183,11 @@ public class Jugador {
 
 	}
 
+	public void refrescarAtaques() {
+		lado.refresacarAtaques();
+
+	}
+
 	public boolean tieneExodiaEnMano() {
 		return mano.contieneExodia();
 	}
@@ -180,18 +197,21 @@ public class Jugador {
 	}
 
 
+	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
+		lado.darMazoDeFusiones(mazo);
+	}
+
+	public void habilitarFusion(Fusion fusion) {
+		lado.habilitarFusion(fusion);
+	}
+
 	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio) {
 		lado.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio);
 	}
 
-	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
-		lado.darMazoDeFusiones(mazo);
-	}
-	
-	public void colocarEnEstadoBocaArriba(Carta unaCarta){
-		unaCarta.colocarEn(new EstadoBocaArriba());
-		lado.activarEfecto(unaCarta, this);
-	}
+
+
+
 
 	//DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion) {
@@ -201,9 +221,7 @@ public class Jugador {
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, List<CartaMonstruo> cartasMonstruoEnemigas, Mazo mazo, Jugador jugador, Fusion fusion){
 		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, fusion);
 	}
-	
-	public void habilitarFusion(Fusion fusion) {
-		lado.habilitarFusion(fusion);
-	}
+
+
 
 }

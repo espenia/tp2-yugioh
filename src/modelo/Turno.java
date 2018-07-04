@@ -51,6 +51,9 @@ public class Turno {
     }
 
     public void terminarTurno(Jugador jugador1, Jugador jugador2){
+        jugador1.refrescarAtaques();
+        jugador2.refrescarAtaques();
+
         if(jugador1.getPuntosDeVida() == 0 && jugador2.getPuntosDeVida() == 0)
             juego.empate();
 

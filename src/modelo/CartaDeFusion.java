@@ -21,7 +21,7 @@ public class CartaDeFusion {
 
     }
 
-    public CartaMonstruo realizarFusion()  throws NoAdmiteFusion {
+    public CartaMonstruo realizarFusion()  throws NoAdmiteFusionException {
 
         for (Map.Entry<String, CartaMonstruo> entry : mazoDeFusiones.entrySet()){
             if (entry.getValue().esFusionDe(sacrificios))
@@ -29,7 +29,7 @@ public class CartaDeFusion {
 
         }
 
-        throw new NoAdmiteFusion();
+        throw new NoAdmiteFusionException();
 
     }
 }

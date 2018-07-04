@@ -58,6 +58,24 @@ public class Lado {
 		cartasTrampaOMagicas.add(carta);
 	}
 
+	public void verificarSiHayCartasMonstruos() throws HayUnMonstruoEnElCaminoException{
+		if (!cartasMonstruo.isEmpty())
+			throw new HayUnMonstruoEnElCaminoException();
+
+	}
+
+
+	public void verificarEspacioDeCartasMonstruos() throws NoHayEspacioEnLadoException{
+		if (cartasMonstruo.size() == 5)
+			throw new NoHayEspacioEnLadoException();
+
+	}
+
+	public void verificarEspacioDeCartasDeUtilidad() throws NoHayEspacioEnLadoException {
+		if (cartasTrampaOMagicas.size() == 5)
+			throw new NoHayEspacioEnLadoException();
+	}
+
 	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
 		if (!cartasTrampaOMagicas.contains(cartaDeUtilidad))
 			throw new LadoNoContieneCartaException();
@@ -70,6 +88,11 @@ public class Lado {
 
 	}
 
+	public void refresacarAtaques() {
+		for (CartaMonstruo i : cartasMonstruo)
+			i.refrescarAtaque();
+
+	}
 
 	public void removerCartaMonstruo(CartaMonstruo cartaMonstruo){
 		verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
@@ -130,6 +153,5 @@ public class Lado {
 	public void habilitarFusion(Fusion fusion) {
 		this.fusion = fusion;
 	}
-
 
 }
