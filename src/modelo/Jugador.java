@@ -119,20 +119,15 @@ public class Jugador {
 
 	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
-		activarTrampas(cartaSeleccionada);
+		ladoEnemigo.activarTrampaConAtaque(cartaSeleccionada, enemigo);
 		cartaSeleccionada.atacarA(jugador);
 
-	}
-
-	private void activarTrampas(CartaMonstruo cartaMonstruo) {
-		if(ladoEnemigo.activarTrampaConAtaque(cartaMonstruo,enemigo))
-			return;
 	}
 
 	public void atacarAMonstruo(CartaMonstruo cartaSeleccionada, CartaMonstruo cartaEnemiga){
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
 		verificarSiCartaMonstruoEstaEnElOtroLado(cartaEnemiga);
-		activarTrampas(cartaEnemiga);
+		ladoEnemigo.activarTrampaConAtaque(cartaEnemiga, enemigo);
 		int resultado = cartaSeleccionada.atacarAMonstruo(cartaEnemiga);
 		resolverConflicto(resultado, cartaEnemiga);
 

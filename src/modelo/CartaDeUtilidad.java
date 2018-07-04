@@ -21,8 +21,7 @@ public abstract class CartaDeUtilidad implements Carta {
     }
 
 
-	public boolean activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
-		return false;
+	public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
 	}
 
 }

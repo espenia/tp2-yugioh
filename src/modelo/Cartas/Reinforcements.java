@@ -20,9 +20,8 @@ public class Reinforcements extends CartaTrampa {
     }
 
     @Override
-    public boolean activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
+    public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
     	carta.aplicarBuff(0,400);
-    	return false;
     }
 
     @Override

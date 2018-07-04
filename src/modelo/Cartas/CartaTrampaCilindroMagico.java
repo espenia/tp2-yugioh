@@ -17,9 +17,8 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
     }
 
     @Override
-    public boolean activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
+    public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
         jugador.notificarDanioAlEnemigo(carta.getAtaque());
-        return true;
     }
 
 	@Override

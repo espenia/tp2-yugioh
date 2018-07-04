@@ -88,7 +88,7 @@ public class Lado {
 		boolean pasador = false;
 		for (CartaDeUtilidad i: cartasTrampaOMagicas){
 			if (i instanceof CartaTrampa)
-				pasador = i.activarTrampaDeAtaque(jugador, miCarta);
+				i.activarTrampaDeAtaque(jugador, miCarta);
 		}
 		return pasador;
 
