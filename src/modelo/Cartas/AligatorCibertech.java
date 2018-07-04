@@ -1,5 +1,6 @@
 package modelo.Cartas;
 
+import modelo.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 
 public class AligatorCibertech extends CartaMonstruo {
@@ -11,4 +12,12 @@ public class AligatorCibertech extends CartaMonstruo {
 	public AligatorCibertech() {
 		super(nombre, defensa, ataque, estrellas);
 	}
+
+	@Override
+	public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
+		if (cantidad != 1)
+			throw new CantidadDeSacrificiosIncorrectaException();
+
+	}
+
 }

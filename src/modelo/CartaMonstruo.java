@@ -124,4 +124,7 @@ public class CartaMonstruo implements Carta {
     }
 
 
+    public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
+
+    }
 }

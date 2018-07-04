@@ -1,5 +1,6 @@
 package modelo.Cartas;
 
+import modelo.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 
 public class AbismoReluciente extends CartaMonstruo {
@@ -11,6 +12,12 @@ public class AbismoReluciente extends CartaMonstruo {
 	public AbismoReluciente() {
 		super(nombre, defensa, ataque, estrellas);
 	}
-	
+
+	@Override
+	public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
+		if (cantidad != 0)
+			throw new CantidadDeSacrificiosIncorrectaException();
+
+	}
 	
 }

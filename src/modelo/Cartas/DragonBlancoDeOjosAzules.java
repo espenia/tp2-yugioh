@@ -1,5 +1,6 @@
 package modelo.Cartas;
 
+import modelo.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 
 public class DragonBlancoDeOjosAzules extends CartaMonstruo {
@@ -13,5 +14,12 @@ public class DragonBlancoDeOjosAzules extends CartaMonstruo {
 
     public DragonBlancoDeOjosAzules() {
         super(nombre, defensa, ataque, estrellas);
+    }
+
+    @Override
+    public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
+        if (cantidad != 2)
+            throw new CantidadDeSacrificiosIncorrectaException();
+
     }
 }

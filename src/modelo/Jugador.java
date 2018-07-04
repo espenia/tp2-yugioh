@@ -24,7 +24,8 @@ public class Jugador {
         this.ladoEnemigo = ladoEnemigo;
     }
 
-	public void jugarCartaMonstruoEnLado(CartaMonstruo carta ) {// Excepciones incorrecta cantidad de sacrificios.
+	public void jugarCartaMonstruoEnLado(CartaMonstruo carta ) {
+		carta.verificarCantidadDeSacrificios(0);
 		lado.verificarEspacioDeCartasMonstruos();
 		mano.removerCarta(carta);
 		this.lado.jugarCartaMonstruo(carta);
@@ -47,23 +48,28 @@ public class Jugador {
 
 
 	public void jugarCartaEnLadoConUnSacrificio(CartaMonstruo monstruo, CartaMonstruo sacrificio){
+		monstruo.verificarCantidadDeSacrificios(1);
 		mano.removerCarta(monstruo);
 		sacrificio.estaMuerta();
 		lado.removerCartaMonstruo(sacrificio);
+		lado.verificarEspacioDeCartasMonstruos();
 		this.lado.jugarCartaMonstruo(monstruo);
 	}
 
 	public void jugarCartaEnLadoConDosSacrificio(CartaMonstruo monstruo, CartaMonstruo segundoSacrificio, CartaMonstruo primerSacrificio){
+		monstruo.verificarCantidadDeSacrificios(2);
 		mano.removerCarta(monstruo);
 		segundoSacrificio.estaMuerta();
 		primerSacrificio.estaMuerta();
 		lado.removerCartaMonstruo(primerSacrificio);
         lado.removerCartaMonstruo(segundoSacrificio);
+		lado.verificarEspacioDeCartasMonstruos();
         this.lado.jugarCartaMonstruo(monstruo);
 
 	}
 
 	public void jugarCartaEnLadoConTresSacrificio(CartaMonstruo monstruo, CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
+		monstruo.verificarCantidadDeSacrificios(3);
 		mano.removerCarta(monstruo);
 		primerSacrificio.estaMuerta();
 		segundoSacrificio.estaMuerta();
@@ -71,6 +77,7 @@ public class Jugador {
 		lado.removerCartaMonstruo(primerSacrificio);
         lado.removerCartaMonstruo(segundoSacrificio);
         lado.removerCartaMonstruo(tercerSacrificio);
+		lado.verificarEspacioDeCartasMonstruos();
         this.lado.jugarCartaMonstruo(monstruo);
 
 	}

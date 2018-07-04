@@ -1,9 +1,6 @@
 package modelo.Cartas;
 
-import modelo.CartaMonstruo;
-import modelo.Fusion;
-import modelo.Jugador;
-import modelo.Mazo;
+import modelo.*;
 
 import java.util.List;
 
@@ -20,6 +17,13 @@ public class Jinzo7 extends CartaMonstruo {
     @Override
     public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
         atacarA(jugador);
+
+    }
+
+    @Override
+    public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
+        if (cantidad != 0)
+            throw new CantidadDeSacrificiosIncorrectaException();
 
     }
 }

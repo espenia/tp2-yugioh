@@ -91,7 +91,7 @@ public class testGenerales {
     }
 
     @Test
-    public void test05AtacarUnMonstruoConMenorAtaqueMataAlOtroMonstruo() {
+    public void test05DestruirCartaMonstruo() {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
         Lado ladoJugador1 = new Lado(new Mazo());
@@ -99,7 +99,7 @@ public class testGenerales {
         juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
         carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
         CartaMonstruo cartaPrueba = new AbismoReluciente();
-        CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba2 = new AligatorCibertech();
         juan.darCarta(cartaPrueba);
         juan.darCarta(cartaPrueba2);
         juan.jugarCartaMonstruoEnLado(cartaPrueba);
@@ -333,13 +333,13 @@ public class testGenerales {
         assertEquals(800,cartaPrueba1.getDefensa());
         assertEquals(1900,cartaPrueba2.getDefensa());
         assertEquals(1800,cartaPrueba2.getAtaque());
-        CartaMonstruo cartaPrueba3 = new Conedragon();
+        CartaMonstruo cartaPrueba3 = new PieDerechoDeExodia();
         carlos.darCarta(cartaPrueba3);
         carlos.jugarCartaMonstruoEnLado(cartaPrueba3);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba3);
         carlos.colocarEnPosicionDefensa(cartaPrueba3);
-        assertEquals(3200,cartaPrueba3.getDefensa());
-        assertEquals(2950,cartaPrueba3.getAtaque());
+        assertEquals(600,cartaPrueba3.getDefensa());
+        assertEquals(200,cartaPrueba3.getAtaque());
 
     }
 
@@ -368,13 +368,13 @@ public class testGenerales {
         assertEquals(1300,cartaPrueba1.getDefensa());
         assertEquals(1600,cartaPrueba2.getDefensa());
         assertEquals(2000,cartaPrueba2.getAtaque());
-        CartaMonstruo cartaPrueba3 = new Conedragon();
+        CartaMonstruo cartaPrueba3 = new PieDerechoDeExodia();
         carlos.darCarta(cartaPrueba3);
         carlos.jugarCartaMonstruoEnLado(cartaPrueba3);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba3);
         carlos.colocarEnPosicionDefensa(cartaPrueba3);
-        assertEquals(2900,cartaPrueba3.getDefensa());
-        assertEquals(3150,cartaPrueba3.getAtaque());
+        assertEquals(300,cartaPrueba3.getDefensa());
+        assertEquals(400,cartaPrueba3.getAtaque());
 
     }
 
@@ -543,6 +543,8 @@ public class testGenerales {
         Lado ladoJugador2 = new Lado(new Mazo());
         juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
         carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
+        CartaMonstruo sacrificio1 = new AbismoReluciente();
+        CartaMonstruo sacrificio2 = new AcechadorDelCraneo();
         CartaMonstruo cartaPrueba1 = new DragonBlancoDeOjosAzules();
         CartaMonstruo cartaPrueba2 = new DragonBlancoDeOjosAzules();
         CartaMonstruo cartaPrueba3 = new DragonBlancoDeOjosAzules();
@@ -553,13 +555,25 @@ public class testGenerales {
         Map<String ,CartaMonstruo> mazo = new HashMap<>();
         mazo.put(cartaMonstruo.getNombre(),cartaMonstruo);
         juan.darMazoDeFusiones(mazo);
-        juan.jugarCartaMonstruoEnLado(cartaPrueba1);
+        juan.darCarta(sacrificio1);
+        juan.darCarta(sacrificio2);
+        juan.jugarCartaMonstruoEnLado(sacrificio1);
+        juan.jugarCartaMonstruoEnLado(sacrificio2);
+        juan.jugarCartaEnLadoConDosSacrificio(cartaPrueba1,sacrificio1,sacrificio2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
-        juan.jugarCartaMonstruoEnLado(cartaPrueba2);
+        juan.darCarta(sacrificio1);
+        juan.darCarta(sacrificio2);
+        juan.jugarCartaMonstruoEnLado(sacrificio1);
+        juan.jugarCartaMonstruoEnLado(sacrificio2);
+        juan.jugarCartaEnLadoConDosSacrificio(cartaPrueba2,sacrificio1,sacrificio2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
         juan.colocarEnPosicionAtaque(cartaPrueba2);
-        juan.jugarCartaMonstruoEnLado(cartaPrueba3);
+        juan.darCarta(sacrificio1);
+        juan.darCarta(sacrificio2);
+        juan.jugarCartaMonstruoEnLado(sacrificio1);
+        juan.jugarCartaMonstruoEnLado(sacrificio2);
+        juan.jugarCartaEnLadoConDosSacrificio(cartaPrueba3,sacrificio1,sacrificio2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba3);
         juan.colocarEnPosicionAtaque(cartaPrueba3);
         CartaMagica polimerizacion = new Polimerizacion();

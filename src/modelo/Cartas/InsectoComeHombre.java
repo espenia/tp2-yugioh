@@ -1,5 +1,6 @@
 package modelo.Cartas;
 
+import modelo.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 import modelo.Lado;
 
@@ -19,6 +20,13 @@ public class InsectoComeHombre extends CartaMonstruo {
     @Override
     public void activarEfectoAlRecibirAtaque(CartaMonstruo cartaMonstruo){
         cartaMonstruo.estaMuerta();
+
+    }
+
+    @Override
+    public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
+        if (cantidad != 0)
+            throw new CantidadDeSacrificiosIncorrectaException();
 
     }
 }
