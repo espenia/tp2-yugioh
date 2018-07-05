@@ -97,7 +97,7 @@ public class Jugador {
 
 	public void colocarEnEstadoBocaArriba(Carta unaCarta){
 		unaCarta.colocarEn(new EstadoBocaArriba());
-		lado.activarEfecto(unaCarta, this);
+		lado.activarEfecto(unaCarta, this, enemigo);
 	}
 
 	public void colocarEnPosicionAtaque(CartaMonstruo carta){
@@ -235,12 +235,12 @@ public class Jugador {
 
 
 	//DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
-	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion) {
-		ladoEnemigo.activarEfecto(unaCarta, cartasMonstruoAliadas, mazo, jugador, fusion);
+	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
+		ladoEnemigo.activarEfecto(unaCarta, cartasMonstruoAliadas, mazo, jugador, fusion, enemigo);
 	}
 
-	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, List<CartaMonstruo> cartasMonstruoEnemigas, Mazo mazo, Jugador jugador, Fusion fusion){
-		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, fusion);
+	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, List<CartaMonstruo> cartasMonstruoEnemigas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo){
+		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, fusion, enemigo);
 	}
 
 

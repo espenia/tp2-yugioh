@@ -386,16 +386,8 @@ public class testGenerales {
         Lado ladoJugador2 = new Lado(new Mazo());
         juan.asignarLadosYJugadores(ladoJugador1,ladoJugador2,carlos);
         carlos.asignarLadosYJugadores(ladoJugador2,ladoJugador1,juan);
-        CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
-        CartaMonstruo cartaPrueba2 = new AbismoReluciente();
-        CartaMonstruo cartaPrueba3 = new Conedragon();
         CartaMagica olla = new OllaDeLaCodicia();
         juan.darCarta(olla);
-        Mazo mazo = new Mazo();
-        mazo.agregarCarta(cartaPrueba1);
-        mazo.agregarCarta(cartaPrueba2);
-        mazo.agregarCarta(cartaPrueba3);
-        juan.darMazo(mazo);
         juan.jugarCartaMagicaEnLado(olla);
         juan.colocarEnEstadoBocaArriba(olla);
         assertEquals(1, juan.cantidadDeCartasEnMazo());
@@ -445,7 +437,7 @@ public class testGenerales {
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         carlos.jugarCartaMonstruoEnLado(cartaPrueba2);
         carlos.colocarEnPosicionAtaque(cartaPrueba2);
-        carlos.colocarEnEstadoBocaArriba(cartaPrueba2);//se ataca a si mismo en vez del enemigo fixear
+        carlos.colocarEnEstadoBocaArriba(cartaPrueba2);
         int vidaEsperada = 7500;
         assertEquals(vidaEsperada,juan.getPuntosDeVida(),DELTA);
 
@@ -480,16 +472,18 @@ public class testGenerales {
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan, carlos);
         CartaMonstruo cartaPrueba1 = new AcechadorDelCraneo();
+        CartaMonstruo cartaPrueba2 = new AcechadorDelCraneo();
         Mazo mazo = new Mazo();
         Mazo mazo2 = new Mazo();
         mazo.agregarCarta(cartaPrueba1);
         mazo2.agregarCarta(cartaPrueba1);
+        mazo2.agregarCarta(cartaPrueba2);
         juan.darMazo(mazo);
         carlos.darMazo(mazo2);
         while(juego.getPartidaEnCurso())
             juego.siguienteTurno();
         assertEquals(false, juego.getPartidaEnCurso());
-        assertEquals(carlos,juego.getPerdedor());
+        assertEquals(juan,juego.getPerdedor());
     }
 
     @Test

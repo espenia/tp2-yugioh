@@ -17,7 +17,7 @@ public class CartaMagicaAgujeroOscuro extends CartaMagica {
 
 
 	@Override
-	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
+	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
 		for(CartaMonstruo actual: monstruosAliados) {
 			actual.estaMuerta();
 		}

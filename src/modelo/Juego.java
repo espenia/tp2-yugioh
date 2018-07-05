@@ -21,13 +21,12 @@ public class Juego {
         jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
         jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
         primeroYSegundo(jugador1,jugador2);
-        primero = jugador1; //TODO solo tests
-        segundo = jugador2;
-        partidaEnJuego = true;
-        actual = primero;
-        fase = new FaseIncial(primero,this);
-        actual.asignarFase(fase);
-        //primerTurno(); // NO APLICABLE PARTA LOS TESTS
+        this.primero = jugador1; //TODO solo tests
+        this.segundo = jugador2;
+        this.partidaEnJuego = true;
+        this.actual = primero;
+        this.fase = new FaseIncial(this.primero,this);
+        this.actual.asignarFase(this.fase);
 
     }
 
@@ -36,14 +35,14 @@ public class Juego {
         jugadores.add(jugador1);
         jugadores.add(jugador2);
         Collections.shuffle(jugadores);
-        primero = jugadores.get(0);// el juego notifica quien va primero o segundo
-        segundo = jugadores.get(1);
+        this.primero = jugadores.get(0);// el juego notifica quien va primero o segundo
+        this.segundo = jugadores.get(1);
 
     }
 
     public void siguenteFase(){
         try {
-            fase = fase.cambiarFase();
+        	this.fase = this.fase.cambiarFase();
         }
         catch (NoHayMasFasesException ex){
             siguienteTurno();
@@ -56,53 +55,53 @@ public class Juego {
         primero.refrescarAtaques();
         segundo.refrescarAtaques();
 
-        if(primero.getPuntosDeVida() == 0 && segundo.getPuntosDeVida() == 0)
+        if(this.primero.getPuntosDeVida() == 0 && this.segundo.getPuntosDeVida() == 0)
             empate();
 
-        if(actual.getPuntosDeVida() == 0)
-            perdio(actual);
+        if(this.actual.getPuntosDeVida() == 0)
+            perdio(this.actual);
 
-        if(actual == primero)
-            actual = segundo;
+        if(this.actual == this.primero)
+        	this.actual = this.segundo;
         else
-            actual = primero;
-        fase = new FaseIncial(actual,this);
-        actual.asignarFase(fase);
+        	this.actual = this.primero;
+        this.fase = new FaseIncial(this.actual,this);
+        this.actual.asignarFase(this.fase);
 
     }
 
     public void gano(Jugador jugador) {
-        ganador = jugador;
+    	this.ganador = jugador;
 
     }
 
     public void empate() {
-        ganador = null;
+    	this.ganador = null;
 
     }
 
     public void perdio(Jugador jugador) {
-        perdedor = jugador;
+    	this.perdedor = jugador;
 
 
     }
 
     public Jugador getGanador(){
-        return ganador;
+        return this.ganador;
 
     }
 
     public Jugador getPerdedor(){
-        return perdedor;
+        return this.perdedor;
 
     }
 
 	public boolean getPartidaEnCurso() {
-		return partidaEnJuego;
+		return this.partidaEnJuego;
 	}
 
 	public void terminarJuego() {
-		partidaEnJuego = false;
+		this.partidaEnJuego = false;
 	}
 
     //supongo que se manejara la parte grafica

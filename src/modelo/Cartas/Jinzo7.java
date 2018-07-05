@@ -15,8 +15,8 @@ public class Jinzo7 extends CartaMonstruo {
     }
 
     @Override
-    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
-        atacarA(jugador);
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
+        atacarA(enemigo);
 
     }
 

@@ -12,15 +12,12 @@ public class CartaMonstruo implements Carta {
     private PosicionDeCarta posicion;
     private VidaDeCarta vidaDeCarta;
     private boolean yaAtacoEsteTurno;
-    private int estrellas;
 
 
     public CartaMonstruo(String nombreDelMonstruo,int defensaDelMonstruo, int ataqueDelMonstruo, int estrellasDelMonstruo){
-        //estrellas = numeroDeEstrellas;
         this.nombre = nombreDelMonstruo;
         this.defensa = defensaDelMonstruo;
         this.ataque = ataqueDelMonstruo;
-        this.estrellas = estrellasDelMonstruo;
         yaAtacoEsteTurno = false;
         estado = new SinEstado();
         posicion = new SinPosicion();
@@ -112,7 +109,7 @@ public class CartaMonstruo implements Carta {
 
 
     @Override
-    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
 	}
 
     public void activarEfectoAlRecibirAtaque(CartaMonstruo carta) {

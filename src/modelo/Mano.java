@@ -43,7 +43,7 @@ public class Mano {
         boolean piernaIzquierda = false;
         boolean exodia = false;
 
-        for (Carta i : manoDeCartas){
+        for (Carta i : this.manoDeCartas){
             if (i instanceof BrazoDerechoDeExodia)
                 brazoDerecho = true;
             if (i instanceof BrazoDerechoDeExodia)

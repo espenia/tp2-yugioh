@@ -141,13 +141,13 @@ public class Lado {
 
 
     //DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
-	public void activarEfecto(Carta unaCarta, Jugador jugador) {
-		jugador.activarEfecto(unaCarta, this.cartasMonstruo, this.mazo, jugador, this.fusion);
+	public void activarEfecto(Carta unaCarta, Jugador jugador, Jugador enemigo) {
+		jugador.activarEfecto(unaCarta, this.cartasMonstruo, this.mazo, jugador, this.fusion, enemigo);
 	}
 
 
-	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion) {
-		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, this.fusion);
+	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
+		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, this.fusion, enemigo);
 	}
 	
 	public void habilitarFusion(Fusion fusion) {
