@@ -32,6 +32,16 @@ public class SinCartaDeCampo extends CartaDeCampo {
     }
 
     @Override
+    public void revertirBuffDelLadoEnemigo(CartaMonstruo carta) {
+
+    }
+
+    @Override
+    public void revertirBuffPrincipal(CartaMonstruo carta) {
+
+    }
+
+    @Override
     public void asignarLado(Lado unLado) {
 
     }

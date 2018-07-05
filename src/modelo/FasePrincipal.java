@@ -15,7 +15,7 @@ public class FasePrincipal implements Fase {
 
 
     @Override
-    public Fase cambiarFase() throws NoHayMasFasesException {
+    public Fase cambiarFase() {
         return new FaseBatalla(jugador,juego);
     }
 

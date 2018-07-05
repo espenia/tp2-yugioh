@@ -32,6 +32,17 @@ public abstract class CartaDeCampo implements Carta{
 
     public abstract void aplicarBuffDelLadoEnemigo(CartaMonstruo carta);
 
+    public void revertirBuff(CartaMonstruo carta, Lado lado){
+        if (this.lado == lado)
+            revertirBuffPrincipal(carta);
+        else revertirBuffDelLadoEnemigo(carta);
+
+    }
+
+    public abstract void revertirBuffDelLadoEnemigo(CartaMonstruo carta);
+
+    public abstract void revertirBuffPrincipal(CartaMonstruo carta);
+
 
 
     @Override
@@ -50,6 +61,7 @@ public abstract class CartaDeCampo implements Carta{
 
 
     }
+
 
 
 }

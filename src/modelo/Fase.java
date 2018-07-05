@@ -2,7 +2,7 @@ package modelo;
 
 public interface Fase {
 
-    public Fase cambiarFase() throws NoHayMasFasesException;
+    public Fase cambiarFase();
 
     public void jugarCartaMonstruo() throws AccionInvalidaEnFaseException;
 

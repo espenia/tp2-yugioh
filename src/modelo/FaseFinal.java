@@ -14,8 +14,10 @@ public class FaseFinal implements Fase {
 
 
     @Override
-    public Fase cambiarFase() throws NoHayMasFasesException {
-        throw new NoHayMasFasesException();
+    public Fase cambiarFase(){
+        juego.siguienteTurno();
+        return null;
+
     }
 
     @Override

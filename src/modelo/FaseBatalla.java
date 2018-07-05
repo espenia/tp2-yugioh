@@ -13,7 +13,7 @@ public class FaseBatalla implements Fase {
 
 
     @Override
-    public Fase cambiarFase() throws NoHayMasFasesException {
+    public Fase cambiarFase(){
         return new FaseFinal(jugador,juego);
     }
 

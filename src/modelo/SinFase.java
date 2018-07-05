@@ -4,7 +4,7 @@ public class SinFase implements Fase {
 
 
     @Override
-    public Fase cambiarFase() throws NoHayMasFasesException {
+    public Fase cambiarFase()  {
         return null;
     }
 

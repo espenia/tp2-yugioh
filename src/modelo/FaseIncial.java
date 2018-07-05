@@ -22,7 +22,7 @@ public class FaseIncial implements Fase {
 
 
     @Override
-    public Fase cambiarFase() throws NoHayMasFasesException {
+    public Fase cambiarFase(){
         return new FasePrincipal(jugador,juego);
     }
 

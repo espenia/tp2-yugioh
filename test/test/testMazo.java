@@ -11,9 +11,12 @@ import modelo.Cartas.*;
 public class testMazo {
 
 	@Test
-    public void test01MazoRecienCreadoContieneCeroCartas(){
+    public void test01MazoRecienCreadoContieneCeroCartas(){// mazo comienza con 3 cartas son removidas para c/test
 
         Mazo mazo = new Mazo();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
         int cantidadEsperada = 0;
         assertEquals(cantidadEsperada, mazo.cantidadDeCartas());
     }
@@ -22,6 +25,9 @@ public class testMazo {
     public void test02AgregarYExtraerCartasDelMazoLuegoComprobarQueElMazoEstaVacio(){
 
         Mazo mazo = new Mazo();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
         Carta carta2 = new Fisura();
         Carta carta1 = new Conedragon();
         mazo.agregarCarta(carta1);
@@ -39,12 +45,18 @@ public class testMazo {
     	
         Mazo mazo = new Mazo();
         mazo.extraerCarta();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
     }
 
     @Test
     public void test04ArmarMazoYComprobar(){
     	
         Mazo mazo = new Mazo();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
         Stack<Carta> cartas = new Stack<>();
         cartas.add(new Fisura());
         cartas.add(new Fisura());
@@ -60,6 +72,9 @@ public class testMazo {
     public void test05AgregarCartasEnVolumen(){
 
         Mazo mazo = new Mazo();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
+        mazo.extraerCarta();
         for(int i = 0; i < 80; i++) {
         	mazo.agregarCarta(new Conedragon());
         }

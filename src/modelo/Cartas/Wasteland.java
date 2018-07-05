@@ -40,5 +40,15 @@ public class Wasteland extends CartaDeCampo {
 
     }
 
+    @Override
+    public void revertirBuffDelLadoEnemigo(CartaMonstruo carta) {
+        carta.aplicarBuff(-buffDeDefensa,0);
+    }
+
+    @Override
+    public void revertirBuffPrincipal(CartaMonstruo carta) {
+        carta.aplicarBuff(0,-buffDeAtaque);
+    }
+
 
 }

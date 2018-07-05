@@ -191,6 +191,8 @@ public class Jugador {
 
 	public void colocarCartaDeCampo(CartaDeCampo cartaCampo) {
 		fase.jugarCartaDeCampo();
+		lado.removerBuffs();
+		ladoEnemigo.removerBuffs();
 		lado.jugarCartaDeCampo(cartaCampo);
 		ladoEnemigo.jugarCartaDeCampo(cartaCampo);
 

@@ -47,6 +47,12 @@ public class Lado {
 
 	}
 
+	public void removerBuffs() {
+		for (CartaMonstruo i : cartasMonstruo)
+			cartaDeCampo.revertirBuff(i,this);
+
+	}
+
 
 	public void jugarCartaMagica(CartaDeUtilidad carta) {
 		cartasTrampaOMagicas.add(carta);
@@ -153,5 +159,6 @@ public class Lado {
 	public void habilitarFusion(Fusion fusion) {
 		this.fusion = fusion;
 	}
+
 
 }

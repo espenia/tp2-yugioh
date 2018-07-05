@@ -40,16 +40,12 @@ public class Juego {
 
     }
 
-    public void siguenteFase(){
-        try {
-        	this.fase = this.fase.cambiarFase();
-        }
-        catch (NoHayMasFasesException ex){
-            siguienteTurno();
-        }
-
+    public void siguenteFase() {
+        this.fase = this.fase.cambiarFase();
 
     }
+
+
 
     public void siguienteTurno(){
         primero.refrescarAtaques();
