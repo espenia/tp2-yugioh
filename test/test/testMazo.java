@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Stack;
 
+import modelo.Exceptions.ElMazoEstaVacioException;
 import org.junit.Test;
 import modelo.*;
 import modelo.Cartas.*;

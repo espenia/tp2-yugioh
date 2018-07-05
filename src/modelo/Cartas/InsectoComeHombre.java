@@ -1,8 +1,7 @@
 package modelo.Cartas;
 
-import modelo.CantidadDeSacrificiosIncorrectaException;
+import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
-import modelo.Lado;
 
 public class InsectoComeHombre extends CartaMonstruo {
 

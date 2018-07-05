@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Exceptions.AccionInvalidaEnFaseException;
+
 public class SinFase implements Fase {
 
 

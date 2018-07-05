@@ -1,6 +1,6 @@
 package modelo.Cartas;
 
-import modelo.CantidadDeSacrificiosIncorrectaException;
+import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 
 public class PieIzquierdoDeExodia extends CartaMonstruo {

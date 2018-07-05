@@ -1,6 +1,7 @@
 package modelo.Cartas;
 
 import modelo.*;
+import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 
 import java.util.List;
 

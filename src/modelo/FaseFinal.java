@@ -1,5 +1,8 @@
 package modelo;
 
+import modelo.Exceptions.AccionInvalidaEnFaseException;
+import modelo.Exceptions.NoHayMasFasesException;
+
 public class FaseFinal implements Fase {
 
     private Jugador jugador;
@@ -15,7 +18,7 @@ public class FaseFinal implements Fase {
 
 
     @Override
-    public Fase cambiarFase() throws NoHayMasFasesException{
+    public Fase cambiarFase() throws NoHayMasFasesException {
         throw new NoHayMasFasesException();
 
     }

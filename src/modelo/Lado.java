@@ -1,6 +1,9 @@
 package modelo;
 
 import modelo.Cartas.*;
+import modelo.Exceptions.HayUnMonstruoEnElCaminoException;
+import modelo.Exceptions.LadoNoContieneCartaException;
+import modelo.Exceptions.NoHayEspacioEnLadoException;
 
 import java.util.*;
 
@@ -60,12 +63,12 @@ public class Lado {
 	}
 	
 	//EXCEPCIONES//
-	public void verificarSiHayCartasMonstruos() throws HayUnMonstruoEnElCaminoException{
+	public void verificarSiHayCartasMonstruos() throws HayUnMonstruoEnElCaminoException {
 		if (!this.cartasMonstruo.isEmpty())
 			throw new HayUnMonstruoEnElCaminoException();
 	}
 
-	public void verificarEspacioDeCartasMonstruos() throws NoHayEspacioEnLadoException{
+	public void verificarEspacioDeCartasMonstruos() throws NoHayEspacioEnLadoException {
 		if (this.cartasMonstruo.size() == 5)
 			throw new NoHayEspacioEnLadoException();
 	}
@@ -75,7 +78,7 @@ public class Lado {
 			throw new NoHayEspacioEnLadoException();
 	}
 
-	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
+	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException {
 		if (!this.cartasTrampaOMagicas.contains(cartaDeUtilidad))
 			throw new LadoNoContieneCartaException();
 	}

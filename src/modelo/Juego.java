@@ -2,7 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import modelo.Cartas.*;
+
+import modelo.Exceptions.NoHayMasFasesException;
 
 public class Juego {
 

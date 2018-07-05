@@ -1,11 +1,10 @@
 package modelo;
 
 import modelo.Cartas.*;
+import modelo.Exceptions.ManoNoContieneCartaException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Mano {
 
@@ -24,7 +23,7 @@ public class Mano {
 
     }
 
-    public void removerCarta(Carta carta) throws ManoNoContieneCartaException{
+    public void removerCarta(Carta carta) throws ManoNoContieneCartaException {
         if (!manoDeCartas.remove(carta))
             throw new ManoNoContieneCartaException();
 

@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Exceptions.CartaMuertaNoPuedeAtacarException;
+
 public class Muerto implements VidaDeCarta {
     @Override
     public boolean estaMuerta() {
@@ -7,7 +9,7 @@ public class Muerto implements VidaDeCarta {
     }
 
     @Override
-    public void atacar() throws CartaMuertaNoPuedeAtacarException{
+    public void atacar() throws CartaMuertaNoPuedeAtacarException {
         throw new CartaMuertaNoPuedeAtacarException();
 
     }

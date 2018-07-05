@@ -1,6 +1,10 @@
 package modelo;
 
 
+import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
+import modelo.Exceptions.CartaMuertaNoPuedeAtacarException;
+import modelo.Exceptions.MonstruoNoPuedeAtacarDosVecesEnUnTurnoException;
+
 import java.util.List;
 
 public class CartaMonstruo implements Carta {

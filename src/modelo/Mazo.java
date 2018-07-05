@@ -1,6 +1,7 @@
 package modelo;
 
 import modelo.Cartas.DragonBlancoDeOjosAzules;
+import modelo.Exceptions.ElMazoEstaVacioException;
 
 import java.util.Collections;
 import java.util.Stack;

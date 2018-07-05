@@ -2,6 +2,8 @@ package test;
 
 import modelo.*;
 import modelo.Cartas.*;
+import modelo.Exceptions.AccionInvalidaEnFaseException;
+import modelo.Exceptions.NoEsTuTurnoException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

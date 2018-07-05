@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Exceptions.CartaSinPosicionNoPuedeAtacarException;
+
 public class SinPosicion implements PosicionDeCarta {
 
     @Override

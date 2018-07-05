@@ -6,7 +6,7 @@ import modelo.CartaMagica;
 import modelo.CartaMonstruo;
 import modelo.Jugador;
 import modelo.Lado;
-import modelo.LadoNoContieneCartaException;
+import modelo.Exceptions.LadoNoContieneCartaException;
 import modelo.Mazo;
 
 public class Fisura extends CartaMagica {

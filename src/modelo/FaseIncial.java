@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Exceptions.AccionInvalidaEnFaseException;
+
 public class FaseIncial implements Fase {
 
     private Jugador jugador;
