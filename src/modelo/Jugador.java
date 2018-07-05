@@ -2,7 +2,6 @@ package modelo;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
 
 public class Jugador {
@@ -96,6 +95,7 @@ public class Jugador {
 	}
 
 	public void colocarEnEstadoBocaArriba(Carta unaCarta){
+		fase.activarCartaMagica();
 		unaCarta.colocarEn(new EstadoBocaArriba());
 		lado.activarEfecto(unaCarta, this, enemigo);
 	}
@@ -242,9 +242,7 @@ public class Jugador {
 	}
 
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, List<CartaMonstruo> cartasMonstruoEnemigas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo){
-		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, fusion, enemigo);
+		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, enemigo);
 	}
-
-
 
 }

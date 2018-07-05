@@ -5,7 +5,6 @@ import java.util.List;
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
 import modelo.EstadoDeCarta;
-import modelo.Fusion;
 import modelo.Jugador;
 import modelo.Lado;
 import modelo.Mazo;
@@ -52,7 +51,7 @@ public class SinCartaDeCampo extends CartaDeCampo {
     }
 
 	@Override
-	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {		
+	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
 	}
 
 }

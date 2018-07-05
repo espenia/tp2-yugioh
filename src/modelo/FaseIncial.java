@@ -8,6 +8,7 @@ public class FaseIncial implements Fase {
     public FaseIncial(Jugador unJugador, Juego elJuego){
         juego = elJuego;
         jugador = unJugador;
+        jugador.asignarFase(this);
         if(jugador.cantidadDeCartasEnMazo() == 0){
             juego.perdio(jugador);
             juego.terminarJuego();

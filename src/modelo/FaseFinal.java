@@ -10,13 +10,13 @@ public class FaseFinal implements Fase {
     public FaseFinal(Jugador unJugador, Juego elJuego){
         juego = elJuego;
         jugador = unJugador;
+        jugador = unJugador;
     }
 
 
     @Override
-    public Fase cambiarFase(){
-        juego.siguienteTurno();
-        return null;
+    public Fase cambiarFase() throws NoHayMasFasesException{
+        throw new NoHayMasFasesException();
 
     }
 
@@ -27,12 +27,12 @@ public class FaseFinal implements Fase {
 
     @Override
     public void jugarCartaDeUtilidad() throws AccionInvalidaEnFaseException {
-        throw new AccionInvalidaEnFaseException();
+
     }
 
     @Override
     public void jugarCartaDeCampo() throws AccionInvalidaEnFaseException {
-        throw new AccionInvalidaEnFaseException();
+
     }
 
 
@@ -43,7 +43,7 @@ public class FaseFinal implements Fase {
 
     @Override
     public void activarCartaMagica() throws AccionInvalidaEnFaseException {
-        throw new AccionInvalidaEnFaseException();
+
     }
 
 

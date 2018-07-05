@@ -109,7 +109,7 @@ public class CartaMonstruo implements Carta {
 
 
     @Override
-    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
+    public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
 	}
 
     public void activarEfectoAlRecibirAtaque(CartaMonstruo carta) {

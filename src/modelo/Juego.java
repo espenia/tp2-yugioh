@@ -12,6 +12,7 @@ public class Juego {
     private Jugador ganador;
     private Jugador perdedor;
     private Fase fase;
+    private Fase noEsTuTurno;
     private boolean partidaEnJuego;
 
     public Juego (Jugador jugador1, Jugador jugador2){
@@ -26,7 +27,9 @@ public class Juego {
         this.partidaEnJuego = true;
         this.actual = primero;
         this.fase = new FaseIncial(this.primero,this);
-        this.actual.asignarFase(this.fase);
+        siguenteFase();
+        this.noEsTuTurno = new NoEsTuTurno(segundo,this);
+        segundo.asignarFase(noEsTuTurno);
 
     }
 
@@ -41,7 +44,15 @@ public class Juego {
     }
 
     public void siguenteFase() {
-        this.fase = this.fase.cambiarFase();
+        try {
+            this.fase = this.fase.cambiarFase();
+            actual.asignarFase(fase);
+        }
+        catch (NoHayMasFasesException ex){
+            siguienteTurno();
+        }
+
+
 
     }
 
@@ -57,12 +68,19 @@ public class Juego {
         if(this.actual.getPuntosDeVida() == 0)
             perdio(this.actual);
 
-        if(this.actual == this.primero)
-        	this.actual = this.segundo;
-        else
-        	this.actual = this.primero;
+        if(this.actual == this.primero){
+            this.actual = this.segundo;
+            primero.asignarFase(noEsTuTurno);
+        }
+
+        else{
+            this.actual = this.primero;
+            segundo.asignarFase(noEsTuTurno);
+        }
+
         this.fase = new FaseIncial(this.actual,this);
         this.actual.asignarFase(this.fase);
+        siguenteFase();
 
     }
 
