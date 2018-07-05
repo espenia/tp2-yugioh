@@ -13,152 +13,128 @@ public class Lado {
 	private CartaDeCampo cartaDeCampo;
 	private Fusion fusion;
 
-
-
 	public Lado(Mazo unMazo){
 
-		cartasMonstruo = new ArrayList<>();
-		cartasTrampaOMagicas = new ArrayList<>();
-		mazo = unMazo;
-		cartaDeCampo = new SinCartaDeCampo();
-		fusion = new Fusion();
-		mazoDeFusiones = new HashMap<>();
+		this.cartasMonstruo = new ArrayList<>();
+		this.cartasTrampaOMagicas = new ArrayList<>();
+		this.mazo = unMazo;
+		this.cartaDeCampo = new SinCartaDeCampo();
+		this.fusion = new Fusion();
+		this.mazoDeFusiones = new HashMap<>();
+	}
+	
+	//SETTERS UNITARIOS//
+	public void darMazo(Mazo unMazo) {
+		this.mazo = unMazo;
 	}
 
-
-
-
-	public Carta extraerDelMazo(){
-		return mazo.extraerCarta();
-
+	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
+		this.mazoDeFusiones = mazo;
 	}
 
+	//JUEGA UNA CARTA DE LA MANO AL CAMPO DE BATALLA//
 	public void jugarCartaMonstruo(CartaMonstruo carta) {
-		cartaDeCampo.aplicarBuff(carta,this);
-		cartasMonstruo.add(carta);
-
+		this.cartaDeCampo.aplicarBuff(carta,this);
+		this.cartasMonstruo.add(carta);
 	}
-
+	
 	public void jugarCartaDeCampo(CartaDeCampo carta){
-		cartaDeCampo = carta;
-		cartaDeCampo.asignarLado(this);
-		for(CartaMonstruo i : cartasMonstruo )
-			cartaDeCampo.aplicarBuff(i,this);
-
+		this.cartaDeCampo = carta;
+		this.cartaDeCampo.asignarLado(this);
+		for(CartaMonstruo i : this.cartasMonstruo )
+			this.cartaDeCampo.aplicarBuff(i,this);
 	}
-
-	public void removerBuffs() {
-		for (CartaMonstruo i : cartasMonstruo)
-			cartaDeCampo.revertirBuff(i,this);
-
-	}
-
-
-	public void jugarCartaMagica(CartaDeUtilidad carta) {
-		cartasTrampaOMagicas.add(carta);
-
-	}
-
+	
 	public void jugarCartaTrampa(CartaDeUtilidad carta,Lado esteLado,Lado ladoEnemigo){
 		carta.activarTrampa(esteLado,ladoEnemigo);
-		cartasTrampaOMagicas.add(carta);
+		this.cartasTrampaOMagicas.add(carta);
 	}
 
+	public void jugarCartaMagica(CartaDeUtilidad carta) {
+		this.cartasTrampaOMagicas.add(carta);
+	}
+
+	//SACA UNA CARTA DEL MAZO A LA MANO//
+	public Carta extraerDelMazo(){
+		return this.mazo.extraerCarta();
+	}
+	
+	//EXCEPCIONES//
 	public void verificarSiHayCartasMonstruos() throws HayUnMonstruoEnElCaminoException{
-		if (!cartasMonstruo.isEmpty())
+		if (!this.cartasMonstruo.isEmpty())
 			throw new HayUnMonstruoEnElCaminoException();
-
 	}
-
 
 	public void verificarEspacioDeCartasMonstruos() throws NoHayEspacioEnLadoException{
-		if (cartasMonstruo.size() == 5)
+		if (this.cartasMonstruo.size() == 5)
 			throw new NoHayEspacioEnLadoException();
-
 	}
 
 	public void verificarEspacioDeCartasDeUtilidad() throws NoHayEspacioEnLadoException {
-		if (cartasTrampaOMagicas.size() == 5)
+		if (this.cartasTrampaOMagicas.size() == 5)
 			throw new NoHayEspacioEnLadoException();
 	}
 
 	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad)throws LadoNoContieneCartaException{
-		if (!cartasTrampaOMagicas.contains(cartaDeUtilidad))
+		if (!this.cartasTrampaOMagicas.contains(cartaDeUtilidad))
 			throw new LadoNoContieneCartaException();
-
 	}
 
 	public void verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo)throws LadoNoContieneCartaException{
-		if (!cartasMonstruo.contains(cartaMonstruo))
+		if (!this.cartasMonstruo.contains(cartaMonstruo))
 			throw new LadoNoContieneCartaException();
-
 	}
-
-	public void refresacarAtaques() {
-		for (CartaMonstruo i : cartasMonstruo)
+	
+	//FUNCIONES VARIAS//
+	public void removerBuffs() {
+		for (CartaMonstruo i : this.cartasMonstruo)
+			this.cartaDeCampo.revertirBuff(i,this);
+	}
+	
+	public void refrescarAtaques() {
+		for (CartaMonstruo i : this.cartasMonstruo)
 			i.refrescarAtaque();
-
+	}
+	
+	//GETTER INFORMATIVO//
+	public int cantidadDeCartasEnMazo() {
+		return this.mazo.cantidadDeCartas();
+	}
+	
+	//DISPATCHES DE FUSION//
+	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
+		this.fusion.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio,this.mazoDeFusiones,this);
 	}
 
-	public void removerCartaMonstruo(CartaMonstruo cartaMonstruo){
-		verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
-		cartasMonstruo.remove(cartaMonstruo);
-
+	public void habilitarFusion(Fusion fusion) {
+		this.fusion = fusion;
 	}
-
-	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad){
-		verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
-		cartasTrampaOMagicas.remove(cartaDeUtilidad);
-
-	}
-
-
-	public boolean activarTrampaConAtaque(CartaMonstruo miCarta,Jugador jugador) {
-		boolean pasador = false;
-		for (CartaDeUtilidad i: cartasTrampaOMagicas){
+	
+	//ACTIVACION DE TRAMPA PRODUCTO DE UN ATAQUE ENEMIGO//
+	public void activarTrampaConAtaque(CartaMonstruo miCarta,Jugador jugador) {
+		for (CartaDeUtilidad i: this.cartasTrampaOMagicas){
 			if (i instanceof CartaTrampa)
 				i.activarTrampaDeAtaque(jugador, miCarta);
 		}
-		return pasador;
-
-
 	}
 
-
-	public void darMazo(Mazo unMazo) {
-		this.mazo = unMazo;
-
-	}
-
-	public int cantidadDeCartasEnMazo() {
-		return mazo.cantidadDeCartas();
-
-	}
-
-
-	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
-		this.fusion.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio,this.mazoDeFusiones,this);
-
-	}
-
-	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
-		mazoDeFusiones = mazo;
-	}
-
-
-    //DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
+    //DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO AL DAR VUELTA UNA CARTA//
 	public void activarEfecto(Carta unaCarta, Jugador jugador, Jugador enemigo) {
 		jugador.activarEfecto(unaCarta, this.cartasMonstruo, this.mazo, jugador, this.fusion, enemigo);
 	}
-
 
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
 		jugador.activarEfecto(unaCarta, cartasMonstruoAliadas , this.cartasMonstruo, mazo, jugador, this.fusion, enemigo);
 	}
 	
-	public void habilitarFusion(Fusion fusion) {
-		this.fusion = fusion;
+	//SIREVEN PARA NO MANTENER CARTAS EN ESTADO MUERTAS Y NO GENEREN PROBLEMAS//
+	public void removerCartaMonstruo(CartaMonstruo cartaMonstruo){
+		verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
+		this.cartasMonstruo.remove(cartaMonstruo);
 	}
 
-
+	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad){
+		verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
+		this.cartasTrampaOMagicas.remove(cartaDeUtilidad);
+	}
 }

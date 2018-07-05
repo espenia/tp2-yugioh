@@ -15,10 +15,14 @@ public class Jugador {
 
 	public Jugador() {
 		this.puntosDeVida = 8000;
-		mano = new Mano();
-		fase = new SinFase();
+		this.mano = new Mano();
+		this.fase = new SinFase();
 	}
 
+	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
+		this.lado.darMazoDeFusiones(mazo);
+	}
+	
 	public void asignarLadosYJugadores(Lado lado, Lado ladoEnemigo, Jugador jugadorEnemigo){
 		this.enemigo = jugadorEnemigo;
         this.lado = lado;
@@ -26,65 +30,65 @@ public class Jugador {
     }
 
 	public void jugarCartaMonstruoEnLado(CartaMonstruo carta ) {
-		fase.jugarCartaMonstruo();
+		this.fase.jugarCartaMonstruo();
 		carta.verificarCantidadDeSacrificios(0);
-		lado.verificarEspacioDeCartasMonstruos();
-		mano.removerCarta(carta);
+		this.lado.verificarEspacioDeCartasMonstruos();
+		this.mano.removerCarta(carta);
 		this.lado.jugarCartaMonstruo(carta);
 
 	}
 
 	public void jugarCartaMagicaEnLado(CartaMagica carta) {
-		fase.jugarCartaDeUtilidad();
-		lado.verificarEspacioDeCartasDeUtilidad();
-		mano.removerCarta(carta);
+		this.fase.jugarCartaDeUtilidad();
+		this.lado.verificarEspacioDeCartasDeUtilidad();
+		this.mano.removerCarta(carta);
 		this.lado.jugarCartaMagica(carta);
 
 	}
 
 	public void jugarCartaTrampaEnLado(CartaTrampa carta) {
-		fase.jugarCartaDeUtilidad();
-		lado.verificarEspacioDeCartasDeUtilidad();
-		mano.removerCarta(carta);
-		this.lado.jugarCartaTrampa(carta,lado,ladoEnemigo);
+		this.fase.jugarCartaDeUtilidad();
+		this.lado.verificarEspacioDeCartasDeUtilidad();
+		this.mano.removerCarta(carta);
+		this.lado.jugarCartaTrampa(carta,this.lado,this.ladoEnemigo);
 
 	}
 
 
 	public void jugarCartaEnLadoConUnSacrificio(CartaMonstruo monstruo, CartaMonstruo sacrificio){
-		fase.jugarCartaMonstruo();
+		this.fase.jugarCartaMonstruo();
 		monstruo.verificarCantidadDeSacrificios(1);
-		mano.removerCarta(monstruo);
+		this.mano.removerCarta(monstruo);
 		sacrificio.estaMuerta();
-		lado.removerCartaMonstruo(sacrificio);
-		lado.verificarEspacioDeCartasMonstruos();
+		this.lado.removerCartaMonstruo(sacrificio);
+		this.lado.verificarEspacioDeCartasMonstruos();
 		this.lado.jugarCartaMonstruo(monstruo);
 	}
 
 	public void jugarCartaEnLadoConDosSacrificio(CartaMonstruo monstruo, CartaMonstruo segundoSacrificio, CartaMonstruo primerSacrificio){
-		fase.jugarCartaMonstruo();
+		this.fase.jugarCartaMonstruo();
 		monstruo.verificarCantidadDeSacrificios(2);
-		mano.removerCarta(monstruo);
+		this.mano.removerCarta(monstruo);
 		segundoSacrificio.estaMuerta();
 		primerSacrificio.estaMuerta();
-		lado.removerCartaMonstruo(primerSacrificio);
-        lado.removerCartaMonstruo(segundoSacrificio);
-		lado.verificarEspacioDeCartasMonstruos();
+		this.lado.removerCartaMonstruo(primerSacrificio);
+		this.lado.removerCartaMonstruo(segundoSacrificio);
+		this.lado.verificarEspacioDeCartasMonstruos();
         this.lado.jugarCartaMonstruo(monstruo);
 
 	}
 
 	public void jugarCartaEnLadoConTresSacrificio(CartaMonstruo monstruo, CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio){
-		fase.jugarCartaMonstruo();
+		this.fase.jugarCartaMonstruo();
 		monstruo.verificarCantidadDeSacrificios(3);
-		mano.removerCarta(monstruo);
+		this.mano.removerCarta(monstruo);
 		primerSacrificio.estaMuerta();
 		segundoSacrificio.estaMuerta();
 		tercerSacrificio.estaMuerta();
-		lado.removerCartaMonstruo(primerSacrificio);
-        lado.removerCartaMonstruo(segundoSacrificio);
-        lado.removerCartaMonstruo(tercerSacrificio);
-		lado.verificarEspacioDeCartasMonstruos();
+		this.lado.removerCartaMonstruo(primerSacrificio);
+		this.lado.removerCartaMonstruo(segundoSacrificio);
+		this.lado.removerCartaMonstruo(tercerSacrificio);
+		this.lado.verificarEspacioDeCartasMonstruos();
         this.lado.jugarCartaMonstruo(monstruo);
 
 	}
@@ -95,9 +99,9 @@ public class Jugador {
 	}
 
 	public void colocarEnEstadoBocaArriba(Carta unaCarta){
-		fase.activarCartaMagica();
+		this.fase.activarCartaMagica();
 		unaCarta.colocarEn(new EstadoBocaArriba());
-		lado.activarEfecto(unaCarta, this, enemigo);
+		this.lado.activarEfecto(unaCarta, this, this.enemigo);
 	}
 
 	public void colocarEnPosicionAtaque(CartaMonstruo carta){
@@ -112,46 +116,45 @@ public class Jugador {
 
 
 	public void seleccionarCartaDeLaMano(Carta unaCarta) {
-		mano.removerCarta(unaCarta);
+		this.mano.removerCarta(unaCarta);
 
 	}
 
 	public void verificarSiCartaDeUtilidadEstaEnLado(CartaDeUtilidad cartaDeUtilidad) {
-		lado.verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
+		this.lado.verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
 	}
 
 
 	public void verificarSiCartaMonstruoEstaEnLado(CartaMonstruo cartaMonstruo){
-		lado.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
+		this.lado.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
 	}
 
 	public void verificarSiCartaMonstruoEstaEnElOtroLado(CartaMonstruo cartaMonstruo){
-	    ladoEnemigo.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
+		this.ladoEnemigo.verificarSiCartaMonstruoEstaEnLado(cartaMonstruo);
 
     }
 
-
 	public void darCarta(Carta carta) {
-		mano.agregarCarta(carta);
+		this.mano.agregarCarta(carta);
 
 	}
 
 
 	public void atacar(CartaMonstruo cartaSeleccionada, Jugador jugador) {
-		fase.atacar();
+		this.fase.atacar();
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
-		ladoEnemigo.verificarSiHayCartasMonstruos();
-		ladoEnemigo.activarTrampaConAtaque(cartaSeleccionada, enemigo);
+		this.ladoEnemigo.verificarSiHayCartasMonstruos();
+		this.ladoEnemigo.activarTrampaConAtaque(cartaSeleccionada, this.enemigo);
 		cartaSeleccionada.atacarA(jugador);
 
 	}
 
 
 	public void atacarAMonstruo(CartaMonstruo cartaSeleccionada, CartaMonstruo cartaEnemiga){
-		fase.atacar();
+		this.fase.atacar();
 		verificarSiCartaMonstruoEstaEnLado(cartaSeleccionada);
 		verificarSiCartaMonstruoEstaEnElOtroLado(cartaEnemiga);
-		ladoEnemigo.activarTrampaConAtaque(cartaEnemiga, enemigo);
+		this.ladoEnemigo.activarTrampaConAtaque(cartaEnemiga, this.enemigo);
 		int resultado = cartaSeleccionada.atacarAMonstruo(cartaEnemiga);
 		resolverConflicto(resultado, cartaEnemiga);
 
@@ -170,7 +173,7 @@ public class Jugador {
     }
 
     public void notificarDanioAlEnemigo(int danio){
-		enemigo.recibeDanio(danio);
+    	this.enemigo.recibeDanio(danio);
 
 	}
 
@@ -185,27 +188,25 @@ public class Jugador {
 	}
 
 	public void extraerCartasDelMazo(){
-		Carta carta = lado.extraerDelMazo();
-		mano.agregarCarta(carta);
+		Carta carta = this.lado.extraerDelMazo();
+		this.mano.agregarCarta(carta);
 	}
 
 	public void colocarCartaDeCampo(CartaDeCampo cartaCampo) {
-		fase.jugarCartaDeCampo();
-		lado.removerBuffs();
-		ladoEnemigo.removerBuffs();
-		lado.jugarCartaDeCampo(cartaCampo);
-		ladoEnemigo.jugarCartaDeCampo(cartaCampo);
+		this.fase.jugarCartaDeCampo();
+		this.lado.removerBuffs();
+		this.ladoEnemigo.removerBuffs();
+		this.lado.jugarCartaDeCampo(cartaCampo);
+		this.ladoEnemigo.jugarCartaDeCampo(cartaCampo);
 
 	}
 
 	public void darMazo(Mazo mazo) {
-		lado.darMazo(mazo);
-
+		this.lado.darMazo(mazo);
 	}
 
 	public void refrescarAtaques() {
-		lado.refresacarAtaques();
-
+		this.lado.refrescarAtaques();
 	}
 
 	public boolean tieneExodiaEnMano() {
@@ -215,30 +216,24 @@ public class Jugador {
 	public int cantidadDeCartasEnMazo() {
 		return lado.cantidadDeCartasEnMazo();
 	}
-
-
-	public void darMazoDeFusiones(Map<String,CartaMonstruo> mazo) {
-		lado.darMazoDeFusiones(mazo);
-	}
-
+	
+	//DISPATCHES DE FUSION//
 	public void habilitarFusion(Fusion fusion) {
-		lado.habilitarFusion(fusion);
+		this.lado.habilitarFusion(fusion);
 	}
 
 	public void fusionDeTresMonstruos(CartaMonstruo primerSacrificio, CartaMonstruo segundoSacrificio, CartaMonstruo tercerSacrificio) {
-		lado.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio);
+		this.lado.fusionDeTresMonstruos(primerSacrificio,segundoSacrificio,tercerSacrificio);
 	}
-
+	
+	//INDICA AL JUGADOR LA FASE EN LA QUE SE ENCUENTRA//
 	public void asignarFase(Fase unaFase) {
-		fase = unaFase;
-
+		this.fase = unaFase;
 	}
 
-
-
-	//DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO//
+	//DISPATCHES DE PARAMETROS PARA LA ACTIVACION DE UN EFECTO AL DARLA VUELTA//
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo) {
-		ladoEnemigo.activarEfecto(unaCarta, cartasMonstruoAliadas, mazo, jugador, fusion, enemigo);
+		this.ladoEnemigo.activarEfecto(unaCarta, cartasMonstruoAliadas, mazo, jugador, fusion, enemigo);
 	}
 
 	public void activarEfecto(Carta unaCarta, List<CartaMonstruo> cartasMonstruoAliadas, List<CartaMonstruo> cartasMonstruoEnemigas, Mazo mazo, Jugador jugador, Fusion fusion, Jugador enemigo){
