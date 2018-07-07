@@ -119,5 +119,9 @@ public class Juego {
 		this.partidaEnJuego = false;
 	}
 
+    public Jugador getActual() {
+        return actual;
+    }
+
     //supongo que se manejara la parte grafica
 }

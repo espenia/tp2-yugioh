@@ -56,21 +56,21 @@ public class Aplicacion extends Application{
         Button jugar = new Button();
         Image botonJugarImagen = new Image("file:src/vista/Botonjugar.jpg");
         jugar.setGraphic(new ImageView(botonJugarImagen));
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler();
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage);
         jugar.setOnAction(botonJugarEventHandler);
 
 
         Button comoJugar = new Button();
         Image botonComoJugarImagen = new Image("file:src/vista/botoncomojugar.jpg");
         comoJugar.setGraphic(new ImageView(botonComoJugarImagen));
-        BotonComoJugarEventHandler botonComoJugarEventHandler = new BotonComoJugarEventHandler();
+        BotonComoJugarEventHandler botonComoJugarEventHandler = new BotonComoJugarEventHandler(primaryStage);
         comoJugar.setOnAction(botonComoJugarEventHandler);
 
 
         Button creditos = new Button();
         Image botonCreditosImagen = new Image("file:src/vista/botonCreditos.jpg");
         creditos.setGraphic(new ImageView(botonCreditosImagen));
-        BotonCreditosEventHandler botonCreditosEventHandler = new BotonCreditosEventHandler();
+        BotonCreditosEventHandler botonCreditosEventHandler = new BotonCreditosEventHandler(primaryStage);
         creditos.setOnAction(botonCreditosEventHandler);
 
 
