@@ -1,30 +1,31 @@
 package vista;
 
+
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.Carta;
 import modelo.Jugador;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
 public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador actual
 
+    private Tablero tablero;
     private Jugador jugador;
     private List<Carta> mano;
-    private List<ImageView> imagenesDeCartas = new ArrayList<>();
     private HBox cartasDeLaMano;
+    private Datos datos;
 
-    public ManoDeJugador(Jugador jugador){
+    public ManoDeJugador(Jugador jugador, Tablero tablero, Datos datos){
         cartasDeLaMano = new HBox();
         this.jugador = jugador;
+        this.datos = datos;
+        this.tablero = tablero;
         Image image = new Image("file:src/vista/fondo.jpg");
-        ImageView imageView = new ImageView();
-        imageView.setFitWidth(10*150);
-        imageView.setFitHeight(2*100);
+        BackgroundImage backgroundImage = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
+        cartasDeLaMano.setBackground(new Background(backgroundImage));//no funca
         actualizarMano();
 
 
@@ -36,10 +37,11 @@ public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador ac
             ImageView imagen = new ImageView(i.getImagen());
             imagen.setFitHeight(150);
             imagen.setFitWidth(100);
-            imagenesDeCartas.add(imagen);
+            BotonCartaEnMano botonCartaEnMano = new BotonCartaEnMano(imagen,jugador,i,datos);
+            cartasDeLaMano.getChildren().add(botonCartaEnMano);
+
         }
-        for (ImageView i: imagenesDeCartas)
-            cartasDeLaMano.getChildren().add(i);
+
         this.setContent(cartasDeLaMano);
         this.setPrefSize(10*150,2*100);
 

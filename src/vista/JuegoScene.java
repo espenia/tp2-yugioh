@@ -52,19 +52,16 @@ public class JuegoScene extends BorderPane {
         barraDeMenu = new BarraDeMenu();
         this.setTop(barraDeMenu);
 
-        mano = new ManoDeJugador(juego.getActual());
-        this.setBottom(mano);
+        datosDeCartas = new Datos();
+        setearIzquierda();
+        this.setRight(datosDeCartas);
 
-        tablero = new Tablero(juan,carlos,juego.getActual());
+        tablero = new Tablero(juan,carlos,juego.getActual(),datosDeCartas);
         this.setCenter(tablero);
 
-        datosDeCartas = new Datos();
-        this.setRight(datosDeCartas);
-        setearIzquierda();
 
-
-
-
+        mano = new ManoDeJugador(juego.getActual(),tablero,datosDeCartas);
+        this.setBottom(mano);
 
 
         this.setBackground(new Background(imagenDeFondo));
@@ -86,7 +83,7 @@ public class JuegoScene extends BorderPane {
         SiguienteFaseEventaHandler siguienteFaseEventaHandler = new SiguienteFaseEventaHandler(juego);
         siguienteFase.setOnAction(siguienteFaseEventaHandler);
         Button siguienteTurno = new Button("Siguiente Turno");
-        SiguienteTurnoEventaHandler siguienteTurnoEventaHandler = new SiguienteTurnoEventaHandler(juego);
+        SiguienteTurnoEventaHandler siguienteTurnoEventaHandler = new SiguienteTurnoEventaHandler(juego,this);
         siguienteTurno.setOnAction(siguienteTurnoEventaHandler);
 
         VBox botones = new VBox();

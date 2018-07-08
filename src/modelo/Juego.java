@@ -27,6 +27,11 @@ public class Juego {
         this.segundo = jugador2;
         this.partidaEnJuego = true;
         this.actual = primero;
+        for (int i = 0 ; i < 5 ; i++){
+            primero.extraerCartasDelMazo();
+            segundo.extraerCartasDelMazo();
+        }
+
         this.fase = new FaseIncial(this.primero,this);
         siguenteFase();
         this.noEsTuTurno = new NoEsTuTurno(segundo,this);

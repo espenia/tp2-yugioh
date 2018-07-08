@@ -6,7 +6,7 @@ import modelo.Jugador;
 public class Tablero extends GridPane {//muestra los lados
 
 
-    public Tablero(Jugador juan, Jugador carlos, Jugador actual) {
+    public Tablero(Jugador juan, Jugador carlos, Jugador actual, Datos datos) {
 
 
     }
