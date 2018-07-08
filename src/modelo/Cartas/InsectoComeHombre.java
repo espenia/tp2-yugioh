@@ -1,5 +1,7 @@
 package modelo.Cartas;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 
@@ -9,7 +11,22 @@ public class InsectoComeHombre extends CartaMonstruo {
     private static int defensa = 600;
     private static int ataque = 450;
     private static int estrellas = 2;
+    private static Image imagen = new Image("file:src/modelo/Cartas/Insecto-Come-Hombres.png");
+    private static Text datos = new Text("Nombre: Insecto Come Hombre\n" +
+                                        "Ataque: 450\n" +
+                                        "Defensa: 600\n" +
+                                        "Estrellas: 2\n" +
+                                        "Efecto: Volteo / Al ser atacado, destruye al monstruo que lo ataca");
 
+    @Override
+    public Image getImagen(){
+        return imagen;
+    }
+
+    @Override
+    public Text getDatos(){
+        return datos;
+    }
 
 
     public InsectoComeHombre() {
@@ -28,4 +45,5 @@ public class InsectoComeHombre extends CartaMonstruo {
             throw new CantidadDeSacrificiosIncorrectaException();
 
     }
+
 }

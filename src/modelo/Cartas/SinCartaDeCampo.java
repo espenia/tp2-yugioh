@@ -2,6 +2,8 @@ package modelo.Cartas;
 
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
 import modelo.EstadoDeCarta;
@@ -53,5 +55,15 @@ public class SinCartaDeCampo extends CartaDeCampo {
 	@Override
 	public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
 	}
+
+    @Override
+    public Image getImagen() {
+        return null;
+    }
+
+    @Override
+    public Text getDatos() {
+        return null;
+    }
 
 }

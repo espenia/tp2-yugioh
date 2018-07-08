@@ -2,6 +2,8 @@ package modelo.Cartas;
 
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.CartaMagica;
 import modelo.CartaMonstruo;
 import modelo.Jugador;
@@ -10,6 +12,21 @@ import modelo.Exceptions.LadoNoContieneCartaException;
 import modelo.Mazo;
 
 public class Fisura extends CartaMagica {
+
+	private static Image imagen = new Image("file:src/modelo/Cartas/Fisura.jpg");
+	private static Text datos = new Text("Nombre: Fisura\n" +
+			"Efecto: Destruye la Carta monstruo de menor defensa del enemigo");
+
+
+	@Override
+	public Image getImagen(){
+		return imagen;
+	}
+
+	@Override
+	public Text getDatos(){
+		return datos;
+	}
 
 	
     public Fisura() {

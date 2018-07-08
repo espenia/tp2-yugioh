@@ -2,6 +2,8 @@ package modelo.Cartas;
 
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
 import modelo.EstadoDeCarta;
@@ -18,6 +20,20 @@ public class Wasteland extends CartaDeCampo {
 
     }
 
+    private static Image imagen = new Image("file:src/modelo/Cartas/Wasteland.png");
+    private static Text datos = new Text("Nombre: Wasteland\n" +
+            "Efecto: Aumenta el ataque de tus cartas monstruos por 200 puntos,\n y Aumenta la defensa de las cartas monstruos de tu enemigo por 300 puntos");
+
+    @Override
+    public Image getImagen(){
+        return imagen;
+    }
+
+    @Override
+    public Text getDatos(){
+        return datos;
+    }
+
     @Override
     public void colocarEn(EstadoDeCarta unEstado) {
 
@@ -26,7 +42,6 @@ public class Wasteland extends CartaDeCampo {
     @Override
     public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
     }
-
 
 
     public void aplicarBuffPrincipal(CartaMonstruo carta){

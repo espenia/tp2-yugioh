@@ -240,7 +240,7 @@ public class Jugador {
 		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, enemigo);
 	}
 
-    public Mano devolverMano() {
-		return mano;
+    public List<Carta> devolverMano() {
+		return mano.getCartasEnMano();
     }
 }

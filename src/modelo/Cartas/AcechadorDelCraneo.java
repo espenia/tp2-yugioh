@@ -1,5 +1,7 @@
 package modelo.Cartas;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.CartaMonstruo;
 
@@ -8,6 +10,21 @@ public class AcechadorDelCraneo extends CartaMonstruo {
     private static int defensa = 800;
     private static int ataque = 900;
     private static int estrellas = 3;
+	private static Image imagen = new Image("file:src/modelo/Cartas/Acechador_del_cráneo.jpg");
+	private static Text datos = new Text("Nombre: Acechador Del Craneo\n" +
+			"Ataque: 900\n" +
+			"Defensa: 800\n" +
+			"Estrellas: 3");
+
+	@Override
+	public Image getImagen(){
+		return imagen;
+	}
+
+	@Override
+	public Text getDatos(){
+		return datos;
+	}
     
 	public AcechadorDelCraneo() {
 		super(nombre, defensa, ataque, estrellas);

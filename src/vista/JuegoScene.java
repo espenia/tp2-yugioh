@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 import modelo.Juego;
 import modelo.Jugador;
 
+
+
 public class JuegoScene extends BorderPane {
 
     private Juego juego;
@@ -89,7 +91,7 @@ public class JuegoScene extends BorderPane {
 
         VBox botones = new VBox();
         botones.getChildren().addAll(puntosDeVidaCarlos,siguienteFase,siguienteTurno,puntosDeVidaJuan);
-        botones.setSpacing(150);
+        botones.setSpacing(100);
         this.setLeft(botones);
     }
 

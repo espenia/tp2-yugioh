@@ -1,6 +1,8 @@
 package modelo;
 
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.Exceptions.CartaMuertaNoPuedeAtacarException;
 import modelo.Exceptions.MonstruoNoPuedeAtacarDosVecesEnUnTurnoException;
@@ -110,6 +112,15 @@ public class CartaMonstruo implements Carta {
 
     }
 
+    @Override
+    public Image getImagen() {
+        return null;
+    }
+
+    @Override
+    public Text getDatos() {
+        return null;
+    }
 
 
     @Override

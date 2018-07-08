@@ -2,6 +2,8 @@ package modelo.Cartas;
 
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.CartaDeCampo;
 import modelo.CartaMonstruo;
 import modelo.EstadoDeCarta;
@@ -15,6 +17,21 @@ public class Sogen extends CartaDeCampo {
 
     public Sogen() {
         super("Sogen");
+    }
+
+
+    private static Image imagen = new Image("file:src/modelo/Cartas/Sogen.jpg");
+    private static Text datos = new Text("Nombre: Sogen\n" +
+            "Efecto: Aumenta la defensa de tus cartas monstruos por 500 puntos,\n y Aumenta el ataque de las cartas monstruos de tu enemigo por 200 puntos");
+
+    @Override
+    public Image getImagen(){
+        return imagen;
+    }
+
+    @Override
+    public Text getDatos(){
+        return datos;
     }
 
     @Override

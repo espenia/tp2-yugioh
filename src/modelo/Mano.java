@@ -62,4 +62,7 @@ public class Mano {
 
     }
 
+    public List<Carta> getCartasEnMano() {
+        return manoDeCartas;
+    }
 }

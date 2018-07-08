@@ -2,6 +2,8 @@ package modelo.Cartas;
 
 import java.util.List;
 
+import javafx.scene.image.Image;
+import javafx.scene.text.Text;
 import modelo.Carta;
 import modelo.CartaMagica;
 import modelo.CartaMonstruo;
@@ -11,10 +13,26 @@ import modelo.Mazo;
 
 public class OllaDeLaCodicia extends CartaMagica {
 
+    private static Image imagen = new Image("file:src/modelo/Cartas/Olla_de_la_codicia.jpg");
+    private static Text datos = new Text("Nombre: Olla de la Codicia\n" +
+            "Efecto: Extrae dos cartas del mazo");
+
+
+    @Override
+    public Image getImagen(){
+        return imagen;
+    }
+
+    @Override
+    public Text getDatos(){
+        return datos;
+    }
 
     public OllaDeLaCodicia() {
         super("OllaDeLaCodicia");
     }
+
+
 
     @Override
     public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
@@ -24,7 +42,8 @@ public class OllaDeLaCodicia extends CartaMagica {
         }
     }
 
-	@Override
+
+    @Override
 	public void activarTrampa(Lado lado, Lado ladoEnemigo) {
 		
 	}
