@@ -24,6 +24,7 @@ public class Lado {
 		this.cartaDeCampo = new SinCartaDeCampo();
 		this.fusion = new Fusion();
 		this.mazoDeFusiones = new HashMap<>();
+		mazoDeFusiones.put("Dragon Blanco Definitivo De Ojos Azules",new DragonBlancoDefinitivoDeOjosAzules());//medio harcodeado
 	}
 	
 	//SETTERS UNITARIOS//
@@ -139,5 +140,13 @@ public class Lado {
 	public void removerCartaDeUtilidad(CartaDeUtilidad cartaDeUtilidad){
 		verificarSiCartaDeUtilidadEstaEnLado(cartaDeUtilidad);
 		this.cartasTrampaOMagicas.remove(cartaDeUtilidad);
+	}
+
+    public Map getMazoDeFusion() {
+        return mazoDeFusiones;
+    }
+
+	public Mazo getMazo() {
+		return mazo;
 	}
 }

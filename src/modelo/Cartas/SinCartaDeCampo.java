@@ -13,6 +13,10 @@ import modelo.Mazo;
 
 public class SinCartaDeCampo extends CartaDeCampo {
 
+
+    private Image image = new Image("file:src/modelo/Cartas/Sin_Carta_De_Campo.png");
+    private Text text = new Text("Carta De Campo No Jugada");
+
     public SinCartaDeCampo() {
         super("SinCartaDeCampo");
     }
@@ -58,12 +62,12 @@ public class SinCartaDeCampo extends CartaDeCampo {
 
     @Override
     public Image getImagen() {
-        return null;
+        return image;
     }
 
     @Override
     public Text getDatos() {
-        return null;
+        return text;
     }
 
 }
