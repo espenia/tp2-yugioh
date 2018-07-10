@@ -24,12 +24,7 @@ public class BotonCartaMonstruo extends Button {
         else
             setearGrafico((CartaMonstruo)(cartaMonstruo.estadoDeCarta()));//rompe
 
-        this.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                dato.mostrarDatosDeCarta(carta);
-            }
-        });
+        this.setOnAction(new BotonCartaEnTableroHandler(this.jugador, this.carta));
 
 
 

@@ -23,7 +23,6 @@ public class Juego {
         jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
         jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
         primeroYSegundo(jugador1,jugador2);
-        this.segundo = jugador2;
         this.partidaEnJuego = true;
         this.actual = primero;
         for (int i = 0 ; i < 5 ; i++){

@@ -15,12 +15,10 @@ public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
 	
     private Jugador jugador;
     private Carta carta;
-    private Tablero tablero;
 	
-	public BotonCartaEnTableroHandler(Jugador jugador, Carta carta, Tablero tablero) {//opciones posibles que puede realizar la carta
+	public BotonCartaEnTableroHandler(Jugador jugador, Carta carta) {//opciones posibles que puede realizar la carta
         this.carta = carta;
         this.jugador = jugador;
-        this.tablero = tablero;
     }
 	
 	@Override
@@ -35,7 +33,7 @@ public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
         gridPane.setHgap(5);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.add(new Text("Indique a quien quiere atacar"),1,1);
-        gridPane.add(new BotonAtacarJugadorEnemigo(stage, tablero, jugador, carta),1,2);
+        gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta),1,2);
         Scene scene = new Scene(gridPane,1000,100);
         stage.setTitle("Accion");
         stage.setScene(scene);

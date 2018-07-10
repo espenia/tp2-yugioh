@@ -19,7 +19,7 @@ public class BotonAtacarJugadorEnemigo extends Button {
     private Tablero tablero;
     
     
-    public BotonAtacarJugadorEnemigo(Stage stage, Tablero tablero, Jugador jugador, Carta carta) {
+    public BotonAtacarJugadorEnemigo(Stage stage,  Jugador jugador, Carta carta) {
         this.carta = carta;
         this.jugador = jugador;
         this.tablero = tablero;

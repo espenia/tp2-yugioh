@@ -54,10 +54,7 @@ public class Tablero extends GridPane {//muestra los lados
         List<CartaMonstruo> cartas = jugadorActual.getCartasMonstruos();
         monstruosJugadorActual.getChildren().clear();
         for (CartaMonstruo i : cartas){
-        	ImageView imagen = new ImageView(i.getImagen());
-        	imagen.setFitHeight(150);
-            imagen.setFitWidth(100);
-            Button cartaMonstruo = new BotonCartaEnTablero(imagen, jugadorActual, i, this);
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual, i, datos);
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
         }
         for (int i = cartas.size() ; i < 5 ; i++){
