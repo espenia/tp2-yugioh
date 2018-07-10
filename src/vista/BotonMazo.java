@@ -3,6 +3,7 @@ package vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import modelo.Jugador;
 import modelo.Mazo;
 import modelo.MazoEstandar;
@@ -18,6 +19,10 @@ public class BotonMazo extends Button {
         jugador = jugadorActual;
         carta = cartas;
         dato = datos;
+        ImageView imageView = new ImageView();
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(150);
+        this.setGraphic(imageView);        
 
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override

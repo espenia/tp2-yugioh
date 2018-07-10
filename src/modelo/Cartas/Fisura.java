@@ -15,7 +15,7 @@ public class Fisura extends CartaMagica {
 
 	private static Image imagen = new Image("file:src/modelo/Cartas/Fisura.jpg");
 	private static Text datos = new Text("Nombre: Fisura\n" +
-			"Efecto: Destruye la Carta monstruo de menor defensa del enemigo");
+			"Efecto: Destruye la Carta monstruo\n" + " de menor defensa del enemigo");
 
 
 	@Override

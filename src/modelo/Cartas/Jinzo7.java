@@ -17,7 +17,7 @@ public class Jinzo7 extends CartaMonstruo {
             "Ataque: 500\n" +
             "Defensa: 450\n" +
             "Estrellas: 2\n" +
-            "Efecto: Este monstruo puede atacar directamente a los puntos de vida ");
+            "Efecto: Este monstruo puede atacar\n" + "directamente a los puntos de vida ");
 
     @Override
     public Image getImagen(){

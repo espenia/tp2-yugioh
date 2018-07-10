@@ -22,7 +22,10 @@ public class Wasteland extends CartaDeCampo {
 
     private static Image imagen = new Image("file:src/modelo/Cartas/Wasteland.png");
     private static Text datos = new Text("Nombre: Wasteland\n" +
-            "Efecto: Aumenta el ataque de tus cartas monstruos por 200 puntos,\n y Aumenta la defensa de las cartas monstruos de tu enemigo por 300 puntos");
+            "Efecto: Aumenta el ataque de\n " +
+    		"tus cartas monstruos por 200 puntos,\n" +
+            "y Aumenta la defensa de las cartas monstruos \n" +
+    		" de tu enemigo por 300 puntos");
 
     @Override
     public Image getImagen(){

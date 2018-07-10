@@ -11,7 +11,8 @@ public class BrazoIzquierdoDeExodia extends CartaMonstruo {
     private static int ataque = 200;
     private static int estrellas = 1;
     private static Image imagen = new Image("file:src/modelo/Cartas/Brazo izquierdo del prohibido.jpg");
-    private static Text datos = new Text("Nombre: Brazo Izquierdo De Exodia El Prohibido\n" +
+    private static Text datos = new Text("Nombre: Brazo Izquierdo\n" +
+    		"De Exodia El Prohibido" +
             "Ataque: 200\n" +
             "Defensa: 300\n" +
             "Estrellas: 1");

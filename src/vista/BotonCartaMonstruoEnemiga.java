@@ -20,8 +20,8 @@ public class BotonCartaMonstruoEnemiga extends Button {
         carta = cartaMonstruo;
         dato = datos;
         ImageView imageView = new ImageView(carta.getImagen());
-        imageView.setFitWidth(50);
-        imageView.setFitHeight(100);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(150);
         this.setGraphic(imageView);
 
         this.setOnAction(new EventHandler<ActionEvent>() {

@@ -18,7 +18,7 @@ public class Reinforcements extends CartaTrampa {
 
     private static Image imagen = new Image("file:src/modelo/Cartas/Refuerzos.jpg");
     private static Text datos = new Text("Nombre: Reinforcements\n" +
-            "Efecto: Aumenta el ataque del monstruo atacado por 500 puntos");
+            "Efecto: Aumenta el ataque\n" + " del monstruo atacado por 500 puntos");
 
     @Override
     public Image getImagen(){

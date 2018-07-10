@@ -14,7 +14,10 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
 
     private static Image imagen = new Image("file:src/modelo/Cartas/Cilindro_mágico.jpg");
     private static Text datos = new Text("Nombre: Cilindro Magico\n" +
-            "Efecto: Cuando un monstruo enemigo declara un ataque, niega al ataque y los redirige hacia al enemigo");
+            "Efecto: Cuando un monstruo enemigo \n" + 
+    		"declara un ataque, \n" + 
+            "niega al ataque y los\n" + 
+    		" redirige hacia al enemigo");
 
 
     @Override

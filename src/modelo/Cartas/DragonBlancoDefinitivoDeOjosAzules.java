@@ -12,7 +12,7 @@ public class DragonBlancoDefinitivoDeOjosAzules extends CartaMonstruo {
     private static int ataque = 4500;
     private static int estrellas = 12;
     private static Image imagen = new Image("file:src/modelo/Cartas/Dragón_de_ojos_azules_definitivo.jpg");
-    private static Text datos = new Text("Nombre: Dragon Definitivo De Ojos Azules\n" +
+    private static Text datos = new Text("Nombre: Dragon Definitivo\n" + " De Ojos Azules\n" +
             "Ataque: 4500\n" +
             "Defensa: 3800\n" +
             "Estrellas: 12");

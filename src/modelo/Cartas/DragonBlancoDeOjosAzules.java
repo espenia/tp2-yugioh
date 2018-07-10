@@ -12,7 +12,7 @@ public class DragonBlancoDeOjosAzules extends CartaMonstruo {
     private static int ataque = 3000;
     private static int estrellas = 8;
     private static Image imagen = new Image("file:src/modelo/Cartas/Dragon_Blanco_De_Ojos_Azules.jpg");
-    private static Text datos = new Text("Nombre: Dragon Blanco De Ojos Azules\n" +
+    private static Text datos = new Text("Nombre: Dragon Blanco\n" + " De Ojos Azules\n" +
             "Ataque: 3000\n" +
             "Defensa: 2500\n" +
             "Estrellas: 8");

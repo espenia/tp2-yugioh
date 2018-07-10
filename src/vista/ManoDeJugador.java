@@ -23,12 +23,8 @@ public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador ac
         this.jugador = jugador;
         this.datos = datos;
         this.tablero = tablero;
-        Image image = new Image("file:src/vista/fondo.jpg");
-        BackgroundImage backgroundImage = new BackgroundImage(image,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
-        cartasDeLaMano.setBackground(new Background(backgroundImage));//no funca
+        this.setId("carta-mano-jugador");
         actualizarMano();
-
-
     }
 
     public void actualizarMano() {
@@ -38,13 +34,11 @@ public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador ac
             imagen.setFitHeight(150);
             imagen.setFitWidth(100);
             BotonCartaEnMano botonCartaEnMano = new BotonCartaEnMano(imagen,jugador,i,datos);
+            botonCartaEnMano.setPrefSize(150, 100);
             cartasDeLaMano.getChildren().add(botonCartaEnMano);
-
         }
-
         this.setContent(cartasDeLaMano);
-        this.setPrefSize(10*150,2*100);
-
+        //this.setPrefSize(10*150,2*100);
 
     }
 

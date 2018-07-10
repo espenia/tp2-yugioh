@@ -16,7 +16,8 @@ public class InsectoComeHombre extends CartaMonstruo {
                                         "Ataque: 450\n" +
                                         "Defensa: 600\n" +
                                         "Estrellas: 2\n" +
-                                        "Efecto: Volteo / Al ser atacado, destruye al monstruo que lo ataca");
+                                        "Efecto: Volteo / Al ser atacado, \n" +
+                                        "destruye al monstruo que lo ataca");
 
     @Override
     public Image getImagen(){

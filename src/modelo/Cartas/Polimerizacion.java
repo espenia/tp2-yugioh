@@ -15,7 +15,7 @@ public class Polimerizacion extends CartaMagica {
 
     private static Image imagen = new Image("file:src/modelo/Cartas/Polimerización.jpg");
     private static Text datos = new Text("Nombre: Polimerizacion\n" +
-            "Efecto: Habilita la fusion de monstruos");
+            "Efecto: Habilita la\n " + " fusion de monstruos");
 
     @Override
     public Image getImagen(){

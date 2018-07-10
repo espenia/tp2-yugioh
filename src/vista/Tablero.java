@@ -144,16 +144,19 @@ public class Tablero extends GridPane {//muestra los lados
 
     public void actualizarCartaDeCampo(){
         cartaCampo = new BotonCarta(jugadorActual,jugadorActual.getCartaDeCampo(),datos);
+        cartaCampo.setId("carta-campo-propia");
         this.add(cartaCampo,1,4);
     }
 
     public void actualizarMazo(){
         mazo = new BotonMazo(jugadorActual,jugadorActual.getMazo(),datos);
+        mazo.setId("mazo-propio");
         this.add(mazo,3,5);
     }
 
     public void actualizarMazoDeFusiones(){
         mazoFusion = new BotonMazoFusion(jugadorActual,jugadorActual.getMazoDeFusion(),datos);
+        mazoFusion.setId("mazo-fusion-propio");
         this.add(mazoFusion,1,5);
     }
 

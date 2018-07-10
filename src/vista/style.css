@@ -22,19 +22,34 @@ scene.getStylesheets().add("file:src/vista/style.css");
     -fx-background-size: cover;
 }
 #carta{
-	/*-fx-background-image: url('file:src/vista/botonCreditos.jpg"');
-    -fx-background-size: cover;*/
-	-fx-background-color: green;
+	-fx-background-image: url('file:src/vista/carta.jpg"');
+    -fx-background-size: cover;
+	/*-fx-background-color: green;*/
+}
+#mazo-propio{
+	-fx-background-image: url('file:src/vista/deck.jpg"');
+    -fx-background-size: cover;
+	/*-fx-background-color: green;*/
+}
+#mazo-fusion-propio{
+	-fx-background-image: url('file:src/vista/deck2.jpg"');
+    -fx-background-size: cover;
+	/*-fx-background-color: green;*/
+}
+#carta-campo-propia{
+	-fx-background-image: url('file:src/vista/campo.jpg"');
+    -fx-background-size: cover;
+	/*-fx-background-color: green;*/
 }
 #cartaMonstruo-propia{
-	/*-fx-background-image: url('file:src/vista/botonCreditos.jpg"');
-    -fx-background-size: cover;*/
-	-fx-background-color: red;
+	-fx-background-image: url('file:src/vista/monstruo.jpg"');
+    -fx-background-size: cover;
+	/*-fx-background-color: red;*/
 }
 #cartaDeUtilidad-propia{
-	/*-fx-background-image: url('file:src/vista/botoncomojugar.jpg"');
-    -fx-background-size: cover;*/
-	-fx-background-color: blue;
+	-fx-background-image: url('file:src/vista/utilidad.jpg"');
+    -fx-background-size: cover;
+	/*-fx-background-color: blue;*/
 }
 #datos-carta{
 	/*-fx-background-color: white;*/
@@ -43,4 +58,7 @@ scene.getStylesheets().add("file:src/vista/style.css");
 #texto-carta{
 	/*-fx-background-color: white;*/
 	-fx-max-width: 300px;
+}
+#carta-mano-jugador{
+	-fx-color: blue;
 }
