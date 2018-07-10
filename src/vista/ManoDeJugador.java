@@ -2,7 +2,6 @@ package vista;
 
 
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.Carta;
@@ -28,12 +27,13 @@ public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador ac
     }
 
     public void actualizarMano() {
+        cartasDeLaMano.getChildren().clear();
         mano = jugador.devolverMano();
         for (Carta i : mano){
             ImageView imagen = new ImageView(i.getImagen());
             imagen.setFitHeight(150);
             imagen.setFitWidth(100);
-            BotonCartaEnMano botonCartaEnMano = new BotonCartaEnMano(imagen,jugador,i,datos);
+            BotonCartaEnMano botonCartaEnMano = new BotonCartaEnMano(imagen,jugador,i,datos,tablero,this);
             botonCartaEnMano.setPrefSize(150, 100);
             cartasDeLaMano.getChildren().add(botonCartaEnMano);
         }
@@ -41,6 +41,8 @@ public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador ac
         //this.setPrefSize(10*150,2*100);
 
     }
+
+
 
 
 }

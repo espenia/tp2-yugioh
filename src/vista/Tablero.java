@@ -116,6 +116,10 @@ public class Tablero extends GridPane {//muestra los lados
             monstruosJugadorActual.getChildren().add(carta);
 
         }
+        monstruosJugadorActual.setSpacing(10);
+        utilidadJugadorActual.setSpacing(10);
+        this.add(monstruosJugadorActual,2,4);//rompe algo aca cuando actualizo
+        this.add(utilidadJugadorActual,2,5);
 
     }
 
@@ -140,6 +144,10 @@ public class Tablero extends GridPane {//muestra los lados
             Button carta = new BotonCartaDeUtilidadEnemiga(enemigoActual, new UtilidadNula(), datos);
             utilidadjEnemigoActual.getChildren().add(carta);
         }
+        monstruosEnemigoActual.setSpacing(10);
+        utilidadjEnemigoActual.setSpacing(10);
+        //this.add(monstruosEnemigoActual,2,2);
+        //this.add(utilidadjEnemigoActual,2,1);
     }
 
     public void actualizarCartaDeCampo(){
@@ -161,4 +169,11 @@ public class Tablero extends GridPane {//muestra los lados
     }
 
 
+    public void actualizarTablero() {
+        actualizarMazoDeFusiones();
+        actualizarMazo();
+        actualizarCartaDeCampo();
+        actualizarLadoDeEnemigoActual();
+        actualizarLadoDeJugadorActual();
+    }
 }
