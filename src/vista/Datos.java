@@ -20,10 +20,7 @@ public class Datos extends GridPane{
 
 
 
-        Image image = new Image("file:src/vista/fondo.jpg");
-        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(backgroundImage));
-        this.setMinSize(300,200);//quiza hay que cambiar height
+    	this.setId("datos-carta");
         this.setPadding(new Insets(10, 10, 10, 10));
         this.setVgap(5);
         this.setHgap(5);
@@ -40,11 +37,12 @@ public class Datos extends GridPane{
         imageView.setFitWidth(200);
         this.add(imageView,1,1);
         StackPane stackPane = new StackPane();
-        Rectangle rectangle = new Rectangle(300,100,300,100);
+        Rectangle rectangle = new Rectangle(300,200,300,200);
         rectangle.setFill(Color.BLACK);
         Text text = carta.getDatos();
         text.setFont(Font.font(14));
         text.setStroke(Color.WHITE);
+        this.setId("texto-carta");
         stackPane.getChildren().addAll(rectangle,text);
         this.add(stackPane,1,2);
     }

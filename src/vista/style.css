@@ -9,11 +9,38 @@
 }
 scene.getStylesheets().add("file:src/vista/style.css");
 */
+.root{
+    -fx-font-size: 16pt;
+   /* -fx-font-family: "Courier New";*/
+}
 #pantalla-principal {
 	-fx-background-image: url('file:src/vista/fondo5.jpg"');
     -fx-background-size: cover;
 }
 #pantallas-juego {
-	-fx-background-image: url('file:src/vista/fondo15.jpg"');
+	-fx-background-image: url('file:src/vista/fondo.jpg"');
     -fx-background-size: cover;
+}
+#carta{
+	/*-fx-background-image: url('file:src/vista/botonCreditos.jpg"');
+    -fx-background-size: cover;*/
+	-fx-background-color: green;
+}
+#cartaMonstruo-propia{
+	/*-fx-background-image: url('file:src/vista/botonCreditos.jpg"');
+    -fx-background-size: cover;*/
+	-fx-background-color: red;
+}
+#cartaDeUtilidad-propia{
+	/*-fx-background-image: url('file:src/vista/botoncomojugar.jpg"');
+    -fx-background-size: cover;*/
+	-fx-background-color: blue;
+}
+#datos-carta{
+	/*-fx-background-color: white;*/
+	-fx-max-width: 300px;
+}
+#texto-carta{
+	/*-fx-background-color: white;*/
+	-fx-max-width: 300px;
 }

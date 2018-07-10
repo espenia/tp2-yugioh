@@ -28,9 +28,6 @@ public class Tablero extends GridPane {//muestra los lados
 
 
     public Tablero(Jugador juan, Jugador carlos, Jugador actual, Datos datos) {
-        Image image = new Image("file:src/vista/fondo.jpg");
-        BackgroundImage backgroundImage = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
-        this.setBackground(new Background(backgroundImage));//no funca
 
         this.setMinSize(1000,800);
         this.setPadding(new Insets(10, 10, 10, 10));
@@ -58,7 +55,9 @@ public class Tablero extends GridPane {//muestra los lados
     private void setearLadoDeEnemigoActual() {
         for (int i = 0 ; i < 5 ; i++){
             Button cartaMonstruo = new BotonCartaMonstruoEnemiga(enemigoActual,new MonstruoNulo(),datos);
+            cartaMonstruo.setId("carta");
             Button cartaDeUtilidad = new BotonCartaDeUtilidadEnemiga(enemigoActual,new UtilidadNula(),datos);
+            cartaDeUtilidad.setId("carta");
             monstruosEnemigoActual.getChildren().add(cartaMonstruo);
             utilidadjEnemigoActual.getChildren().add(cartaDeUtilidad);
 
@@ -74,7 +73,9 @@ public class Tablero extends GridPane {//muestra los lados
 
         for (int i = 0 ; i < 5 ; i++){
             Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos);
+            cartaMonstruo.setId("cartaMonstruo-propia");
             Button cartaDeUtilidad = new BotonCartaDeUtilidad(jugadorActual,new UtilidadNula(),datos);
+            cartaDeUtilidad.setId("cartaDeUtilidad-propia");
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
             utilidadJugadorActual.getChildren().add(cartaDeUtilidad);
 
