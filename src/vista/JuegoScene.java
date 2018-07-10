@@ -49,7 +49,7 @@ public class JuegoScene extends BorderPane {
 
         this.setMinSize(1300, 700);
 
-        barraDeMenu = new BarraDeMenu();
+        barraDeMenu = new BarraDeMenu(this.primaryStage);
         this.setTop(barraDeMenu);
 
         datosDeCartas = new Datos();

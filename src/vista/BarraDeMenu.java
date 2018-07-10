@@ -3,11 +3,12 @@ package vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 
 public class BarraDeMenu extends MenuBar {
 
-    public BarraDeMenu(){
+    public BarraDeMenu(Stage primaryStage){
         Menu menuFile = new Menu("File");
         MenuItem quit = new MenuItem("Quit");
         quit.setOnAction(quitAction());

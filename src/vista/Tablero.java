@@ -1,16 +1,18 @@
 package vista;
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import modelo.*;
 import modelo.Cartas.MonstruoNulo;
 import modelo.Cartas.SinCartaDeCampo;
 import modelo.Cartas.UtilidadNula;
-import modelo.Jugador;
-import modelo.Mazo;
-import modelo.MazoEstandar;
+
+import java.util.List;
 
 public class Tablero extends GridPane {//muestra los lados
 
@@ -83,14 +85,76 @@ public class Tablero extends GridPane {//muestra los lados
         utilidadJugadorActual.setSpacing(10);
         this.add(monstruosJugadorActual,2,4);
         this.add(utilidadJugadorActual,2,5);
-
-        cartaCampo = new BotonCarta(jugadorActual,new SinCartaDeCampo(),datos);
-        this.add(cartaCampo,1,4);
-        mazo = new BotonMazo(jugadorActual,jugadorActual.getMazo(),datos);
-        this.add(mazo,3,5);
-        mazoFusion = new BotonMazoFusion(jugadorActual,jugadorActual.getMazoDeFusion(),datos);
-        this.add(mazoFusion,1,5);
+        actualizarCartaDeCampo();
+        actualizarMazo();
+        actualizarMazoDeFusiones();
 
 
     }
+
+
+    public void actualizarLadoDeJugadorActual(){
+        List<CartaMonstruo> cartas = jugadorActual.getCartasMonstruos();
+        monstruosJugadorActual.getChildren().clear();
+        for (CartaMonstruo i : cartas){
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,i,datos);
+            monstruosJugadorActual.getChildren().add(cartaMonstruo);
+        }
+        for (int i = cartas.size() ; i < 5 ; i++){
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos);
+            monstruosJugadorActual.getChildren().add(cartaMonstruo);
+        }
+        List<CartaDeUtilidad> cartaDeUtilidads = jugadorActual.getCartasDeUtilidad();
+        utilidadJugadorActual.getChildren().clear();
+        for (CartaDeUtilidad i : cartaDeUtilidads){
+            Button carta = new BotonCartaDeUtilidad(jugadorActual,i,datos);
+            monstruosJugadorActual.getChildren().add(carta);
+        }
+        for (int i = cartaDeUtilidads.size() ; i < 5 ; i++){
+            Button carta = new BotonCartaDeUtilidad(jugadorActual,new UtilidadNula(),datos);
+            monstruosJugadorActual.getChildren().add(carta);
+
+        }
+
+    }
+
+    public void actualizarLadoDeEnemigoActual() {
+        List<CartaMonstruo> cartas = enemigoActual.getCartasMonstruos();
+        monstruosEnemigoActual.getChildren().clear();
+        for (CartaMonstruo i : cartas) {
+            Button cartaMonstruo = new BotonCartaMonstruo(enemigoActual, i, datos);
+            monstruosEnemigoActual.getChildren().add(cartaMonstruo);
+        }
+        for (int i = cartas.size(); i < 5; i++) {
+            Button cartaMonstruo = new BotonCartaMonstruo(enemigoActual, new MonstruoNulo(), datos);
+            monstruosEnemigoActual.getChildren().add(cartaMonstruo);
+        }
+        List<CartaDeUtilidad> cartaDeUtilidads = enemigoActual.getCartasDeUtilidad();
+        utilidadjEnemigoActual.getChildren().clear();
+        for (CartaDeUtilidad i : cartaDeUtilidads) {
+            Button carta = new BotonCartaDeUtilidadEnemiga(enemigoActual, i, datos);
+            utilidadjEnemigoActual.getChildren().add(carta);
+        }
+        for (int i = cartaDeUtilidads.size(); i < 5; i++) {
+            Button carta = new BotonCartaDeUtilidadEnemiga(enemigoActual, new UtilidadNula(), datos);
+            utilidadjEnemigoActual.getChildren().add(carta);
+        }
+    }
+
+    public void actualizarCartaDeCampo(){
+        cartaCampo = new BotonCarta(jugadorActual,jugadorActual.getCartaDeCampo(),datos);
+        this.add(cartaCampo,1,4);
+    }
+
+    public void actualizarMazo(){
+        mazo = new BotonMazo(jugadorActual,jugadorActual.getMazo(),datos);
+        this.add(mazo,3,5);
+    }
+
+    public void actualizarMazoDeFusiones(){
+        mazoFusion = new BotonMazoFusion(jugadorActual,jugadorActual.getMazoDeFusion(),datos);
+        this.add(mazoFusion,1,5);
+    }
+
+
 }

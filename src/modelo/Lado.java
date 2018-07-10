@@ -149,4 +149,16 @@ public class Lado {
 	public Mazo getMazo() {
 		return mazo;
 	}
+
+    public List<CartaMonstruo> getCartasMosntruos() {
+        return cartasMonstruo;
+    }
+
+    public List<CartaDeUtilidad> getCartasDeUtilidad() {
+        return cartasTrampaOMagicas;
+    }
+
+	public CartaDeCampo getCartaDeCampo() {
+		return cartaDeCampo;
+	}
 }

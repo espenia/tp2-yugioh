@@ -24,4 +24,7 @@ public abstract class CartaDeUtilidad implements Carta {
 	public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
 	}
 
+    public Carta estadoDeCarta(){
+       return estado.estadoDeCarta(this);
+    }
 }

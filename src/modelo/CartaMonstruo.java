@@ -139,4 +139,8 @@ public class CartaMonstruo implements Carta {
     public void verificarCantidadDeSacrificios(int cantidad) throws CantidadDeSacrificiosIncorrectaException {
 
     }
+
+    public Carta estadoDeCarta() {
+        return estado.estadoDeCarta(this);
+    }
 }
