@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import modelo.CartaMonstruo;
+import modelo.Cartas.MonstruoNulo;
 import modelo.Jugador;
 
 public class BotonCartaMonstruoEnemiga extends Button {
@@ -26,7 +27,12 @@ public class BotonCartaMonstruoEnemiga extends Button {
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                dato.mostrarDatosDeCarta(carta);
+                if (carta instanceof MonstruoNulo)
+                    dato.mostrarDatosDeCarta(carta);
+                else {
+                    dato.mostrarDatosDeCarta(carta.estadoDeCarta());
+                }
+
             }
         });
 

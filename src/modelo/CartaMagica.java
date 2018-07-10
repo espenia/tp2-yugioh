@@ -11,4 +11,5 @@ public abstract class CartaMagica extends CartaDeUtilidad {
     public void activarEfecto(List<CartaMonstruo> lista, List<CartaMonstruo> lista2) {};
 
 	public void activarTrampa(Jugador jugador, CartaMonstruo carta) {};
+
 }

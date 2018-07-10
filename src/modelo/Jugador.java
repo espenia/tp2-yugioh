@@ -240,6 +240,8 @@ public class Jugador {
 		unaCarta.activarEfecto(cartasMonstruoAliadas, cartasMonstruoEnemigas, mazo, jugador, enemigo);
 	}
 
+	// metodos para vista
+
     public List<Carta> devolverMano() {
 		return mano.getCartasEnMano();
     }
@@ -250,5 +252,17 @@ public class Jugador {
 
     public Mazo getMazo() {
         return lado.getMazo();
+    }
+
+    public List<CartaMonstruo> getCartasMonstruos() {
+		return lado.getCartasMosntruos();
+    }
+
+    public List<CartaDeUtilidad> getCartasDeUtilidad() {
+        return lado.getCartasDeUtilidad();
+    }
+
+    public CartaDeCampo getCartaDeCampo() {
+        return lado.getCartaDeCampo();
     }
 }
