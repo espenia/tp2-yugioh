@@ -7,13 +7,13 @@ public class FaseFinal implements Fase {
 
     private Jugador jugador;
     private Juego juego;
-
+    private String nombreFase;
 
 
     public FaseFinal(Jugador unJugador, Juego elJuego){
         juego = elJuego;
         jugador = unJugador;
-        jugador = unJugador;
+        nombreFase = "Fase Final";
     }
 
 
@@ -48,6 +48,12 @@ public class FaseFinal implements Fase {
     public void activarCartaMagica() throws AccionInvalidaEnFaseException {
 
     }
+
+
+	@Override
+	public String obtenerFase() {
+		return this.nombreFase;
+	}
 
 
 }

@@ -15,6 +15,5 @@ public class SiguienteTurnoEventaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-
     }
 }

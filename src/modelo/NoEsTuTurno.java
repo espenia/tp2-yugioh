@@ -39,4 +39,9 @@ public class NoEsTuTurno implements Fase {
     public void activarCartaMagica() throws AccionInvalidaEnFaseException, NoEsTuTurnoException{
         throw new NoEsTuTurnoException();
     }
+
+	@Override
+	public String obtenerFase() {
+		return null;
+	}
 }

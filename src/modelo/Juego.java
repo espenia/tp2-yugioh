@@ -23,7 +23,6 @@ public class Juego {
         jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
         jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
         primeroYSegundo(jugador1,jugador2);
-        this.primero = jugador1; //TODO solo tests
         this.segundo = jugador2;
         this.partidaEnJuego = true;
         this.actual = primero;
@@ -33,7 +32,7 @@ public class Juego {
         }
 
         this.fase = new FaseIncial(this.primero,this);
-        siguenteFase();
+        siguienteFase();
         this.noEsTuTurno = new NoEsTuTurno(segundo,this);
         segundo.asignarFase(noEsTuTurno);
 
@@ -49,7 +48,7 @@ public class Juego {
 
     }
 
-    public void siguenteFase() {
+    public void siguienteFase() {
         try {
             this.fase = this.fase.cambiarFase();
             actual.asignarFase(fase);
@@ -86,7 +85,7 @@ public class Juego {
 
         this.fase = new FaseIncial(this.actual,this);
         this.actual.asignarFase(this.fase);
-        siguenteFase();
+        this.siguienteFase();
 
     }
 
@@ -127,6 +126,9 @@ public class Juego {
     public Jugador getActual() {
         return actual;
     }
-
+    
+    public Fase getFase() {
+    	return this.fase;
+    }
     //supongo que se manejara la parte grafica
 }

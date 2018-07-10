@@ -6,11 +6,12 @@ public class FaseBatalla implements Fase {
 
     private Jugador jugador;
     private Juego juego;
+    private String nombreFase;
 
     public FaseBatalla(Jugador unJugador, Juego elJuego){
         juego = elJuego;
         jugador = unJugador;
-
+        this.nombreFase = "Fase de Batalla";
     }
 
 
@@ -48,6 +49,12 @@ public class FaseBatalla implements Fase {
         throw new AccionInvalidaEnFaseException();
 
     }
+
+
+	@Override
+	public String obtenerFase() {
+		return this.nombreFase;
+	}
 
 
 

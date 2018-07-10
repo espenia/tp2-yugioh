@@ -265,4 +265,8 @@ public class Jugador {
     public CartaDeCampo getCartaDeCampo() {
         return lado.getCartaDeCampo();
     }
+    
+    public Jugador getJugadorEnemigo (){
+    	return enemigo;
+    }
 }

@@ -6,10 +6,12 @@ public class FaseIncial implements Fase {
 
     private Jugador jugador;
     private Juego juego;
+    private String nombreFase;
 
     public FaseIncial(Jugador unJugador, Juego elJuego){
         juego = elJuego;
         jugador = unJugador;
+        this.nombreFase = "Fase Inicial";
         jugador.asignarFase(this);
         if(jugador.cantidadDeCartasEnMazo() == 0){
             juego.perdio(jugador);
@@ -58,7 +60,10 @@ public class FaseIncial implements Fase {
 
     }
 
-
+    @Override
+	public String obtenerFase() {
+		return this.nombreFase;
+	}
 
 
 

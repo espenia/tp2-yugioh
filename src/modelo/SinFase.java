@@ -34,4 +34,9 @@ public class SinFase implements Fase {
     public void activarCartaMagica() throws AccionInvalidaEnFaseException {
 
     }
+    
+    @Override
+	public String obtenerFase() {
+		return null;
+	}
 }

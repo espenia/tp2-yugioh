@@ -6,11 +6,12 @@ public class FasePrincipal implements Fase {
 
     private Jugador jugador;
     private Juego juego;
+    private String nombreFase;
 
     public FasePrincipal(Jugador unJugador, Juego elJuego){
         juego = elJuego;
         jugador = unJugador;
-
+        this.nombreFase = "Fase Principal";
     }
 
     private boolean monstruoJugado = false;
@@ -49,7 +50,10 @@ public class FasePrincipal implements Fase {
 
     }
 
-
+    @Override
+	public String obtenerFase() {
+		return this.nombreFase;
+	}
 
 
 

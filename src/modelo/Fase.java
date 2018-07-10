@@ -16,6 +16,8 @@ public interface Fase {
 
     public void activarCartaMagica() throws AccionInvalidaEnFaseException;
 
+	public String obtenerFase();
+
 
 
 
