@@ -11,6 +11,7 @@ import modelo.CartaMonstruo;
 import modelo.Jugador;
 import modelo.Exceptions.AccionInvalidaEnFaseException;
 import modelo.Exceptions.HayUnMonstruoEnElCaminoException;
+import modelo.Exceptions.MonstruoNoPuedeAtacarDosVecesEnUnTurnoException;
 
 public class BotonAtacarJugadorEnemigo extends Button {
 	
@@ -41,7 +42,15 @@ public class BotonAtacarJugadorEnemigo extends Button {
 	    	                if (alert.getResult()==ButtonType.CLOSE)
 	    	                    stage.close();
 	    	            }
-	                    stage.close();
+	                    catch (MonstruoNoPuedeAtacarDosVecesEnUnTurnoException e) {
+	                    	Alert alert = new Alert(Alert.AlertType.ERROR,"No se puede atacar dos veces con el mismo Monstruo!",ButtonType.CLOSE);
+	    	                alert.setHeight(40);
+	    	                alert.setWidth(50);
+	    	                alert.showAndWait();
+	    	                if (alert.getResult()==ButtonType.CLOSE)
+	    	                    stage.close();
+	                    }
+	    	            stage.close();
 	                }
 	                else {
 	                    Alert alert = new Alert(Alert.AlertType.ERROR,"Tipo De Carta Incorrecta",ButtonType.CLOSE);
