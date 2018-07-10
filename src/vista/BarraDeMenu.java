@@ -3,17 +3,36 @@ package vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 
 public class BarraDeMenu extends MenuBar {
 
-    public BarraDeMenu(){
+    public BarraDeMenu(Stage primaryStage){
         Menu menuFile = new Menu("File");
-        MenuItem quit = new MenuItem("Quit");
-        quit.setOnAction(quitAction());
-        menuFile.getItems().add(quit);
+        MenuItem pantallaCompleta = new MenuItem("Pantalla Completa");
+        MenuItem volverAjugar = new MenuItem("Volver a Jugar");
+        MenuItem salir = new MenuItem("Salir");
+        
+        pantallaCompleta.setOnAction(fullAction(primaryStage));
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage);
+        volverAjugar.setOnAction(botonJugarEventHandler);
+        salir.setOnAction(quitAction());
+        menuFile.getItems().add(pantallaCompleta);
+        menuFile.getItems().add(volverAjugar);
+        menuFile.getItems().add(salir);
         this.getMenus().addAll(menuFile);
 
+    }
+
+    private EventHandler<ActionEvent> fullAction(Stage primaryStage){
+        return new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+            	primaryStage.setMaximized(false);
+            	primaryStage.setMaximized(true);
+            }
+        };
     }
 
     private EventHandler<ActionEvent> quitAction(){
@@ -29,5 +48,4 @@ public class BarraDeMenu extends MenuBar {
             }
         };
     }
-
 }

@@ -23,9 +23,11 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         pane = new JuegoScene(new Jugador(),new Jugador(),primaryStage);
-        Scene gameScene = new Scene(pane,1200,700);
+        pane.setId("pantallas-juego");
+        Scene gameScene = new Scene(pane);
         primaryStage.setScene(gameScene);
         primaryStage.setFullScreen(false);
+        gameScene.getStylesheets().add("file:src/vista/style.css");
 
     }
 }

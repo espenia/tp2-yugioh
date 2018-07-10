@@ -1,0 +1,19 @@
+/*.root {
+    -fx-background-image: url('file:src/vista/fondo5.jpg"');
+	-fx-background-position: center;
+    -fx-background-size: cover;
+	-fx-background-repeat: no-repeat;
+	-fx-min-width: 1228px;
+	-fx-min-height: 768px;
+	-fx-alignment: CENTER;
+}
+scene.getStylesheets().add("file:src/vista/style.css");
+*/
+#pantalla-principal {
+	-fx-background-image: url('file:src/vista/fondo5.jpg"');
+    -fx-background-size: cover;
+}
+#pantallas-juego {
+	-fx-background-image: url('file:src/vista/fondo15.jpg"');
+    -fx-background-size: cover;
+}

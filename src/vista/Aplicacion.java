@@ -24,6 +24,7 @@ public class Aplicacion extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setFullScreen(false);
+        
         configurarPantallaInicial(primaryStage);
 
         primaryStage.setScene(scene);
@@ -40,6 +41,7 @@ public class Aplicacion extends Application{
         BackgroundImage imagenDeFondo = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
 
         GridPane gridPane = new GridPane();
+        gridPane.setId("pantalla-principal");
         gridPane.setMinSize(background.getWidth(), background.getHeight());
 
 
@@ -81,7 +83,7 @@ public class Aplicacion extends Application{
 
         gridPane.setBackground(new Background(imagenDeFondo));
         scene = new Scene(gridPane);
-
+        scene.getStylesheets().add("file:src/vista/style.css");
 
     }
 }

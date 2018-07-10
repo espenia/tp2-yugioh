@@ -49,7 +49,7 @@ public class JuegoScene extends BorderPane {
 
         this.setMinSize(background.getWidth(), background.getHeight());
 
-        barraDeMenu = new BarraDeMenu();
+        barraDeMenu = new BarraDeMenu(this.primaryStage);
         this.setTop(barraDeMenu);
 
         datosDeCartas = new Datos();
@@ -65,7 +65,6 @@ public class JuegoScene extends BorderPane {
 
 
         this.setBackground(new Background(imagenDeFondo));
-
 
 
     }
