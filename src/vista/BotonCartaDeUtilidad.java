@@ -5,6 +5,9 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import modelo.CartaDeUtilidad;
+import modelo.CartaMonstruo;
+import modelo.Cartas.MonstruoNulo;
+import modelo.Cartas.UtilidadNula;
 import modelo.Jugador;
 
 public class BotonCartaDeUtilidad extends Button {
@@ -16,11 +19,10 @@ public class BotonCartaDeUtilidad extends Button {
         jugador = jugadorActual;
         carta = utilidad;
         dato = datos;
-        ImageView imageView = new ImageView(carta.getImagen());
-        imageView.setFitWidth(100);
-        imageView.setFitHeight(150);
-        this.setGraphic(imageView);
-
+        if (utilidad instanceof UtilidadNula)
+            setearGrafico(utilidad);
+        else
+            setearGrafico((CartaDeUtilidad) (utilidad.estadoDeCarta()));
 
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -28,6 +30,16 @@ public class BotonCartaDeUtilidad extends Button {
                 dato.mostrarDatosDeCarta(carta);
             }
         });
+
+
+
+
     }
 
+    private void setearGrafico(CartaDeUtilidad utilidad) {
+        ImageView imageView = new ImageView(utilidad.getImagen());
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(150);
+        this.setGraphic(imageView);
+    }
 }

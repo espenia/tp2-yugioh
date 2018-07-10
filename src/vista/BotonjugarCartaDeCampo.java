@@ -2,40 +2,26 @@ package vista;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import modelo.*;
+import modelo.Carta;
+import modelo.CartaDeCampo;
 import modelo.Exceptions.AccionInvalidaEnFaseException;
+import modelo.Jugador;
 
+public class BotonjugarCartaDeCampo extends Button {
+    public BotonjugarCartaDeCampo(Stage stage, Tablero tablero, ManoDeJugador manoDeJugador, Jugador jugador, Carta carta) {
 
-public class BotonjugarCartaMagica extends Button {
+        this.setText("Jugar Carta De Campo");
 
-    private final Carta carta;
-    private final Jugador jugador;
-    private final Tablero tablero;
-    private final ManoDeJugador manoDeJugador;
-
-    public BotonjugarCartaMagica(Stage stage, Tablero tablero, ManoDeJugador manoDeJugador, Jugador jugador, Carta carta) {
-        this.carta = carta;
-        this.jugador = jugador;
-        this.tablero = tablero;
-        this.manoDeJugador = manoDeJugador;
-
-        this.setText("Jugar Carta Magica");
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) throws AccionInvalidaEnFaseException {
                 try {
-                    if (carta instanceof CartaMagica){
-                        jugador.jugarCartaMagicaEnLado((CartaMagica) carta);
-                        new colocarEnEstado(jugador, carta);
+                    if (carta instanceof CartaDeCampo){
+                        jugador.colocarCartaDeCampo((CartaDeCampo) carta);
                         stage.close();
                     }
                     else {
@@ -57,13 +43,10 @@ public class BotonjugarCartaMagica extends Button {
                 }
 
                 tablero.actualizarTablero();
-                manoDeJugador.actualizarMano();//puede que rompa
+                manoDeJugador.actualizarMano();
             }
 
         });
 
     }
-
-
 }
-

@@ -19,10 +19,10 @@ public class BotonCartaMonstruoEnemiga extends Button {
         jugador = enemigoActual;
         carta = cartaMonstruo;
         dato = datos;
-        ImageView imageView = new ImageView(carta.getImagen());
-        imageView.setFitWidth(100);
-        imageView.setFitHeight(150);
-        this.setGraphic(imageView);
+        if (cartaMonstruo instanceof MonstruoNulo)
+            setearGrafico(cartaMonstruo);
+        else
+            setearGrafico((CartaMonstruo)(cartaMonstruo.estadoDeCarta()));
 
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -32,11 +32,21 @@ public class BotonCartaMonstruoEnemiga extends Button {
                 else {
                     dato.mostrarDatosDeCarta(carta.estadoDeCarta());
                 }
-
             }
         });
 
 
+    }
 
+    private void setearGrafico(CartaMonstruo cartaMonstruo) {
+        ImageView imageView = new ImageView(cartaMonstruo.getImagen());
+        if (carta.posicionDeDefensa()){
+            imageView.setRotate(90);
+            imageView.setFitWidth(150);
+            imageView.setFitHeight(100);
+        }
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(150);
+        this.setGraphic(imageView);
     }
 }

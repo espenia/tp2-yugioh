@@ -48,11 +48,28 @@ public class BotonCartaEnManoHandler implements EventHandler<ActionEvent>{
         gridPane.setAlignment(Pos.CENTER);
         gridPane.add(new Text("Indique la accion que desea Realizar Con esta Carta"),1,1);
         gridPane.add(new BotonjugarCartaMonstruo(stage,tablero,manoDeJugador,jugador,carta),1,2);
+        gridPane.add(new BotonjugarCartaMonstruoConSacrificios(stage,tablero,manoDeJugador,jugador,carta),2,2);
+        gridPane.add(new BotonjugarCartaMagica(stage,tablero,manoDeJugador,jugador,carta),3,2);
+        gridPane.add(new BotonjugarCartaDeCampo(stage,tablero,manoDeJugador,jugador,carta),4,2);
+        gridPane.add(new BotonjugarCartaTrampa(stage,tablero,manoDeJugador,jugador,carta),5,2);
+        gridPane.add(botonCancelar(stage),6,2);
         Scene scene = new Scene(gridPane,1000,100);
         stage.setTitle("Accion");
         stage.setScene(scene);
         stage.showAndWait();
         datos.mostrarDatosDeCarta(carta);
+
+    }
+
+    private Button botonCancelar(Stage stage) {
+        Button cancelar = new Button("Canacelar");
+        cancelar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                stage.close();
+            }
+        });
+        return cancelar;
 
     }
 
