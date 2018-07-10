@@ -243,4 +243,12 @@ public class Jugador {
     public List<Carta> devolverMano() {
 		return mano.getCartasEnMano();
     }
+
+    public Map getMazoDeFusion() {
+        return  lado.getMazoDeFusion();
+    }
+
+    public Mazo getMazo() {
+        return lado.getMazo();
+    }
 }
