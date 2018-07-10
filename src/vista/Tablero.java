@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.*;
 import modelo.Cartas.MonstruoNulo;
@@ -41,57 +42,12 @@ public class Tablero extends GridPane {//muestra los lados
         if (actual == juan)
             enemigoActual = carlos;
         else enemigoActual = juan;
-
-        monstruosJugadorActual = new HBox();
-        monstruosEnemigoActual = new HBox();
-        utilidadJugadorActual = new HBox();
-        utilidadjEnemigoActual = new HBox();
-
-        setearLadoDeJugadorActual();
-        setearLadoDeEnemigoActual();
+        actualizarTablero();
 
 
 
     }
 
-    private void setearLadoDeEnemigoActual() {
-        for (int i = 0 ; i < 5 ; i++){
-            Button cartaMonstruo = new BotonCartaMonstruoEnemiga(enemigoActual,new MonstruoNulo(),datos);
-            cartaMonstruo.setId("carta");
-            Button cartaDeUtilidad = new BotonCartaDeUtilidadEnemiga(enemigoActual,new UtilidadNula(),datos);
-            cartaDeUtilidad.setId("carta");
-            monstruosEnemigoActual.getChildren().add(cartaMonstruo);
-            utilidadjEnemigoActual.getChildren().add(cartaDeUtilidad);
-
-        }
-        monstruosEnemigoActual.setSpacing(10);
-        utilidadjEnemigoActual.setSpacing(10);
-        this.add(monstruosEnemigoActual,2,2);
-        this.add(utilidadjEnemigoActual,2,1);
-
-    }
-
-    private void setearLadoDeJugadorActual() {
-
-        for (int i = 0 ; i < 5 ; i++){
-            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos);
-            cartaMonstruo.setId("cartaMonstruo-propia");
-            Button cartaDeUtilidad = new BotonCartaDeUtilidad(jugadorActual,new UtilidadNula(),datos);
-            cartaDeUtilidad.setId("cartaDeUtilidad-propia");
-            monstruosJugadorActual.getChildren().add(cartaMonstruo);
-            utilidadJugadorActual.getChildren().add(cartaDeUtilidad);
-
-        }
-        monstruosJugadorActual.setSpacing(10);
-        utilidadJugadorActual.setSpacing(10);
-        this.add(monstruosJugadorActual,2,4);
-        this.add(utilidadJugadorActual,2,5);
-        actualizarCartaDeCampo();
-        actualizarMazo();
-        actualizarMazoDeFusiones();
-
-
-    }
 
 
     public void actualizarLadoDeJugadorActual(){
@@ -103,22 +59,24 @@ public class Tablero extends GridPane {//muestra los lados
         }
         for (int i = cartas.size() ; i < 5 ; i++){
             Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos);
+            cartaMonstruo.setId("cartaMonstruo-propia");
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
         }
         List<CartaDeUtilidad> cartaDeUtilidads = jugadorActual.getCartasDeUtilidad();
         utilidadJugadorActual.getChildren().clear();
         for (CartaDeUtilidad i : cartaDeUtilidads){
             Button carta = new BotonCartaDeUtilidad(jugadorActual,i,datos);
-            monstruosJugadorActual.getChildren().add(carta);
+            utilidadJugadorActual.getChildren().add(carta);
         }
         for (int i = cartaDeUtilidads.size() ; i < 5 ; i++){
             Button carta = new BotonCartaDeUtilidad(jugadorActual,new UtilidadNula(),datos);
-            monstruosJugadorActual.getChildren().add(carta);
+            carta.setId("cartaDeUtilidad-propia");
+            utilidadJugadorActual.getChildren().add(carta);
 
         }
         monstruosJugadorActual.setSpacing(10);
         utilidadJugadorActual.setSpacing(10);
-        this.add(monstruosJugadorActual,2,4);//rompe algo aca cuando actualizo
+        this.add(monstruosJugadorActual,2,4);
         this.add(utilidadJugadorActual,2,5);
 
     }
@@ -127,11 +85,12 @@ public class Tablero extends GridPane {//muestra los lados
         List<CartaMonstruo> cartas = enemigoActual.getCartasMonstruos();
         monstruosEnemigoActual.getChildren().clear();
         for (CartaMonstruo i : cartas) {
-            Button cartaMonstruo = new BotonCartaMonstruo(enemigoActual, i, datos);
+            Button cartaMonstruo = new BotonCartaMonstruoEnemiga(enemigoActual, i, datos);
             monstruosEnemigoActual.getChildren().add(cartaMonstruo);
         }
         for (int i = cartas.size(); i < 5; i++) {
-            Button cartaMonstruo = new BotonCartaMonstruo(enemigoActual, new MonstruoNulo(), datos);
+            Button cartaMonstruo = new BotonCartaMonstruoEnemiga(enemigoActual, new MonstruoNulo(), datos);
+            cartaMonstruo.setId("carta");
             monstruosEnemigoActual.getChildren().add(cartaMonstruo);
         }
         List<CartaDeUtilidad> cartaDeUtilidads = enemigoActual.getCartasDeUtilidad();
@@ -142,12 +101,13 @@ public class Tablero extends GridPane {//muestra los lados
         }
         for (int i = cartaDeUtilidads.size(); i < 5; i++) {
             Button carta = new BotonCartaDeUtilidadEnemiga(enemigoActual, new UtilidadNula(), datos);
+            carta.setId("carta");
             utilidadjEnemigoActual.getChildren().add(carta);
         }
         monstruosEnemigoActual.setSpacing(10);
         utilidadjEnemigoActual.setSpacing(10);
-        //this.add(monstruosEnemigoActual,2,2);
-        //this.add(utilidadjEnemigoActual,2,1);
+        this.add(monstruosEnemigoActual,2,2);
+        this.add(utilidadjEnemigoActual,2,1);
     }
 
     public void actualizarCartaDeCampo(){
@@ -170,10 +130,16 @@ public class Tablero extends GridPane {//muestra los lados
 
 
     public void actualizarTablero() {
+        getChildren().clear();
+        monstruosJugadorActual = new HBox();
+        monstruosEnemigoActual = new HBox();
+        utilidadJugadorActual = new HBox();
+        utilidadjEnemigoActual = new HBox();
+
+        actualizarLadoDeJugadorActual();
+        actualizarLadoDeEnemigoActual();
         actualizarMazoDeFusiones();
         actualizarMazo();
         actualizarCartaDeCampo();
-        actualizarLadoDeEnemigoActual();
-        actualizarLadoDeJugadorActual();
     }
 }

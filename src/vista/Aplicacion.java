@@ -24,7 +24,7 @@ public class Aplicacion extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setFullScreen(false);
-        
+        primaryStage.setMaximized(true);
         configurarPantallaInicial(primaryStage);
 
         primaryStage.setScene(scene);

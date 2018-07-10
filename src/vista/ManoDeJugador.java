@@ -38,7 +38,6 @@ public class ManoDeJugador extends ScrollPane{//cartas de la mano del jugador ac
             cartasDeLaMano.getChildren().add(botonCartaEnMano);
         }
         this.setContent(cartasDeLaMano);
-        //this.setPrefSize(10*150,2*100);
 
     }
 

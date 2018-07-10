@@ -46,9 +46,7 @@ public class JuegoScene extends BorderPane {
         //Image background = new Image("file:src/vista/fondo15.jpg");
         //BackgroundImage imagenDeFondo = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
-
-        this.setMinSize(1300, 700);
-
+        this.setId("pantallas-juego");
         barraDeMenu = new BarraDeMenu(this.primaryStage);
         this.setTop(barraDeMenu);
 

@@ -6,7 +6,11 @@ import modelo.*;
 
 import java.util.List;
 
-public class CartaBocaAbajo implements Carta {
+public class CartaBocaAbajo extends CartaMonstruo {
+    public CartaBocaAbajo() {
+        super("nulo", 0, 0, 1);
+    }
+
     @Override
     public void colocarEn(EstadoDeCarta unEstado) {
 

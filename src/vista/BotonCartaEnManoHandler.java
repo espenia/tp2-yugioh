@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -40,18 +41,17 @@ public class BotonCartaEnManoHandler implements EventHandler<ActionEvent>{
         Stage stage = new Stage();
         GridPane gridPane = new GridPane();
         //gridPane.setId("pantalla-principal");
-        gridPane.setMinSize(200,100 );
+        gridPane.setMinSize(1000,100 );
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setVgap(5);
         gridPane.setHgap(5);
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.add(new TextField("Indique la accion que desea Realizar Con esta Carta"),1,1);
-        gridPane.add(new BotonjugarCartaMonstruo(tablero,manoDeJugador,jugador,carta),2,1);
-        //hBox.getChildren().add(new BotonjugarCartaMagica(tablero,manoDeJugador,jugador,carta));
-        Scene scene = new Scene(gridPane,200,100);
+        gridPane.add(new Text("Indique la accion que desea Realizar Con esta Carta"),1,1);
+        gridPane.add(new BotonjugarCartaMonstruo(stage,tablero,manoDeJugador,jugador,carta),1,2);
+        Scene scene = new Scene(gridPane,1000,100);
         stage.setTitle("Accion");
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
         datos.mostrarDatosDeCarta(carta);
 
     }
