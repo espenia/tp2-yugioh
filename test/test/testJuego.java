@@ -59,7 +59,7 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
+        juego.siguienteFase();
         juan.atacar(cartaPrueba1, carlos);
         juan.jugarCartaMagicaEnLado(cartaPrueba2);
 
@@ -78,7 +78,7 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
+        juego.siguienteFase();
         juan.atacar(cartaPrueba1, carlos);
         juan.colocarCartaDeCampo(cartaPrueba2);
 
@@ -96,7 +96,7 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
+        juego.siguienteFase();
         juan.atacar(cartaPrueba1, carlos);
         juan.jugarCartaMonstruoEnLado(cartaPrueba2);
 
@@ -117,7 +117,7 @@ public class testJuego {
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         juan.jugarCartaMagicaEnLado(cartaPrueba2);
         juan.colocarEnEstadoBocaAbajo(cartaPrueba2);
-        juego.siguenteFase();
+        juego.siguienteFase();
         juan.atacar(cartaPrueba1, carlos);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
 
@@ -139,8 +139,8 @@ public class testJuego {
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
         juan.jugarCartaMagicaEnLado(cartaPrueba2);
         juan.colocarEnEstadoBocaAbajo(cartaPrueba2);
-        juego.siguenteFase();
-        juego.siguenteFase();
+        juego.siguienteFase();
+        juego.siguienteFase();
         juan.atacar(cartaPrueba1, carlos);
     }
 
@@ -156,8 +156,8 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
-        juego.siguenteFase();
+        juego.siguienteFase();
+        juego.siguienteFase();
         juan.jugarCartaMonstruoEnLado(cartaPrueba3);
 
     }
@@ -188,7 +188,7 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
+        juego.siguienteFase();
         juan.atacar(cartaPrueba1, carlos);
         int vidaEsperada = 6200;
         assertEquals(vidaEsperada, carlos.getPuntosDeVida(), DELTA);
@@ -224,8 +224,8 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
-        juego.siguenteFase();
+        juego.siguienteFase();
+        juego.siguienteFase();
         juan.colocarCartaDeCampo(cartaPrueba2);
         assertEquals(2100,cartaPrueba1.getDefensa());
 
@@ -244,8 +244,8 @@ public class testJuego {
         juan.jugarCartaMonstruoEnLado(cartaPrueba1);
         juan.colocarEnPosicionAtaque(cartaPrueba1);
         juan.colocarEnEstadoBocaArriba(cartaPrueba1);
-        juego.siguenteFase();
-        juego.siguenteFase();
+        juego.siguienteFase();
+        juego.siguienteFase();
         juan.jugarCartaMagicaEnLado(cartaPrueba2);
         juan.colocarEnEstadoBocaArriba(cartaPrueba2);
         assertEquals(true,cartaPrueba1.estadoMuerto());
@@ -275,15 +275,15 @@ public class testJuego {
         Jugador juan = new Jugador();
         Jugador carlos= new Jugador();
         Juego juego = new Juego(juan,carlos);
-        juego.siguenteFase();
-        juego.siguenteFase();
-        juego.siguenteFase();
+        juego.siguienteFase();
+        juego.siguienteFase();
+        juego.siguienteFase();
         CartaMonstruo cartaPrueba1 = new AbismoReluciente();
         carlos.darCarta(cartaPrueba1);
         carlos.jugarCartaMonstruoEnLado(cartaPrueba1);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba1);
         carlos.colocarEnPosicionAtaque(cartaPrueba1);
-        juego.siguenteFase();
+        juego.siguienteFase();
         carlos.atacar(cartaPrueba1,juan);
         assertEquals(6200,juan.getPuntosDeVida(),DELTA);
 
@@ -300,7 +300,7 @@ public class testJuego {
         carlos.jugarCartaMonstruoEnLado(cartaPrueba1);
         carlos.colocarEnEstadoBocaArriba(cartaPrueba1);
         carlos.colocarEnPosicionAtaque(cartaPrueba1);
-        juego.siguenteFase();
+        juego.siguienteFase();
         carlos.atacar(cartaPrueba1,juan);
         assertEquals(6200,juan.getPuntosDeVida(),DELTA);
     }

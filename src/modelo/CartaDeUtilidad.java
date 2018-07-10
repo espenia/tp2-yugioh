@@ -7,6 +7,7 @@ public abstract class CartaDeUtilidad implements Carta {
 
     public CartaDeUtilidad(String nombreDeCarta) {
     	this.nombre = nombreDeCarta;
+    	estado = new EstadoBocaAbajo();
     }
     
     public abstract void activarTrampa(Lado lado, Lado ladoEnemigo);
