@@ -12,16 +12,16 @@ public class BotonCartaMonstruo extends Button {
     private CartaMonstruo carta;
     private Datos dato;
 
-    public BotonCartaMonstruo(Jugador jugadorActual, CartaMonstruo cartaMonstruo, Datos datos, Tablero tablero) {
+    public BotonCartaMonstruo(Jugador jugadorActual, CartaMonstruo cartaMonstruo, Datos datos, Tablero tablero, JuegoScene juegoScene) {
         jugador = jugadorActual;
         carta = cartaMonstruo;
         dato = datos;
         if (cartaMonstruo instanceof MonstruoNulo)
             setearGrafico(cartaMonstruo);
         else
-            setearGrafico((CartaMonstruo)(cartaMonstruo.estadoDeCarta()));//rompe
+            setearGrafico((CartaMonstruo)(cartaMonstruo.estadoDeCarta()));
 
-        this.setOnAction(new BotonCartaEnTableroHandler(this.jugador, this.carta,tablero));
+        this.setOnAction(new BotonCartaEnTableroHandler(this.jugador, this.carta,tablero,dato,juegoScene));
 
 
 

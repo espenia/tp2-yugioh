@@ -13,29 +13,32 @@ import modelo.Jugador;
 
 public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
 
+    private  JuegoScene juegoScene;
+    private  Datos datos;
     private  Tablero tablero;
     private Jugador jugador;
     private Carta carta;
 	
-	public BotonCartaEnTableroHandler(Jugador jugador, Carta carta, Tablero tablero) {//opciones posibles que puede realizar la carta
+	public BotonCartaEnTableroHandler(Jugador jugador, Carta carta, Tablero tablero, Datos dato, JuegoScene juegoScene) {//opciones posibles que puede realizar la carta
         this.carta = carta;
         this.jugador = jugador;
         this.tablero = tablero;
+        this.datos = dato;
+        this.juegoScene = juegoScene;
     }
 	
 	@Override
     public void handle(ActionEvent event) {
-        //popup de accion
+	    datos.mostrarDatosDeCarta(carta);
         Stage stage = new Stage();
         GridPane gridPane = new GridPane();
-        //gridPane.setId("pantalla-principal");
         gridPane.setMinSize(1000,100 );
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setVgap(5);
         gridPane.setHgap(5);
         gridPane.setAlignment(Pos.CENTER);
         gridPane.add(new Text("Indique a quien quiere atacar"),1,1);
-        gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta,tablero),1,2);
+        gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta,tablero,juegoScene),1,2);
         Scene scene = new Scene(gridPane,1000,100);
         stage.setTitle("Accion");
         stage.setScene(scene);

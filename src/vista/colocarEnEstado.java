@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Carta;
 import modelo.CartaMonstruo;
+import modelo.Cartas.Polimerizacion;
 import modelo.Jugador;
 
 
@@ -47,6 +48,8 @@ public class colocarEnEstado {
                 jugador.colocarEnEstadoBocaArriba(carta);
                 if (carta instanceof CartaMonstruo)
                     new colocarEnPosicion(jugador,carta);
+                if (carta instanceof Polimerizacion)
+                    new FusionDeTresMonstruos(jugador,stage);
                 stage.close();
             }
         });

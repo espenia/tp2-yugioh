@@ -10,8 +10,10 @@ import modelo.Cartas.UtilidadNula;
 
 import java.util.List;
 
-public class Tablero extends GridPane {//muestra los lados
+public class Tablero extends GridPane {
 
+
+    private  JuegoScene juegoScene;
     private Datos datos;
     private Jugador jugadorActual;
     private Jugador enemigoActual;
@@ -25,7 +27,7 @@ public class Tablero extends GridPane {//muestra los lados
 
 
 
-    public Tablero(Jugador juan, Jugador carlos, Jugador actual, Datos datos) {
+    public Tablero(Jugador juan, Jugador carlos, Jugador actual, Datos datos, JuegoScene juegoScene) {
 
         this.setMinSize(1000,800);
         this.setPadding(new Insets(10, 10, 10, 10));
@@ -33,6 +35,7 @@ public class Tablero extends GridPane {//muestra los lados
         this.setHgap(5);
         this.setAlignment(Pos.CENTER);
         this.datos = datos;
+        this.juegoScene = juegoScene;
         jugadorActual = actual;
         if (actual == juan)
             enemigoActual = carlos;
@@ -49,22 +52,22 @@ public class Tablero extends GridPane {//muestra los lados
         List<CartaMonstruo> cartas = jugadorActual.getCartasMonstruos();
         monstruosJugadorActual.getChildren().clear();
         for (CartaMonstruo i : cartas){
-            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual, i, datos, this);
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual, i, datos, this,juegoScene);
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
         }
         for (int i = cartas.size() ; i < 5 ; i++){
-            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos,this);
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos,this,juegoScene);
             cartaMonstruo.setId("cartaMonstruo-propia");
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
         }
         List<CartaDeUtilidad> cartaDeUtilidads = jugadorActual.getCartasDeUtilidad();
         utilidadJugadorActual.getChildren().clear();
         for (CartaDeUtilidad i : cartaDeUtilidads){
-            Button carta = new BotonCartaDeUtilidad(jugadorActual,i,datos);
+            Button carta = new BotonCartaDeUtilidad(jugadorActual,i,datos,this,juegoScene);
             utilidadJugadorActual.getChildren().add(carta);
         }
         for (int i = cartaDeUtilidads.size() ; i < 5 ; i++){
-            Button carta = new BotonCartaDeUtilidad(jugadorActual,new UtilidadNula(),datos);
+            Button carta = new BotonCartaDeUtilidad(jugadorActual,new UtilidadNula(),datos, this,juegoScene);
             carta.setId("cartaDeUtilidad-propia");
             utilidadJugadorActual.getChildren().add(carta);
 

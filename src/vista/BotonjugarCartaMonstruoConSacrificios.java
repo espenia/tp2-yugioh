@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -79,11 +80,23 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
         gridPane.add(unSacrificio(stage),1,2);
         gridPane.add(dosSacrificio(stage),2,2);
         gridPane.add(tresSacrificios(stage),3,2);
+        gridPane.add(cancelar(stage),4,2);
         Scene scene = new Scene(gridPane,1000,100);
         stage.setTitle("Accion");
         stage.setScene(scene);
         stage.showAndWait();
 
+    }
+
+    private Button cancelar(Stage stage) {
+        Button button = new Button("Cancelar");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                stage.close();
+            }
+        });
+        return button;
     }
 
     private void definirCarta(Carta carta) {

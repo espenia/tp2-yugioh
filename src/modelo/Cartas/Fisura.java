@@ -37,7 +37,7 @@ public class Fisura extends CartaMagica {
     @Override
     public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
     	if(monstruosEnemigos.isEmpty()) {
-    		throw new LadoNoContieneCartaException();
+    		return;
     	}
     	CartaMonstruo monstruoDeMenorAtaque = monstruosEnemigos.get(0);
     	for (int i = 1; i < monstruosEnemigos.size(); i++) {

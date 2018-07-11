@@ -43,7 +43,7 @@ public class JuegoScene extends BorderPane {
     }
 
 
-    private void configurarPanel() {
+    public void configurarPanel() {
 
         //Image background = new Image("file:src/vista/fondo15.jpg");
         //BackgroundImage imagenDeFondo = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
@@ -56,7 +56,7 @@ public class JuegoScene extends BorderPane {
         setearIzquierda();
         this.setRight(datosDeCartas);
 
-        tablero = new Tablero(juan,carlos,juego.getActual(),datosDeCartas);
+        tablero = new Tablero(juan,carlos,juego.getActual(),datosDeCartas,this);
         this.setCenter(tablero);
 
 
@@ -107,13 +107,10 @@ public class JuegoScene extends BorderPane {
     	return this.juego.getFase().obtenerFase();
     }
     
-    private void actualizarPanel() {
-    	configurarPanel();
 
-    }
 
 
 	public void cambiarFase() {
-		actualizarPanel();
+		configurarPanel();
 	}
 }

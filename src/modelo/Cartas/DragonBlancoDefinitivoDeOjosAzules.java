@@ -3,6 +3,8 @@ package modelo.Cartas;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import modelo.CartaMonstruo;
+import modelo.EstadoBocaArriba;
+import modelo.PosicionAtaque;
 
 import java.util.List;
 
@@ -31,6 +33,8 @@ public class DragonBlancoDefinitivoDeOjosAzules extends CartaMonstruo {
 
     public DragonBlancoDefinitivoDeOjosAzules() {
         super(nombre, defensa, ataque, estrellas);
+        colocarEn(new EstadoBocaArriba());
+        enPosicion(new PosicionAtaque());
 
     }
     @Override
