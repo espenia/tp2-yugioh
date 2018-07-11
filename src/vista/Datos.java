@@ -11,6 +11,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import modelo.Carta;
+import modelo.Jugador;
+import modelo.Mazo;
+
+import java.util.Stack;
 
 
 public class Datos extends GridPane{
@@ -46,4 +50,6 @@ public class Datos extends GridPane{
         stackPane.getChildren().addAll(rectangle,text);
         this.add(stackPane,1,2);
     }
+
+
 }

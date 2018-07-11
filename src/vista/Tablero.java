@@ -23,7 +23,7 @@ public class Tablero extends GridPane {
     private HBox utilidadjEnemigoActual;
     private Button cartaCampo;
     private Button mazo;
-    private Button mazoFusion;
+    private Pane mazoFusion;
 
 
 
@@ -121,7 +121,7 @@ public class Tablero extends GridPane {
     }
 
     public void actualizarMazoDeFusiones(){
-        mazoFusion = new BotonMazoFusion(jugadorActual,jugadorActual.getMazoDeFusion(),datos);
+        mazoFusion = new StackPane();
         mazoFusion.setId("mazo-fusion-propio");
         this.add(mazoFusion,1,5);
     }

@@ -32,8 +32,10 @@ public class BotonCartaDeUtilidad extends Button {
             @Override
             public void handle(ActionEvent event) {
                 dato.mostrarDatosDeCarta(carta);
-                activarEfecto();
-                juegoScene.configurarPanel();
+                if (!(utilidad instanceof UtilidadNula)){
+                    activarEfecto();
+                    juegoScene.configurarPanel();
+                }
             }
         });
 

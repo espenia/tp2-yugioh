@@ -27,10 +27,14 @@ public class BotonMazo extends Button {
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //dato.mostrarDatosDeCarta(carta);
+                rendirse();
             }
         });
 
 
+    }
+
+    private void rendirse() {
+        //hacer un boton que te vuelva  a la pantalla principal (ventana con un boton)
     }
 }

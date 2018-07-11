@@ -3,7 +3,9 @@ package modelo;
 import modelo.Cartas.DragonBlancoDeOjosAzules;
 import modelo.Exceptions.ElMazoEstaVacioException;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Stack;
 
 public class Mazo {

@@ -38,8 +38,6 @@ public class JuegoScene extends BorderPane {
         carlos = jugador2;
         juego = new Juego(juan,carlos);
         configurarPanel();
-        //while (juego.getPartidaEnCurso())
-            //actualizarPane();
 
 
     }
@@ -47,8 +45,6 @@ public class JuegoScene extends BorderPane {
 
     public void configurarPanel() {
 
-        //Image background = new Image("file:src/vista/fondo15.jpg");
-        //BackgroundImage imagenDeFondo = new BackgroundImage(background, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 
         this.setId("pantallas-juego");
         barraDeMenu = new BarraDeMenu(this.primaryStage);
@@ -67,7 +63,6 @@ public class JuegoScene extends BorderPane {
 
         if (!juego.getPartidaEnCurso())
             gano(juego.getGanador());
-       // this.setBackground(new Background(imagenDeFondo));
 
 
     }

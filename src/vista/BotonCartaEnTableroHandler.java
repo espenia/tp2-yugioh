@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Carta;
+import modelo.Cartas.MonstruoNulo;
 import modelo.Jugador;
 
 public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
@@ -30,19 +31,22 @@ public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent event) {
 	    datos.mostrarDatosDeCarta(carta);
-        Stage stage = new Stage();
-        GridPane gridPane = new GridPane();
-        gridPane.setMinSize(1000,100 );
-        gridPane.setPadding(new Insets(10, 10, 10, 10));
-        gridPane.setVgap(5);
-        gridPane.setHgap(5);
-        gridPane.setAlignment(Pos.CENTER);
-        gridPane.add(new Text("Indique a quien quiere atacar"),1,1);
-        gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta,tablero,juegoScene),1,2);
-        Scene scene = new Scene(gridPane,1000,100);
-        stage.setTitle("Accion");
-        stage.setScene(scene);
-        stage.showAndWait();
+        if (!(carta instanceof MonstruoNulo)){
+            Stage stage = new Stage();
+            GridPane gridPane = new GridPane();
+            gridPane.setMinSize(1000,100 );
+            gridPane.setPadding(new Insets(10, 10, 10, 10));
+            gridPane.setVgap(5);
+            gridPane.setHgap(5);
+            gridPane.setAlignment(Pos.CENTER);
+            gridPane.add(new Text("Indique a quien quiere atacar"),1,1);
+            gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta,tablero,juegoScene),1,2);
+            Scene scene = new Scene(gridPane,1000,100);
+            stage.setTitle("Accion");
+            stage.setScene(scene);
+            stage.showAndWait();
+            juegoScene.configurarPanel();
+        }
     }
 
 }
