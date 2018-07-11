@@ -108,7 +108,7 @@ public class JuegoScene extends BorderPane {
     }
     
     private void actualizarPanel() {
-    	setearIzquierda();
+    	configurarPanel();
 
     }
 

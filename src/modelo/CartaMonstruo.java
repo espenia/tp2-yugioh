@@ -64,7 +64,10 @@ public class CartaMonstruo implements Carta {
 
     }
 
-    public void atacarA(Jugador jugador) {
+    public void atacarA(Jugador jugador) throws MonstruoNoPuedeAtacarDosVecesEnUnTurnoException{
+        if (yaAtacoEsteTurno)
+            throw new MonstruoNoPuedeAtacarDosVecesEnUnTurnoException();
+        yaAtacoEsteTurno = true;
         estado = new EstadoBocaArriba();
         posicion = new PosicionAtaque();
         jugador.recibeDanio(this.ataque);
