@@ -3,6 +3,8 @@ package vista;
 
 
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
@@ -63,10 +65,27 @@ public class JuegoScene extends BorderPane {
         mano = new ManoDeJugador(juego.getActual(),tablero,datosDeCartas);
         this.setBottom(mano);
 
-
+        if (!juego.getPartidaEnCurso())
+            gano(juego.getGanador());
        // this.setBackground(new Background(imagenDeFondo));
 
 
+    }
+
+    private void gano(Jugador ganador) {
+        if (ganador == carlos)
+            primaryStage.setScene( ganadorCarlos());
+        else primaryStage.setScene( ganadorJuan());
+        primaryStage.setTitle("GAME OVER");
+        primaryStage.show();
+    }
+
+    private Scene ganadorJuan() {//falta hacer
+        return null;
+    }
+
+    private Scene ganadorCarlos() {
+        return null;
     }
 
     private void setearIzquierda() {
@@ -113,4 +132,5 @@ public class JuegoScene extends BorderPane {
 	public void cambiarFase() {
 		configurarPanel();
 	}
+
 }
