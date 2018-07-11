@@ -1,16 +1,11 @@
 package vista;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.*;
 import modelo.Cartas.MonstruoNulo;
-import modelo.Cartas.SinCartaDeCampo;
 import modelo.Cartas.UtilidadNula;
 
 import java.util.List;
@@ -54,11 +49,11 @@ public class Tablero extends GridPane {//muestra los lados
         List<CartaMonstruo> cartas = jugadorActual.getCartasMonstruos();
         monstruosJugadorActual.getChildren().clear();
         for (CartaMonstruo i : cartas){
-            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual, i, datos);
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual, i, datos, this);
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
         }
         for (int i = cartas.size() ; i < 5 ; i++){
-            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos);
+            Button cartaMonstruo = new BotonCartaMonstruo(jugadorActual,new MonstruoNulo(),datos,this);
             cartaMonstruo.setId("cartaMonstruo-propia");
             monstruosJugadorActual.getChildren().add(cartaMonstruo);
         }

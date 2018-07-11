@@ -1,10 +1,7 @@
 package vista;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Cartas.MonstruoNulo;
 import modelo.Jugador;
@@ -15,7 +12,7 @@ public class BotonCartaMonstruo extends Button {
     private CartaMonstruo carta;
     private Datos dato;
 
-    public BotonCartaMonstruo(Jugador jugadorActual, CartaMonstruo cartaMonstruo, Datos datos) {
+    public BotonCartaMonstruo(Jugador jugadorActual, CartaMonstruo cartaMonstruo, Datos datos, Tablero tablero) {
         jugador = jugadorActual;
         carta = cartaMonstruo;
         dato = datos;
@@ -24,7 +21,7 @@ public class BotonCartaMonstruo extends Button {
         else
             setearGrafico((CartaMonstruo)(cartaMonstruo.estadoDeCarta()));//rompe
 
-        this.setOnAction(new BotonCartaEnTableroHandler(this.jugador, this.carta));
+        this.setOnAction(new BotonCartaEnTableroHandler(this.jugador, this.carta,tablero));
 
 
 

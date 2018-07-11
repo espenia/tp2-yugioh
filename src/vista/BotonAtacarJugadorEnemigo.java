@@ -20,7 +20,7 @@ public class BotonAtacarJugadorEnemigo extends Button {
     private Tablero tablero;
     
     
-    public BotonAtacarJugadorEnemigo(Stage stage,  Jugador jugador, Carta carta) {
+    public BotonAtacarJugadorEnemigo(Stage stage, Jugador jugador, Carta carta, Tablero tablero) {
         this.carta = carta;
         this.jugador = jugador;
         this.tablero = tablero;
@@ -70,7 +70,7 @@ public class BotonAtacarJugadorEnemigo extends Button {
 	                    stage.close();
 	            }
 	
-	            tablero.actualizarTablero();
+	            BotonAtacarJugadorEnemigo.this.tablero.actualizarTablero();
         	}
         });
     }
