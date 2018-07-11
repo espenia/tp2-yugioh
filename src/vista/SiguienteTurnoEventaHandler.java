@@ -7,13 +7,18 @@ import modelo.Juego;
 
 public class SiguienteTurnoEventaHandler implements EventHandler<ActionEvent> {
 
+    private  JuegoScene juegoScene;
     private Juego juego;
 
-    public SiguienteTurnoEventaHandler(Juego juego,BorderPane pane){
+    public SiguienteTurnoEventaHandler(Juego juego,JuegoScene juegoScene){
         this.juego = juego;
+        this.juegoScene = juegoScene;
     }
 
     @Override
     public void handle(ActionEvent event) {
+        juego.siguienteTurno();
+        juegoScene.configurarPanel();
+
     }
 }

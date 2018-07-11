@@ -69,11 +69,17 @@ public class Juego {
         primero.refrescarAtaques();
         segundo.refrescarAtaques();
 
-        if(this.primero.getPuntosDeVida() == 0 && this.segundo.getPuntosDeVida() == 0)
+        if(this.primero.getPuntosDeVida() <= 0 && this.segundo.getPuntosDeVida() <= 0){
             empate();
+            terminarJuego();
+        }
 
-        if(this.actual.getPuntosDeVida() == 0)
+
+        if(this.actual.getPuntosDeVida() <= 0){
             perdio(this.actual);
+            terminarJuego();
+        }
+
 
         if(this.actual == this.primero){
             this.actual = this.segundo;

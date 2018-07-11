@@ -45,13 +45,13 @@ public class Mano {
         for (Carta i : this.manoDeCartas){
             if (i instanceof BrazoDerechoDeExodia)
                 brazoDerecho = true;
-            if (i instanceof BrazoDerechoDeExodia)
+            if (i instanceof BrazoIzquierdoDeExodia)
                 brazoIzquierdo = true;
-            if (i instanceof BrazoDerechoDeExodia)
+            if (i instanceof PieDerechoDeExodia)
                 piernaDerecho = true;
-            if (i instanceof BrazoDerechoDeExodia)
+            if (i instanceof PieIzquierdoDeExodia)
                 piernaIzquierda = true;
-            if (i instanceof BrazoDerechoDeExodia)
+            if (i instanceof Exodia)
                 exodia = true;
         }
 
