@@ -104,6 +104,8 @@ public class Jugador {
 		this.lado.activarEfecto(unaCarta, this, this.enemigo);
 		if (unaCarta instanceof CartaDeUtilidad)
 			this.lado.removerCartaDeUtilidad((CartaDeUtilidad) unaCarta);
+		lado.actualizarLado();
+		ladoEnemigo.actualizarLado();
 	}
 
 	public void colocarEnPosicionAtaque(CartaMonstruo carta){
@@ -165,6 +167,8 @@ public class Jugador {
             if (!cartaDefendiente.posicionDeDefensa())
 				notificarDanioAlEnemigo(resultadoDelConflicto);
         }
+        lado.actualizarLado();
+        ladoEnemigo.actualizarLado();
 
     }
 

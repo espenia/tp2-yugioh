@@ -24,7 +24,7 @@ public class Lado {
 		this.cartaDeCampo = new SinCartaDeCampo();
 		this.fusion = new Fusion();
 		this.mazoDeFusiones = new HashMap<>();
-		mazoDeFusiones.put("Dragon Blanco Definitivo De Ojos Azules",new DragonBlancoDefinitivoDeOjosAzules());//medio harcodeado
+		mazoDeFusiones.put("Dragon Blanco Definitivo De Ojos Azules",new DragonBlancoDefinitivoDeOjosAzules());
 	}
 	
 	//SETTERS UNITARIOS//
@@ -40,8 +40,10 @@ public class Lado {
 	public void jugarCartaMonstruo(CartaMonstruo carta) {
 		this.cartaDeCampo.aplicarBuff(carta,this);
 		this.cartasMonstruo.add(carta);
+		actualizarLado();
 	}
-	
+
+
 	public void jugarCartaDeCampo(CartaDeCampo carta){
 		this.cartaDeCampo = carta;
 		this.cartaDeCampo.asignarLado(this);
@@ -52,10 +54,12 @@ public class Lado {
 	public void jugarCartaTrampa(CartaDeUtilidad carta,Lado esteLado,Lado ladoEnemigo){
 		carta.activarTrampa(esteLado,ladoEnemigo);
 		this.cartasTrampaOMagicas.add(carta);
+		actualizarLado();
 	}
 
 	public void jugarCartaMagica(CartaDeUtilidad carta) {
 		this.cartasTrampaOMagicas.add(carta);
+		actualizarLado();
 	}
 
 	//SACA UNA CARTA DEL MAZO A LA MANO//
@@ -88,6 +92,8 @@ public class Lado {
 		if (!this.cartasMonstruo.contains(cartaMonstruo))
 			throw new LadoNoContieneCartaException();
 	}
+
+
 	
 	//FUNCIONES VARIAS//
 	public void removerBuffs() {
@@ -98,6 +104,13 @@ public class Lado {
 	public void refrescarAtaques() {
 		for (CartaMonstruo i : this.cartasMonstruo)
 			i.refrescarAtaque();
+	}
+
+	public void actualizarLado() {
+		for (int i = 0; i < cartasMonstruo.size() ; i++){
+			if (cartasMonstruo.get(i).estadoMuerto())
+				removerCartaMonstruo(cartasMonstruo.get(i));
+		}
 	}
 	
 	//GETTER INFORMATIVO//
