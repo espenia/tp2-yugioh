@@ -12,9 +12,9 @@ public class Mazo {
 
     public Mazo () {
         this.cartasEnMazo = new Stack<>();
-        /*agregarCarta(new DragonBlancoDeOjosAzules());//TODO solo tests
-        agregarCarta(new DragonBlancoDeOjosAzules());
-        agregarCarta(new DragonBlancoDeOjosAzules());*/
+        //agregarCarta(new DragonBlancoDeOjosAzules());//TODO solo tests
+        //agregarCarta(new DragonBlancoDeOjosAzules());
+        //agregarCarta(new DragonBlancoDeOjosAzules());
         armarMazo(new MazoEstandar());
     }
 

@@ -10,7 +10,8 @@ public class AligatorCibertech extends CartaMonstruo {
     private static int defensa = 1600;
     private static int ataque = 2500;
     private static int estrellas = 5;
-	private static Image imagen = new Image("file:src/modelo/Cartas/CyberTechAlligator.png");
+	private Image imagen = new Image(getClass().getResourceAsStream("CyberTechAlligator.png"));
+	//private static Image imagen = new Image("file:src/modelo/Cartas/");
 	private static Text datos = new Text("Nombre: Aligator CyberTech\n" +
 			"Ataque: 2500\n" +
 			"Defensa: 1600\n" +

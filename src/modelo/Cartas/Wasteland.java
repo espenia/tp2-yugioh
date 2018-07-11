@@ -20,7 +20,9 @@ public class Wasteland extends CartaDeCampo {
 
     }
 
-    private static Image imagen = new Image("file:src/modelo/Cartas/Wasteland.png");
+
+    private Image imagen = new Image(getClass().getResourceAsStream("Wasteland.png"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Wasteland\n" +
             "Efecto: Aumenta el ataque de\n " +
     		"tus cartas monstruos por 200 puntos,\n" +

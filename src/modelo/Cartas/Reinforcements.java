@@ -4,19 +4,18 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
-import modelo.CartaMonstruo;
-import modelo.CartaTrampa;
-import modelo.Jugador;
-import modelo.Lado;
-import modelo.Mazo;
+import modelo.*;
 
 public class Reinforcements extends CartaTrampa {
 
+    private EstadoDeCarta estadoDeCarta;
+
     public Reinforcements() {
         super("Reinforcements");
+        estadoDeCarta = new EstadoBocaAbajo();
     }
-
-    private static Image imagen = new Image("file:src/modelo/Cartas/Refuerzos.jpg");
+    private Image imagen = new Image(getClass().getResourceAsStream("Refuerzos.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Reinforcements\n" +
             "Efecto: Aumenta el ataque\n" + " del monstruo atacado por 500 puntos");
 
@@ -36,6 +35,7 @@ public class Reinforcements extends CartaTrampa {
 
     @Override
     public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
+        estadoDeCarta = new EstadoBocaArriba();
     	carta.aplicarBuff(0,400);
     }
 

@@ -13,7 +13,8 @@ import modelo.Mazo;
 
 public class Fisura extends CartaMagica {
 
-	private static Image imagen = new Image("file:src/modelo/Cartas/Fisura.jpg");
+	private Image imagen = new Image(getClass().getResourceAsStream("Fisura.jpg"));
+	//private static Image imagen = new Image("file:src/modelo/Cartas/");
 	private static Text datos = new Text("Nombre: Fisura\n" +
 			"Efecto: Destruye la Carta monstruo\n" + " de menor defensa del enemigo");
 

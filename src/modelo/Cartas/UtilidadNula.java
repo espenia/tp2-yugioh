@@ -11,7 +11,9 @@ public class UtilidadNula  extends CartaDeUtilidad{
 
     private static String nombreDeCarta = "Carta Nula";
 
-    private Image imagen = new Image("file:src/modelo/Cartas/Utilidad_nula.png");
+
+    private Image imagen = new Image(getClass().getResourceAsStream("Utilidad_nula.png"));
+    //private Image imagen = new Image("file:src/modelo/Cartas/");
     private Text text = new Text("Carta De Utilidad No Jugada");
 
 

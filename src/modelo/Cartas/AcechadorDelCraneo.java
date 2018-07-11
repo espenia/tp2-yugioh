@@ -10,7 +10,8 @@ public class AcechadorDelCraneo extends CartaMonstruo {
     private static int defensa = 800;
     private static int ataque = 900;
     private static int estrellas = 3;
-	private static Image imagen = new Image("file:src/modelo/Cartas/Acechador_del_cráneo.jpg");
+	private Image imagen = new Image(getClass().getResourceAsStream("Acechador_del_craneo.jpg"));
+	//private static Image imagen = new Image("file:src/modelo/Cartas/");
 	private static Text datos = new Text("Nombre: Acechador Del Craneo\n" +
 			"Ataque: 900\n" +
 			"Defensa: 800\n" +

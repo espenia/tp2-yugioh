@@ -24,6 +24,7 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
     private  Tablero tablero;
     private  Jugador jugador;
     private CartaMonstruo carta;
+    private boolean excepcion = false;
 
     public BotonjugarCartaMonstruoConSacrificios(Stage stage, Tablero tablero, ManoDeJugador manoDeJugador, Jugador jugador, Carta carta) {
         this.setText("Jugar Monstruo Con Sacrificios");
@@ -35,6 +36,7 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
                 try {
                     if (carta instanceof CartaMonstruo){
                         definirCarta(carta);
+                        stage.close();
                         cantidadDeSacrificios();
                     }
                     else {
@@ -64,6 +66,7 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
     }
 
     private void cantidadDeSacrificios() {
+
         Stage stage = new Stage();
         GridPane gridPane = new GridPane();
         //gridPane.setId("pantalla-principal");
@@ -96,7 +99,6 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
             @Override
             public void handle(ActionEvent event) {
                 verificarCantidadDeSacrificios(1,nuevoStage);
-                new ElegirSacrifcios(1,tablero,carta,jugador);
                 nuevoStage.close();
             }
         });
@@ -112,7 +114,6 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
             @Override
             public void handle(ActionEvent event) {
                 verificarCantidadDeSacrificios(2,nuevoStage);
-                new ElegirSacrifcios(2,tablero,carta,jugador);
                 nuevoStage.close();
             }
         });
@@ -126,7 +127,6 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
             @Override
             public void handle(ActionEvent event) {
                 verificarCantidadDeSacrificios(3,nuevoStage);
-                new ElegirSacrifcios(3,tablero,carta,jugador);
                 nuevoStage.close();
             }
         });
@@ -138,6 +138,7 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
             carta.verificarCantidadDeSacrificios(i);
         }
         catch (CantidadDeSacrificiosIncorrectaException e){
+            excepcion = true;
             Alert alert = new Alert(Alert.AlertType.ERROR,"Cantidad Invalida de Sacrificios",ButtonType.CLOSE);
             alert.setHeight(40);
             alert.setWidth(50);
@@ -145,6 +146,8 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
             if (alert.getResult()==ButtonType.CLOSE)
                 nuevoStage.close();
         }
+        if (!excepcion)
+            new ElegirSacrifcios(i,tablero,carta,jugador);
 
     }
 

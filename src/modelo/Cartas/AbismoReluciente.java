@@ -10,7 +10,8 @@ public class AbismoReluciente extends CartaMonstruo {
     private static int defensa = 1600;
     private static int ataque = 1800;
     private static int estrellas = 4;
-	private static Image imagen = new Image("file:src/modelo/Cartas/Abismo_reluciente.jpg");
+	private Image imagen = new Image(getClass().getResourceAsStream("Abismo_reluciente.jpg"));
+	//private static Image imagen = new Image("file:src/modelo/Cartas/");
 	private static Text datos = new Text("Nombre: Abismo Reluciente\n" +
 			"Ataque: 1800\n" +
 			"Defensa: 1600\n" +

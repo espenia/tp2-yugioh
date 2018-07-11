@@ -13,7 +13,9 @@ import modelo.Mazo;
 
 public class OllaDeLaCodicia extends CartaMagica {
 
-    private static Image imagen = new Image("file:src/modelo/Cartas/Olla_de_la_codicia.jpg");
+
+    private Image imagen = new Image(getClass().getResourceAsStream("Olla_de_la_codicia.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Olla de la Codicia\n" +
             "Efecto: Extrae dos cartas del mazo");
 

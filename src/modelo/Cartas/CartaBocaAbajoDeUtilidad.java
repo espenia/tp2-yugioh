@@ -18,13 +18,18 @@ public class CartaBocaAbajoDeUtilidad extends CartaDeUtilidad {
     }
 
     @Override
+    public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo miCarta) {
+
+    }
+
+    @Override
     public void activarEfecto(List<CartaMonstruo> monstruosAliados, List<CartaMonstruo> monstruosEnemigos, Mazo mazo, Jugador jugador, Jugador enemigo) {
 
     }
 
     @Override
-    public Image getImagen() {
-        return new Image("file:src/vista/facedown.jpg");
+    public Image getImagen() { return new Image(getClass().getResourceAsStream("facedown.jpg"));
+        //return new Image("file:src/vista/");
     }
 
     @Override

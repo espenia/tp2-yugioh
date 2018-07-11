@@ -10,7 +10,8 @@ public class PieIzquierdoDeExodia extends CartaMonstruo {
     private static int defensa = 300;
     private static int ataque = 200;
     private static int estrellas = 1;
-    private static Image imagen = new Image("file:src/modelo/Cartas/Pierna_izquierda_del_exodia.jpg");
+    private Image imagen = new Image(getClass().getResourceAsStream("Pierna_izquierda_del_exodia.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Pierna Izquierda\n" + " De Exodia El Prohibido\n" +
             "Ataque: 200\n" +
             "Defensa: 300\n" +

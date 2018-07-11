@@ -28,7 +28,8 @@ public class CartaBocaAbajo extends CartaMonstruo {
 
     @Override
     public Image getImagen() {
-        return new Image("file:src/vista/facedown.jpg");
+        return  new Image(getClass().getResourceAsStream("facedown.jpg"));
+               // new Image("file:src/vista/");
     }
 
     @Override

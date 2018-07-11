@@ -11,7 +11,8 @@ public class MonstruoNulo extends CartaMonstruo {
     private static int defensa = 0;
     private static int estrella = 1;
 
-    private Image image = new Image("file:src/modelo/Cartas/Monstruo_Nulo.png");
+    private Image image = new Image(getClass().getResourceAsStream("Monstruo_Nulo.png"));
+    //private Image image = new Image("file:src/modelo/Cartas/");
     private Text text = new Text("Monstruo No Invocado");
 
 

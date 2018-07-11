@@ -10,7 +10,8 @@ public class Conedragon extends CartaMonstruo {
     private static int defensa = 2900;
     private static int ataque = 2950;
     private static int estrellas = 8;
-	private static Image imagen = new Image("file:src/modelo/Cartas/Conedragón.jpg");
+	private Image imagen = new Image(getClass().getResourceAsStream("Conedragon.jpg"));
+	//private static Image imagen = new Image("file:src/modelo/Cartas/");
 	private static Text datos = new Text("Nombre: ConeDragon\n" +
 			"Ataque: 2950\n" +
 			"Defensa: 2900\n" +

@@ -22,13 +22,16 @@ public class Juego {
         Lado ladoJugador2 = new Lado(new Mazo());
         jugador1.asignarLadosYJugadores(ladoJugador1,ladoJugador2,jugador2);
         jugador2.asignarLadosYJugadores(ladoJugador2,ladoJugador1,jugador1);
-        primeroYSegundo(jugador1,jugador2);
-        this.partidaEnJuego = true;
-        this.actual = primero;
+        //primero = jugador1;//TODO solo tests
+        //segundo = jugador2;
+        primeroYSegundo(jugador1,jugador2);//TODO solo app
         for (int i = 0 ; i < 5 ; i++){
             primero.extraerCartasDelMazo();
             segundo.extraerCartasDelMazo();
         }
+        this.partidaEnJuego = true;
+        this.actual = primero;
+
 
         this.fase = new FaseIncial(this.primero,this);
         siguienteFase();

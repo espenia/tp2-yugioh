@@ -14,7 +14,9 @@ import modelo.Mazo;
 public class SinCartaDeCampo extends CartaDeCampo {
 
 
-    private Image image = new Image("file:src/modelo/Cartas/Sin_Carta_De_Campo.png");
+
+    private Image image = new Image(getClass().getResourceAsStream("Sin_Carta_De_Campo.png"));
+    //private Image image = new Image("file:src/modelo/Cartas/");
     private Text text = new Text("Carta De Campo No Jugada");
 
     public SinCartaDeCampo() {

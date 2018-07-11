@@ -12,7 +12,8 @@ public class Jinzo7 extends CartaMonstruo {
     private static int defensa = 400;
     private static int ataque = 500;
     private static int estrellas = 2;
-    private static Image imagen = new Image("file:src/modelo/Cartas/Jinzo_7.jpg");
+    private Image imagen = new Image(getClass().getResourceAsStream("Jinzo_7.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Jinzo #7\n" +
             "Ataque: 500\n" +
             "Defensa: 450\n" +

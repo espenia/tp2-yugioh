@@ -116,9 +116,12 @@ public class Lado {
 	
 	//ACTIVACION DE TRAMPA PRODUCTO DE UN ATAQUE ENEMIGO//
 	public void activarTrampaConAtaque(CartaMonstruo miCarta,Jugador jugador) {
-		for (CartaDeUtilidad i: this.cartasTrampaOMagicas){
-			if (i instanceof CartaTrampa)
-				i.activarTrampaDeAtaque(jugador, miCarta);
+		for (int i = 0 ; i < cartasTrampaOMagicas.size() ; i++){
+			if (cartasTrampaOMagicas.get(i) instanceof CartaTrampa){
+				cartasTrampaOMagicas.get(i).activarTrampaDeAtaque(jugador, miCarta);
+				removerCartaDeUtilidad(cartasTrampaOMagicas.get(i));
+			}
+
 		}
 	}
 

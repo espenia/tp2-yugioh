@@ -66,7 +66,7 @@ public class testGenerales {
         juan.colocarEnPosicionAtaque(cartaPrueba);
         juan.colocarEnEstadoBocaArriba(cartaPrueba);
         juan.darCarta(agujeroOscuro);
-        juan.colocarEnEstadoBocaArriba(agujeroOscuro);
+        juan.colocarEnEstadoBocaAbajo(agujeroOscuro);
         juan.jugarCartaMonstruoEnLado(cartaPrueba);
         juan.jugarCartaMagicaEnLado(agujeroOscuro);
         juan.atacar(cartaPrueba,carlos);

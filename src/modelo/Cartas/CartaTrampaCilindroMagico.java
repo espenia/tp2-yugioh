@@ -4,15 +4,14 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
-import modelo.CartaMonstruo;
-import modelo.CartaTrampa;
-import modelo.Jugador;
-import modelo.Lado;
-import modelo.Mazo;
+import modelo.*;
 
 public class CartaTrampaCilindroMagico extends CartaTrampa {
 
-    private static Image imagen = new Image("file:src/modelo/Cartas/Cilindro_mágico.jpg");
+
+    private static EstadoDeCarta estadoDeCarta;
+    private Image imagen = new Image(getClass().getResourceAsStream("Cilindro_magico.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Cilindro Magico\n" +
             "Efecto: Cuando un monstruo enemigo \n" + 
     		"declara un ataque, \n" + 
@@ -32,11 +31,13 @@ public class CartaTrampaCilindroMagico extends CartaTrampa {
 
     public CartaTrampaCilindroMagico() {
         super("CilindroMagico");
+        estadoDeCarta = new EstadoBocaAbajo();
 
     }
 
     @Override
     public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
+        estadoDeCarta = new EstadoBocaArriba();
         jugador.notificarDanioAlEnemigo(carta.getAtaque());
     }
 

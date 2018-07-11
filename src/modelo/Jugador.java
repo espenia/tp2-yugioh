@@ -102,6 +102,8 @@ public class Jugador {
 		this.fase.activarCartaMagica();
 		unaCarta.colocarEn(new EstadoBocaArriba());
 		this.lado.activarEfecto(unaCarta, this, this.enemigo);
+		if (unaCarta instanceof CartaDeUtilidad)
+			this.lado.removerCartaDeUtilidad((CartaDeUtilidad) unaCarta);
 	}
 
 	public void colocarEnPosicionAtaque(CartaMonstruo carta){
@@ -111,12 +113,6 @@ public class Jugador {
 
 	public void colocarEnPosicionDefensa(CartaMonstruo carta){
 		carta.enPosicion(new PosicionDefensa());
-
-	}
-
-
-	public void seleccionarCartaDeLaMano(Carta unaCarta) {
-		this.mano.removerCarta(unaCarta);
 
 	}
 

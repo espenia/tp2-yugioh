@@ -12,7 +12,9 @@ import modelo.Mazo;
 
 public class CartaMagicaAgujeroOscuro extends CartaMagica {
 
-	private static Image imagen = new Image("file:src/modelo/Cartas/Agujero_oscuro.jpg");
+
+	private Image imagen = new Image(getClass().getResourceAsStream("Agujero_oscuro.jpg"));
+	//private static Image imagen = new Image("file:src/modelo/Cartas/");
 	private static Text datos = new Text("Nombre: Agujero Negro\n" +
 			"Efecto: Destruye todas las\n" + "cartas monstruo en el campo");
 

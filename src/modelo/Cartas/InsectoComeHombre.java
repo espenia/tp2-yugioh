@@ -11,7 +11,8 @@ public class InsectoComeHombre extends CartaMonstruo {
     private static int defensa = 600;
     private static int ataque = 450;
     private static int estrellas = 2;
-    private static Image imagen = new Image("file:src/modelo/Cartas/Insecto-Come-Hombres.png");
+    private Image imagen = new Image(getClass().getResourceAsStream("Insecto-Come-Hombres.png"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Insecto Come Hombre\n" +
                                         "Ataque: 450\n" +
                                         "Defensa: 600\n" +

@@ -11,7 +11,8 @@ public class Exodia extends CartaMonstruo {
     private static int defensa = 1000;
     private static int ataque = 1000;
     private static int estrellas = 3;
-    private static Image imagen = new Image("file:src/modelo/Cartas/exodia.jpg");
+    private Image imagen = new Image(getClass().getResourceAsStream("exodia.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Exodia\n" +
             "Ataque: 1000\n" +
             "Defensa: 1000\n" +

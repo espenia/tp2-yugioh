@@ -20,7 +20,8 @@ public class Sogen extends CartaDeCampo {
     }
 
 
-    private static Image imagen = new Image("file:src/modelo/Cartas/Sogen.jpg");
+    private Image imagen = new Image(getClass().getResourceAsStream("Sogen.jpg"));
+    //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Sogen\n" +
             "Efecto: Aumenta la defensa de\n" + " tus cartas monstruos por 500 puntos,\n" + " y Aumenta el ataque de las cartas\n " + " monstruos de tu enemigo \n" + "por 200 puntos");
 
