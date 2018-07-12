@@ -194,6 +194,7 @@ public class Jugador {
 
 	public void colocarCartaDeCampo(CartaDeCampo cartaCampo) {
 		this.fase.jugarCartaDeCampo();
+		this.mano.removerCarta(cartaCampo);
 		this.lado.removerBuffs();
 		this.ladoEnemigo.removerBuffs();
 		this.lado.jugarCartaDeCampo(cartaCampo);
