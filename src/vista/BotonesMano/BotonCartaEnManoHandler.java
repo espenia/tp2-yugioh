@@ -34,6 +34,7 @@ public class BotonCartaEnManoHandler implements EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent event) {
+        datos.mostrarDatosDeCarta(carta);
         Stage stage = new Stage();
         GridPane gridPane = new GridPane();
         gridPane.setMinSize(850,100 );
@@ -52,7 +53,6 @@ public class BotonCartaEnManoHandler implements EventHandler<ActionEvent>{
         stage.setTitle("Jugar Carta De Mano");
         stage.setScene(scene);
         stage.showAndWait();
-        datos.mostrarDatosDeCarta(carta);
 
     }
 
