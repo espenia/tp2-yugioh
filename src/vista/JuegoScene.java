@@ -40,6 +40,7 @@ public class JuegoScene extends BorderPane {
 
     public JuegoScene(Jugador jugador1, Jugador jugador2, Stage stage, Aplicacion aplicacion, AudioClip newSound) {
         sound = newSound;
+        sound.setCycleCount(AudioClip.INDEFINITE);
         primaryStage = stage;
         juan = jugador1;
         carlos = jugador2;

@@ -28,6 +28,7 @@ public class Aplicacion extends Application{
         primaryStage.setMaximized(true);
         sound = new AudioClip("file:src/vista/audioPrincipal.mp3");
         sound.play();
+        sound.setCycleCount(AudioClip.INDEFINITE);
         configurarPantallaInicial(primaryStage);
 
 
