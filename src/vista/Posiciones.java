@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -118,8 +120,15 @@ public class Posiciones extends ArrayList<CartaMonstruo> {
     }
 
     private void seleccionarCarta(int i) {
-        if (!cartas.isEmpty())
+    	if (cartas.size() >= i)
             this.add((CartaMonstruo)cartas.get(i - 1));
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR,"No hay un monstruo en ese espacio",ButtonType.CLOSE);
+            alert.setHeight(40);
+            alert.setWidth(50);
+            alert.showAndWait();
+            if (alert.getResult()==ButtonType.CLOSE);
+        }
     }
 
 }
