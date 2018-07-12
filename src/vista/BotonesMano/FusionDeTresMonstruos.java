@@ -1,4 +1,4 @@
-package vista;
+package vista.BotonesMano;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +12,7 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Exceptions.NoAdmiteFusionException;
 import modelo.Jugador;
+import vista.Posiciones;
 
 import java.util.ArrayList;
 

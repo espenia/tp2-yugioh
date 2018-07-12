@@ -1,33 +1,34 @@
-package vista;
+package vista.BotonesTablero;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import modelo.CartaDeUtilidad;
 import modelo.CartaMonstruo;
 import modelo.Cartas.MonstruoNulo;
+import modelo.Cartas.UtilidadNula;
 import modelo.Jugador;
+import vista.Datos;
 
-public class BotonCartaMonstruoEnemiga extends Button {
-
-
+public class BotonCartaDeUtilidadEnemiga extends Button {
     private Jugador jugador;
-    private CartaMonstruo carta;
+    private CartaDeUtilidad carta;
     private Datos dato;
 
-    public BotonCartaMonstruoEnemiga(Jugador enemigoActual, CartaMonstruo cartaMonstruo, Datos datos) {
+    public BotonCartaDeUtilidadEnemiga(Jugador enemigoActual, CartaDeUtilidad utilidad, Datos datos) {
         jugador = enemigoActual;
-        carta = cartaMonstruo;
+        carta = utilidad;
         dato = datos;
-        if (cartaMonstruo instanceof MonstruoNulo)
-            setearGrafico(cartaMonstruo);
+        if (utilidad instanceof UtilidadNula)
+            setearGrafico(utilidad);
         else
-            setearGrafico((CartaMonstruo)(cartaMonstruo.estadoDeCarta()));
+            setearGrafico((CartaDeUtilidad)(carta.estadoDeCarta()));
 
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (carta instanceof MonstruoNulo)
+                if (carta instanceof UtilidadNula)
                     dato.mostrarDatosDeCarta(carta);
                 else {
                     dato.mostrarDatosDeCarta(carta.estadoDeCarta());
@@ -38,13 +39,8 @@ public class BotonCartaMonstruoEnemiga extends Button {
 
     }
 
-    private void setearGrafico(CartaMonstruo cartaMonstruo) {
-        ImageView imageView = new ImageView(cartaMonstruo.getImagen());
-        if (carta.posicionDeDefensa()){
-            imageView.setRotate(90);
-            imageView.setFitWidth(150);
-            imageView.setFitHeight(100);
-        }
+    private void setearGrafico(CartaDeUtilidad carta) {
+        ImageView imageView = new ImageView(carta.getImagen());
         imageView.setFitWidth(100);
         imageView.setFitHeight(150);
         this.setGraphic(imageView);

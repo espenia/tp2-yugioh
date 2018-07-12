@@ -1,19 +1,12 @@
-package vista;
+package vista.BotonesMano;
 
 import java.util.ArrayList;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import modelo.CartaMonstruo;
 import modelo.Jugador;
+import vista.BotonesMano.colocarEnEstado;
+import vista.Posiciones;
+import vista.Tablero;
 
 
 public class ElegirSacrifcios {

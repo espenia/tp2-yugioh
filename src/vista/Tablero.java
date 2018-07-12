@@ -7,6 +7,7 @@ import javafx.scene.layout.*;
 import modelo.*;
 import modelo.Cartas.MonstruoNulo;
 import modelo.Cartas.UtilidadNula;
+import vista.BotonesTablero.*;
 
 import java.util.List;
 

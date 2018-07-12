@@ -6,6 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import modelo.Carta;
 import modelo.Jugador;
+import vista.BotonesMano.BotonCartaEnMano;
+
 import java.util.List;
 
 

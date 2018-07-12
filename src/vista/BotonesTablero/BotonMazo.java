@@ -1,4 +1,4 @@
-package vista;
+package vista.BotonesTablero;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import modelo.Jugador;
 import modelo.Mazo;
 import modelo.MazoEstandar;
+import vista.Datos;
 
 public class BotonMazo extends Button {
 

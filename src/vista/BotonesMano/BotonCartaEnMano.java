@@ -1,9 +1,12 @@
-package vista;
+package vista.BotonesMano;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import modelo.Carta;
 import modelo.Jugador;
+import vista.Datos;
+import vista.ManoDeJugador;
+import vista.Tablero;
 
 public class BotonCartaEnMano extends Button{
 

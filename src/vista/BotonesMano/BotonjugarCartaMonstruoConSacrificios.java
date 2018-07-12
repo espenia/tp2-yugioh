@@ -1,10 +1,9 @@
-package vista;
+package vista.BotonesMano;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -15,15 +14,16 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import modelo.Carta;
 import modelo.CartaMonstruo;
-import modelo.CartaTrampa;
 import modelo.Exceptions.AccionInvalidaEnFaseException;
 import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.Jugador;
+import vista.ManoDeJugador;
+import vista.Tablero;
 
 public class BotonjugarCartaMonstruoConSacrificios extends Button {
 
 
-    private  Tablero tablero;
+    private Tablero tablero;
     private  Jugador jugador;
     private CartaMonstruo carta;
     private boolean excepcion = false;

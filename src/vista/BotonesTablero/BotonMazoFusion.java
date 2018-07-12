@@ -1,16 +1,17 @@
-package vista;
+package vista.BotonesTablero;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import modelo.Jugador;
+import vista.Datos;
 
 import java.util.Map;
 
 public class BotonMazoFusion extends Button {
 
-    private  Datos dato;
+    private Datos dato;
     private  Jugador jugador;
     private  Map mazoDeFusion;
 

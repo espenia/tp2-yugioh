@@ -1,4 +1,4 @@
-package vista;
+package vista.BotonesMano;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -14,7 +14,7 @@ public class Polimerizacion extends CartaMagica {
     }
 
 
-    private Image imagen = new Image(getClass().getResourceAsStream("Polimerización.jpg"));
+    private Image imagen = new Image(getClass().getResourceAsStream("Polimerizacion.jpg"));
     //private static Image imagen = new Image("file:src/modelo/Cartas/");
     private static Text datos = new Text("Nombre: Polimerizacion\n" +
             "Efecto: Habilita la\n " + " fusion de monstruos");

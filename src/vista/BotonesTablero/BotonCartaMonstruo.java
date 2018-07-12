@@ -1,10 +1,13 @@
-package vista;
+package vista.BotonesTablero;
 
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import modelo.CartaMonstruo;
 import modelo.Cartas.MonstruoNulo;
 import modelo.Jugador;
+import vista.Datos;
+import vista.JuegoScene;
+import vista.Tablero;
 
 public class BotonCartaMonstruo extends Button {
 

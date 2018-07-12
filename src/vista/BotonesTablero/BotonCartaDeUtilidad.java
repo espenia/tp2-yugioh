@@ -1,4 +1,4 @@
-package vista;
+package vista.BotonesTablero;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,11 +13,14 @@ import javafx.stage.Stage;
 import modelo.CartaDeUtilidad;
 import modelo.Cartas.UtilidadNula;
 import modelo.Jugador;
+import vista.Datos;
+import vista.JuegoScene;
+import vista.Tablero;
 
 public class BotonCartaDeUtilidad extends Button {
     private  Jugador jugador;
     private  CartaDeUtilidad carta;
-    private  Datos dato;
+    private Datos dato;
 
     public BotonCartaDeUtilidad(Jugador jugadorActual, CartaDeUtilidad utilidad, Datos datos, Tablero tablero, JuegoScene juegoScene) {
         jugador = jugadorActual;
@@ -47,12 +50,12 @@ public class BotonCartaDeUtilidad extends Button {
     private void activarEfecto() {
         Stage stage = new Stage();
         GridPane gridPane = new GridPane();
-        gridPane.setMinSize(1000,100 );
+        gridPane.setMinSize(300,100 );
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setVgap(5);
         gridPane.setHgap(5);
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.add(new Text("Indique la accion donde que quiere Realizar"),1,1);
+        gridPane.add(new Text("Indique la accion\n que quiere Realizar"),1,1);
         gridPane.add(botonActivarEfecto(stage, jugador, carta),1,2);
         gridPane.add(cancelar(stage),2,2);
         Scene scene = new Scene(gridPane,300,100);
