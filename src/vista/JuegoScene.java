@@ -11,13 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.Juego;
 import modelo.Jugador;
-
 
 
 public class JuegoScene extends BorderPane {
@@ -36,8 +36,10 @@ public class JuegoScene extends BorderPane {
     private Text puntosDeVidaJuan;
     private Text puntosDeVidaCarlos;
     private Text faseActual;
+    private AudioClip sound;
 
-    public JuegoScene(Jugador jugador1, Jugador jugador2, Stage stage, Aplicacion aplicacion) {
+    public JuegoScene(Jugador jugador1, Jugador jugador2, Stage stage, Aplicacion aplicacion, AudioClip newSound) {
+        sound = newSound;
         primaryStage = stage;
         juan = jugador1;
         carlos = jugador2;
@@ -50,7 +52,6 @@ public class JuegoScene extends BorderPane {
 
 
     public void configurarPanel() {
-
         actual = juego.getActual();
         if (actual == juan)
             enimigo = carlos;
@@ -85,7 +86,7 @@ public class JuegoScene extends BorderPane {
         primaryStage.show();
     }
 
-    private Scene pantallaGanador(Image image, Jugador ganador) {
+    private Scene pantallaGanador(Image image, Jugador ganador){
 
 
         BackgroundImage imagenDeFondo = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
@@ -98,7 +99,6 @@ public class JuegoScene extends BorderPane {
 
         Scene scene = new Scene(gridPane);
         scene.getStylesheets().add("file:src/vista/style.css");
-
         gridPane.setVgap(5);
         gridPane.setHgap(5);
 
@@ -106,10 +106,15 @@ public class JuegoScene extends BorderPane {
         gridPane.setAlignment(Pos.CENTER);
 
         Button cerrar = new Button("Cerrar");
-        cerrar.setOnAction(new EventHandler<ActionEvent>() {
+        cerrar.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-                aplication.configurarPantallaInicial(primaryStage);
+                try {
+                    sound.stop();
+                    aplication.start(primaryStage);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 

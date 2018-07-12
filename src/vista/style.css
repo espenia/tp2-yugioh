@@ -30,6 +30,11 @@ scene.getStylesheets().add("file:src/vista/style.css");
 	-fx-background-image: url('file:src/vista/fondo.jpg"');
     -fx-background-size: cover;
 }
+
+#pantalla-creditos {
+	-fx-background-image: url('file:src/vista/creditos.jpg"');
+	-fx-background-size: cover;
+}
 #carta{
 	-fx-background-image: url('file:src/vista/carta.jpg"');
     -fx-background-size: cover;

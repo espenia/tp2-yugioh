@@ -8,12 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application{
 
     private Scene scene;
-
+    private AudioClip sound;
 
     public static void main(String [] args){
         launch(args);
@@ -25,6 +26,8 @@ public class Aplicacion extends Application{
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setFullScreen(false);
         primaryStage.setMaximized(true);
+        sound = new AudioClip("file:src/vista/audioPrincipal.mp3");
+        sound.play();
         configurarPantallaInicial(primaryStage);
 
 
@@ -56,13 +59,13 @@ public class Aplicacion extends Application{
         Button jugar = new Button();
         Image botonJugarImagen = new Image("file:src/vista/Botonjugar.jpg");
         jugar.setGraphic(new ImageView(botonJugarImagen));
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage,this);
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage,this,sound);
         jugar.setOnAction(botonJugarEventHandler);
 
         Button creditos = new Button();
         Image botonCreditosImagen = new Image("file:src/vista/botonCreditos.jpg");
         creditos.setGraphic(new ImageView(botonCreditosImagen));
-        BotonCreditosEventHandler botonCreditosEventHandler = new BotonCreditosEventHandler(primaryStage,this);
+        BotonCreditosEventHandler botonCreditosEventHandler = new BotonCreditosEventHandler(primaryStage,this,sound);
         creditos.setOnAction(botonCreditosEventHandler);
 
 

@@ -56,7 +56,7 @@ public class Juego {
             this.fase = this.fase.cambiarFase();
             actual.asignarFase(fase);
         }
-        catch (NoHayMasFasesException ex){
+        catch (NoHayMasFasesException exe){
             siguienteTurno();
         }
 

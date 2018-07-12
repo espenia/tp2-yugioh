@@ -3,19 +3,23 @@ package vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 
 public class BarraDeMenu extends MenuBar {
 
+    private AudioClip sound;
+
     public BarraDeMenu(Stage primaryStage, Aplicacion aplication){
+        sound = new AudioClip("file:src/vista/audiojuego.mp3");
         Menu menuFile = new Menu("File");
         MenuItem pantallaCompleta = new MenuItem("Pantalla Completa");
         MenuItem volverAjugar = new MenuItem("Volver a Jugar");
         MenuItem salir = new MenuItem("Salir");
         
         pantallaCompleta.setOnAction(fullAction(primaryStage));
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage, aplication);
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage, aplication, sound);
         volverAjugar.setOnAction(botonJugarEventHandler);
         salir.setOnAction(quitAction());
         menuFile.getItems().add(pantallaCompleta);
