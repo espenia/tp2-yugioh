@@ -44,7 +44,8 @@ public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
             gridPane.setAlignment(Pos.CENTER);
             gridPane.add(new Text("Indique a quien quiere atacar"),1,1);
             gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta,tablero,juegoScene),1,2);
-            Scene scene = new Scene(gridPane,200,100);
+            gridPane.add(new BotonAtacarMonstruoEnemigo(stage, jugador, carta,tablero,juegoScene),2,2);
+            Scene scene = new Scene(gridPane,400,100);
             stage.setTitle("Accion");
             stage.setScene(scene);
             stage.showAndWait();

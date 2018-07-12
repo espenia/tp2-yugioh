@@ -36,7 +36,7 @@ public class Reinforcements extends CartaTrampa {
     @Override
     public void activarTrampaDeAtaque(Jugador jugador, CartaMonstruo carta) {
         estadoDeCarta = new EstadoBocaArriba();
-    	carta.aplicarBuff(0,400);
+    	carta.aplicarBuff(0,500);
     }
 
     @Override

@@ -628,7 +628,7 @@ public class testGenerales {
         carlos.atacarAMonstruo(cartaMonstruo2,cartaMonstruo);
         assertEquals(true,cartaMonstruo2.estadoMuerto());
         assertEquals(8000,juan.getPuntosDeVida(),DELTA);
-        assertEquals(7600,carlos.getPuntosDeVida(),DELTA);
+        assertEquals(7500,carlos.getPuntosDeVida(),DELTA);
 
 
 
