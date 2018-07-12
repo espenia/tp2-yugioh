@@ -23,16 +23,21 @@ public class ElegirSacrifcios {
     public ElegirSacrifcios(int i, Tablero tablero, CartaMonstruo carta, Jugador jugador) {
         cartas = (ArrayList) jugador.getCartasMonstruos();
         for (int j = 0; j < i; j++) {
-            ArrayList<CartaMonstruo> seleccionada = new Posiciones(jugador.getCartasMonstruos(), "Indique la posicion del monstruo que quiere sacrificar");
-            seleccionadas.add(seleccionada.get(0));
+            ArrayList<CartaMonstruo> seleccionada = new Posiciones(jugador.getCartasMonstruos(), "Indique la posicion del\n monstruo que quiere sacrificar");
+            if (!seleccionada.isEmpty())
+                seleccionadas.add(seleccionada.get(0));
         }
-        if (i == 3)
-            jugador.jugarCartaEnLadoConTresSacrificio(carta, (CartaMonstruo) seleccionadas.get(0), (CartaMonstruo) seleccionadas.get(1), (CartaMonstruo) seleccionadas.get(2));
-        if (i == 2)
-            jugador.jugarCartaEnLadoConDosSacrificio(carta, (CartaMonstruo) seleccionadas.get(0), (CartaMonstruo) seleccionadas.get(1));
-        if (i == 1)
-            jugador.jugarCartaEnLadoConUnSacrificio(carta, (CartaMonstruo) seleccionadas.get(0));
-        new colocarEnEstado(jugador, carta);
+        if (!seleccionadas.isEmpty()){
+            if (i == 3)
+                jugador.jugarCartaEnLadoConTresSacrificio(carta, (CartaMonstruo) seleccionadas.get(0), (CartaMonstruo) seleccionadas.get(1), (CartaMonstruo) seleccionadas.get(2));
+            if (i == 2)
+                jugador.jugarCartaEnLadoConDosSacrificio(carta, (CartaMonstruo) seleccionadas.get(0), (CartaMonstruo) seleccionadas.get(1));
+            if (i == 1)
+                jugador.jugarCartaEnLadoConUnSacrificio(carta, (CartaMonstruo) seleccionadas.get(0));
+
+            new colocarEnEstado(jugador, carta);
+        }
+
     }
 
 }

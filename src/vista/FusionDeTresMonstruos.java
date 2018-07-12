@@ -22,12 +22,11 @@ public class FusionDeTresMonstruos {
     private  Jugador jugador;
     private  Carta carta;
 
-    public FusionDeTresMonstruos(Jugador jugador, Stage stage) throws NoAdmiteFusionException{
-        stage.close();
+    public FusionDeTresMonstruos(Jugador jugador) throws NoAdmiteFusionException{
         seleccionados = new ArrayList<>();
         this.jugador = jugador;
         for (int i = 0; i < 3 ; i++){
-            ArrayList<CartaMonstruo> seleccionado = new Posiciones(jugador.getCartasMonstruos(),"Indique la carta que quiere sacrificar Para Formar una Fusion De Su Mazo De Fusiones");
+            ArrayList<CartaMonstruo> seleccionado = new Posiciones(jugador.getCartasMonstruos(),"Indique la carta que quiere\n sacrificar Para Formar una Fusion\n De Su Mazo De Fusiones");
             if (seleccionado.isEmpty())
                 break;
             seleccionados.add(seleccionado.get(0));

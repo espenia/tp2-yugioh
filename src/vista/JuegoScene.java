@@ -106,7 +106,7 @@ public class JuegoScene extends BorderPane {
 
         VBox botones = new VBox();
         botones.getChildren().addAll(puntosDeVidaCarlos,siguienteFase,faseActual,siguienteTurno,puntosDeVidaJuan);
-        botones.setSpacing(100);
+        botones.setSpacing(70);
         this.setLeft(botones);
     }
 

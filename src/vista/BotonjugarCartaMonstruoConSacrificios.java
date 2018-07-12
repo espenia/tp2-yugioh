@@ -12,6 +12,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.CartaTrampa;
@@ -37,8 +38,8 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
                 try {
                     if (carta instanceof CartaMonstruo){
                         definirCarta(carta);
-                        stage.close();
                         cantidadDeSacrificios();
+                        stage.close();
                     }
                     else {
                         Alert alert = new Alert(Alert.AlertType.ERROR,"Tipo De Carta Incorrecta", ButtonType.CLOSE);
@@ -69,20 +70,20 @@ public class BotonjugarCartaMonstruoConSacrificios extends Button {
     private void cantidadDeSacrificios() {
 
         Stage stage = new Stage();
+        stage.initStyle(StageStyle.UNDECORATED);
         GridPane gridPane = new GridPane();
-        //gridPane.setId("pantalla-principal");
-        gridPane.setMinSize(1000,100 );
+        gridPane.setMinSize(500,100 );
         gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setVgap(5);
         gridPane.setHgap(5);
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.add(new Text("Indique la Cantidad De sacrificios que quiere Realizar"),1,1);
+        gridPane.add(new Text("Indique la Cantidad De\n sacrificios que quiere Realizar"),1,1);
         gridPane.add(unSacrificio(stage),1,2);
         gridPane.add(dosSacrificio(stage),2,2);
         gridPane.add(tresSacrificios(stage),3,2);
         gridPane.add(cancelar(stage),4,2);
-        Scene scene = new Scene(gridPane,1000,100);
-        stage.setTitle("Accion");
+        Scene scene = new Scene(gridPane,500,100);
+        stage.setTitle("Eligir Sacrificios");
         stage.setScene(scene);
         stage.showAndWait();
 

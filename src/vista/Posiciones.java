@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import modelo.CartaMonstruo;
 
 import java.util.ArrayList;
@@ -20,8 +21,9 @@ public class Posiciones extends ArrayList<CartaMonstruo> {
     public Posiciones(List<CartaMonstruo> cartasMonstruos, String texto) {
         cartas = (ArrayList) cartasMonstruos;
         Stage nuevoStage = new Stage();
+        nuevoStage.initStyle(StageStyle.UNDECORATED);
         GridPane gridPane = new GridPane();
-        gridPane.setMinSize(1000, 100);
+        gridPane.setMinSize(750, 100);
         //gridPane.setPadding(new Insets(10, 10, 10, 10));
         gridPane.setVgap(5);
         gridPane.setHgap(5);
@@ -33,7 +35,7 @@ public class Posiciones extends ArrayList<CartaMonstruo> {
         gridPane.add(posicionCuatro(nuevoStage), 4, 2);
         gridPane.add(posicionCinco(nuevoStage), 5, 2);
         gridPane.add(cancelar(nuevoStage),6,2);
-        Scene scene = new Scene(gridPane, 1000, 100);
+        Scene scene = new Scene(gridPane, 750, 100);
         nuevoStage.setScene(scene);
         nuevoStage.showAndWait();
     }
@@ -95,8 +97,8 @@ public class Posiciones extends ArrayList<CartaMonstruo> {
         boton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                nuevoStage.close();
                 seleccionarCarta(2);
+                nuevoStage.close();
             }
         });
         return boton;
@@ -108,15 +110,16 @@ public class Posiciones extends ArrayList<CartaMonstruo> {
         boton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                nuevoStage.close();
                 seleccionarCarta(1);
+                nuevoStage.close();
             }
         });
         return boton;
     }
 
     private void seleccionarCarta(int i) {
-        this.add((CartaMonstruo)cartas.get(i - 1));
+        if (!cartas.isEmpty())
+            this.add((CartaMonstruo)cartas.get(i - 1));
     }
 
 }

@@ -64,7 +64,7 @@ public class BotonjugarCartaMonstruo extends Button {
                 }
 
                 tablero.actualizarTablero();
-                manoDeJugador.actualizarMano();//puede que rompa
+                manoDeJugador.actualizarMano();
             }
 
         });
