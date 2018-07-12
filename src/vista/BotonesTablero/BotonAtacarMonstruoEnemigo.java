@@ -2,15 +2,9 @@ package vista.BotonesTablero;
 
 import java.util.ArrayList;
 
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -19,7 +13,6 @@ import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Jugador;
 import modelo.Exceptions.AccionInvalidaEnFaseException;
-import modelo.Exceptions.HayUnMonstruoEnElCaminoException;
 import modelo.Exceptions.MonstruoNoPuedeAtacarDosVecesEnUnTurnoException;
 import vista.JuegoScene;
 import vista.Posiciones;
@@ -37,9 +30,8 @@ public class BotonAtacarMonstruoEnemigo extends Button {
 	                if (carta instanceof CartaMonstruo){
 	                    try{
 	                    	ArrayList<CartaMonstruo> seleccionada = new Posiciones(jugador.getJugadorEnemigo().getCartasMonstruos(), "Indique la posicion del\n monstruo que quiere atacar");
-	                        if (!seleccionada.isEmpty())
-	                            seleccionada.add(seleccionada.get(0));
 	                        if (!seleccionada.isEmpty()){
+								seleccionada.add(seleccionada.get(0));
 	                        	jugador.atacarAMonstruo((CartaMonstruo)carta, seleccionada.get(0));
 	                        }
 	                    }

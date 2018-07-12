@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
-    public BarraDeMenu(Stage primaryStage){
+    public BarraDeMenu(Stage primaryStage, Aplicacion aplication){
         Menu menuFile = new Menu("File");
         MenuItem pantallaCompleta = new MenuItem("Pantalla Completa");
         MenuItem volverAjugar = new MenuItem("Volver a Jugar");
         MenuItem salir = new MenuItem("Salir");
         
         pantallaCompleta.setOnAction(fullAction(primaryStage));
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage);
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage, aplication);
         volverAjugar.setOnAction(botonJugarEventHandler);
         salir.setOnAction(quitAction());
         menuFile.getItems().add(pantallaCompleta);

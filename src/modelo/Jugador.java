@@ -30,8 +30,8 @@ public class Jugador {
     }
 
 	public void jugarCartaMonstruoEnLado(CartaMonstruo carta ) {
-		this.fase.jugarCartaMonstruo();
 		carta.verificarCantidadDeSacrificios(0);
+		this.fase.jugarCartaMonstruo();
 		this.lado.verificarEspacioDeCartasMonstruos();
 		this.mano.removerCarta(carta);
 		this.lado.jugarCartaMonstruo(carta);

@@ -51,6 +51,7 @@ public class Juego {
     }
 
     public void siguienteFase() {
+        chequearPuntosDeVida();
         try {
             this.fase = this.fase.cambiarFase();
             actual.asignarFase(fase);
@@ -69,16 +70,7 @@ public class Juego {
         primero.refrescarAtaques();
         segundo.refrescarAtaques();
 
-        if(this.primero.getPuntosDeVida() <= 0 && this.segundo.getPuntosDeVida() <= 0){
-            empate();
-            terminarJuego();
-        }
-
-
-        if(this.actual.getPuntosDeVida() <= 0){
-            perdio(this.actual);
-            terminarJuego();
-        }
+        chequearPuntosDeVida();
 
 
         if(this.actual == this.primero){
@@ -97,7 +89,23 @@ public class Juego {
 
     }
 
+    private void chequearPuntosDeVida() {
+        if(this.primero.getPuntosDeVida() <= 0 && this.segundo.getPuntosDeVida() <= 0){
+            empate();
+            terminarJuego();
+        }
+
+
+        if(this.actual.getPuntosDeVida() <= 0){
+            perdio(this.actual);
+            terminarJuego();
+        }
+    }
+
     public void gano(Jugador jugador) {
+        if (jugador == primero)
+            perdedor = segundo;
+        else perdedor = primero;
     	this.ganador = jugador;
 
     }
@@ -108,6 +116,9 @@ public class Juego {
     }
 
     public void perdio(Jugador jugador) {
+        if (jugador == primero)
+            ganador = segundo;
+        else ganador = primero;
     	this.perdedor = jugador;
 
 

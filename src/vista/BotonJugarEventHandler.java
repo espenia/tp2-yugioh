@@ -11,9 +11,11 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
 
     private Stage primaryStage;
     private BorderPane pane;
+    private Aplicacion aplicacion;
 
-    public BotonJugarEventHandler(Stage stage){
+    public BotonJugarEventHandler(Stage stage, Aplicacion aplicacion){
         primaryStage = stage;
+        this.aplicacion = aplicacion;
 
 
     }
@@ -22,7 +24,7 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
 
-        pane = new JuegoScene(new Jugador(),new Jugador(),primaryStage);
+        pane = new JuegoScene(new Jugador(),new Jugador(),primaryStage,aplicacion);
         pane.setMinSize(1300, 700);
         pane.setMaxSize(1920,1080);
         Scene gameScene = new Scene(pane);

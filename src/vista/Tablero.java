@@ -116,7 +116,7 @@ public class Tablero extends GridPane {
     }
 
     public void actualizarMazo(){
-        mazo = new BotonMazo(jugadorActual,jugadorActual.getMazo(),datos);
+        mazo = new BotonMazo(jugadorActual,jugadorActual.getMazo(),juegoScene);
         mazo.setId("mazo-propio");
         this.add(mazo,3,5);
     }

@@ -2,9 +2,11 @@ package vista;
 
 
 
-import javafx.scene.Parent;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
@@ -20,6 +22,9 @@ import modelo.Jugador;
 
 public class JuegoScene extends BorderPane {
 
+    private Aplicacion aplication;
+    private Jugador enimigo;
+    private Jugador actual;
     private Juego juego;
     private Jugador juan;
     private Jugador carlos;
@@ -32,10 +37,11 @@ public class JuegoScene extends BorderPane {
     private Text puntosDeVidaCarlos;
     private Text faseActual;
 
-    public JuegoScene(Jugador jugador1, Jugador jugador2,Stage stage) {
+    public JuegoScene(Jugador jugador1, Jugador jugador2, Stage stage, Aplicacion aplicacion) {
         primaryStage = stage;
         juan = jugador1;
         carlos = jugador2;
+        aplication = aplicacion;
         juego = new Juego(juan,carlos);
         configurarPanel();
 
@@ -45,9 +51,13 @@ public class JuegoScene extends BorderPane {
 
     public void configurarPanel() {
 
+        actual = juego.getActual();
+        if (actual == juan)
+            enimigo = carlos;
+        else enimigo = juan;
 
         this.setId("pantallas-juego");
-        barraDeMenu = new BarraDeMenu(this.primaryStage);
+        barraDeMenu = new BarraDeMenu(this.primaryStage,aplication);
         this.setTop(barraDeMenu);
 
         datosDeCartas = new Datos();
@@ -69,19 +79,58 @@ public class JuegoScene extends BorderPane {
 
     private void gano(Jugador ganador) {
         if (ganador == carlos)
-            primaryStage.setScene( ganadorCarlos());
-        else primaryStage.setScene( ganadorJuan());
+            primaryStage.setScene( pantallaGanador(new Image("file:src/vista/pantalla_Ganador_carlos.jpg"),carlos));
+        else primaryStage.setScene( pantallaGanador(new Image("file:src/vista/pantalla_ganador_juan.jpg"),juan));
         primaryStage.setTitle("GAME OVER");
         primaryStage.show();
     }
 
-    private Scene ganadorJuan() {//falta hacer
-        return null;
+    private Scene pantallaGanador(Image image, Jugador ganador) {
+
+
+        BackgroundImage imagenDeFondo = new BackgroundImage(image, BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,BackgroundSize.DEFAULT);
+
+        GridPane gridPane = new GridPane();
+        setid(ganador,gridPane);
+        gridPane.setMinSize(image.getWidth(), image.getHeight());
+
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
+
+        Scene scene = new Scene(gridPane);
+        scene.getStylesheets().add("file:src/vista/style.css");
+
+        gridPane.setVgap(5);
+        gridPane.setHgap(5);
+
+
+        gridPane.setAlignment(Pos.CENTER);
+
+        Button cerrar = new Button("Cerrar");
+        cerrar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                aplication.configurarPantallaInicial(primaryStage);
+            }
+        });
+
+        gridPane.add(cerrar,5,100);
+
+
+        gridPane.setBackground(new Background(imagenDeFondo));
+        return scene;
     }
 
-    private Scene ganadorCarlos() {
-        return null;
+    private void setid(Jugador ganador, GridPane gridPane) {
+        if (ganador == carlos)
+            gridPane.setId("pantalla-victoria-carlos");
+        else gridPane.setId("pantalla-victoria-juan");
     }
+
+    public void rendirse() {
+        gano(enimigo);
+    }
+
+
 
     private void setearIzquierda() {
     	if(this.getLeft() instanceof VBox) {
@@ -105,7 +154,9 @@ public class JuegoScene extends BorderPane {
         siguienteTurno.setOnAction(siguienteTurnoEventaHandler);
 
         VBox botones = new VBox();
-        botones.getChildren().addAll(puntosDeVidaCarlos,siguienteFase,faseActual,siguienteTurno,puntosDeVidaJuan);
+        if (actual == carlos)
+            botones.getChildren().addAll(puntosDeVidaJuan,siguienteFase,faseActual,siguienteTurno,puntosDeVidaCarlos);
+        else botones.getChildren().addAll(puntosDeVidaCarlos,siguienteFase,faseActual,siguienteTurno,puntosDeVidaJuan);
         botones.setSpacing(70);
         this.setLeft(botones);
     }

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class BotonCreditosEventHandler implements EventHandler<ActionEvent>{
 
 
-    public BotonCreditosEventHandler(Stage stage){
+    public BotonCreditosEventHandler(Stage stage, Aplicacion aplicacion){
 
 
     }

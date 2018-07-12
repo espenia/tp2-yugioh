@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -45,12 +46,24 @@ public class BotonCartaEnTableroHandler implements EventHandler<ActionEvent>{
             gridPane.add(new Text("Indique a quien quiere atacar"),1,1);
             gridPane.add(new BotonAtacarJugadorEnemigo(stage, jugador, carta,tablero,juegoScene),1,2);
             gridPane.add(new BotonAtacarMonstruoEnemigo(stage, jugador, carta,tablero,juegoScene),2,2);
+            gridPane.add(cancelar(stage),3,2);
             Scene scene = new Scene(gridPane,400,100);
             stage.setTitle("Accion");
             stage.setScene(scene);
             stage.showAndWait();
             juegoScene.configurarPanel();
         }
+    }
+
+    private Button cancelar(Stage stage) {
+        Button cancelar = new Button("Cancelar");
+        cancelar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                stage.close();
+            }
+        });
+        return cancelar;
     }
 
 }

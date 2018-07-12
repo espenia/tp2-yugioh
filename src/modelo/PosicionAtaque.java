@@ -8,8 +8,7 @@ public class PosicionAtaque implements PosicionDeCarta {
         int resultado = ataqueDelAtacante - ataqueDelDefendiente;
         if (resultado < 0)
             cartaAtacante.estaMuerta();
-
-        if (resultado == 0){
+        else if (resultado == 0){
             cartaAtacante.estaMuerta();
             cartaDefendiente.estaMuerta();
         }

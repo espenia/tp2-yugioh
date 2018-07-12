@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import modelo.Carta;
 import modelo.CartaMonstruo;
 import modelo.Exceptions.AccionInvalidaEnFaseException;
+import modelo.Exceptions.CantidadDeSacrificiosIncorrectaException;
 import modelo.Jugador;
 import vista.ManoDeJugador;
 import vista.Tablero;
@@ -30,12 +31,22 @@ public class BotonjugarCartaMonstruo extends Button {
         this.setText("Jugar Carta Monstruo");
         this.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) throws AccionInvalidaEnFaseException{
+            public void handle(ActionEvent event) throws AccionInvalidaEnFaseException, CantidadDeSacrificiosIncorrectaException{
                 try {
                     if (carta instanceof CartaMonstruo){
-                        jugador.jugarCartaMonstruoEnLado((CartaMonstruo)carta);
-                        new colocarEnEstado(jugador,carta);
-                        stage.close();
+                        try {
+                            jugador.jugarCartaMonstruoEnLado((CartaMonstruo)carta);
+                            new colocarEnEstado(jugador,carta);
+                            stage.close();
+                        }
+                        catch (CantidadDeSacrificiosIncorrectaException e){
+                            Alert alert = new Alert(Alert.AlertType.ERROR,"Incorrecta Cantidad De Sacrificios",ButtonType.CLOSE);
+                            alert.setHeight(40);
+                            alert.setWidth(50);
+                            alert.showAndWait();
+                            if (alert.getResult()==ButtonType.CLOSE)
+                                stage.close();
+                        }
                     }
                     else {
                         Alert alert = new Alert(Alert.AlertType.ERROR,"Tipo De Carta Incorrecta",ButtonType.CLOSE);

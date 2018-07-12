@@ -27,13 +27,11 @@ public class Aplicacion extends Application{
         primaryStage.setMaximized(true);
         configurarPantallaInicial(primaryStage);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
 
 
     }
 
-    private void configurarPantallaInicial(Stage primaryStage) {
+    public void configurarPantallaInicial(Stage primaryStage) {
         primaryStage.setTitle("Al-Go-OH!");
 
 
@@ -58,32 +56,25 @@ public class Aplicacion extends Application{
         Button jugar = new Button();
         Image botonJugarImagen = new Image("file:src/vista/Botonjugar.jpg");
         jugar.setGraphic(new ImageView(botonJugarImagen));
-        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage);
+        BotonJugarEventHandler botonJugarEventHandler = new BotonJugarEventHandler(primaryStage,this);
         jugar.setOnAction(botonJugarEventHandler);
-
-
-        Button comoJugar = new Button();
-        Image botonComoJugarImagen = new Image("file:src/vista/botoncomojugar.jpg");
-        comoJugar.setGraphic(new ImageView(botonComoJugarImagen));
-        BotonComoJugarEventHandler botonComoJugarEventHandler = new BotonComoJugarEventHandler(primaryStage);
-        comoJugar.setOnAction(botonComoJugarEventHandler);
-
 
         Button creditos = new Button();
         Image botonCreditosImagen = new Image("file:src/vista/botonCreditos.jpg");
         creditos.setGraphic(new ImageView(botonCreditosImagen));
-        BotonCreditosEventHandler botonCreditosEventHandler = new BotonCreditosEventHandler(primaryStage);
+        BotonCreditosEventHandler botonCreditosEventHandler = new BotonCreditosEventHandler(primaryStage,this);
         creditos.setOnAction(botonCreditosEventHandler);
 
 
         gridPane.add(jugar,5,37);
-        gridPane.add(comoJugar,5,39);
-        gridPane.add(creditos,5,42);
+        gridPane.add(creditos,5,39);
 
 
         gridPane.setBackground(new Background(imagenDeFondo));
         scene = new Scene(gridPane);
         scene.getStylesheets().add("file:src/vista/style.css");
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
     }
 }
